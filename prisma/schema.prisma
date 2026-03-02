@@ -1,0 +1,236 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  username  String?
+  password  String
+  roleId    String   @db.ObjectId
+  role      Role     @relation(fields: [roleId], references: [id])
+  branchId  String?  @db.ObjectId
+  branch    Branch?  @relation(fields: [branchId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Role {
+  id          String           @id @default(auto()) @map("_id") @db.ObjectId
+  name        String           @unique
+  description String?
+  users       User[]
+  permissions RolePermission[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+model RolePermission {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  roleId    String   @db.ObjectId
+  role      Role     @relation(fields: [roleId], references: [id])
+  module    String
+  canView   Boolean  @default(false)
+  canCreate Boolean  @default(false)
+  canEdit   Boolean  @default(false)
+  canDelete Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([roleId, module])
+}
+
+model Branch {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  name      String     @unique
+  location  String?
+  status    String     @default("active") // active, inactive
+  users     User[]
+  employees Employee[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Employee {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  firstName   String
+  lastName    String
+  email       String    @unique
+  phone       String?
+  dateOfBirth DateTime?
+  gender      String?
+  address     String?
+  // Relations to newly created models
+  departmentId String? @db.ObjectId
+  department   Department? @relation(fields: [departmentId], references: [id])
+  
+  positionId   String? @db.ObjectId
+  position     Position?   @relation(fields: [positionId], references: [id])
+
+  dateHired  DateTime?
+  status     String    @default("active") // active, inactive, resigned, etc.
+
+  pictureUrl String? // ADDED picture upload Url
+
+  educationalDegree      String?
+  educationalInstitution String?
+  yearGraduated          String?
+
+  emergencyContactName         String?
+  emergencyContactPhone        String?
+  emergencyContactRelationship String?
+
+  // Philippine Mandated Benefits Data
+  sssNumber              String?
+  sssStatus              String    @default("Pending") // Pending, Active, Exempt
+  philHealthNumber       String?
+  philHealthStatus       String    @default("Pending")
+  pagIbigNumber          String?
+  pagIbigStatus          String    @default("Pending")
+  tinNumber              String? // Tax Identification Number
+
+  branchId String? @db.ObjectId
+  branch   Branch? @relation(fields: [branchId], references: [id])
+  
+  schedule   Schedule?
+  
+  benefits EmployeeBenefit[]
+
+  timeRequests TimeRequest[] // Relations to Overtime and Undertime requests
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BenefitPlan {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String   @unique
+  type        String   // Health, Allowance, Insurance, etc.
+  description String?
+  
+  enrollments EmployeeBenefit[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model EmployeeBenefit {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  
+  employeeId    String   @db.ObjectId
+  employee      Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  
+  benefitPlanId String   @db.ObjectId
+  benefitPlan   BenefitPlan @relation(fields: [benefitPlanId], references: [id], onDelete: Cascade)
+  
+  status        String   @default("Active") // Active, Inactive
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@unique([employeeId, benefitPlanId])
+}
+
+model Department {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String   @unique
+  description String?
+  status      String   @default("active") // active, inactive
+  
+  positions   Position[]
+  employees   Employee[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Position {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  description  String?
+  status       String   @default("active") // active, inactive
+  
+  departmentId String?  @db.ObjectId
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  employees    Employee[]
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([name, departmentId])
+}
+
+model Shift {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String   @unique // e.g., "Morning Shift", "Closing"
+  startTime   String   // "08:00"
+  endTime     String   // "17:00"
+  workDays    String[] // ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+  status      String   @default("active")
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  mondaySchedules    Schedule[] @relation("MondayShift")
+  tuesdaySchedules   Schedule[] @relation("TuesdayShift")
+  wednesdaySchedules Schedule[] @relation("WednesdayShift")
+  thursdaySchedules  Schedule[] @relation("ThursdayShift")
+  fridaySchedules    Schedule[] @relation("FridayShift")
+  saturdaySchedules  Schedule[] @relation("SaturdayShift")
+  sundaySchedules    Schedule[] @relation("SundayShift")
+}
+
+model Schedule {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  employeeId String   @unique @db.ObjectId
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  mondayId    String? @db.ObjectId
+  monday      Shift?  @relation("MondayShift", fields: [mondayId], references: [id])
+  
+  tuesdayId   String? @db.ObjectId
+  tuesday     Shift?  @relation("TuesdayShift", fields: [tuesdayId], references: [id])
+  
+  wednesdayId String? @db.ObjectId
+  wednesday   Shift?  @relation("WednesdayShift", fields: [wednesdayId], references: [id])
+  
+  thursdayId  String? @db.ObjectId
+  thursday    Shift?  @relation("ThursdayShift", fields: [thursdayId], references: [id])
+  
+  fridayId    String? @db.ObjectId
+  friday      Shift?  @relation("FridayShift", fields: [fridayId], references: [id])
+  
+  saturdayId  String? @db.ObjectId
+  saturday    Shift?  @relation("SaturdayShift", fields: [saturdayId], references: [id])
+  
+  sundayId    String? @db.ObjectId
+  sunday      Shift?  @relation("SundayShift", fields: [sundayId], references: [id])
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model TimeRequest {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  employeeId String   @db.ObjectId
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  
+  type       String   // "Overtime", "Undertime"
+  date       DateTime // The date the OT/UT occured
+  startTime  String   // HH:mm format
+  endTime    String   // HH:mm format
+  reason     String?  
+  status     String   @default("Pending") // "Pending", "Approved", "Rejected"
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
