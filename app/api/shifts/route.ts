@@ -16,18 +16,20 @@ export async function GET() {
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { name, startTime, endTime, workDays, status } = body;
+        const { name, startTime, endTime, workDays, isFlexi, flexiHours, status } = body;
 
-        if (!name || !startTime || !endTime) {
+        if (!name || (!isFlexi && (!startTime || !endTime))) {
             return NextResponse.json({ error: 'Name, Start Time, and End Time are required' }, { status: 400 });
         }
 
         const shift = await prisma.shift.create({
             data: {
                 name,
-                startTime,
-                endTime,
+                startTime: startTime || "00:00",
+                endTime: endTime || "00:00",
                 workDays: workDays || ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                isFlexi: !!isFlexi,
+                flexiHours: isFlexi ? (parseFloat(flexiHours) || 8) : null,
                 status: status || 'active'
             }
         });

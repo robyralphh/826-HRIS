@@ -31,9 +31,44 @@ const UserList = () => {
         branchId: ''
     });
 
+    const [permissions, setPermissions] = useState({
+        canView: false,
+        canCreate: false,
+        canEdit: false,
+        canDelete: false
+    });
+
     useEffect(() => {
         fetchData();
+        loadPermissions();
     }, []);
+
+    const loadPermissions = () => {
+        try {
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                const userObj = JSON.parse(userStr);
+                
+                const roleName = typeof userObj.role === 'string' ? userObj.role : userObj.role?.name;
+                if (roleName === 'Super Admin') {
+                    setPermissions({ canView: true, canCreate: true, canEdit: true, canDelete: true });
+                    return;
+                }
+
+                const userSettingsPerm = userObj.role?.permissions?.find((p: any) => p.module === 'User Settings');
+                if (userSettingsPerm) {
+                    setPermissions({
+                        canView: userSettingsPerm.canView,
+                        canCreate: userSettingsPerm.canCreate,
+                        canEdit: userSettingsPerm.canEdit,
+                        canDelete: userSettingsPerm.canDelete
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Error loading permissions', error);
+        }
+    };
 
     const fetchData = async () => {
         setLoading(true);
@@ -89,10 +124,16 @@ const UserList = () => {
         const url = editingUser ? `/api/users/${editingUser.id}` : '/api/users';
         const method = editingUser ? 'PUT' : 'POST';
 
+        const storedUser = localStorage.getItem('user');
+        const adminId = storedUser ? JSON.parse(storedUser).id : '';
+
         try {
             const res = await fetch(url, {
                 method,
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-admin-id': adminId
+                },
                 body: JSON.stringify(formData),
             });
             if (res.ok) {
@@ -110,8 +151,14 @@ const UserList = () => {
 
     const handleDelete = async (id: string) => {
         if (confirm('Are you sure you want to delete this user?')) {
+            const storedUser = localStorage.getItem('user');
+            const adminId = storedUser ? JSON.parse(storedUser).id : '';
+
             try {
-                await fetch(`/api/users/${id}`, { method: 'DELETE' });
+                await fetch(`/api/users/${id}`, { 
+                    method: 'DELETE',
+                    headers: { 'x-admin-id': adminId }
+                });
                 fetchData();
             } catch (error) {
                 console.error('Error deleting user:', error);
@@ -123,15 +170,17 @@ const UserList = () => {
         <div className="p-8">
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold text-gray-800">User Management</h1>
-                <button
-                    onClick={() => handleOpenModal()}
-                    className="bg-indigo-600 text-white px-4 py-2 rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-sm flex items-center gap-2"
-                >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" />
-                    </svg>
-                    Add New User
-                </button>
+                {permissions.canCreate && (
+                    <button
+                        onClick={() => handleOpenModal()}
+                        className="bg-indigo-600 text-white px-4 py-2 rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-sm flex items-center gap-2"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Add New User
+                    </button>
+                )}
             </div>
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -142,7 +191,9 @@ const UserList = () => {
                             <th className="px-6 py-4 text-sm font-bold text-gray-600">Email</th>
                             <th className="px-6 py-4 text-sm font-bold text-gray-600">Role</th>
                             <th className="px-6 py-4 text-sm font-bold text-gray-600">Branch</th>
-                            <th className="px-6 py-4 text-sm font-bold text-right text-gray-600">Actions</th>
+                            {(permissions.canEdit || permissions.canDelete) && (
+                                <th className="px-6 py-4 text-sm font-bold text-right text-gray-600">Actions</th>
+                            )}
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-50">
@@ -166,26 +217,32 @@ const UserList = () => {
                                 <td className="px-6 py-4 text-gray-500 italic text-sm">
                                     {user.branch?.name || 'No Branch'}
                                 </td>
-                                <td className="px-6 py-4 text-right space-x-2">
-                                    <button
-                                        onClick={() => handleOpenModal(user)}
-                                        className="p-2 text-indigo-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-xl transition-all"
-                                        title="Edit User"
-                                    >
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                        </svg>
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(user.id)}
-                                        className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all"
-                                        title="Delete User"
-                                    >
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m4-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                        </svg>
-                                    </button>
-                                </td>
+                                {(permissions.canEdit || permissions.canDelete) && (
+                                    <td className="px-6 py-4 text-right space-x-2">
+                                        {permissions.canEdit && (
+                                            <button
+                                                onClick={() => handleOpenModal(user)}
+                                                className="p-2 text-indigo-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-xl transition-all"
+                                                title="Edit User"
+                                            >
+                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                </svg>
+                                            </button>
+                                        )}
+                                        {permissions.canDelete && (
+                                            <button
+                                                onClick={() => handleDelete(user.id)}
+                                                className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all"
+                                                title="Delete User"
+                                            >
+                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m4-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </button>
+                                        )}
+                                    </td>
+                                )}
                             </tr>
                         ))}
                     </tbody>

@@ -10,9 +10,9 @@ export default function HomeRedirect() {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       const userData = JSON.parse(storedUser);
-      if (userData.role === 'HR Manager') {
-        router.push("/hr/dashboard");
-      } else if (userData.role === 'Accounting Manager') {
+      if (userData.role === 'HR Manager' || (userData.role?.name === 'HR Manager')) {
+        router.push("/dashboard");
+      } else if (userData.role === 'Accounting Manager' || (userData.role?.name === 'Accounting Manager')) {
         router.push("/accounting/dashboard");
       } else if (userData.role === 'Super Admin') {
         router.push("/admin/dashboard");

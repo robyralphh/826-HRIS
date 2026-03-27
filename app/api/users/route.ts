@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { logAdminAction } from '@/lib/actionLog';
 
 export async function GET() {
     try {
@@ -41,6 +42,26 @@ export async function POST(request: Request) {
                 branch: true,
             },
         });
+
+        // ---------------------------------------------------------------------------------
+        // AUTO-LINK FEATURE: Create a placeholder Employee record linked by the same email
+        // so the new User can immediately use the ESS (Time Off requests, etc.)
+        // ---------------------------------------------------------------------------------
+        const existingEmployee = await prisma.employee.findUnique({ where: { email } });
+        if (!existingEmployee) {
+            await prisma.employee.create({
+                data: {
+                    firstName: username?.split(' ')[0] || 'Unknown',
+                    lastName: username?.split(' ').slice(1).join(' ') || 'User',
+                    email: email,
+                    status: 'active',
+                    branchId: requestData.branchId ? requestData.branchId : null
+                }
+            });
+        }
+
+        const adminId = request.headers.get('x-admin-id');
+        await logAdminAction(adminId, 'CREATE_USER', `Created user ${user.username} (${user.email})`);
 
         return NextResponse.json(user);
     } catch (error: any) {

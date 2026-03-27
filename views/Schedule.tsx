@@ -9,6 +9,8 @@ interface Shift {
     startTime: string;
     endTime: string;
     workDays: string[];
+    isFlexi: boolean;
+    flexiHours: number | null;
     status: string;
 }
 
@@ -48,15 +50,52 @@ const ScheduleView = () => {
     const [shiftStart, setShiftStart] = useState('09:00');
     const [shiftEnd, setShiftEnd] = useState('17:00');
     const [shiftDays, setShiftDays] = useState<string[]>(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']);
+    const [shiftIsFlexi, setShiftIsFlexi] = useState(false);
+    const [shiftFlexiHours, setShiftFlexiHours] = useState<number>(8);
 
     // Roster Form Modal
     const [activeSchedule, setActiveSchedule] = useState<Partial<Schedule> | null>(null);
 
     const DAYS_OF_WEEK = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
+    const [permissions, setPermissions] = useState({
+        canView: false,
+        canCreate: false,
+        canEdit: false,
+        canDelete: false
+    });
+
     useEffect(() => {
         fetchData();
+        loadPermissions();
     }, []);
+
+    const loadPermissions = () => {
+        try {
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                const userObj = JSON.parse(userStr);
+                
+                const roleName = typeof userObj.role === 'string' ? userObj.role : userObj.role?.name;
+                if (roleName === 'Super Admin') {
+                    setPermissions({ canView: true, canCreate: true, canEdit: true, canDelete: true });
+                    return;
+                }
+
+                const attPerm = userObj.role?.permissions?.find((p: any) => p.module === 'Schedules');
+                if (attPerm) {
+                    setPermissions({
+                        canView: attPerm.canView,
+                        canCreate: attPerm.canCreate,
+                        canEdit: attPerm.canEdit,
+                        canDelete: attPerm.canDelete
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Error loading permissions', error);
+        }
+    };
 
     const fetchData = async () => {
         setLoading(true);
@@ -79,10 +118,12 @@ const ScheduleView = () => {
     // --- Master Shifts ---
     const resetShiftForm = () => {
         setShiftId(''); setShiftName(''); setShiftStart('09:00'); setShiftEnd('17:00'); setShiftDays(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']);
+        setShiftIsFlexi(false); setShiftFlexiHours(8);
     };
 
     const handleEditShift = (s: Shift) => {
         setShiftId(s.id); setShiftName(s.name); setShiftStart(s.startTime); setShiftEnd(s.endTime); setShiftDays(s.workDays);
+        setShiftIsFlexi(s.isFlexi); setShiftFlexiHours(s.flexiHours || 8);
     };
 
     const toggleWorkDay = (day: string) => {
@@ -99,7 +140,14 @@ const ScheduleView = () => {
             const res = await fetch(url, {
                 method,
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: shiftName, startTime: shiftStart, endTime: shiftEnd, workDays: shiftDays })
+                body: JSON.stringify({ 
+                    name: shiftName, 
+                    startTime: shiftIsFlexi ? "00:00" : shiftStart, 
+                    endTime: shiftIsFlexi ? "00:00" : shiftEnd, 
+                    workDays: shiftDays,
+                    isFlexi: shiftIsFlexi,
+                    flexiHours: shiftIsFlexi ? shiftFlexiHours : null
+                })
             });
 
             if (res.ok) {
@@ -133,9 +181,16 @@ const ScheduleView = () => {
 
         setIsSaving(true);
         try {
+            const userStr = localStorage.getItem('user');
+            const userObj = userStr ? JSON.parse(userStr) : null;
+            const adminId = userObj?.id || '';
+
             const res = await fetch('/api/schedules', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-admin-id': adminId
+                },
                 body: JSON.stringify(activeSchedule)
             });
 
@@ -181,7 +236,20 @@ const ScheduleView = () => {
     };
 
     // --- Render Helpers
-    const renderShiftBadge = (shift?: Shift | null) => {
+    const renderShiftBadge = (schedule?: Schedule | null, day?: string) => {
+        const shiftKey = day ? day.toLowerCase() : null;
+        const shift = shiftKey ? (schedule as any)?.[shiftKey] : null;
+
+        if (shift && shift.isFlexi) {
+            const displayHours = shift.flexiHours;
+            return (
+                <div className="flex flex-col items-center">
+                    <span className="font-black text-indigo-600 text-[10px] uppercase tracking-tighter bg-indigo-50 px-1.5 py-0.5 rounded">Flexi</span>
+                    <span className="text-xs font-bold text-slate-800">{displayHours} hrs</span>
+                </div>
+            );
+        }
+
         if (!shift) return <span className="text-gray-400 text-xs italic">Off / No Shift</span>;
         return (
             <div className="flex flex-col">
@@ -200,46 +268,75 @@ const ScheduleView = () => {
 
             <div className="flex-1 overflow-y-auto p-6 flex gap-6">
                 <div className="w-1/3">
-                    <form onSubmit={handleSaveShift} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm sticky top-0">
-                        <h3 className="font-bold text-lg mb-4">{shiftId ? 'Edit Shift' : 'Create New Shift'}</h3>
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Shift Name</label>
-                                <input required type="text" value={shiftName} onChange={e => setShiftName(e.target.value)} placeholder="e.g. Morning Shift" className="w-full px-4 py-2 bg-white border border-gray-300 text-gray-900 rounded-xl font-medium focus:ring-2 focus:ring-indigo-500" />
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
+                    {permissions.canCreate && (
+                        <form onSubmit={handleSaveShift} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm sticky top-0">
+                            <h3 className="font-bold text-lg mb-4">{shiftId ? 'Edit Shift' : 'Create New Shift'}</h3>
+                            <div className="space-y-4">
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Start Time</label>
-                                    <input required type="time" value={shiftStart} onChange={e => setShiftStart(e.target.value)} className="w-full px-4 py-2 bg-white border border-gray-300 text-gray-900 rounded-xl font-medium focus:ring-2 focus:ring-indigo-500" />
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Shift Name</label>
+                                    <input required type="text" value={shiftName} onChange={e => setShiftName(e.target.value)} placeholder="e.g. Morning Shift" className="w-full px-4 py-2 bg-white border border-gray-300 text-gray-900 rounded-xl font-medium focus:ring-2 focus:ring-indigo-500" />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">End Time</label>
-                                    <input required type="time" value={shiftEnd} onChange={e => setShiftEnd(e.target.value)} className="w-full px-4 py-2 bg-white border border-gray-300 text-gray-900 rounded-xl font-medium focus:ring-2 focus:ring-indigo-500" />
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-3 border-b border-gray-100 pb-2">Shift Type</label>
+                                    <div className="flex items-center gap-4 p-4 bg-indigo-50/50 rounded-2xl border border-indigo-100 mb-4">
+                                        <div className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${shiftIsFlexi ? 'bg-indigo-600' : 'bg-slate-300'}`} onClick={() => setShiftIsFlexi(!shiftIsFlexi)}>
+                                            <div className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-all ${shiftIsFlexi ? 'left-5.5' : 'left-0.5'}`} />
+                                        </div>
+                                        <div>
+                                            <p className="font-bold text-slate-800 text-xs">Flexi Shift</p>
+                                            <p className="text-[10px] text-slate-500">No fixed start/end time. No late flags.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {shiftIsFlexi ? (
+                                    <div>
+                                        <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Required Daily Hours</label>
+                                        <input 
+                                            required 
+                                            type="number" 
+                                            step="0.5"
+                                            value={shiftFlexiHours} 
+                                            onChange={e => setShiftFlexiHours(parseFloat(e.target.value))} 
+                                            className="w-full px-4 py-2 bg-white border border-gray-300 text-gray-900 rounded-xl font-medium focus:ring-2 focus:ring-indigo-500" 
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Start Time</label>
+                                            <input required type="time" value={shiftStart} onChange={e => setShiftStart(e.target.value)} className="w-full px-4 py-2 bg-white border border-gray-300 text-gray-900 rounded-xl font-medium focus:ring-2 focus:ring-indigo-500" />
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">End Time</label>
+                                            <input required type="time" value={shiftEnd} onChange={e => setShiftEnd(e.target.value)} className="w-full px-4 py-2 bg-white border border-gray-300 text-gray-900 rounded-xl font-medium focus:ring-2 focus:ring-indigo-500" />
+                                        </div>
+                                    </div>
+                                )}
+                                <div>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Target Work Days</label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {DAYS_OF_WEEK.map(day => (
+                                            <button
+                                                key={day}
+                                                type="button"
+                                                onClick={() => toggleWorkDay(day)}
+                                                className={`px-3 py-1.5 text-xs font-bold rounded-lg border transition-colors ${shiftDays.includes(day) ? 'bg-indigo-100 border-indigo-200 text-indigo-700' : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'}`}
+                                            >
+                                                {day.substring(0, 3)}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="flex gap-2 pt-2">
+                                    {shiftId && <button type="button" onClick={resetShiftForm} className="px-4 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition-colors">Cancel</button>}
+                                    <button disabled={isSaving} type="submit" className="flex-1 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">
+                                        {isSaving ? 'Saving...' : 'Save Shift'}
+                                    </button>
                                 </div>
                             </div>
-                            <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Target Work Days</label>
-                                <div className="flex flex-wrap gap-2">
-                                    {DAYS_OF_WEEK.map(day => (
-                                        <button
-                                            key={day}
-                                            type="button"
-                                            onClick={() => toggleWorkDay(day)}
-                                            className={`px-3 py-1.5 text-xs font-bold rounded-lg border transition-colors ${shiftDays.includes(day) ? 'bg-indigo-100 border-indigo-200 text-indigo-700' : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'}`}
-                                        >
-                                            {day.substring(0, 3)}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="flex gap-2 pt-2">
-                                {shiftId && <button type="button" onClick={resetShiftForm} className="px-4 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition-colors">Cancel</button>}
-                                <button disabled={isSaving} type="submit" className="flex-1 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">
-                                    {isSaving ? 'Saving...' : 'Save Shift'}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    )}
                 </div>
 
                 <div className="w-2/3 grid grid-cols-2 gap-4 h-fit">
@@ -248,7 +345,11 @@ const ScheduleView = () => {
                             <div>
                                 <div className="flex justify-between items-start mb-2">
                                     <h4 className="font-bold text-gray-900 text-lg leading-tight">{shift.name}</h4>
-                                    <span className="px-2.5 py-1 text-xs font-black bg-indigo-50 text-indigo-700 rounded-lg">{shift.startTime} - {shift.endTime}</span>
+                                    {shift.isFlexi ? (
+                                        <span className="px-2.5 py-1 text-xs font-black bg-indigo-50 text-indigo-700 rounded-lg">Flexi ({shift.flexiHours}h)</span>
+                                    ) : (
+                                        <span className="px-2.5 py-1 text-xs font-black bg-slate-100 text-slate-700 rounded-lg">{shift.startTime} - {shift.endTime}</span>
+                                    )}
                                 </div>
                                 <div className="flex flex-wrap gap-1 mt-3">
                                     {DAYS_OF_WEEK.map(d => (
@@ -259,12 +360,16 @@ const ScheduleView = () => {
                                 </div>
                             </div>
                             <div className="flex justify-end gap-2 mt-4 pt-4 border-t border-gray-100">
-                                <button onClick={() => handleEditShift(shift)} className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors border border-transparent hover:border-indigo-100" title="Edit">
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-                                </button>
-                                <button onClick={() => handleDeleteShift(shift.id)} className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors border border-transparent hover:border-red-100" title="Delete">
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                                </button>
+                                {permissions.canEdit && (
+                                    <button onClick={() => handleEditShift(shift)} className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors border border-transparent hover:border-indigo-100" title="Edit">
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                                    </button>
+                                )}
+                                {permissions.canDelete && (
+                                    <button onClick={() => handleDeleteShift(shift.id)} className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors border border-transparent hover:border-red-100" title="Delete">
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                    </button>
+                                )}
                             </div>
                         </div>
                     ))}
@@ -306,18 +411,18 @@ const ScheduleView = () => {
                                 </thead>
                                 <tbody className="divide-y divide-gray-100">
                                     {schedules.map(schedule => (
-                                        <tr key={schedule.id} onClick={() => openScheduleModal(schedule)} className="hover:bg-indigo-50/30 cursor-pointer transition-colors group">
-                                            <td className="px-6 py-4 sticky left-0 bg-white group-hover:bg-indigo-50/30 shadow-[1px_0_0_0_#f1f5f9]">
+                                        <tr key={schedule.id} onClick={() => permissions.canEdit && openScheduleModal(schedule)} className={`${permissions.canEdit ? 'hover:bg-indigo-50/30 cursor-pointer' : ''} transition-colors group`}>
+                                            <td className={`px-6 py-4 sticky left-0 bg-white ${permissions.canEdit ? 'group-hover:bg-indigo-50/30' : ''} shadow-[1px_0_0_0_#f1f5f9]`}>
                                                 <div className="font-bold text-gray-900">{schedule.employee?.firstName} {schedule.employee?.lastName}</div>
                                                 <div className="text-xs text-gray-500">{schedule.employee?.position?.name || schedule.employee?.department?.name || 'Unassigned'}</div>
                                             </td>
-                                            <td className="px-4 py-4 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule.monday)}</td>
-                                            <td className="px-4 py-4 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule.tuesday)}</td>
-                                            <td className="px-4 py-4 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule.wednesday)}</td>
-                                            <td className="px-4 py-4 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule.thursday)}</td>
-                                            <td className="px-4 py-4 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule.friday)}</td>
-                                            <td className="px-4 py-4 bg-slate-50/30 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule.saturday)}</td>
-                                            <td className="px-4 py-4 bg-slate-50/30 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule.sunday)}</td>
+                                            <td className="px-4 py-4 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule, 'monday')}</td>
+                                            <td className="px-4 py-4 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule, 'tuesday')}</td>
+                                            <td className="px-4 py-4 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule, 'wednesday')}</td>
+                                            <td className="px-4 py-4 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule, 'thursday')}</td>
+                                            <td className="px-4 py-4 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule, 'friday')}</td>
+                                            <td className="px-4 py-4 bg-slate-50/30 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule, 'saturday')}</td>
+                                            <td className="px-4 py-4 bg-slate-50/30 border-l border-gray-100 text-center hover:bg-indigo-50/50">{renderShiftBadge(schedule, 'sunday')}</td>
                                         </tr>
                                     ))}
                                     {schedules.length === 0 && (
@@ -346,9 +451,11 @@ const ScheduleView = () => {
                                             <div className="font-bold text-gray-900 truncate">{emp.firstName} {emp.lastName}</div>
                                             <div className="text-xs text-gray-500 truncate">{emp.position?.name || 'Unassigned'}</div>
                                         </div>
-                                        <button onClick={() => openScheduleModal(emp)} className="p-2 text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-lg shrink-0 transition-colors tooltip" title="Create Schedule">
-                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
-                                        </button>
+                                        {permissions.canCreate && (
+                                            <button onClick={() => openScheduleModal(emp)} className="p-2 text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-lg shrink-0 transition-colors tooltip" title="Create Schedule">
+                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
+                                            </button>
+                                        )}
                                     </div>
                                 ))}
                             </div>

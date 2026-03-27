@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import SideNavbar from '@/component/SideNavbar';
 import { useRouter, usePathname } from 'next/navigation';
+import { getModuleName } from '@/lib/permissions';
 
 export default function AccountingLayout({
     children,
@@ -11,24 +12,39 @@ export default function AccountingLayout({
 }) {
     const router = useRouter();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-    const [user, setUser] = useState<{ username: string; email: string; role: string } | null>(null);
+    const [user, setUser] = useState<{ username: string; email: string; role: any } | null>(null);
     const pathname = usePathname();
 
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-            const userData = JSON.parse(storedUser);
-            setUser(userData);
+        const syncUserAndCheckAuth = () => {
+            const storedUser = localStorage.getItem('user');
+            if (storedUser) {
+                const userData = JSON.parse(storedUser);
+                setUser(userData);
 
-            // Security Check: Accounting managers or Super Admins
-            if (userData.role !== 'Accounting Manager' && userData.role !== 'Super Admin') {
+                // Security Check: Specific module permission or Super Admin
+                const roleName = typeof userData.role === 'string' ? userData.role : userData.role?.name;
+                
+                if (roleName !== 'Super Admin') {
+                    const userPermissions = userData.role?.permissions || [];
+                    const moduleName = getModuleName(pathname);
+                    
+                    const hasModulePermission = moduleName ? userPermissions.some((p: any) => p.module === moduleName && p.canView) : false;
+
+                    if (!hasModulePermission) {
+                        router.push("/login");
+                    }
+                }
+            } else {
                 router.push("/login");
             }
-        } else {
-            // No session, redirect to login
-            router.push("/login");
-        }
-    }, [router]);
+        };
+
+        syncUserAndCheckAuth();
+
+        window.addEventListener('userUpdate', syncUserAndCheckAuth);
+        return () => window.removeEventListener('userUpdate', syncUserAndCheckAuth);
+    }, [router, pathname]);
 
     // Map path to Display Name for the header
     const getPageTitle = () => {
@@ -54,6 +70,7 @@ export default function AccountingLayout({
                 }}
                 isOpen={isSidebarOpen}
                 onLogout={handleLogout}
+                user={user}
             />
 
             <main className={`flex-1 transition-all duration-500 ease-in-out min-h-screen ${isSidebarOpen ? 'ml-64' : 'ml-0'}`}>
@@ -80,7 +97,7 @@ export default function AccountingLayout({
                         <div className="flex items-center gap-3 border-l pl-6 border-gray-100">
                             <div className="flex flex-col items-end text-right">
                                 <span className="text-sm font-bold text-gray-800">{user?.username || 'Accounting Manager'}</span>
-                                <span className="text-[10px] text-gray-400 font-medium">{user?.role || 'Online'}</span>
+                                <span className="text-[10px] text-gray-400 font-medium">{typeof user?.role === 'string' ? user.role : user?.role?.name || 'Online'}</span>
                             </div>
                             <div className="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center font-bold shadow-inner ring-2 ring-indigo-50">
                                 {user?.username?.charAt(0).toUpperCase() || 'A'}

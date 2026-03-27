@@ -82,8 +82,6 @@ async function testDatabase() {
                 firstName: 'John',
                 lastName: 'Doe',
                 email: 'johndoe@example.com',
-                department: 'IT',
-                position: 'Developer',
                 branchId: branch.id
             }
         });
@@ -94,10 +92,10 @@ async function testDatabase() {
 
         fetchedEmp = await prisma.employee.update({
             where: { id: employee.id },
-            data: { position: 'Senior Developer' },
+            data: { phone: '123456789' },
             include: { branch: true }
         });
-        console.log('Updated employee position:', fetchedEmp?.position);
+        console.log('Updated employee phone:', fetchedEmp?.phone);
 
 
         // --- 5. Clean up (Deletes) ---

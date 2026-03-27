@@ -1,0 +1,29 @@
+.next/dev/types/validator.ts(369,31): error TS2344: Type 'typeof import("C:/Users/Rob/826/app/api/hr/attendance/[id]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/hr/attendance/[id]">'.
+  Types of property 'PUT' are incompatible.
+    Type '(request: Request, { params }: { params: { id: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ employee: { id: string; email: string; branchId: string | null; createdAt: Date; ... 24 more ...; tinNumber: string | null; }; } & { ...; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ id: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ id: string; }>; }' is not assignable to type '{ params: { id: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'id' is missing in type 'Promise<{ id: string; }>' but required in type '{ id: string; }'.
+.next/dev/types/validator.ts(387,31): error TS2344: Type 'typeof import("C:/Users/Rob/826/app/api/leave-requests/[id]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/leave-requests/[id]">'.
+  Types of property 'PUT' are incompatible.
+    Type '(request: Request, { params }: { params: { id: string; }; }) => Promise<NextResponse<{ employee: { id: string; email: string; branchId: string | null; createdAt: Date; updatedAt: Date; status: string; ... 22 more ...; tinNumber: string | null; }; } & { ...; }> | NextResponse<...>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ id: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ id: string; }>; }' is not assignable to type '{ params: { id: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'id' is missing in type 'Promise<{ id: string; }>' but required in type '{ id: string; }'.
+.next/types/validator.ts(369,31): error TS2344: Type 'typeof import("C:/Users/Rob/826/app/api/hr/attendance/[id]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/hr/attendance/[id]">'.
+  Types of property 'PUT' are incompatible.
+    Type '(request: Request, { params }: { params: { id: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ employee: { id: string; email: string; branchId: string | null; createdAt: Date; ... 24 more ...; tinNumber: string | null; }; } & { ...; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ id: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ id: string; }>; }' is not assignable to type '{ params: { id: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'id' is missing in type 'Promise<{ id: string; }>' but required in type '{ id: string; }'.
+.next/types/validator.ts(387,31): error TS2344: Type 'typeof import("C:/Users/Rob/826/app/api/leave-requests/[id]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/leave-requests/[id]">'.
+  Types of property 'PUT' are incompatible.
+    Type '(request: Request, { params }: { params: { id: string; }; }) => Promise<NextResponse<{ employee: { id: string; email: string; branchId: string | null; createdAt: Date; updatedAt: Date; status: string; ... 22 more ...; tinNumber: string | null; }; } & { ...; }> | NextResponse<...>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ id: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ id: string; }>; }' is not assignable to type '{ params: { id: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'id' is missing in type 'Promise<{ id: string; }>' but required in type '{ id: string; }'.
+app/api/hr/attendance/[id]/route.ts(53,17): error TS2353: Object literal may only specify known properties, and 'details' does not exist in type 'Without<ActionLogCreateInput, ActionLogUncheckedCreateInput> & ActionLogUncheckedCreateInput'.

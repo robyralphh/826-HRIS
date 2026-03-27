@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { logAdminAction } from '@/lib/actionLog';
 
 export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
     try {
@@ -20,6 +21,9 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
                 department: true
             }
         });
+
+        const adminId = request.headers.get('x-admin-id');
+        await logAdminAction(adminId, 'UPDATE_POSITION', `Updated position "${position.name}" in department "${position.department?.name || 'Unassigned'}"`);
 
         return NextResponse.json(position);
     } catch (error: any) {
@@ -59,7 +63,13 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
             }, { status: 400 });
         }
 
+        const posToDel = await prisma.position.findUnique({ where: { id } });
+
         await prisma.position.delete({ where: { id } });
+
+        const adminId = request.headers.get('x-admin-id');
+        if (posToDel) await logAdminAction(adminId, 'DELETE_POSITION', `Deleted position "${posToDel.name}"`);
+
         return NextResponse.json({ message: 'Position deleted successfully' });
     } catch (error) {
         console.error('Error deleting position:', error);

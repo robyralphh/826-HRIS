@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { logAdminAction } from '@/lib/actionLog';
 
 export async function PUT(
     request: Request,
@@ -17,7 +18,8 @@ export async function PUT(
             emergencyContactName, emergencyContactPhone, emergencyContactRelationship,
             sssNumber, sssStatus, philHealthNumber, philHealthStatus,
             pagIbigNumber, pagIbigStatus, tinNumber,
-            branchId, departmentId, positionId, pictureUrl
+            branchId, departmentId, positionId, pictureUrl,
+            salaryType, baseSalary, workFactor
         } = requestData;
 
         // Build update object dynamically
@@ -60,6 +62,10 @@ export async function PUT(
             updateData.positionId = positionId ? positionId : null;
         }
 
+        if (salaryType !== undefined) updateData.salaryType = salaryType || 'Monthly';
+        if (baseSalary !== undefined) updateData.baseSalary = parseFloat(baseSalary) || 0;
+        if (workFactor !== undefined) updateData.workFactor = workFactor === 261 ? 261 : 313;
+
         const employee = await prisma.employee.update({
             where: { id },
             data: updateData,
@@ -69,6 +75,9 @@ export async function PUT(
                 position: true
             },
         });
+
+        const adminId = request.headers.get('x-admin-id');
+        await logAdminAction(adminId, 'UPDATE_EMPLOYEE', `Updated employee "${employee.firstName} ${employee.lastName}"`);
 
         return NextResponse.json(employee);
     } catch (error: any) {
@@ -94,7 +103,12 @@ export async function DELETE(
         const resolvedParams = await params;
         const id = resolvedParams.id;
 
+        const employeeToDelete = await prisma.employee.findUnique({ where: { id } });
         await prisma.employee.delete({ where: { id } });
+
+        const adminId = request.headers.get('x-admin-id');
+        if (employeeToDelete) await logAdminAction(adminId, 'DELETE_EMPLOYEE', `Deleted employee "${employeeToDelete.firstName} ${employeeToDelete.lastName}"`);
+
         return NextResponse.json({ message: 'Employee deleted successfully' });
     } catch (error: any) {
         if (error.code === 'P2025') {

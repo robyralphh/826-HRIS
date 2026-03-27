@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { logAdminAction } from '@/lib/actionLog';
 
 export async function GET() {
     try {
@@ -33,7 +34,8 @@ export async function POST(request: Request) {
             emergencyContactName, emergencyContactPhone, emergencyContactRelationship,
             sssNumber, sssStatus, philHealthNumber, philHealthStatus,
             pagIbigNumber, pagIbigStatus, tinNumber,
-            branchId, departmentId, positionId, pictureUrl
+            branchId, departmentId, positionId, pictureUrl,
+            salaryType, baseSalary, workFactor
         } = requestData;
 
         // Basic validation
@@ -71,6 +73,9 @@ export async function POST(request: Request) {
                 pagIbigStatus: pagIbigStatus || 'Pending',
                 tinNumber: tinNumber || null,
                 branchId: branchId ? branchId : null,
+                salaryType: salaryType || 'Monthly',
+                baseSalary: parseFloat(baseSalary) || 0,
+                workFactor: workFactor === 261 ? 261 : 313,
             },
             include: {
                 branch: true,
@@ -78,6 +83,10 @@ export async function POST(request: Request) {
                 position: true
             },
         });
+
+        
+        const adminId = request.headers.get('x-admin-id');
+        await logAdminAction(adminId, 'CREATE_EMPLOYEE', `Created new employee "${employee.firstName} ${employee.lastName}"`);
 
         return NextResponse.json(employee, { status: 201 });
     } catch (error: any) {

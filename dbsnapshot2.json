@@ -1,0 +1,22 @@
+[
+  {
+    "id": "69b1830c7ec5d84b50a70414",
+    "employeeId": "69a5d1fa2e9a735febc1c71f",
+    "date": "2026-03-10T16:00:00.000Z",
+    "timeIn": "2026-03-11T14:58:20.737Z",
+    "timeOut": null,
+    "status": "Late",
+    "createdAt": "2026-03-11T14:58:20.755Z",
+    "updatedAt": "2026-03-11T14:58:20.755Z"
+  },
+  {
+    "id": "69b183b87ec5d84b50a70416",
+    "employeeId": "69a5d1fa2e9a735febc1c71f",
+    "date": "2026-03-09T16:00:00.000Z",
+    "timeIn": "2026-03-10T00:11:00.000Z",
+    "timeOut": null,
+    "status": "Present",
+    "createdAt": "2026-03-11T15:01:12.888Z",
+    "updatedAt": "2026-03-11T15:01:12.888Z"
+  }
+]

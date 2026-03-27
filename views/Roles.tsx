@@ -6,6 +6,8 @@ interface Role {
     id: string;
     name: string;
     description: string;
+    isManager: boolean;
+    parentRoleId?: string | null;
     permissions: Permission[];
 }
 
@@ -17,6 +19,37 @@ interface Permission {
     canDelete: boolean;
 }
 
+const MODULE_CATEGORIES: Record<string, string[]> = {
+    'Administration': [
+        'Dashboard (Admin)',
+        'User List',
+        'Roles & Permissions',
+        'Branches',
+        'Action Logs'
+    ],
+    'Human Resources': [
+        'Dashboard (HR)',
+        'Employee List',
+        'Company Structure',
+        'Benefits',
+        'Daily Attendance',
+        'Daily Time Record (HR)',
+        'Schedules',
+        'Time Requests'
+    ],
+    'Finance & Accounting': [
+        'Dashboard (Accounting)',
+        'Finance',
+        'Payroll',
+        'Compensation'
+    ],
+    'Employee Self-Service (ESS)': [
+        'My ESS Portal'
+    ]
+};
+
+const AVAILABLE_MODULES = Object.values(MODULE_CATEGORIES).flat();
+
 const Roles = () => {
     const [roles, setRoles] = useState<Role[]>([]);
     const [activeRole, setActiveRole] = useState<Role | null>(null);
@@ -25,19 +58,61 @@ const Roles = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
-        description: ''
+        description: '',
+        isManager: false,
+        parentRoleId: ''
     });
     const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
 
+    const [permissions, setPermissions] = useState({
+        canView: false,
+        canCreate: false,
+        canEdit: false,
+        canDelete: false
+    });
+
     useEffect(() => {
         fetchRoles();
+        loadPermissions();
     }, []);
+
+    const loadPermissions = () => {
+        try {
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                const userObj = JSON.parse(userStr);
+                
+                const roleName = typeof userObj.role === 'string' ? userObj.role : userObj.role?.name;
+                if (roleName === 'Super Admin') {
+                    setPermissions({ canView: true, canCreate: true, canEdit: true, canDelete: true });
+                    return;
+                }
+
+                const userSettingsPerm = userObj.role?.permissions?.find((p: any) => p.module === 'User Settings');
+                if (userSettingsPerm) {
+                    setPermissions({
+                        canView: userSettingsPerm.canView,
+                        canCreate: userSettingsPerm.canCreate,
+                        canEdit: userSettingsPerm.canEdit,
+                        canDelete: userSettingsPerm.canDelete
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Error loading permissions', error);
+        }
+    };
 
     const fetchRoles = async () => {
         setLoading(true);
         try {
             const res = await fetch('/api/roles');
             const data = await res.json();
+            if (!res.ok || !Array.isArray(data)) {
+                console.error('Unexpected response from /api/roles:', data);
+                setLoading(false);
+                return;
+            }
             setRoles(data);
             if (data.length > 0 && !activeRole) {
                 setActiveRole(data[0]);
@@ -51,14 +126,20 @@ const Roles = () => {
         setLoading(false);
     };
 
+
     const handleOpenModal = (role: Role | null = null) => {
         if (role && role.name === 'Super Admin') return; // Prevent unlocking modal for Super Admin
         if (role) {
             setIsEditing(true);
-            setFormData({ name: role.name, description: role.description || '' });
+            setFormData({ 
+                name: role.name, 
+                description: role.description || '', 
+                isManager: !!role.isManager,
+                parentRoleId: role.parentRoleId || ''
+            });
         } else {
             setIsEditing(false);
-            setFormData({ name: '', description: '' });
+            setFormData({ name: '', description: '', isManager: false, parentRoleId: '' });
         }
         setIsModalOpen(true);
     };
@@ -68,18 +149,24 @@ const Roles = () => {
         const url = isEditing ? `/api/roles/${activeRole?.id}` : '/api/roles';
         const method = isEditing ? 'PUT' : 'POST';
 
-        // Modules for new role
-        const defaultPermissions = [
-            { module: 'Employee Data', canView: false, canCreate: false, canEdit: false, canDelete: false },
-            { module: 'Payroll Management', canView: false, canCreate: false, canEdit: false, canDelete: false },
-            { module: 'Attendance & Leaves', canView: false, canCreate: false, canEdit: false, canDelete: false },
-            { module: 'User Settings', canView: false, canCreate: false, canEdit: false, canDelete: false },
-        ];
+        const defaultPermissions = AVAILABLE_MODULES.map(moduleName => ({
+            module: moduleName,
+            canView: false,
+            canCreate: false,
+            canEdit: false,
+            canDelete: false
+        }));
 
         try {
+            const storedUser = localStorage.getItem('user');
+            const adminId = storedUser ? JSON.parse(storedUser).id : '';
+
             const res = await fetch(url, {
                 method,
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-admin-id': adminId
+                },
                 body: JSON.stringify({
                     ...formData,
                     permissions: isEditing ? activeRole?.permissions : defaultPermissions
@@ -97,9 +184,21 @@ const Roles = () => {
     const handlePermissionChange = async (module: string, action: string, value: boolean) => {
         if (!activeRole || activeRole.name === 'Super Admin') return;
 
-        const updatedPermissions = activeRole.permissions.map(p =>
-            p.module === module ? { ...p, [action]: value } : p
-        );
+        let updatedPermissions = [...activeRole.permissions];
+        const existingPermIndex = updatedPermissions.findIndex(p => p.module === module);
+        
+        if (existingPermIndex >= 0) {
+            updatedPermissions[existingPermIndex] = { ...updatedPermissions[existingPermIndex], [action]: value };
+        } else {
+            // Permission record didn't exist in DB yet, create it
+            updatedPermissions.push({
+                module: module,
+                canView: action === 'canView' ? value : false,
+                canCreate: action === 'canCreate' ? value : false,
+                canEdit: action === 'canEdit' ? value : false,
+                canDelete: action === 'canDelete' ? value : false
+            });
+        }
 
         const updatedRole = { ...activeRole, permissions: updatedPermissions };
         setActiveRole(updatedRole);
@@ -107,12 +206,19 @@ const Roles = () => {
 
         // Auto-save permission change
         try {
+            const storedUser = localStorage.getItem('user');
+            const adminId = storedUser ? JSON.parse(storedUser).id : '';
+
             const res = await fetch(`/api/roles/${activeRole.id}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-admin-id': adminId
+                },
                 body: JSON.stringify({
                     name: activeRole.name,
                     description: activeRole.description,
+                    isManager: activeRole.isManager,
                     permissions: updatedPermissions
                 }),
             });
@@ -121,6 +227,18 @@ const Roles = () => {
                 setTimeout(() => setSaveStatus('idle'), 2000);
                 // Update the roles list too
                 setRoles(prev => prev.map(r => r.id === activeRole.id ? updatedRole : r));
+
+                // Sync localStorage if it's the current user's role
+                if (storedUser) {
+                    const currentUser = JSON.parse(storedUser);
+                    if (currentUser.role?.id === activeRole.id) {
+                        localStorage.setItem('user', JSON.stringify({
+                            ...currentUser,
+                            role: updatedRole
+                        }));
+                        window.dispatchEvent(new CustomEvent('userUpdate'));
+                    }
+                }
             } else {
                 setSaveStatus('idle');
             }
@@ -139,7 +257,13 @@ const Roles = () => {
 
         if (confirm('Are you sure you want to delete this role?')) {
             try {
-                const res = await fetch(`/api/roles/${id}`, { method: 'DELETE' });
+                const storedUser = localStorage.getItem('user');
+                const adminId = storedUser ? JSON.parse(storedUser).id : '';
+
+                const res = await fetch(`/api/roles/${id}`, { 
+                    method: 'DELETE',
+                    headers: { 'x-admin-id': adminId }
+                });
                 if (!res.ok) {
                     const error = await res.json();
                     alert(error.error);
@@ -152,6 +276,21 @@ const Roles = () => {
         }
     };
 
+    const sortedRoles: Role[] = [];
+    const superAdmin = roles.find(r => r.name === 'Super Admin');
+    if (superAdmin) sortedRoles.push(superAdmin);
+
+    const otherParents = roles.filter(r => r.name !== 'Super Admin' && !r.parentRoleId);
+    otherParents.forEach(parent => {
+        sortedRoles.push(parent);
+        const children = roles.filter(r => r.parentRoleId === parent.id);
+        sortedRoles.push(...children);
+    });
+
+    // Catch any orphaned roles just in case
+    const orphaned = roles.filter(r => r.name !== 'Super Admin' && r.parentRoleId && !roles.some(p => p.id === r.parentRoleId));
+    sortedRoles.push(...orphaned);
+
     return (
         <div className="p-8">
             <h1 className="text-3xl font-bold text-gray-800 mb-6">Roles & Permissions</h1>
@@ -161,21 +300,27 @@ const Roles = () => {
                     <div className="col-span-3 text-center py-8 text-gray-400">Loading roles...</div>
                 ) : (
                     <>
-                        {roles.map((role) => (
+                        {sortedRoles.map((role) => {
+                            const parentRole = role.parentRoleId ? roles.find(r => r.id === role.parentRoleId) : null;
+                            return (
                             <div
                                 key={role.id}
                                 onClick={() => setActiveRole(role)}
                                 className={`bg-white p-6 rounded-2xl border-2 transition-all cursor-pointer relative overflow-hidden group ${activeRole?.id === role.id ? 'border-indigo-500 shadow-md scale-[1.02]' : 'border-gray-100 hover:border-indigo-200 shadow-sm'
                                     }`}
                             >
-                                {role.name !== 'Super Admin' && (
+                                {role.name !== 'Super Admin' && (permissions.canEdit || permissions.canDelete) && (
                                     <div className="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity space-x-2 flex">
-                                        <button onClick={(e) => { e.stopPropagation(); handleOpenModal(role); }} className="p-1.5 text-indigo-400 hover:text-indigo-600 bg-indigo-50 rounded-lg">
-                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-                                        </button>
-                                        <button onClick={(e) => { e.stopPropagation(); handleDelete(role.id); }} className="p-1.5 text-red-400 hover:text-red-600 bg-red-50 rounded-lg">
-                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m4-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                                        </button>
+                                        {permissions.canEdit && (
+                                            <button onClick={(e) => { e.stopPropagation(); handleOpenModal(role); }} className="p-1.5 text-indigo-400 hover:text-indigo-600 bg-indigo-50 rounded-lg">
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                                            </button>
+                                        )}
+                                        {permissions.canDelete && (
+                                            <button onClick={(e) => { e.stopPropagation(); handleDelete(role.id); }} className="p-1.5 text-red-400 hover:text-red-600 bg-red-50 rounded-lg">
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m4-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                            </button>
+                                        )}
                                     </div>
                                 )}
                                 <h3 className={`text-xl font-bold mb-1 transition-colors ${activeRole?.id === role.id ? 'text-indigo-600' : 'text-gray-800'}`}>
@@ -185,19 +330,34 @@ const Roles = () => {
                                 <div className="flex items-center gap-2">
                                     <span className="w-2 h-2 rounded-full bg-green-500"></span>
                                     <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Active Role</span>
+                                    {role.isManager && (
+                                        <>
+                                            <span className="w-1 h-1 rounded-full bg-slate-300 ml-1"></span>
+                                            <span className="text-[10px] font-bold text-indigo-500 uppercase tracking-tighter ml-1">Manager</span>
+                                        </>
+                                    )}
                                 </div>
+                                {parentRole && (
+                                    <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 uppercase tracking-tighter">
+                                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" /></svg>
+                                        Reports to {parentRole.name}
+                                    </div>
+                                )}
                             </div>
-                        ))}
+                            )
+                        })}
 
-                        <div
-                            onClick={() => handleOpenModal()}
-                            className="bg-white p-6 rounded-2xl border border-dashed border-gray-300 flex flex-col items-center justify-center text-gray-400 hover:border-indigo-300 hover:text-indigo-400 hover:bg-indigo-50/10 transition-all cursor-pointer"
-                        >
-                            <svg className="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" />
-                            </svg>
-                            <span className="font-bold">Add New Role</span>
-                        </div>
+                        {permissions.canCreate && (
+                            <div
+                                onClick={() => handleOpenModal()}
+                                className="bg-white p-6 rounded-2xl border border-dashed border-gray-300 flex flex-col items-center justify-center text-gray-400 hover:border-indigo-300 hover:text-indigo-400 hover:bg-indigo-50/10 transition-all cursor-pointer"
+                            >
+                                <svg className="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" />
+                                </svg>
+                                <span className="font-bold">Add New Role</span>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
@@ -237,24 +397,45 @@ const Roles = () => {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-50">
-                            {activeRole.permissions.map((p) => (
-                                <tr key={p.module} className="hover:bg-gray-50/50 transition-colors">
-                                    <td className="px-6 py-4 font-semibold text-gray-700">{p.module}</td>
-                                    {['canView', 'canCreate', 'canEdit', 'canDelete'].map((action) => (
-                                        <td key={action} className="px-6 py-4 text-center">
-                                            <label className={`relative inline-flex items-center ${activeRole.name === 'Super Admin' ? 'cursor-not-allowed opacity-70' : 'cursor-pointer'} group`}>
-                                                <input
-                                                    type="checkbox"
-                                                    checked={p[action as keyof Permission] as boolean}
-                                                    disabled={activeRole.name === 'Super Admin'}
-                                                    onChange={(e) => handlePermissionChange(p.module, action, e.target.checked)}
-                                                    className="sr-only peer"
-                                                />
-                                                <div className={`w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all ${activeRole.name === 'Super Admin' ? 'peer-checked:bg-slate-500' : 'peer-checked:bg-indigo-600'}`}></div>
-                                            </label>
-                                        </td>
-                                    ))}
-                                </tr>
+                            {Object.entries(MODULE_CATEGORIES).map(([category, modules]) => (
+                                <React.Fragment key={category}>
+                                    <tr className="bg-gray-100/80">
+                                        <td colSpan={5} className="px-6 py-2.5 text-xs font-black text-gray-800 uppercase tracking-wider">{category}</td>
+                                    </tr>
+                                    {modules.map((moduleName) => {
+                                        const p = activeRole.permissions.find(perm => perm.module === moduleName) || {
+                                            module: moduleName,
+                                            canView: false,
+                                            canCreate: false,
+                                            canEdit: false,
+                                            canDelete: false
+                                        };
+                                        return (
+                                        <tr key={moduleName} className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 font-semibold text-gray-700">{moduleName}</td>
+                                            {['canView', 'canCreate', 'canEdit', 'canDelete'].map((action) => {
+                                                const isChecked = activeRole.name === 'Super Admin' ? true : (p[action as keyof Permission] as boolean ?? false);
+                                                const isDisabled = activeRole.name === 'Super Admin' || !permissions.canEdit;
+                                                
+                                                return (
+                                                <td key={action} className="px-6 py-4 text-center">
+                                                    <label className={`relative inline-flex items-center ${isDisabled ? 'cursor-not-allowed opacity-70' : 'cursor-pointer'} group`}>
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={isChecked}
+                                                            disabled={isDisabled}
+                                                            onChange={(e) => handlePermissionChange(moduleName, action, e.target.checked)}
+                                                            className="sr-only peer"
+                                                        />
+                                                        <div className={`w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all ${isDisabled && isChecked ? 'bg-indigo-400 after:translate-x-full after:border-white border-transparent' : 'peer-checked:bg-indigo-600'}`}></div>
+                                                    </label>
+                                                </td>
+                                                )
+                                            })}
+                                        </tr>
+                                        )
+                                    })}
+                                </React.Fragment>
                             ))}
                         </tbody>
                     </table>
@@ -289,6 +470,40 @@ const Roles = () => {
                                     value={formData.description}
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                 />
+                            </div>
+                            {!formData.isManager && (
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-1">Parent Role (Optional)</label>
+                                <select
+                                    className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 font-bold bg-white"
+                                    value={formData.parentRoleId}
+                                    onChange={(e) => setFormData({ ...formData, parentRoleId: e.target.value })}
+                                >
+                                    <option value="">-- No Parent Role --</option>
+                                    {roles.filter(r => r.name !== 'Super Admin' && r.id !== activeRole?.id).map(r => (
+                                        <option key={r.id} value={r.id}>{r.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            )}
+                            <div className="flex items-center gap-3 p-4 rounded-xl border border-indigo-100 bg-indigo-50/30">
+                                <label className="relative inline-flex items-center cursor-pointer group">
+                                    <input
+                                        type="checkbox"
+                                        checked={formData.isManager}
+                                        onChange={(e) => setFormData({ 
+                                            ...formData, 
+                                            isManager: e.target.checked,
+                                            parentRoleId: e.target.checked ? '' : formData.parentRoleId 
+                                        })}
+                                        className="sr-only peer"
+                                    />
+                                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                                </label>
+                                <div>
+                                    <span className="block text-sm font-bold text-indigo-900">Manager Position</span>
+                                    <span className="block text-xs text-indigo-700/70 leading-tight">Elevates role to managerial authority in hierarchy chains</span>
+                                </div>
                             </div>
                             <button
                                 type="submit"

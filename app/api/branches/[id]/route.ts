@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { logAdminAction } from '@/lib/actionLog';
 
 export async function PUT(
     request: Request,
@@ -18,6 +19,8 @@ export async function PUT(
                 status,
             },
         });
+        const adminId = request.headers.get('x-admin-id');
+        await logAdminAction(adminId, 'UPDATE_BRANCH', `Updated branch "${branch.name}"`);
 
         return NextResponse.json(branch);
     } catch (error: any) {
@@ -48,7 +51,11 @@ export async function DELETE(
             }, { status: 400 });
         }
 
-        await prisma.branch.delete({ where: { id } });
+        const branch = await prisma.branch.delete({ where: { id } });
+
+        const adminId = request.headers.get('x-admin-id');
+        await logAdminAction(adminId, 'DELETE_BRANCH', `Deleted branch "${branch.name}"`);
+
         return NextResponse.json({ message: 'Branch deleted successfully' });
     } catch (error: any) {
         console.error('API Error deleting branch:', error);

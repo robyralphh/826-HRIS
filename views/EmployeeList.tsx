@@ -36,6 +36,8 @@ interface Employee {
         id: string;
         name: string;
     } | null;
+    salaryType?: string;
+    baseSalary?: number;
 }
 
 const EmployeeList = () => {
@@ -71,14 +73,51 @@ const EmployeeList = () => {
         emergencyContactPhone: '',
         emergencyContactRelationship: '',
         branchId: '',
-        pictureUrl: ''
+        pictureUrl: '',
+        salaryType: 'Monthly',
+        baseSalary: '0'
     };
 
     const [formData, setFormData] = useState(initialFormData);
 
+    const [permissions, setPermissions] = useState({
+        canView: false,
+        canCreate: false,
+        canEdit: false,
+        canDelete: false
+    });
+
     useEffect(() => {
         fetchData();
+        loadPermissions();
     }, []);
+
+    const loadPermissions = () => {
+        try {
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                const userObj = JSON.parse(userStr);
+                
+                const roleName = typeof userObj.role === 'string' ? userObj.role : userObj.role?.name;
+                if (roleName === 'Super Admin') {
+                    setPermissions({ canView: true, canCreate: true, canEdit: true, canDelete: true });
+                    return;
+                }
+
+                const empDataPerm = userObj.role?.permissions?.find((p: any) => p.module === 'Employee List');
+                if (empDataPerm) {
+                    setPermissions({
+                        canView: empDataPerm.canView,
+                        canCreate: empDataPerm.canCreate,
+                        canEdit: empDataPerm.canEdit,
+                        canDelete: empDataPerm.canDelete
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Error loading permissions', error);
+        }
+    };
 
     const fetchData = async () => {
         setLoading(true);
@@ -139,7 +178,9 @@ const EmployeeList = () => {
                 emergencyContactPhone: employee.emergencyContactPhone || '',
                 emergencyContactRelationship: employee.emergencyContactRelationship || '',
                 branchId: employee.branchId ? employee.branchId.toString() : '',
-                pictureUrl: employee.pictureUrl || ''
+                pictureUrl: employee.pictureUrl || '',
+                salaryType: employee.salaryType || 'Monthly',
+                baseSalary: employee.baseSalary?.toString() || '0'
             });
         } else {
             setEditingEmployee(null);
@@ -189,9 +230,16 @@ const EmployeeList = () => {
         const method = editingEmployee ? 'PUT' : 'POST';
 
         try {
+            const userStr = localStorage.getItem('user');
+            const userObj = userStr ? JSON.parse(userStr) : null;
+            const adminId = userObj?.id || '';
+
             const res = await fetch(url, {
                 method,
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-admin-id': adminId
+                },
                 body: JSON.stringify(formData),
             });
 
@@ -211,7 +259,14 @@ const EmployeeList = () => {
     const handleDelete = async (id: string) => {
         if (confirm('Are you sure you want to delete this employee? This action cannot be undone.')) {
             try {
-                await fetch(`/api/employees/${id}`, { method: 'DELETE' });
+                const userStr = localStorage.getItem('user');
+                const userObj = userStr ? JSON.parse(userStr) : null;
+                const adminId = userObj?.id || '';
+
+                await fetch(`/api/employees/${id}`, { 
+                    method: 'DELETE',
+                    headers: { 'x-admin-id': adminId }
+                });
                 fetchData();
             } catch (error) {
                 console.error('Error deleting employee:', error);
@@ -295,9 +350,16 @@ const EmployeeList = () => {
                             status: row.Status || 'active'
                         };
 
+                        const userStr = localStorage.getItem('user');
+                        const userObj = userStr ? JSON.parse(userStr) : null;
+                        const adminId = userObj?.id || '';
+
                         const res = await fetch('/api/employees', {
                             method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
+                            headers: { 
+                                'Content-Type': 'application/json',
+                                'x-admin-id': adminId 
+                            },
                             body: JSON.stringify(payload)
                         });
 
@@ -376,7 +438,9 @@ const EmployeeList = () => {
                                 <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Contact</th>
                                 <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Position</th>
                                 <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
-                                <th className="px-6 py-4 text-xs font-bold text-right text-gray-500 uppercase tracking-wider">Actions</th>
+                                {(permissions.canEdit || permissions.canDelete) && (
+                                    <th className="px-6 py-4 text-xs font-bold text-right text-gray-500 uppercase tracking-wider">Actions</th>
+                                )}
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-50">
@@ -436,26 +500,32 @@ const EmployeeList = () => {
                                             {employee.status}
                                         </span>
                                     </td>
-                                    <td className="px-6 py-4 text-right space-x-2">
-                                        <button
-                                            onClick={(e) => { e.stopPropagation(); handleOpenModal(employee); }}
-                                            className="p-2 text-teal-600 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-all"
-                                            title="Edit Employee"
-                                        >
-                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                            </svg>
-                                        </button>
-                                        <button
-                                            onClick={(e) => { e.stopPropagation(); handleDelete(employee.id); }}
-                                            className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-xl transition-all"
-                                            title="Delete Employee"
-                                        >
-                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m4-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                            </svg>
-                                        </button>
-                                    </td>
+                                    {(permissions.canEdit || permissions.canDelete) && (
+                                        <td className="px-6 py-4 text-right space-x-2">
+                                            {permissions.canEdit && (
+                                                <button
+                                                    onClick={(e) => { e.stopPropagation(); handleOpenModal(employee); }}
+                                                    className="p-2 text-teal-600 hover:text-teal-700 hover:bg-teal-50 rounded-xl transition-all"
+                                                    title="Edit Employee"
+                                                >
+                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                    </svg>
+                                                </button>
+                                            )}
+                                            {permissions.canDelete && (
+                                                <button
+                                                    onClick={(e) => { e.stopPropagation(); handleDelete(employee.id); }}
+                                                    className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-xl transition-all"
+                                                    title="Delete Employee"
+                                                >
+                                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m4-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                </button>
+                                            )}
+                                        </td>
+                                    )}
                                 </tr>
                             ))}
                         </tbody>
@@ -642,6 +712,7 @@ const EmployeeList = () => {
                                         </div>
                                     </div>
                                 </div>
+
 
                                 {/* Section 5: Emergency Contact */}
                                 <div className="bg-rose-50/50 p-5 rounded-xl border border-rose-100">

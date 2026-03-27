@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "./generated-client"
 }
 
 datasource db {
@@ -19,6 +20,7 @@ model User {
   role      Role     @relation(fields: [roleId], references: [id])
   branchId  String?  @db.ObjectId
   branch    Branch?  @relation(fields: [branchId], references: [id])
+  actionLogs ActionLog[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -27,6 +29,12 @@ model Role {
   id          String           @id @default(auto()) @map("_id") @db.ObjectId
   name        String           @unique
   description String?
+  isManager   Boolean          @default(false)
+  
+  parentRoleId String?         @db.ObjectId
+  parentRole   Role?           @relation("RoleHierarchy", fields: [parentRoleId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  childRoles   Role[]          @relation("RoleHierarchy")
+
   users       User[]
   permissions RolePermission[]
   createdAt   DateTime         @default(now())
@@ -97,6 +105,11 @@ model Employee {
   pagIbigStatus          String    @default("Pending")
   tinNumber              String? // Tax Identification Number
 
+  salaryType             String    @default("Monthly") // "Monthly", "Hourly", "Daily"
+  baseSalary             Float     @default(0)
+  /// DOLE annualization factor: 313 = Mon–Sat, 261 = Mon–Fri
+  workFactor             Int       @default(313)
+
   branchId String? @db.ObjectId
   branch   Branch? @relation(fields: [branchId], references: [id])
   
@@ -105,6 +118,9 @@ model Employee {
   benefits EmployeeBenefit[]
 
   timeRequests TimeRequest[] // Relations to Overtime and Undertime requests
+  leaveRequests LeaveRequest[] // Relations to Vacation and Sick Leaves
+  attendances  Attendance[]
+  payrollRecords PayrollRecord[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -175,6 +191,10 @@ model Shift {
   startTime   String   // "08:00"
   endTime     String   // "17:00"
   workDays    String[] // ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+
+  isFlexi     Boolean  @default(false)
+  flexiHours  Float?   // Number of hours required to render
+
   status      String   @default("active")
   
   createdAt   DateTime @default(now())
@@ -233,4 +253,147 @@ model TimeRequest {
 
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+}
+
+model ActionLog {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action      String   // e.g., "CREATE", "UPDATE", "DELETE"
+  description String   // e.g., "Created user xyz"
+  createdAt   DateTime @default(now())
+}
+
+model LeaveRequest {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  employeeId String   @db.ObjectId
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  
+  type       String   // "Leave (PTO)", "Sick Leave"
+  startDate  DateTime // The first day of the leave
+  endDate    DateTime // The last day of the leave
+  reason     String?  
+  status     String   @default("Pending") // "Pending", "Approved", "Rejected"
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Attendance {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  employeeId String   @db.ObjectId
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  
+  date       DateTime // Calendar date of the record
+  timeIn     DateTime?
+  timeOut    DateTime?
+  status     String   @default("Present") // "Present", "Late", "Half-day"
+  incidentReportUrl String?
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model PayrollSetting {
+  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
+  name                  String   @unique // e.g., "Night Differential"
+  percentage            Float    @default(10)
+  startTime             String   @default("22:00") // 10:00 PM
+  endTime               String   @default("06:00") // 06:00 AM
+  isActive              Boolean  @default(true)
+  
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model PayrollPeriod {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String   // e.g., "March 1-15, 2026"
+  startDate   DateTime
+  endDate     DateTime
+  status      String   @default("Draft") // Draft, Processing, Completed
+  
+  records     PayrollRecord[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PayrollRecord {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  payrollPeriodId String   @db.ObjectId
+  payrollPeriod   PayrollPeriod @relation(fields: [payrollPeriodId], references: [id], onDelete: Cascade)
+  
+  employeeId      String   @db.ObjectId
+  employee        Employee @relation(fields: [employeeId], references: [id])
+  
+  salaryType      String   // Monthly, Hourly, Daily
+  baseRate        Float
+  
+  // Work Hours/Days
+  totalHours      Float    @default(0)
+  ndHours         Float    @default(0) 
+  otHours         Float    @default(0) 
+  lateHours       Float    @default(0)
+  undertimeHours  Float    @default(0)
+  absentDays      Float    @default(0)
+  leaveDays       Float    @default(0)
+  
+  // Earnings & Basic Pay Calculation
+  basePay         Float    @default(0) // Basic Salary (Per Cut Off)
+  absenceDeduction    Float @default(0)
+  undertimeDeduction  Float @default(0)
+  lateDeduction       Float @default(0)
+  leavePay            Float @default(0)
+  adjustment          Float @default(0)
+  totalBasicPay       Float @default(0) // Sum of above
+
+  // Government Dues
+  sssDeduction        Float @default(0)
+  phicDeduction       Float @default(0)
+  hdmfDeduction       Float @default(0)
+  hdmf2Deduction      Float @default(0)
+  subTotalGovtDues    Float @default(0)
+
+  // System Flags
+  isPositiveCrediting Boolean @default(false)
+
+  // Other Taxable Additions
+  ndPay           Float    @default(0)
+  otPay           Float    @default(0)
+  holidayPay      Float    @default(0)
+  grossTaxableIncome Float @default(0)
+
+  // Non-Govt Deductions
+  taxDeduction        Float @default(0) // Withholding Tax
+  hmoDeduction        Float @default(0)
+  sssLoan             Float @default(0)
+  hdmfLoan            Float @default(0)
+  companyLoan         Float @default(0)
+  otherDeduction      Float @default(0)
+  subTotalDeductions  Float @default(0)
+
+  // Non-Taxable Additions
+  diemAllowance       Float @default(0)
+  allowance           Float @default(0)
+  subTotalAdditions   Float @default(0)
+  
+  grossPay        Float    @default(0)
+  netPay          Float    @default(0)
+
+  // Rate Snapshot — values frozen at the time of this payroll run.
+  // Changing global settings later will NOT alter historical records.
+  regularOTRate      Float  @default(1.25)
+  nightDiffRate      Float  @default(0.10)
+  ndStartTime        String @default("22:00")
+  ndEndTime          String @default("06:00")
+  holidayRegularRate Float  @default(2.00)
+  holidaySpecialRate Float  @default(1.30)
+  /// DOLE work-factor snapshot frozen at the time of this payroll run
+  workFactor         Int    @default(313)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([payrollPeriodId, employeeId])
 }

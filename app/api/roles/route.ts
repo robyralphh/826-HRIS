@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { logAdminAction } from '@/lib/actionLog';
 
 export async function GET() {
     try {
@@ -20,12 +21,13 @@ export async function GET() {
 
 export async function POST(request: Request) {
     try {
-        const { name, description, permissions } = await request.json();
+        const { name, description, isManager, parentRoleId, permissions } = await request.json();
 
         let role = await prisma.role.create({
             data: {
                 name,
                 description,
+                parentRoleId: parentRoleId || null
             },
         });
 
@@ -47,6 +49,9 @@ export async function POST(request: Request) {
                 include: { permissions: true }
             }) as any;
         }
+
+        const adminId = request.headers.get('x-admin-id');
+        await logAdminAction(adminId, 'CREATE_ROLE', `Created new role "${role.name}"`);
 
         return NextResponse.json(role);
     } catch (error: any) {

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { logAdminAction } from '@/lib/actionLog';
 
 export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
     try {
@@ -16,6 +17,9 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
                 status
             }
         });
+
+        const adminId = request.headers.get('x-admin-id');
+        await logAdminAction(adminId, 'UPDATE_DEPARTMENT', `Updated department "${department.name}"`);
 
         return NextResponse.json(department);
     } catch (error: any) {
@@ -55,7 +59,13 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
             }, { status: 400 });
         }
 
+        const deptToDel = await prisma.department.findUnique({ where: { id } });
+
         await prisma.department.delete({ where: { id } });
+
+        const adminId = request.headers.get('x-admin-id');
+        if (deptToDel) await logAdminAction(adminId, 'DELETE_DEPARTMENT', `Deleted department "${deptToDel.name}"`);
+
         return NextResponse.json({ message: 'Department deleted successfully' });
     } catch (error) {
         console.error('Error deleting department:', error);

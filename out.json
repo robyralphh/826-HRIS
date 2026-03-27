@@ -1,0 +1,150 @@
+[
+  {
+    "id": "69bd424fb37b4dd7cbc7b857",
+    "date": "2026-03-05T16:00:00.000Z",
+    "timeIn": "2026-03-06T00:00:00.000Z",
+    "status": "Late",
+    "employeeName": "Roby",
+    "schedule": {
+      "id": "69a5e5d5a09b8b5ae3cee8a7",
+      "employeeId": "69a5d1fa2e9a735febc1c71f",
+      "isFlexi": false,
+      "flexiHours": null,
+      "mondayId": "69b577be496fc5bcd7acf03a",
+      "tuesdayId": "69b577be496fc5bcd7acf03a",
+      "wednesdayId": "69b577be496fc5bcd7acf03a",
+      "thursdayId": "69b577be496fc5bcd7acf03a",
+      "fridayId": "69b577be496fc5bcd7acf03a",
+      "saturdayId": "69b577be496fc5bcd7acf03a",
+      "sundayId": "69b577be496fc5bcd7acf03a",
+      "createdAt": "2026-03-02T19:32:37.542Z",
+      "updatedAt": "2026-03-14T19:44:26.546Z",
+      "monday": {
+        "id": "69b577be496fc5bcd7acf03a",
+        "name": "Manager",
+        "startTime": "00:00",
+        "endTime": "00:00",
+        "workDays": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "status": "active",
+        "createdAt": "2026-03-14T14:59:10.590Z",
+        "updatedAt": "2026-03-14T14:59:10.590Z"
+      },
+      "tuesday": {
+        "id": "69b577be496fc5bcd7acf03a",
+        "name": "Manager",
+        "startTime": "00:00",
+        "endTime": "00:00",
+        "workDays": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "status": "active",
+        "createdAt": "2026-03-14T14:59:10.590Z",
+        "updatedAt": "2026-03-14T14:59:10.590Z"
+      },
+      "wednesday": {
+        "id": "69b577be496fc5bcd7acf03a",
+        "name": "Manager",
+        "startTime": "00:00",
+        "endTime": "00:00",
+        "workDays": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "status": "active",
+        "createdAt": "2026-03-14T14:59:10.590Z",
+        "updatedAt": "2026-03-14T14:59:10.590Z"
+      },
+      "thursday": {
+        "id": "69b577be496fc5bcd7acf03a",
+        "name": "Manager",
+        "startTime": "00:00",
+        "endTime": "00:00",
+        "workDays": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "status": "active",
+        "createdAt": "2026-03-14T14:59:10.590Z",
+        "updatedAt": "2026-03-14T14:59:10.590Z"
+      },
+      "friday": {
+        "id": "69b577be496fc5bcd7acf03a",
+        "name": "Manager",
+        "startTime": "00:00",
+        "endTime": "00:00",
+        "workDays": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "status": "active",
+        "createdAt": "2026-03-14T14:59:10.590Z",
+        "updatedAt": "2026-03-14T14:59:10.590Z"
+      },
+      "saturday": {
+        "id": "69b577be496fc5bcd7acf03a",
+        "name": "Manager",
+        "startTime": "00:00",
+        "endTime": "00:00",
+        "workDays": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "status": "active",
+        "createdAt": "2026-03-14T14:59:10.590Z",
+        "updatedAt": "2026-03-14T14:59:10.590Z"
+      },
+      "sunday": {
+        "id": "69b577be496fc5bcd7acf03a",
+        "name": "Manager",
+        "startTime": "00:00",
+        "endTime": "00:00",
+        "workDays": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "status": "active",
+        "createdAt": "2026-03-14T14:59:10.590Z",
+        "updatedAt": "2026-03-14T14:59:10.590Z"
+      }
+    }
+  }
+]

@@ -11,7 +11,7 @@ export default function DashboardLayout({
 }) {
     const router = useRouter();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-    const [user, setUser] = useState<{ username: string; email: string } | null>(null);
+    const [user, setUser] = useState<{ username: string; email: string; role: any } | null>(null);
     const pathname = usePathname();
 
     useEffect(() => {
@@ -21,7 +21,8 @@ export default function DashboardLayout({
             setUser(userData);
 
             // Security Check: Only Super Admin can access admin modules
-            if (userData.role !== 'Super Admin') {
+            const roleName = typeof userData.role === 'string' ? userData.role : userData.role?.name;
+            if (roleName !== 'Super Admin') {
                 router.push("/dashboard"); // Or wherever non-admins should go
             }
         } else {

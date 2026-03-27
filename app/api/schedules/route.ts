@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { logAdminAction } from '@/lib/actionLog';
 
 export async function GET(request: Request) {
     try {
@@ -68,10 +69,18 @@ export async function POST(request: Request) {
                 monday: true, tuesday: true, wednesday: true, thursday: true, friday: true, saturday: true, sunday: true
             }
         });
+        const adminId = request.headers.get('x-admin-id');
+        const emp = await prisma.employee.findUnique({ where: { id: employeeId } });
+        await logAdminAction(adminId, 'UPDATE_SCHEDULE', `Updated schedule for employee "${emp?.firstName} ${emp?.lastName}"`);
 
         return NextResponse.json(schedule, { status: 200 });
     } catch (error: any) {
         console.error('Error creating/updating schedule:', error);
-        return NextResponse.json({ error: 'Failed to manage schedule' }, { status: 500 });
+        return NextResponse.json({ 
+            error: 'Failed to manage schedule', 
+            message: error.message,
+            prismaCode: error.code,
+            details: error.meta
+        }, { status: 500 });
     }
 }

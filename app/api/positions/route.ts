@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { logAdminAction } from '@/lib/actionLog';
 
 export async function GET(request: Request) {
     try {
@@ -51,6 +52,9 @@ export async function POST(request: Request) {
                 department: true
             }
         });
+
+        const adminId = request.headers.get('x-admin-id');
+        await logAdminAction(adminId, 'CREATE_POSITION', `Created new position "${position.name}" in department "${position.department?.name || 'Unassigned'}"`);
 
         return NextResponse.json(position, { status: 201 });
     } catch (error: any) {

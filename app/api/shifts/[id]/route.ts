@@ -9,7 +9,7 @@ export async function PUT(
         const resolvedParams = await params;
         const id = resolvedParams.id;
         const body = await request.json();
-        const { name, startTime, endTime, workDays, status } = body;
+        const { name, startTime, endTime, workDays, isFlexi, flexiHours, status } = body;
 
         const shift = await prisma.shift.update({
             where: { id },
@@ -18,6 +18,8 @@ export async function PUT(
                 startTime,
                 endTime,
                 workDays,
+                isFlexi: !!isFlexi,
+                flexiHours: isFlexi ? (parseFloat(flexiHours) || 8) : null,
                 status
             }
         });
