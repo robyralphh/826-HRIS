@@ -26,7 +26,7 @@ export async function GET(request: Request) {
             query.where = { employeeId };
         }
 
-        const schedules = await prisma.schedule.findMany(query);
+        const schedules = await prisma.masterSchedule.findMany(query);
         return NextResponse.json(schedules);
     } catch (error) {
         console.error('Error fetching schedules:', error);
@@ -39,12 +39,12 @@ export async function POST(request: Request) {
         const body = await request.json();
         const { employeeId, mondayId, tuesdayId, wednesdayId, thursdayId, fridayId, saturdayId, sundayId } = body;
 
-        if (!employeeId) {
-            return NextResponse.json({ error: 'Employee ID is required' }, { status: 400 });
+        if (!employeeId || typeof employeeId !== 'string' || employeeId.length !== 24) {
+            return NextResponse.json({ error: 'Valid 24-character Employee ID is required' }, { status: 400 });
         }
 
         // Upsert because each employee only has one core schedule
-        const schedule = await prisma.schedule.upsert({
+        const schedule = await prisma.masterSchedule.upsert({
             where: { employeeId },
             update: {
                 mondayId: mondayId || null,
@@ -69,18 +69,30 @@ export async function POST(request: Request) {
                 monday: true, tuesday: true, wednesday: true, thursday: true, friday: true, saturday: true, sunday: true
             }
         });
+        
         const adminId = request.headers.get('x-admin-id');
-        const emp = await prisma.employee.findUnique({ where: { id: employeeId } });
-        await logAdminAction(adminId, 'UPDATE_SCHEDULE', `Updated schedule for employee "${emp?.firstName} ${emp?.lastName}"`);
+        try {
+            const emp = await prisma.employee.findUnique({ where: { id: employeeId } });
+            if (emp) {
+                await logAdminAction(adminId, 'UPDATE_SCHEDULE', `Updated schedule for employee "${emp.firstName} ${emp.lastName}"`);
+            }
+        } catch (logError) {
+            console.error('Non-blocking error logging schedule update:', logError);
+        }
 
         return NextResponse.json(schedule, { status: 200 });
     } catch (error: any) {
         console.error('Error creating/updating schedule:', error);
+        
+        // Handle malformed ID error from Prisma/MongoDB
+        if (error.message?.includes('Inconsistent column data') || error.message?.includes('Malformed ObjectID')) {
+            return NextResponse.json({ error: 'Invalid Employee ID format' }, { status: 400 });
+        }
+
         return NextResponse.json({ 
             error: 'Failed to manage schedule', 
             message: error.message,
-            prismaCode: error.code,
-            details: error.meta
+            prismaCode: error.code
         }, { status: 500 });
     }
 }

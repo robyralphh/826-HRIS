@@ -35,12 +35,27 @@ export async function POST(request: Request) {
             sssNumber, sssStatus, philHealthNumber, philHealthStatus,
             pagIbigNumber, pagIbigStatus, tinNumber,
             branchId, departmentId, positionId, pictureUrl,
-            salaryType, baseSalary, workFactor
+            salaryType, baseSalary, workFactor, biometricId, employeeNo
         } = requestData;
 
         // Basic validation
         if (!firstName || !lastName || !email) {
             return NextResponse.json({ error: 'First Name, Last Name, and Email are required' }, { status: 400 });
+        }
+
+        // Auto-generate employeeNo if blank
+        let finalEmployeeNo = employeeNo;
+        if (!finalEmployeeNo) {
+            const allEmployees = await prisma.employee.findMany({
+                select: { employeeNo: true }
+            });
+            
+            const numericIds = allEmployees
+                .map(e => parseInt(e.employeeNo || ''))
+                .filter(id => !isNaN(id));
+            
+            const maxId = numericIds.length > 0 ? Math.max(...numericIds) : 1000;
+            finalEmployeeNo = (maxId + 1).toString();
         }
 
         const employee = await prisma.employee.create({
@@ -52,8 +67,6 @@ export async function POST(request: Request) {
                 dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : null,
                 gender: gender || null,
                 address: address || null,
-                department: department || null,
-                position: position || null,
                 departmentId: departmentId || null,
                 positionId: positionId || null,
                 dateHired: dateHired ? new Date(dateHired) : null,
@@ -76,6 +89,8 @@ export async function POST(request: Request) {
                 salaryType: salaryType || 'Monthly',
                 baseSalary: parseFloat(baseSalary) || 0,
                 workFactor: workFactor === 261 ? 261 : 313,
+                biometricId: biometricId || null,
+                employeeNo: finalEmployeeNo,
             },
             include: {
                 branch: true,
@@ -91,9 +106,10 @@ export async function POST(request: Request) {
         return NextResponse.json(employee, { status: 201 });
     } catch (error: any) {
         console.error('API Error creating employee:', error);
-        // Handle unique constraint violation (e.g. duplicate email)
+        // Handle unique constraint violation
         if (error.code === 'P2002') {
-            return NextResponse.json({ error: 'An employee with this email already exists.' }, { status: 409 });
+            const target = error.meta?.target || 'field';
+            return NextResponse.json({ error: `An employee with this ${target} already exists.` }, { status: 409 });
         }
         return NextResponse.json({
             error: 'Failed to create employee',

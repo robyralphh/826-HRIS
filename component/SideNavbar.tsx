@@ -73,6 +73,7 @@ const SideNavbar: React.FC<SideNavbarProps> = ({ activeTab, onTabChange, isOpen,
                 { name: 'Employee List', path: '/employees', module: 'Employee List' },
                 { name: 'Company Structure', path: '/structure', module: 'Company Structure' },
                 { name: 'Benefits', path: '/benefits', module: 'Benefits' },
+                { name: 'Holidays', path: '/holidays', module: 'Holidays' },
             ]
         },
         {
@@ -98,7 +99,7 @@ const SideNavbar: React.FC<SideNavbarProps> = ({ activeTab, onTabChange, isOpen,
                 { name: 'Dashboard', path: '/accounting/dashboard', module: 'Dashboard (Accounting)' },
                 { name: 'Compensation', path: '/compensation', module: 'Compensation' },
                 { name: 'Payroll', path: '/payroll', module: 'Payroll' },
-                { name: 'Finance', path: '#', module: 'Finance'}
+                { name: 'Finance', path: '/accounting/finance', module: 'Finance'}
             ]
         },
         {

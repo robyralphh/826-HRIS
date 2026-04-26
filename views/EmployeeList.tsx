@@ -38,6 +38,8 @@ interface Employee {
     } | null;
     salaryType?: string;
     baseSalary?: number;
+    biometricId?: string;
+    employeeNo?: string;
 }
 
 const EmployeeList = () => {
@@ -75,7 +77,9 @@ const EmployeeList = () => {
         branchId: '',
         pictureUrl: '',
         salaryType: 'Monthly',
-        baseSalary: '0'
+        baseSalary: '0',
+        biometricId: '',
+        employeeNo: ''
     };
 
     const [formData, setFormData] = useState(initialFormData);
@@ -180,7 +184,9 @@ const EmployeeList = () => {
                 branchId: employee.branchId ? employee.branchId.toString() : '',
                 pictureUrl: employee.pictureUrl || '',
                 salaryType: employee.salaryType || 'Monthly',
-                baseSalary: employee.baseSalary?.toString() || '0'
+                baseSalary: employee.baseSalary?.toString() || '0',
+                biometricId: employee.biometricId || '',
+                employeeNo: employee.employeeNo || ''
             });
         } else {
             setEditingEmployee(null);
@@ -289,7 +295,8 @@ const EmployeeList = () => {
 
         // Pick fields to export
         const exportData = employees.map(emp => ({
-            ID: emp.id,
+            'Employee No': emp.employeeNo || '',
+            'Internal ID': emp.id,
             FirstName: emp.firstName,
             LastName: emp.lastName,
             Email: emp.email,
@@ -480,8 +487,8 @@ const EmployeeList = () => {
                                                 </div>
                                             )}
                                             <div>
-                                                <div className="font-bold text-gray-900">{employee.firstName} {employee.lastName}</div>
-                                                <div className="text-xs text-gray-500">ID: EMP-{employee.id.slice(-6).toUpperCase()}</div>
+                                                <div className="text-sm font-bold text-slate-800">{employee.firstName} {employee.lastName}</div>
+                                                <div className="text-xs text-indigo-600 font-black">#{employee.employeeNo || 'NO ID'}</div>
                                             </div>
                                         </div>
                                     </td>
@@ -585,6 +592,11 @@ const EmployeeList = () => {
                                                 />
                                                 <p className="mt-2 text-xs text-gray-500">JPG, PNG or GIF. 1MB max supported.</p>
                                             </div>
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs font-bold text-indigo-500 uppercase tracking-widest mb-1">Employee ID (Numeric)</label>
+                                            <input type="text" name="employeeNo" placeholder="Leave blank to auto-generate" value={formData.employeeNo} onChange={handleChange}
+                                                className="w-full px-4 py-2.5 rounded-xl border-2 border-indigo-50 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition-all bg-white text-gray-900 font-bold" />
                                         </div>
                                         <div>
                                             <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">First Name *</label>
@@ -710,6 +722,11 @@ const EmployeeList = () => {
                                                 ))}
                                             </select>
                                         </div>
+                                        <div>
+                                            <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Biometric / Device ID</label>
+                                            <input type="text" name="biometricId" placeholder="e.g. 101" value={formData.biometricId} onChange={handleChange}
+                                                className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all bg-white text-gray-900" />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -797,7 +814,7 @@ const EmployeeList = () => {
                                             Personal Info
                                         </h3>
                                         <dl className="space-y-3 text-sm">
-                                            <div><dt className="text-gray-500 text-xs font-semibold">Employee ID</dt><dd className="font-medium text-gray-900 mt-0.5">EMP-{viewingEmployee.id.slice(-6).toUpperCase()}</dd></div>
+                                            <div><dt className="text-gray-500 text-xs font-semibold uppercase tracking-widest">Employee Number</dt><dd className="font-black text-indigo-600 mt-0.5 text-lg">#{viewingEmployee.employeeNo || 'NOT SET'}</dd></div>
                                             <div><dt className="text-gray-500 text-xs font-semibold">Date of Birth</dt><dd className="font-medium text-gray-900 mt-0.5">{formatDateForTable(viewingEmployee.dateOfBirth)}</dd></div>
                                             <div><dt className="text-gray-500 text-xs font-semibold">Gender</dt><dd className="font-medium text-gray-900 mt-0.5">{viewingEmployee.gender || 'Not specified'}</dd></div>
                                             <div className="pt-3 border-t border-gray-50">
@@ -838,6 +855,7 @@ const EmployeeList = () => {
                                             <div><dt className="text-gray-500 text-xs font-semibold">Position</dt><dd className="font-medium text-gray-900 mt-0.5">{viewingEmployee.position?.name || 'N/A'}</dd></div>
                                             <div><dt className="text-gray-500 text-xs font-semibold">Branch</dt><dd className="font-medium text-gray-900 mt-0.5">{viewingEmployee.branch?.name || 'Global / Headquarters'}</dd></div>
                                             <div><dt className="text-gray-500 text-xs font-semibold">Date Hired</dt><dd className="font-medium text-gray-900 mt-0.5">{formatDateForTable(viewingEmployee.dateHired)}</dd></div>
+                                            <div><dt className="text-gray-500 text-xs font-semibold">Biometric ID</dt><dd className="font-medium text-indigo-600 mt-0.5">{viewingEmployee.biometricId || 'Not Assigned'}</dd></div>
                                         </dl>
                                     </div>
 

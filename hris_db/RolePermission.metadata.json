@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"roleId":{"$numberInt":"1"},"module":{"$numberInt":"1"}},"name":"RolePermission_roleId_module_key","unique":true}],"uuid":"77a82a190dfe4459bca17238c3503a94","collectionName":"RolePermission","type":"collection"}

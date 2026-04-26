@@ -21,13 +21,15 @@ export async function GET() {
 
 export async function POST(request: Request) {
     try {
-        const { name, description, isManager, parentRoleId, permissions } = await request.json();
+        const { name, description, isManager, parentRoleId, gracePeriodMinutes, permissions } = await request.json();
 
         let role = await prisma.role.create({
             data: {
                 name,
                 description,
-                parentRoleId: parentRoleId || null
+                parentRoleId: parentRoleId || null,
+                isManager: !!isManager,
+                gracePeriodMinutes: parseInt(gracePeriodMinutes as string, 10) || 0
             },
         });
 

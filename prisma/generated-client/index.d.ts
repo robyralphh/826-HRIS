@@ -64,10 +64,10 @@ export type Position = $Result.DefaultSelection<Prisma.$PositionPayload>
  */
 export type Shift = $Result.DefaultSelection<Prisma.$ShiftPayload>
 /**
- * Model Schedule
+ * Model MasterSchedule
  * 
  */
-export type Schedule = $Result.DefaultSelection<Prisma.$SchedulePayload>
+export type MasterSchedule = $Result.DefaultSelection<Prisma.$MasterSchedulePayload>
 /**
  * Model TimeRequest
  * 
@@ -103,6 +103,46 @@ export type PayrollPeriod = $Result.DefaultSelection<Prisma.$PayrollPeriodPayloa
  * 
  */
 export type PayrollRecord = $Result.DefaultSelection<Prisma.$PayrollRecordPayload>
+/**
+ * Model ExpenseRequest
+ * 
+ */
+export type ExpenseRequest = $Result.DefaultSelection<Prisma.$ExpenseRequestPayload>
+/**
+ * Model CompanyLoan
+ * 
+ */
+export type CompanyLoan = $Result.DefaultSelection<Prisma.$CompanyLoanPayload>
+/**
+ * Model CompanyAsset
+ * 
+ */
+export type CompanyAsset = $Result.DefaultSelection<Prisma.$CompanyAssetPayload>
+/**
+ * Model LedgerEntry
+ * 
+ */
+export type LedgerEntry = $Result.DefaultSelection<Prisma.$LedgerEntryPayload>
+/**
+ * Model BiometricDevice
+ * 
+ */
+export type BiometricDevice = $Result.DefaultSelection<Prisma.$BiometricDevicePayload>
+/**
+ * Model RawBiometricLog
+ * 
+ */
+export type RawBiometricLog = $Result.DefaultSelection<Prisma.$RawBiometricLogPayload>
+/**
+ * Model Holiday
+ * 
+ */
+export type Holiday = $Result.DefaultSelection<Prisma.$HolidayPayload>
+/**
+ * Model ScheduleOverride
+ * 
+ */
+export type ScheduleOverride = $Result.DefaultSelection<Prisma.$ScheduleOverridePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -290,14 +330,14 @@ export class PrismaClient<
   get shift(): Prisma.ShiftDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.schedule`: Exposes CRUD operations for the **Schedule** model.
+   * `prisma.masterSchedule`: Exposes CRUD operations for the **MasterSchedule** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Schedules
-    * const schedules = await prisma.schedule.findMany()
+    * // Fetch zero or more MasterSchedules
+    * const masterSchedules = await prisma.masterSchedule.findMany()
     * ```
     */
-  get schedule(): Prisma.ScheduleDelegate<ExtArgs, ClientOptions>;
+  get masterSchedule(): Prisma.MasterScheduleDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.timeRequest`: Exposes CRUD operations for the **TimeRequest** model.
@@ -368,6 +408,86 @@ export class PrismaClient<
     * ```
     */
   get payrollRecord(): Prisma.PayrollRecordDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.expenseRequest`: Exposes CRUD operations for the **ExpenseRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ExpenseRequests
+    * const expenseRequests = await prisma.expenseRequest.findMany()
+    * ```
+    */
+  get expenseRequest(): Prisma.ExpenseRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.companyLoan`: Exposes CRUD operations for the **CompanyLoan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CompanyLoans
+    * const companyLoans = await prisma.companyLoan.findMany()
+    * ```
+    */
+  get companyLoan(): Prisma.CompanyLoanDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.companyAsset`: Exposes CRUD operations for the **CompanyAsset** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CompanyAssets
+    * const companyAssets = await prisma.companyAsset.findMany()
+    * ```
+    */
+  get companyAsset(): Prisma.CompanyAssetDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.ledgerEntry`: Exposes CRUD operations for the **LedgerEntry** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LedgerEntries
+    * const ledgerEntries = await prisma.ledgerEntry.findMany()
+    * ```
+    */
+  get ledgerEntry(): Prisma.LedgerEntryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.biometricDevice`: Exposes CRUD operations for the **BiometricDevice** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BiometricDevices
+    * const biometricDevices = await prisma.biometricDevice.findMany()
+    * ```
+    */
+  get biometricDevice(): Prisma.BiometricDeviceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.rawBiometricLog`: Exposes CRUD operations for the **RawBiometricLog** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RawBiometricLogs
+    * const rawBiometricLogs = await prisma.rawBiometricLog.findMany()
+    * ```
+    */
+  get rawBiometricLog(): Prisma.RawBiometricLogDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.holiday`: Exposes CRUD operations for the **Holiday** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Holidays
+    * const holidays = await prisma.holiday.findMany()
+    * ```
+    */
+  get holiday(): Prisma.HolidayDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.scheduleOverride`: Exposes CRUD operations for the **ScheduleOverride** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ScheduleOverrides
+    * const scheduleOverrides = await prisma.scheduleOverride.findMany()
+    * ```
+    */
+  get scheduleOverride(): Prisma.ScheduleOverrideDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -819,14 +939,22 @@ export namespace Prisma {
     Department: 'Department',
     Position: 'Position',
     Shift: 'Shift',
-    Schedule: 'Schedule',
+    MasterSchedule: 'MasterSchedule',
     TimeRequest: 'TimeRequest',
     ActionLog: 'ActionLog',
     LeaveRequest: 'LeaveRequest',
     Attendance: 'Attendance',
     PayrollSetting: 'PayrollSetting',
     PayrollPeriod: 'PayrollPeriod',
-    PayrollRecord: 'PayrollRecord'
+    PayrollRecord: 'PayrollRecord',
+    ExpenseRequest: 'ExpenseRequest',
+    CompanyLoan: 'CompanyLoan',
+    CompanyAsset: 'CompanyAsset',
+    LedgerEntry: 'LedgerEntry',
+    BiometricDevice: 'BiometricDevice',
+    RawBiometricLog: 'RawBiometricLog',
+    Holiday: 'Holiday',
+    ScheduleOverride: 'ScheduleOverride'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -845,7 +973,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "rolePermission" | "branch" | "employee" | "benefitPlan" | "employeeBenefit" | "department" | "position" | "shift" | "schedule" | "timeRequest" | "actionLog" | "leaveRequest" | "attendance" | "payrollSetting" | "payrollPeriod" | "payrollRecord"
+      modelProps: "user" | "role" | "rolePermission" | "branch" | "employee" | "benefitPlan" | "employeeBenefit" | "department" | "position" | "shift" | "masterSchedule" | "timeRequest" | "actionLog" | "leaveRequest" | "attendance" | "payrollSetting" | "payrollPeriod" | "payrollRecord" | "expenseRequest" | "companyLoan" | "companyAsset" | "ledgerEntry" | "biometricDevice" | "rawBiometricLog" | "holiday" | "scheduleOverride"
       txIsolationLevel: never
     }
     model: {
@@ -1589,77 +1717,77 @@ export namespace Prisma {
           }
         }
       }
-      Schedule: {
-        payload: Prisma.$SchedulePayload<ExtArgs>
-        fields: Prisma.ScheduleFieldRefs
+      MasterSchedule: {
+        payload: Prisma.$MasterSchedulePayload<ExtArgs>
+        fields: Prisma.MasterScheduleFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ScheduleFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SchedulePayload> | null
+            args: Prisma.MasterScheduleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MasterSchedulePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ScheduleFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SchedulePayload>
+            args: Prisma.MasterScheduleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MasterSchedulePayload>
           }
           findFirst: {
-            args: Prisma.ScheduleFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SchedulePayload> | null
+            args: Prisma.MasterScheduleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MasterSchedulePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ScheduleFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SchedulePayload>
+            args: Prisma.MasterScheduleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MasterSchedulePayload>
           }
           findMany: {
-            args: Prisma.ScheduleFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SchedulePayload>[]
+            args: Prisma.MasterScheduleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MasterSchedulePayload>[]
           }
           create: {
-            args: Prisma.ScheduleCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SchedulePayload>
+            args: Prisma.MasterScheduleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MasterSchedulePayload>
           }
           createMany: {
-            args: Prisma.ScheduleCreateManyArgs<ExtArgs>
+            args: Prisma.MasterScheduleCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.ScheduleDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SchedulePayload>
+            args: Prisma.MasterScheduleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MasterSchedulePayload>
           }
           update: {
-            args: Prisma.ScheduleUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SchedulePayload>
+            args: Prisma.MasterScheduleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MasterSchedulePayload>
           }
           deleteMany: {
-            args: Prisma.ScheduleDeleteManyArgs<ExtArgs>
+            args: Prisma.MasterScheduleDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ScheduleUpdateManyArgs<ExtArgs>
+            args: Prisma.MasterScheduleUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.ScheduleUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SchedulePayload>
+            args: Prisma.MasterScheduleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MasterSchedulePayload>
           }
           aggregate: {
-            args: Prisma.ScheduleAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSchedule>
+            args: Prisma.MasterScheduleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMasterSchedule>
           }
           groupBy: {
-            args: Prisma.ScheduleGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ScheduleGroupByOutputType>[]
+            args: Prisma.MasterScheduleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MasterScheduleGroupByOutputType>[]
           }
           findRaw: {
-            args: Prisma.ScheduleFindRawArgs<ExtArgs>
+            args: Prisma.MasterScheduleFindRawArgs<ExtArgs>
             result: JsonObject
           }
           aggregateRaw: {
-            args: Prisma.ScheduleAggregateRawArgs<ExtArgs>
+            args: Prisma.MasterScheduleAggregateRawArgs<ExtArgs>
             result: JsonObject
           }
           count: {
-            args: Prisma.ScheduleCountArgs<ExtArgs>
-            result: $Utils.Optional<ScheduleCountAggregateOutputType> | number
+            args: Prisma.MasterScheduleCountArgs<ExtArgs>
+            result: $Utils.Optional<MasterScheduleCountAggregateOutputType> | number
           }
         }
       }
@@ -2181,6 +2309,598 @@ export namespace Prisma {
           }
         }
       }
+      ExpenseRequest: {
+        payload: Prisma.$ExpenseRequestPayload<ExtArgs>
+        fields: Prisma.ExpenseRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ExpenseRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExpenseRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ExpenseRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExpenseRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.ExpenseRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExpenseRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ExpenseRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExpenseRequestPayload>
+          }
+          findMany: {
+            args: Prisma.ExpenseRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExpenseRequestPayload>[]
+          }
+          create: {
+            args: Prisma.ExpenseRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExpenseRequestPayload>
+          }
+          createMany: {
+            args: Prisma.ExpenseRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ExpenseRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExpenseRequestPayload>
+          }
+          update: {
+            args: Prisma.ExpenseRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExpenseRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.ExpenseRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ExpenseRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ExpenseRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExpenseRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.ExpenseRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateExpenseRequest>
+          }
+          groupBy: {
+            args: Prisma.ExpenseRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ExpenseRequestGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.ExpenseRequestFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.ExpenseRequestAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.ExpenseRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<ExpenseRequestCountAggregateOutputType> | number
+          }
+        }
+      }
+      CompanyLoan: {
+        payload: Prisma.$CompanyLoanPayload<ExtArgs>
+        fields: Prisma.CompanyLoanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CompanyLoanFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyLoanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CompanyLoanFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyLoanPayload>
+          }
+          findFirst: {
+            args: Prisma.CompanyLoanFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyLoanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CompanyLoanFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyLoanPayload>
+          }
+          findMany: {
+            args: Prisma.CompanyLoanFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyLoanPayload>[]
+          }
+          create: {
+            args: Prisma.CompanyLoanCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyLoanPayload>
+          }
+          createMany: {
+            args: Prisma.CompanyLoanCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CompanyLoanDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyLoanPayload>
+          }
+          update: {
+            args: Prisma.CompanyLoanUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyLoanPayload>
+          }
+          deleteMany: {
+            args: Prisma.CompanyLoanDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CompanyLoanUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CompanyLoanUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyLoanPayload>
+          }
+          aggregate: {
+            args: Prisma.CompanyLoanAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCompanyLoan>
+          }
+          groupBy: {
+            args: Prisma.CompanyLoanGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CompanyLoanGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.CompanyLoanFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.CompanyLoanAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.CompanyLoanCountArgs<ExtArgs>
+            result: $Utils.Optional<CompanyLoanCountAggregateOutputType> | number
+          }
+        }
+      }
+      CompanyAsset: {
+        payload: Prisma.$CompanyAssetPayload<ExtArgs>
+        fields: Prisma.CompanyAssetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CompanyAssetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CompanyAssetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssetPayload>
+          }
+          findFirst: {
+            args: Prisma.CompanyAssetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CompanyAssetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssetPayload>
+          }
+          findMany: {
+            args: Prisma.CompanyAssetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssetPayload>[]
+          }
+          create: {
+            args: Prisma.CompanyAssetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssetPayload>
+          }
+          createMany: {
+            args: Prisma.CompanyAssetCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CompanyAssetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssetPayload>
+          }
+          update: {
+            args: Prisma.CompanyAssetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssetPayload>
+          }
+          deleteMany: {
+            args: Prisma.CompanyAssetDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CompanyAssetUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CompanyAssetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CompanyAssetPayload>
+          }
+          aggregate: {
+            args: Prisma.CompanyAssetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCompanyAsset>
+          }
+          groupBy: {
+            args: Prisma.CompanyAssetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CompanyAssetGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.CompanyAssetFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.CompanyAssetAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.CompanyAssetCountArgs<ExtArgs>
+            result: $Utils.Optional<CompanyAssetCountAggregateOutputType> | number
+          }
+        }
+      }
+      LedgerEntry: {
+        payload: Prisma.$LedgerEntryPayload<ExtArgs>
+        fields: Prisma.LedgerEntryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LedgerEntryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LedgerEntryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LedgerEntryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LedgerEntryPayload>
+          }
+          findFirst: {
+            args: Prisma.LedgerEntryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LedgerEntryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LedgerEntryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LedgerEntryPayload>
+          }
+          findMany: {
+            args: Prisma.LedgerEntryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LedgerEntryPayload>[]
+          }
+          create: {
+            args: Prisma.LedgerEntryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LedgerEntryPayload>
+          }
+          createMany: {
+            args: Prisma.LedgerEntryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.LedgerEntryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LedgerEntryPayload>
+          }
+          update: {
+            args: Prisma.LedgerEntryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LedgerEntryPayload>
+          }
+          deleteMany: {
+            args: Prisma.LedgerEntryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LedgerEntryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.LedgerEntryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LedgerEntryPayload>
+          }
+          aggregate: {
+            args: Prisma.LedgerEntryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLedgerEntry>
+          }
+          groupBy: {
+            args: Prisma.LedgerEntryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LedgerEntryGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.LedgerEntryFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.LedgerEntryAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.LedgerEntryCountArgs<ExtArgs>
+            result: $Utils.Optional<LedgerEntryCountAggregateOutputType> | number
+          }
+        }
+      }
+      BiometricDevice: {
+        payload: Prisma.$BiometricDevicePayload<ExtArgs>
+        fields: Prisma.BiometricDeviceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BiometricDeviceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BiometricDevicePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BiometricDeviceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+          }
+          findFirst: {
+            args: Prisma.BiometricDeviceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BiometricDevicePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BiometricDeviceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+          }
+          findMany: {
+            args: Prisma.BiometricDeviceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BiometricDevicePayload>[]
+          }
+          create: {
+            args: Prisma.BiometricDeviceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+          }
+          createMany: {
+            args: Prisma.BiometricDeviceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.BiometricDeviceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+          }
+          update: {
+            args: Prisma.BiometricDeviceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+          }
+          deleteMany: {
+            args: Prisma.BiometricDeviceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BiometricDeviceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.BiometricDeviceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+          }
+          aggregate: {
+            args: Prisma.BiometricDeviceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBiometricDevice>
+          }
+          groupBy: {
+            args: Prisma.BiometricDeviceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BiometricDeviceGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.BiometricDeviceFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.BiometricDeviceAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.BiometricDeviceCountArgs<ExtArgs>
+            result: $Utils.Optional<BiometricDeviceCountAggregateOutputType> | number
+          }
+        }
+      }
+      RawBiometricLog: {
+        payload: Prisma.$RawBiometricLogPayload<ExtArgs>
+        fields: Prisma.RawBiometricLogFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RawBiometricLogFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RawBiometricLogPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RawBiometricLogFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RawBiometricLogPayload>
+          }
+          findFirst: {
+            args: Prisma.RawBiometricLogFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RawBiometricLogPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RawBiometricLogFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RawBiometricLogPayload>
+          }
+          findMany: {
+            args: Prisma.RawBiometricLogFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RawBiometricLogPayload>[]
+          }
+          create: {
+            args: Prisma.RawBiometricLogCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RawBiometricLogPayload>
+          }
+          createMany: {
+            args: Prisma.RawBiometricLogCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.RawBiometricLogDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RawBiometricLogPayload>
+          }
+          update: {
+            args: Prisma.RawBiometricLogUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RawBiometricLogPayload>
+          }
+          deleteMany: {
+            args: Prisma.RawBiometricLogDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RawBiometricLogUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.RawBiometricLogUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RawBiometricLogPayload>
+          }
+          aggregate: {
+            args: Prisma.RawBiometricLogAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRawBiometricLog>
+          }
+          groupBy: {
+            args: Prisma.RawBiometricLogGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RawBiometricLogGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.RawBiometricLogFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.RawBiometricLogAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.RawBiometricLogCountArgs<ExtArgs>
+            result: $Utils.Optional<RawBiometricLogCountAggregateOutputType> | number
+          }
+        }
+      }
+      Holiday: {
+        payload: Prisma.$HolidayPayload<ExtArgs>
+        fields: Prisma.HolidayFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HolidayFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HolidayPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HolidayFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HolidayPayload>
+          }
+          findFirst: {
+            args: Prisma.HolidayFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HolidayPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HolidayFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HolidayPayload>
+          }
+          findMany: {
+            args: Prisma.HolidayFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HolidayPayload>[]
+          }
+          create: {
+            args: Prisma.HolidayCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HolidayPayload>
+          }
+          createMany: {
+            args: Prisma.HolidayCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.HolidayDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HolidayPayload>
+          }
+          update: {
+            args: Prisma.HolidayUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HolidayPayload>
+          }
+          deleteMany: {
+            args: Prisma.HolidayDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HolidayUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.HolidayUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HolidayPayload>
+          }
+          aggregate: {
+            args: Prisma.HolidayAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHoliday>
+          }
+          groupBy: {
+            args: Prisma.HolidayGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HolidayGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.HolidayFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.HolidayAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.HolidayCountArgs<ExtArgs>
+            result: $Utils.Optional<HolidayCountAggregateOutputType> | number
+          }
+        }
+      }
+      ScheduleOverride: {
+        payload: Prisma.$ScheduleOverridePayload<ExtArgs>
+        fields: Prisma.ScheduleOverrideFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ScheduleOverrideFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleOverridePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ScheduleOverrideFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleOverridePayload>
+          }
+          findFirst: {
+            args: Prisma.ScheduleOverrideFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleOverridePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ScheduleOverrideFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleOverridePayload>
+          }
+          findMany: {
+            args: Prisma.ScheduleOverrideFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleOverridePayload>[]
+          }
+          create: {
+            args: Prisma.ScheduleOverrideCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleOverridePayload>
+          }
+          createMany: {
+            args: Prisma.ScheduleOverrideCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ScheduleOverrideDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleOverridePayload>
+          }
+          update: {
+            args: Prisma.ScheduleOverrideUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleOverridePayload>
+          }
+          deleteMany: {
+            args: Prisma.ScheduleOverrideDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ScheduleOverrideUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ScheduleOverrideUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ScheduleOverridePayload>
+          }
+          aggregate: {
+            args: Prisma.ScheduleOverrideAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateScheduleOverride>
+          }
+          groupBy: {
+            args: Prisma.ScheduleOverrideGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ScheduleOverrideGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.ScheduleOverrideFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.ScheduleOverrideAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.ScheduleOverrideCountArgs<ExtArgs>
+            result: $Utils.Optional<ScheduleOverrideCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2270,7 +2990,7 @@ export namespace Prisma {
     department?: DepartmentOmit
     position?: PositionOmit
     shift?: ShiftOmit
-    schedule?: ScheduleOmit
+    masterSchedule?: MasterScheduleOmit
     timeRequest?: TimeRequestOmit
     actionLog?: ActionLogOmit
     leaveRequest?: LeaveRequestOmit
@@ -2278,6 +2998,14 @@ export namespace Prisma {
     payrollSetting?: PayrollSettingOmit
     payrollPeriod?: PayrollPeriodOmit
     payrollRecord?: PayrollRecordOmit
+    expenseRequest?: ExpenseRequestOmit
+    companyLoan?: CompanyLoanOmit
+    companyAsset?: CompanyAssetOmit
+    ledgerEntry?: LedgerEntryOmit
+    biometricDevice?: BiometricDeviceOmit
+    rawBiometricLog?: RawBiometricLogOmit
+    holiday?: HolidayOmit
+    scheduleOverride?: ScheduleOverrideOmit
   }
 
   /* Types for Logging */
@@ -2440,11 +3168,13 @@ export namespace Prisma {
   export type BranchCountOutputType = {
     users: number
     employees: number
+    biometricDevices: number
   }
 
   export type BranchCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | BranchCountOutputTypeCountUsersArgs
     employees?: boolean | BranchCountOutputTypeCountEmployeesArgs
+    biometricDevices?: boolean | BranchCountOutputTypeCountBiometricDevicesArgs
   }
 
   // Custom InputTypes
@@ -2472,25 +3202,40 @@ export namespace Prisma {
     where?: EmployeeWhereInput
   }
 
+  /**
+   * BranchCountOutputType without action
+   */
+  export type BranchCountOutputTypeCountBiometricDevicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BiometricDeviceWhereInput
+  }
+
 
   /**
    * Count Type EmployeeCountOutputType
    */
 
   export type EmployeeCountOutputType = {
+    scheduleOverrides: number
     benefits: number
     timeRequests: number
     leaveRequests: number
     attendances: number
     payrollRecords: number
+    expenses: number
+    loans: number
+    assets: number
   }
 
   export type EmployeeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    scheduleOverrides?: boolean | EmployeeCountOutputTypeCountScheduleOverridesArgs
     benefits?: boolean | EmployeeCountOutputTypeCountBenefitsArgs
     timeRequests?: boolean | EmployeeCountOutputTypeCountTimeRequestsArgs
     leaveRequests?: boolean | EmployeeCountOutputTypeCountLeaveRequestsArgs
     attendances?: boolean | EmployeeCountOutputTypeCountAttendancesArgs
     payrollRecords?: boolean | EmployeeCountOutputTypeCountPayrollRecordsArgs
+    expenses?: boolean | EmployeeCountOutputTypeCountExpensesArgs
+    loans?: boolean | EmployeeCountOutputTypeCountLoansArgs
+    assets?: boolean | EmployeeCountOutputTypeCountAssetsArgs
   }
 
   // Custom InputTypes
@@ -2502,6 +3247,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the EmployeeCountOutputType
      */
     select?: EmployeeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EmployeeCountOutputType without action
+   */
+  export type EmployeeCountOutputTypeCountScheduleOverridesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ScheduleOverrideWhereInput
   }
 
   /**
@@ -2537,6 +3289,27 @@ export namespace Prisma {
    */
   export type EmployeeCountOutputTypeCountPayrollRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PayrollRecordWhereInput
+  }
+
+  /**
+   * EmployeeCountOutputType without action
+   */
+  export type EmployeeCountOutputTypeCountExpensesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExpenseRequestWhereInput
+  }
+
+  /**
+   * EmployeeCountOutputType without action
+   */
+  export type EmployeeCountOutputTypeCountLoansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyLoanWhereInput
+  }
+
+  /**
+   * EmployeeCountOutputType without action
+   */
+  export type EmployeeCountOutputTypeCountAssetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyAssetWhereInput
   }
 
 
@@ -2647,23 +3420,23 @@ export namespace Prisma {
    */
 
   export type ShiftCountOutputType = {
-    mondaySchedules: number
-    tuesdaySchedules: number
-    wednesdaySchedules: number
-    thursdaySchedules: number
-    fridaySchedules: number
-    saturdaySchedules: number
-    sundaySchedules: number
+    mondayMasterSchedules: number
+    tuesdayMasterSchedules: number
+    wednesdayMasterSchedules: number
+    thursdayMasterSchedules: number
+    fridayMasterSchedules: number
+    saturdayMasterSchedules: number
+    sundayMasterSchedules: number
   }
 
   export type ShiftCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    mondaySchedules?: boolean | ShiftCountOutputTypeCountMondaySchedulesArgs
-    tuesdaySchedules?: boolean | ShiftCountOutputTypeCountTuesdaySchedulesArgs
-    wednesdaySchedules?: boolean | ShiftCountOutputTypeCountWednesdaySchedulesArgs
-    thursdaySchedules?: boolean | ShiftCountOutputTypeCountThursdaySchedulesArgs
-    fridaySchedules?: boolean | ShiftCountOutputTypeCountFridaySchedulesArgs
-    saturdaySchedules?: boolean | ShiftCountOutputTypeCountSaturdaySchedulesArgs
-    sundaySchedules?: boolean | ShiftCountOutputTypeCountSundaySchedulesArgs
+    mondayMasterSchedules?: boolean | ShiftCountOutputTypeCountMondayMasterSchedulesArgs
+    tuesdayMasterSchedules?: boolean | ShiftCountOutputTypeCountTuesdayMasterSchedulesArgs
+    wednesdayMasterSchedules?: boolean | ShiftCountOutputTypeCountWednesdayMasterSchedulesArgs
+    thursdayMasterSchedules?: boolean | ShiftCountOutputTypeCountThursdayMasterSchedulesArgs
+    fridayMasterSchedules?: boolean | ShiftCountOutputTypeCountFridayMasterSchedulesArgs
+    saturdayMasterSchedules?: boolean | ShiftCountOutputTypeCountSaturdayMasterSchedulesArgs
+    sundayMasterSchedules?: boolean | ShiftCountOutputTypeCountSundayMasterSchedulesArgs
   }
 
   // Custom InputTypes
@@ -2680,50 +3453,50 @@ export namespace Prisma {
   /**
    * ShiftCountOutputType without action
    */
-  export type ShiftCountOutputTypeCountMondaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ScheduleWhereInput
+  export type ShiftCountOutputTypeCountMondayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MasterScheduleWhereInput
   }
 
   /**
    * ShiftCountOutputType without action
    */
-  export type ShiftCountOutputTypeCountTuesdaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ScheduleWhereInput
+  export type ShiftCountOutputTypeCountTuesdayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MasterScheduleWhereInput
   }
 
   /**
    * ShiftCountOutputType without action
    */
-  export type ShiftCountOutputTypeCountWednesdaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ScheduleWhereInput
+  export type ShiftCountOutputTypeCountWednesdayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MasterScheduleWhereInput
   }
 
   /**
    * ShiftCountOutputType without action
    */
-  export type ShiftCountOutputTypeCountThursdaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ScheduleWhereInput
+  export type ShiftCountOutputTypeCountThursdayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MasterScheduleWhereInput
   }
 
   /**
    * ShiftCountOutputType without action
    */
-  export type ShiftCountOutputTypeCountFridaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ScheduleWhereInput
+  export type ShiftCountOutputTypeCountFridayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MasterScheduleWhereInput
   }
 
   /**
    * ShiftCountOutputType without action
    */
-  export type ShiftCountOutputTypeCountSaturdaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ScheduleWhereInput
+  export type ShiftCountOutputTypeCountSaturdayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MasterScheduleWhereInput
   }
 
   /**
    * ShiftCountOutputType without action
    */
-  export type ShiftCountOutputTypeCountSundaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ScheduleWhereInput
+  export type ShiftCountOutputTypeCountSundayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MasterScheduleWhereInput
   }
 
 
@@ -2755,6 +3528,37 @@ export namespace Prisma {
    */
   export type PayrollPeriodCountOutputTypeCountRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PayrollRecordWhereInput
+  }
+
+
+  /**
+   * Count Type BiometricDeviceCountOutputType
+   */
+
+  export type BiometricDeviceCountOutputType = {
+    rawLogs: number
+  }
+
+  export type BiometricDeviceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    rawLogs?: boolean | BiometricDeviceCountOutputTypeCountRawLogsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BiometricDeviceCountOutputType without action
+   */
+  export type BiometricDeviceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDeviceCountOutputType
+     */
+    select?: BiometricDeviceCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BiometricDeviceCountOutputType without action
+   */
+  export type BiometricDeviceCountOutputTypeCountRawLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RawBiometricLogWhereInput
   }
 
 
@@ -3833,8 +4637,18 @@ export namespace Prisma {
 
   export type AggregateRole = {
     _count: RoleCountAggregateOutputType | null
+    _avg: RoleAvgAggregateOutputType | null
+    _sum: RoleSumAggregateOutputType | null
     _min: RoleMinAggregateOutputType | null
     _max: RoleMaxAggregateOutputType | null
+  }
+
+  export type RoleAvgAggregateOutputType = {
+    gracePeriodMinutes: number | null
+  }
+
+  export type RoleSumAggregateOutputType = {
+    gracePeriodMinutes: number | null
   }
 
   export type RoleMinAggregateOutputType = {
@@ -3843,6 +4657,7 @@ export namespace Prisma {
     description: string | null
     isManager: boolean | null
     parentRoleId: string | null
+    gracePeriodMinutes: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3853,6 +4668,7 @@ export namespace Prisma {
     description: string | null
     isManager: boolean | null
     parentRoleId: string | null
+    gracePeriodMinutes: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3863,11 +4679,20 @@ export namespace Prisma {
     description: number
     isManager: number
     parentRoleId: number
+    gracePeriodMinutes: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type RoleAvgAggregateInputType = {
+    gracePeriodMinutes?: true
+  }
+
+  export type RoleSumAggregateInputType = {
+    gracePeriodMinutes?: true
+  }
 
   export type RoleMinAggregateInputType = {
     id?: true
@@ -3875,6 +4700,7 @@ export namespace Prisma {
     description?: true
     isManager?: true
     parentRoleId?: true
+    gracePeriodMinutes?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3885,6 +4711,7 @@ export namespace Prisma {
     description?: true
     isManager?: true
     parentRoleId?: true
+    gracePeriodMinutes?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3895,6 +4722,7 @@ export namespace Prisma {
     description?: true
     isManager?: true
     parentRoleId?: true
+    gracePeriodMinutes?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3938,6 +4766,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: RoleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RoleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: RoleMinAggregateInputType
@@ -3968,6 +4808,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: RoleCountAggregateInputType | true
+    _avg?: RoleAvgAggregateInputType
+    _sum?: RoleSumAggregateInputType
     _min?: RoleMinAggregateInputType
     _max?: RoleMaxAggregateInputType
   }
@@ -3978,9 +4820,12 @@ export namespace Prisma {
     description: string | null
     isManager: boolean
     parentRoleId: string | null
+    gracePeriodMinutes: number
     createdAt: Date
     updatedAt: Date
     _count: RoleCountAggregateOutputType | null
+    _avg: RoleAvgAggregateOutputType | null
+    _sum: RoleSumAggregateOutputType | null
     _min: RoleMinAggregateOutputType | null
     _max: RoleMaxAggregateOutputType | null
   }
@@ -4005,6 +4850,7 @@ export namespace Prisma {
     description?: boolean
     isManager?: boolean
     parentRoleId?: boolean
+    gracePeriodMinutes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     parentRole?: boolean | Role$parentRoleArgs<ExtArgs>
@@ -4022,11 +4868,12 @@ export namespace Prisma {
     description?: boolean
     isManager?: boolean
     parentRoleId?: boolean
+    gracePeriodMinutes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "isManager" | "parentRoleId" | "createdAt" | "updatedAt", ExtArgs["result"]["role"]>
+  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "isManager" | "parentRoleId" | "gracePeriodMinutes" | "createdAt" | "updatedAt", ExtArgs["result"]["role"]>
   export type RoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parentRole?: boolean | Role$parentRoleArgs<ExtArgs>
     childRoles?: boolean | Role$childRolesArgs<ExtArgs>
@@ -4049,6 +4896,7 @@ export namespace Prisma {
       description: string | null
       isManager: boolean
       parentRoleId: string | null
+      gracePeriodMinutes: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["role"]>
@@ -4452,6 +5300,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Role", 'String'>
     readonly isManager: FieldRef<"Role", 'Boolean'>
     readonly parentRoleId: FieldRef<"Role", 'String'>
+    readonly gracePeriodMinutes: FieldRef<"Role", 'Int'>
     readonly createdAt: FieldRef<"Role", 'DateTime'>
     readonly updatedAt: FieldRef<"Role", 'DateTime'>
   }
@@ -6130,6 +6979,7 @@ export namespace Prisma {
     updatedAt?: boolean
     users?: boolean | Branch$usersArgs<ExtArgs>
     employees?: boolean | Branch$employeesArgs<ExtArgs>
+    biometricDevices?: boolean | Branch$biometricDevicesArgs<ExtArgs>
     _count?: boolean | BranchCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["branch"]>
 
@@ -6148,6 +6998,7 @@ export namespace Prisma {
   export type BranchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | Branch$usersArgs<ExtArgs>
     employees?: boolean | Branch$employeesArgs<ExtArgs>
+    biometricDevices?: boolean | Branch$biometricDevicesArgs<ExtArgs>
     _count?: boolean | BranchCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -6156,6 +7007,7 @@ export namespace Prisma {
     objects: {
       users: Prisma.$UserPayload<ExtArgs>[]
       employees: Prisma.$EmployeePayload<ExtArgs>[]
+      biometricDevices: Prisma.$BiometricDevicePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6529,6 +7381,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     users<T extends Branch$usersArgs<ExtArgs> = {}>(args?: Subset<T, Branch$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     employees<T extends Branch$employeesArgs<ExtArgs> = {}>(args?: Subset<T, Branch$employeesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    biometricDevices<T extends Branch$biometricDevicesArgs<ExtArgs> = {}>(args?: Subset<T, Branch$biometricDevicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6982,6 +7835,30 @@ export namespace Prisma {
   }
 
   /**
+   * Branch.biometricDevices
+   */
+  export type Branch$biometricDevicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+    where?: BiometricDeviceWhereInput
+    orderBy?: BiometricDeviceOrderByWithRelationInput | BiometricDeviceOrderByWithRelationInput[]
+    cursor?: BiometricDeviceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BiometricDeviceScalarFieldEnum | BiometricDeviceScalarFieldEnum[]
+  }
+
+  /**
    * Branch without action
    */
   export type BranchDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7053,6 +7930,8 @@ export namespace Prisma {
     baseSalary: number | null
     workFactor: number | null
     branchId: string | null
+    biometricId: string | null
+    employeeNo: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7088,6 +7967,8 @@ export namespace Prisma {
     baseSalary: number | null
     workFactor: number | null
     branchId: string | null
+    biometricId: string | null
+    employeeNo: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7123,6 +8004,8 @@ export namespace Prisma {
     baseSalary: number
     workFactor: number
     branchId: number
+    biometricId: number
+    employeeNo: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -7170,6 +8053,8 @@ export namespace Prisma {
     baseSalary?: true
     workFactor?: true
     branchId?: true
+    biometricId?: true
+    employeeNo?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7205,6 +8090,8 @@ export namespace Prisma {
     baseSalary?: true
     workFactor?: true
     branchId?: true
+    biometricId?: true
+    employeeNo?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7240,6 +8127,8 @@ export namespace Prisma {
     baseSalary?: true
     workFactor?: true
     branchId?: true
+    biometricId?: true
+    employeeNo?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -7362,6 +8251,8 @@ export namespace Prisma {
     baseSalary: number
     workFactor: number
     branchId: string | null
+    biometricId: string | null
+    employeeNo: string | null
     createdAt: Date
     updatedAt: Date
     _count: EmployeeCountAggregateOutputType | null
@@ -7416,17 +8307,23 @@ export namespace Prisma {
     baseSalary?: boolean
     workFactor?: boolean
     branchId?: boolean
+    biometricId?: boolean
+    employeeNo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     department?: boolean | Employee$departmentArgs<ExtArgs>
     position?: boolean | Employee$positionArgs<ExtArgs>
     branch?: boolean | Employee$branchArgs<ExtArgs>
-    schedule?: boolean | Employee$scheduleArgs<ExtArgs>
+    masterSchedule?: boolean | Employee$masterScheduleArgs<ExtArgs>
+    scheduleOverrides?: boolean | Employee$scheduleOverridesArgs<ExtArgs>
     benefits?: boolean | Employee$benefitsArgs<ExtArgs>
     timeRequests?: boolean | Employee$timeRequestsArgs<ExtArgs>
     leaveRequests?: boolean | Employee$leaveRequestsArgs<ExtArgs>
     attendances?: boolean | Employee$attendancesArgs<ExtArgs>
     payrollRecords?: boolean | Employee$payrollRecordsArgs<ExtArgs>
+    expenses?: boolean | Employee$expensesArgs<ExtArgs>
+    loans?: boolean | Employee$loansArgs<ExtArgs>
+    assets?: boolean | Employee$assetsArgs<ExtArgs>
     _count?: boolean | EmployeeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["employee"]>
 
@@ -7463,21 +8360,27 @@ export namespace Prisma {
     baseSalary?: boolean
     workFactor?: boolean
     branchId?: boolean
+    biometricId?: boolean
+    employeeNo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type EmployeeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "phone" | "dateOfBirth" | "gender" | "address" | "departmentId" | "positionId" | "dateHired" | "status" | "pictureUrl" | "educationalDegree" | "educationalInstitution" | "yearGraduated" | "emergencyContactName" | "emergencyContactPhone" | "emergencyContactRelationship" | "sssNumber" | "sssStatus" | "philHealthNumber" | "philHealthStatus" | "pagIbigNumber" | "pagIbigStatus" | "tinNumber" | "salaryType" | "baseSalary" | "workFactor" | "branchId" | "createdAt" | "updatedAt", ExtArgs["result"]["employee"]>
+  export type EmployeeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "phone" | "dateOfBirth" | "gender" | "address" | "departmentId" | "positionId" | "dateHired" | "status" | "pictureUrl" | "educationalDegree" | "educationalInstitution" | "yearGraduated" | "emergencyContactName" | "emergencyContactPhone" | "emergencyContactRelationship" | "sssNumber" | "sssStatus" | "philHealthNumber" | "philHealthStatus" | "pagIbigNumber" | "pagIbigStatus" | "tinNumber" | "salaryType" | "baseSalary" | "workFactor" | "branchId" | "biometricId" | "employeeNo" | "createdAt" | "updatedAt", ExtArgs["result"]["employee"]>
   export type EmployeeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     department?: boolean | Employee$departmentArgs<ExtArgs>
     position?: boolean | Employee$positionArgs<ExtArgs>
     branch?: boolean | Employee$branchArgs<ExtArgs>
-    schedule?: boolean | Employee$scheduleArgs<ExtArgs>
+    masterSchedule?: boolean | Employee$masterScheduleArgs<ExtArgs>
+    scheduleOverrides?: boolean | Employee$scheduleOverridesArgs<ExtArgs>
     benefits?: boolean | Employee$benefitsArgs<ExtArgs>
     timeRequests?: boolean | Employee$timeRequestsArgs<ExtArgs>
     leaveRequests?: boolean | Employee$leaveRequestsArgs<ExtArgs>
     attendances?: boolean | Employee$attendancesArgs<ExtArgs>
     payrollRecords?: boolean | Employee$payrollRecordsArgs<ExtArgs>
+    expenses?: boolean | Employee$expensesArgs<ExtArgs>
+    loans?: boolean | Employee$loansArgs<ExtArgs>
+    assets?: boolean | Employee$assetsArgs<ExtArgs>
     _count?: boolean | EmployeeCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -7487,12 +8390,16 @@ export namespace Prisma {
       department: Prisma.$DepartmentPayload<ExtArgs> | null
       position: Prisma.$PositionPayload<ExtArgs> | null
       branch: Prisma.$BranchPayload<ExtArgs> | null
-      schedule: Prisma.$SchedulePayload<ExtArgs> | null
+      masterSchedule: Prisma.$MasterSchedulePayload<ExtArgs> | null
+      scheduleOverrides: Prisma.$ScheduleOverridePayload<ExtArgs>[]
       benefits: Prisma.$EmployeeBenefitPayload<ExtArgs>[]
       timeRequests: Prisma.$TimeRequestPayload<ExtArgs>[]
       leaveRequests: Prisma.$LeaveRequestPayload<ExtArgs>[]
       attendances: Prisma.$AttendancePayload<ExtArgs>[]
       payrollRecords: Prisma.$PayrollRecordPayload<ExtArgs>[]
+      expenses: Prisma.$ExpenseRequestPayload<ExtArgs>[]
+      loans: Prisma.$CompanyLoanPayload<ExtArgs>[]
+      assets: Prisma.$CompanyAssetPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7528,6 +8435,8 @@ export namespace Prisma {
        */
       workFactor: number
       branchId: string | null
+      biometricId: string | null
+      employeeNo: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["employee"]>
@@ -7896,12 +8805,16 @@ export namespace Prisma {
     department<T extends Employee$departmentArgs<ExtArgs> = {}>(args?: Subset<T, Employee$departmentArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     position<T extends Employee$positionArgs<ExtArgs> = {}>(args?: Subset<T, Employee$positionArgs<ExtArgs>>): Prisma__PositionClient<$Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     branch<T extends Employee$branchArgs<ExtArgs> = {}>(args?: Subset<T, Employee$branchArgs<ExtArgs>>): Prisma__BranchClient<$Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    schedule<T extends Employee$scheduleArgs<ExtArgs> = {}>(args?: Subset<T, Employee$scheduleArgs<ExtArgs>>): Prisma__ScheduleClient<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    masterSchedule<T extends Employee$masterScheduleArgs<ExtArgs> = {}>(args?: Subset<T, Employee$masterScheduleArgs<ExtArgs>>): Prisma__MasterScheduleClient<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    scheduleOverrides<T extends Employee$scheduleOverridesArgs<ExtArgs> = {}>(args?: Subset<T, Employee$scheduleOverridesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleOverridePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     benefits<T extends Employee$benefitsArgs<ExtArgs> = {}>(args?: Subset<T, Employee$benefitsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeBenefitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     timeRequests<T extends Employee$timeRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Employee$timeRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TimeRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     leaveRequests<T extends Employee$leaveRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Employee$leaveRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeaveRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendances<T extends Employee$attendancesArgs<ExtArgs> = {}>(args?: Subset<T, Employee$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     payrollRecords<T extends Employee$payrollRecordsArgs<ExtArgs> = {}>(args?: Subset<T, Employee$payrollRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PayrollRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    expenses<T extends Employee$expensesArgs<ExtArgs> = {}>(args?: Subset<T, Employee$expensesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExpenseRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    loans<T extends Employee$loansArgs<ExtArgs> = {}>(args?: Subset<T, Employee$loansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyLoanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    assets<T extends Employee$assetsArgs<ExtArgs> = {}>(args?: Subset<T, Employee$assetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyAssetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7961,6 +8874,8 @@ export namespace Prisma {
     readonly baseSalary: FieldRef<"Employee", 'Float'>
     readonly workFactor: FieldRef<"Employee", 'Int'>
     readonly branchId: FieldRef<"Employee", 'String'>
+    readonly biometricId: FieldRef<"Employee", 'String'>
+    readonly employeeNo: FieldRef<"Employee", 'String'>
     readonly createdAt: FieldRef<"Employee", 'DateTime'>
     readonly updatedAt: FieldRef<"Employee", 'DateTime'>
   }
@@ -8390,22 +9305,46 @@ export namespace Prisma {
   }
 
   /**
-   * Employee.schedule
+   * Employee.masterSchedule
    */
-  export type Employee$scheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Employee$masterScheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
-    where?: ScheduleWhereInput
+    include?: MasterScheduleInclude<ExtArgs> | null
+    where?: MasterScheduleWhereInput
+  }
+
+  /**
+   * Employee.scheduleOverrides
+   */
+  export type Employee$scheduleOverridesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+    where?: ScheduleOverrideWhereInput
+    orderBy?: ScheduleOverrideOrderByWithRelationInput | ScheduleOverrideOrderByWithRelationInput[]
+    cursor?: ScheduleOverrideWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ScheduleOverrideScalarFieldEnum | ScheduleOverrideScalarFieldEnum[]
   }
 
   /**
@@ -8526,6 +9465,78 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PayrollRecordScalarFieldEnum | PayrollRecordScalarFieldEnum[]
+  }
+
+  /**
+   * Employee.expenses
+   */
+  export type Employee$expensesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+    where?: ExpenseRequestWhereInput
+    orderBy?: ExpenseRequestOrderByWithRelationInput | ExpenseRequestOrderByWithRelationInput[]
+    cursor?: ExpenseRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ExpenseRequestScalarFieldEnum | ExpenseRequestScalarFieldEnum[]
+  }
+
+  /**
+   * Employee.loans
+   */
+  export type Employee$loansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+    where?: CompanyLoanWhereInput
+    orderBy?: CompanyLoanOrderByWithRelationInput | CompanyLoanOrderByWithRelationInput[]
+    cursor?: CompanyLoanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanyLoanScalarFieldEnum | CompanyLoanScalarFieldEnum[]
+  }
+
+  /**
+   * Employee.assets
+   */
+  export type Employee$assetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+    where?: CompanyAssetWhereInput
+    orderBy?: CompanyAssetOrderByWithRelationInput | CompanyAssetOrderByWithRelationInput[]
+    cursor?: CompanyAssetWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CompanyAssetScalarFieldEnum | CompanyAssetScalarFieldEnum[]
   }
 
   /**
@@ -12885,13 +13896,13 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    mondaySchedules?: boolean | Shift$mondaySchedulesArgs<ExtArgs>
-    tuesdaySchedules?: boolean | Shift$tuesdaySchedulesArgs<ExtArgs>
-    wednesdaySchedules?: boolean | Shift$wednesdaySchedulesArgs<ExtArgs>
-    thursdaySchedules?: boolean | Shift$thursdaySchedulesArgs<ExtArgs>
-    fridaySchedules?: boolean | Shift$fridaySchedulesArgs<ExtArgs>
-    saturdaySchedules?: boolean | Shift$saturdaySchedulesArgs<ExtArgs>
-    sundaySchedules?: boolean | Shift$sundaySchedulesArgs<ExtArgs>
+    mondayMasterSchedules?: boolean | Shift$mondayMasterSchedulesArgs<ExtArgs>
+    tuesdayMasterSchedules?: boolean | Shift$tuesdayMasterSchedulesArgs<ExtArgs>
+    wednesdayMasterSchedules?: boolean | Shift$wednesdayMasterSchedulesArgs<ExtArgs>
+    thursdayMasterSchedules?: boolean | Shift$thursdayMasterSchedulesArgs<ExtArgs>
+    fridayMasterSchedules?: boolean | Shift$fridayMasterSchedulesArgs<ExtArgs>
+    saturdayMasterSchedules?: boolean | Shift$saturdayMasterSchedulesArgs<ExtArgs>
+    sundayMasterSchedules?: boolean | Shift$sundayMasterSchedulesArgs<ExtArgs>
     _count?: boolean | ShiftCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["shift"]>
 
@@ -12912,26 +13923,26 @@ export namespace Prisma {
 
   export type ShiftOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "startTime" | "endTime" | "workDays" | "isFlexi" | "flexiHours" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["shift"]>
   export type ShiftInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    mondaySchedules?: boolean | Shift$mondaySchedulesArgs<ExtArgs>
-    tuesdaySchedules?: boolean | Shift$tuesdaySchedulesArgs<ExtArgs>
-    wednesdaySchedules?: boolean | Shift$wednesdaySchedulesArgs<ExtArgs>
-    thursdaySchedules?: boolean | Shift$thursdaySchedulesArgs<ExtArgs>
-    fridaySchedules?: boolean | Shift$fridaySchedulesArgs<ExtArgs>
-    saturdaySchedules?: boolean | Shift$saturdaySchedulesArgs<ExtArgs>
-    sundaySchedules?: boolean | Shift$sundaySchedulesArgs<ExtArgs>
+    mondayMasterSchedules?: boolean | Shift$mondayMasterSchedulesArgs<ExtArgs>
+    tuesdayMasterSchedules?: boolean | Shift$tuesdayMasterSchedulesArgs<ExtArgs>
+    wednesdayMasterSchedules?: boolean | Shift$wednesdayMasterSchedulesArgs<ExtArgs>
+    thursdayMasterSchedules?: boolean | Shift$thursdayMasterSchedulesArgs<ExtArgs>
+    fridayMasterSchedules?: boolean | Shift$fridayMasterSchedulesArgs<ExtArgs>
+    saturdayMasterSchedules?: boolean | Shift$saturdayMasterSchedulesArgs<ExtArgs>
+    sundayMasterSchedules?: boolean | Shift$sundayMasterSchedulesArgs<ExtArgs>
     _count?: boolean | ShiftCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $ShiftPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Shift"
     objects: {
-      mondaySchedules: Prisma.$SchedulePayload<ExtArgs>[]
-      tuesdaySchedules: Prisma.$SchedulePayload<ExtArgs>[]
-      wednesdaySchedules: Prisma.$SchedulePayload<ExtArgs>[]
-      thursdaySchedules: Prisma.$SchedulePayload<ExtArgs>[]
-      fridaySchedules: Prisma.$SchedulePayload<ExtArgs>[]
-      saturdaySchedules: Prisma.$SchedulePayload<ExtArgs>[]
-      sundaySchedules: Prisma.$SchedulePayload<ExtArgs>[]
+      mondayMasterSchedules: Prisma.$MasterSchedulePayload<ExtArgs>[]
+      tuesdayMasterSchedules: Prisma.$MasterSchedulePayload<ExtArgs>[]
+      wednesdayMasterSchedules: Prisma.$MasterSchedulePayload<ExtArgs>[]
+      thursdayMasterSchedules: Prisma.$MasterSchedulePayload<ExtArgs>[]
+      fridayMasterSchedules: Prisma.$MasterSchedulePayload<ExtArgs>[]
+      saturdayMasterSchedules: Prisma.$MasterSchedulePayload<ExtArgs>[]
+      sundayMasterSchedules: Prisma.$MasterSchedulePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -13307,13 +14318,13 @@ export namespace Prisma {
    */
   export interface Prisma__ShiftClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    mondaySchedules<T extends Shift$mondaySchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$mondaySchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    tuesdaySchedules<T extends Shift$tuesdaySchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$tuesdaySchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    wednesdaySchedules<T extends Shift$wednesdaySchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$wednesdaySchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    thursdaySchedules<T extends Shift$thursdaySchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$thursdaySchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    fridaySchedules<T extends Shift$fridaySchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$fridaySchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    saturdaySchedules<T extends Shift$saturdaySchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$saturdaySchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    sundaySchedules<T extends Shift$sundaySchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$sundaySchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    mondayMasterSchedules<T extends Shift$mondayMasterSchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$mondayMasterSchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tuesdayMasterSchedules<T extends Shift$tuesdayMasterSchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$tuesdayMasterSchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    wednesdayMasterSchedules<T extends Shift$wednesdayMasterSchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$wednesdayMasterSchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    thursdayMasterSchedules<T extends Shift$thursdayMasterSchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$thursdayMasterSchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    fridayMasterSchedules<T extends Shift$fridayMasterSchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$fridayMasterSchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    saturdayMasterSchedules<T extends Shift$saturdayMasterSchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$saturdayMasterSchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sundayMasterSchedules<T extends Shift$sundayMasterSchedulesArgs<ExtArgs> = {}>(args?: Subset<T, Shift$sundayMasterSchedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13723,171 +14734,171 @@ export namespace Prisma {
   }
 
   /**
-   * Shift.mondaySchedules
+   * Shift.mondayMasterSchedules
    */
-  export type Shift$mondaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Shift$mondayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
-    where?: ScheduleWhereInput
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
-    cursor?: ScheduleWhereUniqueInput
+    include?: MasterScheduleInclude<ExtArgs> | null
+    where?: MasterScheduleWhereInput
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
+    cursor?: MasterScheduleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+    distinct?: MasterScheduleScalarFieldEnum | MasterScheduleScalarFieldEnum[]
   }
 
   /**
-   * Shift.tuesdaySchedules
+   * Shift.tuesdayMasterSchedules
    */
-  export type Shift$tuesdaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Shift$tuesdayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
-    where?: ScheduleWhereInput
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
-    cursor?: ScheduleWhereUniqueInput
+    include?: MasterScheduleInclude<ExtArgs> | null
+    where?: MasterScheduleWhereInput
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
+    cursor?: MasterScheduleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+    distinct?: MasterScheduleScalarFieldEnum | MasterScheduleScalarFieldEnum[]
   }
 
   /**
-   * Shift.wednesdaySchedules
+   * Shift.wednesdayMasterSchedules
    */
-  export type Shift$wednesdaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Shift$wednesdayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
-    where?: ScheduleWhereInput
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
-    cursor?: ScheduleWhereUniqueInput
+    include?: MasterScheduleInclude<ExtArgs> | null
+    where?: MasterScheduleWhereInput
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
+    cursor?: MasterScheduleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+    distinct?: MasterScheduleScalarFieldEnum | MasterScheduleScalarFieldEnum[]
   }
 
   /**
-   * Shift.thursdaySchedules
+   * Shift.thursdayMasterSchedules
    */
-  export type Shift$thursdaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Shift$thursdayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
-    where?: ScheduleWhereInput
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
-    cursor?: ScheduleWhereUniqueInput
+    include?: MasterScheduleInclude<ExtArgs> | null
+    where?: MasterScheduleWhereInput
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
+    cursor?: MasterScheduleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+    distinct?: MasterScheduleScalarFieldEnum | MasterScheduleScalarFieldEnum[]
   }
 
   /**
-   * Shift.fridaySchedules
+   * Shift.fridayMasterSchedules
    */
-  export type Shift$fridaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Shift$fridayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
-    where?: ScheduleWhereInput
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
-    cursor?: ScheduleWhereUniqueInput
+    include?: MasterScheduleInclude<ExtArgs> | null
+    where?: MasterScheduleWhereInput
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
+    cursor?: MasterScheduleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+    distinct?: MasterScheduleScalarFieldEnum | MasterScheduleScalarFieldEnum[]
   }
 
   /**
-   * Shift.saturdaySchedules
+   * Shift.saturdayMasterSchedules
    */
-  export type Shift$saturdaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Shift$saturdayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
-    where?: ScheduleWhereInput
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
-    cursor?: ScheduleWhereUniqueInput
+    include?: MasterScheduleInclude<ExtArgs> | null
+    where?: MasterScheduleWhereInput
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
+    cursor?: MasterScheduleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+    distinct?: MasterScheduleScalarFieldEnum | MasterScheduleScalarFieldEnum[]
   }
 
   /**
-   * Shift.sundaySchedules
+   * Shift.sundayMasterSchedules
    */
-  export type Shift$sundaySchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Shift$sundayMasterSchedulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
-    where?: ScheduleWhereInput
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
-    cursor?: ScheduleWhereUniqueInput
+    include?: MasterScheduleInclude<ExtArgs> | null
+    where?: MasterScheduleWhereInput
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
+    cursor?: MasterScheduleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+    distinct?: MasterScheduleScalarFieldEnum | MasterScheduleScalarFieldEnum[]
   }
 
   /**
@@ -13910,16 +14921,16 @@ export namespace Prisma {
 
 
   /**
-   * Model Schedule
+   * Model MasterSchedule
    */
 
-  export type AggregateSchedule = {
-    _count: ScheduleCountAggregateOutputType | null
-    _min: ScheduleMinAggregateOutputType | null
-    _max: ScheduleMaxAggregateOutputType | null
+  export type AggregateMasterSchedule = {
+    _count: MasterScheduleCountAggregateOutputType | null
+    _min: MasterScheduleMinAggregateOutputType | null
+    _max: MasterScheduleMaxAggregateOutputType | null
   }
 
-  export type ScheduleMinAggregateOutputType = {
+  export type MasterScheduleMinAggregateOutputType = {
     id: string | null
     employeeId: string | null
     mondayId: string | null
@@ -13933,7 +14944,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type ScheduleMaxAggregateOutputType = {
+  export type MasterScheduleMaxAggregateOutputType = {
     id: string | null
     employeeId: string | null
     mondayId: string | null
@@ -13947,7 +14958,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type ScheduleCountAggregateOutputType = {
+  export type MasterScheduleCountAggregateOutputType = {
     id: number
     employeeId: number
     mondayId: number
@@ -13963,7 +14974,7 @@ export namespace Prisma {
   }
 
 
-  export type ScheduleMinAggregateInputType = {
+  export type MasterScheduleMinAggregateInputType = {
     id?: true
     employeeId?: true
     mondayId?: true
@@ -13977,7 +14988,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type ScheduleMaxAggregateInputType = {
+  export type MasterScheduleMaxAggregateInputType = {
     id?: true
     employeeId?: true
     mondayId?: true
@@ -13991,7 +15002,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type ScheduleCountAggregateInputType = {
+  export type MasterScheduleCountAggregateInputType = {
     id?: true
     employeeId?: true
     mondayId?: true
@@ -14006,79 +15017,79 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type ScheduleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Schedule to aggregate.
+     * Filter which MasterSchedule to aggregate.
      */
-    where?: ScheduleWhereInput
+    where?: MasterScheduleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Schedules to fetch.
+     * Determine the order of MasterSchedules to fetch.
      */
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ScheduleWhereUniqueInput
+    cursor?: MasterScheduleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Schedules from the position of the cursor.
+     * Take `±n` MasterSchedules from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Schedules.
+     * Skip the first `n` MasterSchedules.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Schedules
+     * Count returned MasterSchedules
     **/
-    _count?: true | ScheduleCountAggregateInputType
+    _count?: true | MasterScheduleCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ScheduleMinAggregateInputType
+    _min?: MasterScheduleMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ScheduleMaxAggregateInputType
+    _max?: MasterScheduleMaxAggregateInputType
   }
 
-  export type GetScheduleAggregateType<T extends ScheduleAggregateArgs> = {
-        [P in keyof T & keyof AggregateSchedule]: P extends '_count' | 'count'
+  export type GetMasterScheduleAggregateType<T extends MasterScheduleAggregateArgs> = {
+        [P in keyof T & keyof AggregateMasterSchedule]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateSchedule[P]>
-      : GetScalarType<T[P], AggregateSchedule[P]>
+        : GetScalarType<T[P], AggregateMasterSchedule[P]>
+      : GetScalarType<T[P], AggregateMasterSchedule[P]>
   }
 
 
 
 
-  export type ScheduleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ScheduleWhereInput
-    orderBy?: ScheduleOrderByWithAggregationInput | ScheduleOrderByWithAggregationInput[]
-    by: ScheduleScalarFieldEnum[] | ScheduleScalarFieldEnum
-    having?: ScheduleScalarWhereWithAggregatesInput
+  export type MasterScheduleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MasterScheduleWhereInput
+    orderBy?: MasterScheduleOrderByWithAggregationInput | MasterScheduleOrderByWithAggregationInput[]
+    by: MasterScheduleScalarFieldEnum[] | MasterScheduleScalarFieldEnum
+    having?: MasterScheduleScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ScheduleCountAggregateInputType | true
-    _min?: ScheduleMinAggregateInputType
-    _max?: ScheduleMaxAggregateInputType
+    _count?: MasterScheduleCountAggregateInputType | true
+    _min?: MasterScheduleMinAggregateInputType
+    _max?: MasterScheduleMaxAggregateInputType
   }
 
-  export type ScheduleGroupByOutputType = {
+  export type MasterScheduleGroupByOutputType = {
     id: string
     employeeId: string
     mondayId: string | null
@@ -14090,26 +15101,26 @@ export namespace Prisma {
     sundayId: string | null
     createdAt: Date
     updatedAt: Date
-    _count: ScheduleCountAggregateOutputType | null
-    _min: ScheduleMinAggregateOutputType | null
-    _max: ScheduleMaxAggregateOutputType | null
+    _count: MasterScheduleCountAggregateOutputType | null
+    _min: MasterScheduleMinAggregateOutputType | null
+    _max: MasterScheduleMaxAggregateOutputType | null
   }
 
-  type GetScheduleGroupByPayload<T extends ScheduleGroupByArgs> = Prisma.PrismaPromise<
+  type GetMasterScheduleGroupByPayload<T extends MasterScheduleGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ScheduleGroupByOutputType, T['by']> &
+      PickEnumerable<MasterScheduleGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ScheduleGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof MasterScheduleGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ScheduleGroupByOutputType[P]>
-            : GetScalarType<T[P], ScheduleGroupByOutputType[P]>
+              : GetScalarType<T[P], MasterScheduleGroupByOutputType[P]>
+            : GetScalarType<T[P], MasterScheduleGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ScheduleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MasterScheduleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     employeeId?: boolean
     mondayId?: boolean
@@ -14122,18 +15133,18 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     employee?: boolean | EmployeeDefaultArgs<ExtArgs>
-    monday?: boolean | Schedule$mondayArgs<ExtArgs>
-    tuesday?: boolean | Schedule$tuesdayArgs<ExtArgs>
-    wednesday?: boolean | Schedule$wednesdayArgs<ExtArgs>
-    thursday?: boolean | Schedule$thursdayArgs<ExtArgs>
-    friday?: boolean | Schedule$fridayArgs<ExtArgs>
-    saturday?: boolean | Schedule$saturdayArgs<ExtArgs>
-    sunday?: boolean | Schedule$sundayArgs<ExtArgs>
-  }, ExtArgs["result"]["schedule"]>
+    monday?: boolean | MasterSchedule$mondayArgs<ExtArgs>
+    tuesday?: boolean | MasterSchedule$tuesdayArgs<ExtArgs>
+    wednesday?: boolean | MasterSchedule$wednesdayArgs<ExtArgs>
+    thursday?: boolean | MasterSchedule$thursdayArgs<ExtArgs>
+    friday?: boolean | MasterSchedule$fridayArgs<ExtArgs>
+    saturday?: boolean | MasterSchedule$saturdayArgs<ExtArgs>
+    sunday?: boolean | MasterSchedule$sundayArgs<ExtArgs>
+  }, ExtArgs["result"]["masterSchedule"]>
 
 
 
-  export type ScheduleSelectScalar = {
+  export type MasterScheduleSelectScalar = {
     id?: boolean
     employeeId?: boolean
     mondayId?: boolean
@@ -14147,20 +15158,20 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ScheduleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "mondayId" | "tuesdayId" | "wednesdayId" | "thursdayId" | "fridayId" | "saturdayId" | "sundayId" | "createdAt" | "updatedAt", ExtArgs["result"]["schedule"]>
-  export type ScheduleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "mondayId" | "tuesdayId" | "wednesdayId" | "thursdayId" | "fridayId" | "saturdayId" | "sundayId" | "createdAt" | "updatedAt", ExtArgs["result"]["masterSchedule"]>
+  export type MasterScheduleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     employee?: boolean | EmployeeDefaultArgs<ExtArgs>
-    monday?: boolean | Schedule$mondayArgs<ExtArgs>
-    tuesday?: boolean | Schedule$tuesdayArgs<ExtArgs>
-    wednesday?: boolean | Schedule$wednesdayArgs<ExtArgs>
-    thursday?: boolean | Schedule$thursdayArgs<ExtArgs>
-    friday?: boolean | Schedule$fridayArgs<ExtArgs>
-    saturday?: boolean | Schedule$saturdayArgs<ExtArgs>
-    sunday?: boolean | Schedule$sundayArgs<ExtArgs>
+    monday?: boolean | MasterSchedule$mondayArgs<ExtArgs>
+    tuesday?: boolean | MasterSchedule$tuesdayArgs<ExtArgs>
+    wednesday?: boolean | MasterSchedule$wednesdayArgs<ExtArgs>
+    thursday?: boolean | MasterSchedule$thursdayArgs<ExtArgs>
+    friday?: boolean | MasterSchedule$fridayArgs<ExtArgs>
+    saturday?: boolean | MasterSchedule$saturdayArgs<ExtArgs>
+    sunday?: boolean | MasterSchedule$sundayArgs<ExtArgs>
   }
 
-  export type $SchedulePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Schedule"
+  export type $MasterSchedulePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MasterSchedule"
     objects: {
       employee: Prisma.$EmployeePayload<ExtArgs>
       monday: Prisma.$ShiftPayload<ExtArgs> | null
@@ -14183,143 +15194,143 @@ export namespace Prisma {
       sundayId: string | null
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["schedule"]>
+    }, ExtArgs["result"]["masterSchedule"]>
     composites: {}
   }
 
-  type ScheduleGetPayload<S extends boolean | null | undefined | ScheduleDefaultArgs> = $Result.GetResult<Prisma.$SchedulePayload, S>
+  type MasterScheduleGetPayload<S extends boolean | null | undefined | MasterScheduleDefaultArgs> = $Result.GetResult<Prisma.$MasterSchedulePayload, S>
 
-  type ScheduleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ScheduleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ScheduleCountAggregateInputType | true
+  type MasterScheduleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MasterScheduleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MasterScheduleCountAggregateInputType | true
     }
 
-  export interface ScheduleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Schedule'], meta: { name: 'Schedule' } }
+  export interface MasterScheduleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MasterSchedule'], meta: { name: 'MasterSchedule' } }
     /**
-     * Find zero or one Schedule that matches the filter.
-     * @param {ScheduleFindUniqueArgs} args - Arguments to find a Schedule
+     * Find zero or one MasterSchedule that matches the filter.
+     * @param {MasterScheduleFindUniqueArgs} args - Arguments to find a MasterSchedule
      * @example
-     * // Get one Schedule
-     * const schedule = await prisma.schedule.findUnique({
+     * // Get one MasterSchedule
+     * const masterSchedule = await prisma.masterSchedule.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends ScheduleFindUniqueArgs>(args: SelectSubset<T, ScheduleFindUniqueArgs<ExtArgs>>): Prisma__ScheduleClient<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends MasterScheduleFindUniqueArgs>(args: SelectSubset<T, MasterScheduleFindUniqueArgs<ExtArgs>>): Prisma__MasterScheduleClient<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Schedule that matches the filter or throw an error with `error.code='P2025'`
+     * Find one MasterSchedule that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ScheduleFindUniqueOrThrowArgs} args - Arguments to find a Schedule
+     * @param {MasterScheduleFindUniqueOrThrowArgs} args - Arguments to find a MasterSchedule
      * @example
-     * // Get one Schedule
-     * const schedule = await prisma.schedule.findUniqueOrThrow({
+     * // Get one MasterSchedule
+     * const masterSchedule = await prisma.masterSchedule.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ScheduleFindUniqueOrThrowArgs>(args: SelectSubset<T, ScheduleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ScheduleClient<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends MasterScheduleFindUniqueOrThrowArgs>(args: SelectSubset<T, MasterScheduleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MasterScheduleClient<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Schedule that matches the filter.
+     * Find the first MasterSchedule that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScheduleFindFirstArgs} args - Arguments to find a Schedule
+     * @param {MasterScheduleFindFirstArgs} args - Arguments to find a MasterSchedule
      * @example
-     * // Get one Schedule
-     * const schedule = await prisma.schedule.findFirst({
+     * // Get one MasterSchedule
+     * const masterSchedule = await prisma.masterSchedule.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends ScheduleFindFirstArgs>(args?: SelectSubset<T, ScheduleFindFirstArgs<ExtArgs>>): Prisma__ScheduleClient<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends MasterScheduleFindFirstArgs>(args?: SelectSubset<T, MasterScheduleFindFirstArgs<ExtArgs>>): Prisma__MasterScheduleClient<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Schedule that matches the filter or
+     * Find the first MasterSchedule that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScheduleFindFirstOrThrowArgs} args - Arguments to find a Schedule
+     * @param {MasterScheduleFindFirstOrThrowArgs} args - Arguments to find a MasterSchedule
      * @example
-     * // Get one Schedule
-     * const schedule = await prisma.schedule.findFirstOrThrow({
+     * // Get one MasterSchedule
+     * const masterSchedule = await prisma.masterSchedule.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends ScheduleFindFirstOrThrowArgs>(args?: SelectSubset<T, ScheduleFindFirstOrThrowArgs<ExtArgs>>): Prisma__ScheduleClient<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends MasterScheduleFindFirstOrThrowArgs>(args?: SelectSubset<T, MasterScheduleFindFirstOrThrowArgs<ExtArgs>>): Prisma__MasterScheduleClient<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Schedules that matches the filter.
+     * Find zero or more MasterSchedules that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScheduleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {MasterScheduleFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Schedules
-     * const schedules = await prisma.schedule.findMany()
+     * // Get all MasterSchedules
+     * const masterSchedules = await prisma.masterSchedule.findMany()
      * 
-     * // Get first 10 Schedules
-     * const schedules = await prisma.schedule.findMany({ take: 10 })
+     * // Get first 10 MasterSchedules
+     * const masterSchedules = await prisma.masterSchedule.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const scheduleWithIdOnly = await prisma.schedule.findMany({ select: { id: true } })
+     * const masterScheduleWithIdOnly = await prisma.masterSchedule.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ScheduleFindManyArgs>(args?: SelectSubset<T, ScheduleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends MasterScheduleFindManyArgs>(args?: SelectSubset<T, MasterScheduleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Schedule.
-     * @param {ScheduleCreateArgs} args - Arguments to create a Schedule.
+     * Create a MasterSchedule.
+     * @param {MasterScheduleCreateArgs} args - Arguments to create a MasterSchedule.
      * @example
-     * // Create one Schedule
-     * const Schedule = await prisma.schedule.create({
+     * // Create one MasterSchedule
+     * const MasterSchedule = await prisma.masterSchedule.create({
      *   data: {
-     *     // ... data to create a Schedule
+     *     // ... data to create a MasterSchedule
      *   }
      * })
      * 
      */
-    create<T extends ScheduleCreateArgs>(args: SelectSubset<T, ScheduleCreateArgs<ExtArgs>>): Prisma__ScheduleClient<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends MasterScheduleCreateArgs>(args: SelectSubset<T, MasterScheduleCreateArgs<ExtArgs>>): Prisma__MasterScheduleClient<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Schedules.
-     * @param {ScheduleCreateManyArgs} args - Arguments to create many Schedules.
+     * Create many MasterSchedules.
+     * @param {MasterScheduleCreateManyArgs} args - Arguments to create many MasterSchedules.
      * @example
-     * // Create many Schedules
-     * const schedule = await prisma.schedule.createMany({
+     * // Create many MasterSchedules
+     * const masterSchedule = await prisma.masterSchedule.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends ScheduleCreateManyArgs>(args?: SelectSubset<T, ScheduleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends MasterScheduleCreateManyArgs>(args?: SelectSubset<T, MasterScheduleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Schedule.
-     * @param {ScheduleDeleteArgs} args - Arguments to delete one Schedule.
+     * Delete a MasterSchedule.
+     * @param {MasterScheduleDeleteArgs} args - Arguments to delete one MasterSchedule.
      * @example
-     * // Delete one Schedule
-     * const Schedule = await prisma.schedule.delete({
+     * // Delete one MasterSchedule
+     * const MasterSchedule = await prisma.masterSchedule.delete({
      *   where: {
-     *     // ... filter to delete one Schedule
+     *     // ... filter to delete one MasterSchedule
      *   }
      * })
      * 
      */
-    delete<T extends ScheduleDeleteArgs>(args: SelectSubset<T, ScheduleDeleteArgs<ExtArgs>>): Prisma__ScheduleClient<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends MasterScheduleDeleteArgs>(args: SelectSubset<T, MasterScheduleDeleteArgs<ExtArgs>>): Prisma__MasterScheduleClient<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Schedule.
-     * @param {ScheduleUpdateArgs} args - Arguments to update one Schedule.
+     * Update one MasterSchedule.
+     * @param {MasterScheduleUpdateArgs} args - Arguments to update one MasterSchedule.
      * @example
-     * // Update one Schedule
-     * const schedule = await prisma.schedule.update({
+     * // Update one MasterSchedule
+     * const masterSchedule = await prisma.masterSchedule.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -14329,30 +15340,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ScheduleUpdateArgs>(args: SelectSubset<T, ScheduleUpdateArgs<ExtArgs>>): Prisma__ScheduleClient<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends MasterScheduleUpdateArgs>(args: SelectSubset<T, MasterScheduleUpdateArgs<ExtArgs>>): Prisma__MasterScheduleClient<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Schedules.
-     * @param {ScheduleDeleteManyArgs} args - Arguments to filter Schedules to delete.
+     * Delete zero or more MasterSchedules.
+     * @param {MasterScheduleDeleteManyArgs} args - Arguments to filter MasterSchedules to delete.
      * @example
-     * // Delete a few Schedules
-     * const { count } = await prisma.schedule.deleteMany({
+     * // Delete a few MasterSchedules
+     * const { count } = await prisma.masterSchedule.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends ScheduleDeleteManyArgs>(args?: SelectSubset<T, ScheduleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends MasterScheduleDeleteManyArgs>(args?: SelectSubset<T, MasterScheduleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Schedules.
+     * Update zero or more MasterSchedules.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScheduleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {MasterScheduleUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Schedules
-     * const schedule = await prisma.schedule.updateMany({
+     * // Update many MasterSchedules
+     * const masterSchedule = await prisma.masterSchedule.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -14362,79 +15373,79 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ScheduleUpdateManyArgs>(args: SelectSubset<T, ScheduleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends MasterScheduleUpdateManyArgs>(args: SelectSubset<T, MasterScheduleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Schedule.
-     * @param {ScheduleUpsertArgs} args - Arguments to update or create a Schedule.
+     * Create or update one MasterSchedule.
+     * @param {MasterScheduleUpsertArgs} args - Arguments to update or create a MasterSchedule.
      * @example
-     * // Update or create a Schedule
-     * const schedule = await prisma.schedule.upsert({
+     * // Update or create a MasterSchedule
+     * const masterSchedule = await prisma.masterSchedule.upsert({
      *   create: {
-     *     // ... data to create a Schedule
+     *     // ... data to create a MasterSchedule
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Schedule we want to update
+     *     // ... the filter for the MasterSchedule we want to update
      *   }
      * })
      */
-    upsert<T extends ScheduleUpsertArgs>(args: SelectSubset<T, ScheduleUpsertArgs<ExtArgs>>): Prisma__ScheduleClient<$Result.GetResult<Prisma.$SchedulePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends MasterScheduleUpsertArgs>(args: SelectSubset<T, MasterScheduleUpsertArgs<ExtArgs>>): Prisma__MasterScheduleClient<$Result.GetResult<Prisma.$MasterSchedulePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Schedules that matches the filter.
-     * @param {ScheduleFindRawArgs} args - Select which filters you would like to apply.
+     * Find zero or more MasterSchedules that matches the filter.
+     * @param {MasterScheduleFindRawArgs} args - Select which filters you would like to apply.
      * @example
-     * const schedule = await prisma.schedule.findRaw({
+     * const masterSchedule = await prisma.masterSchedule.findRaw({
      *   filter: { age: { $gt: 25 } }
      * })
      */
-    findRaw(args?: ScheduleFindRawArgs): Prisma.PrismaPromise<JsonObject>
+    findRaw(args?: MasterScheduleFindRawArgs): Prisma.PrismaPromise<JsonObject>
 
     /**
-     * Perform aggregation operations on a Schedule.
-     * @param {ScheduleAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * Perform aggregation operations on a MasterSchedule.
+     * @param {MasterScheduleAggregateRawArgs} args - Select which aggregations you would like to apply.
      * @example
-     * const schedule = await prisma.schedule.aggregateRaw({
+     * const masterSchedule = await prisma.masterSchedule.aggregateRaw({
      *   pipeline: [
      *     { $match: { status: "registered" } },
      *     { $group: { _id: "$country", total: { $sum: 1 } } }
      *   ]
      * })
      */
-    aggregateRaw(args?: ScheduleAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+    aggregateRaw(args?: MasterScheduleAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
 
 
     /**
-     * Count the number of Schedules.
+     * Count the number of MasterSchedules.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScheduleCountArgs} args - Arguments to filter Schedules to count.
+     * @param {MasterScheduleCountArgs} args - Arguments to filter MasterSchedules to count.
      * @example
-     * // Count the number of Schedules
-     * const count = await prisma.schedule.count({
+     * // Count the number of MasterSchedules
+     * const count = await prisma.masterSchedule.count({
      *   where: {
-     *     // ... the filter for the Schedules we want to count
+     *     // ... the filter for the MasterSchedules we want to count
      *   }
      * })
     **/
-    count<T extends ScheduleCountArgs>(
-      args?: Subset<T, ScheduleCountArgs>,
+    count<T extends MasterScheduleCountArgs>(
+      args?: Subset<T, MasterScheduleCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ScheduleCountAggregateOutputType>
+          : GetScalarType<T['select'], MasterScheduleCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Schedule.
+     * Allows you to perform aggregations operations on a MasterSchedule.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScheduleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {MasterScheduleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -14454,13 +15465,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ScheduleAggregateArgs>(args: Subset<T, ScheduleAggregateArgs>): Prisma.PrismaPromise<GetScheduleAggregateType<T>>
+    aggregate<T extends MasterScheduleAggregateArgs>(args: Subset<T, MasterScheduleAggregateArgs>): Prisma.PrismaPromise<GetMasterScheduleAggregateType<T>>
 
     /**
-     * Group by Schedule.
+     * Group by MasterSchedule.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ScheduleGroupByArgs} args - Group by arguments.
+     * @param {MasterScheduleGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -14475,14 +15486,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ScheduleGroupByArgs,
+      T extends MasterScheduleGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ScheduleGroupByArgs['orderBy'] }
-        : { orderBy?: ScheduleGroupByArgs['orderBy'] },
+        ? { orderBy: MasterScheduleGroupByArgs['orderBy'] }
+        : { orderBy?: MasterScheduleGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -14531,29 +15542,29 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ScheduleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetScheduleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, MasterScheduleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMasterScheduleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Schedule model
+   * Fields of the MasterSchedule model
    */
-  readonly fields: ScheduleFieldRefs;
+  readonly fields: MasterScheduleFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Schedule.
+   * The delegate class that acts as a "Promise-like" for MasterSchedule.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ScheduleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__MasterScheduleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     employee<T extends EmployeeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeDefaultArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    monday<T extends Schedule$mondayArgs<ExtArgs> = {}>(args?: Subset<T, Schedule$mondayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    tuesday<T extends Schedule$tuesdayArgs<ExtArgs> = {}>(args?: Subset<T, Schedule$tuesdayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    wednesday<T extends Schedule$wednesdayArgs<ExtArgs> = {}>(args?: Subset<T, Schedule$wednesdayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    thursday<T extends Schedule$thursdayArgs<ExtArgs> = {}>(args?: Subset<T, Schedule$thursdayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    friday<T extends Schedule$fridayArgs<ExtArgs> = {}>(args?: Subset<T, Schedule$fridayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    saturday<T extends Schedule$saturdayArgs<ExtArgs> = {}>(args?: Subset<T, Schedule$saturdayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    sunday<T extends Schedule$sundayArgs<ExtArgs> = {}>(args?: Subset<T, Schedule$sundayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    monday<T extends MasterSchedule$mondayArgs<ExtArgs> = {}>(args?: Subset<T, MasterSchedule$mondayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    tuesday<T extends MasterSchedule$tuesdayArgs<ExtArgs> = {}>(args?: Subset<T, MasterSchedule$tuesdayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    wednesday<T extends MasterSchedule$wednesdayArgs<ExtArgs> = {}>(args?: Subset<T, MasterSchedule$wednesdayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    thursday<T extends MasterSchedule$thursdayArgs<ExtArgs> = {}>(args?: Subset<T, MasterSchedule$thursdayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    friday<T extends MasterSchedule$fridayArgs<ExtArgs> = {}>(args?: Subset<T, MasterSchedule$fridayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    saturday<T extends MasterSchedule$saturdayArgs<ExtArgs> = {}>(args?: Subset<T, MasterSchedule$saturdayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    sunday<T extends MasterSchedule$sundayArgs<ExtArgs> = {}>(args?: Subset<T, MasterSchedule$sundayArgs<ExtArgs>>): Prisma__ShiftClient<$Result.GetResult<Prisma.$ShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14580,365 +15591,365 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Schedule model
+   * Fields of the MasterSchedule model
    */
-  interface ScheduleFieldRefs {
-    readonly id: FieldRef<"Schedule", 'String'>
-    readonly employeeId: FieldRef<"Schedule", 'String'>
-    readonly mondayId: FieldRef<"Schedule", 'String'>
-    readonly tuesdayId: FieldRef<"Schedule", 'String'>
-    readonly wednesdayId: FieldRef<"Schedule", 'String'>
-    readonly thursdayId: FieldRef<"Schedule", 'String'>
-    readonly fridayId: FieldRef<"Schedule", 'String'>
-    readonly saturdayId: FieldRef<"Schedule", 'String'>
-    readonly sundayId: FieldRef<"Schedule", 'String'>
-    readonly createdAt: FieldRef<"Schedule", 'DateTime'>
-    readonly updatedAt: FieldRef<"Schedule", 'DateTime'>
+  interface MasterScheduleFieldRefs {
+    readonly id: FieldRef<"MasterSchedule", 'String'>
+    readonly employeeId: FieldRef<"MasterSchedule", 'String'>
+    readonly mondayId: FieldRef<"MasterSchedule", 'String'>
+    readonly tuesdayId: FieldRef<"MasterSchedule", 'String'>
+    readonly wednesdayId: FieldRef<"MasterSchedule", 'String'>
+    readonly thursdayId: FieldRef<"MasterSchedule", 'String'>
+    readonly fridayId: FieldRef<"MasterSchedule", 'String'>
+    readonly saturdayId: FieldRef<"MasterSchedule", 'String'>
+    readonly sundayId: FieldRef<"MasterSchedule", 'String'>
+    readonly createdAt: FieldRef<"MasterSchedule", 'DateTime'>
+    readonly updatedAt: FieldRef<"MasterSchedule", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Schedule findUnique
+   * MasterSchedule findUnique
    */
-  export type ScheduleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
+    include?: MasterScheduleInclude<ExtArgs> | null
     /**
-     * Filter, which Schedule to fetch.
+     * Filter, which MasterSchedule to fetch.
      */
-    where: ScheduleWhereUniqueInput
+    where: MasterScheduleWhereUniqueInput
   }
 
   /**
-   * Schedule findUniqueOrThrow
+   * MasterSchedule findUniqueOrThrow
    */
-  export type ScheduleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
+    include?: MasterScheduleInclude<ExtArgs> | null
     /**
-     * Filter, which Schedule to fetch.
+     * Filter, which MasterSchedule to fetch.
      */
-    where: ScheduleWhereUniqueInput
+    where: MasterScheduleWhereUniqueInput
   }
 
   /**
-   * Schedule findFirst
+   * MasterSchedule findFirst
    */
-  export type ScheduleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
+    include?: MasterScheduleInclude<ExtArgs> | null
     /**
-     * Filter, which Schedule to fetch.
+     * Filter, which MasterSchedule to fetch.
      */
-    where?: ScheduleWhereInput
+    where?: MasterScheduleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Schedules to fetch.
+     * Determine the order of MasterSchedules to fetch.
      */
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Schedules.
+     * Sets the position for searching for MasterSchedules.
      */
-    cursor?: ScheduleWhereUniqueInput
+    cursor?: MasterScheduleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Schedules from the position of the cursor.
+     * Take `±n` MasterSchedules from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Schedules.
+     * Skip the first `n` MasterSchedules.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Schedules.
+     * Filter by unique combinations of MasterSchedules.
      */
-    distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+    distinct?: MasterScheduleScalarFieldEnum | MasterScheduleScalarFieldEnum[]
   }
 
   /**
-   * Schedule findFirstOrThrow
+   * MasterSchedule findFirstOrThrow
    */
-  export type ScheduleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
+    include?: MasterScheduleInclude<ExtArgs> | null
     /**
-     * Filter, which Schedule to fetch.
+     * Filter, which MasterSchedule to fetch.
      */
-    where?: ScheduleWhereInput
+    where?: MasterScheduleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Schedules to fetch.
+     * Determine the order of MasterSchedules to fetch.
      */
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Schedules.
+     * Sets the position for searching for MasterSchedules.
      */
-    cursor?: ScheduleWhereUniqueInput
+    cursor?: MasterScheduleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Schedules from the position of the cursor.
+     * Take `±n` MasterSchedules from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Schedules.
+     * Skip the first `n` MasterSchedules.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Schedules.
+     * Filter by unique combinations of MasterSchedules.
      */
-    distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+    distinct?: MasterScheduleScalarFieldEnum | MasterScheduleScalarFieldEnum[]
   }
 
   /**
-   * Schedule findMany
+   * MasterSchedule findMany
    */
-  export type ScheduleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
+    include?: MasterScheduleInclude<ExtArgs> | null
     /**
-     * Filter, which Schedules to fetch.
+     * Filter, which MasterSchedules to fetch.
      */
-    where?: ScheduleWhereInput
+    where?: MasterScheduleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Schedules to fetch.
+     * Determine the order of MasterSchedules to fetch.
      */
-    orderBy?: ScheduleOrderByWithRelationInput | ScheduleOrderByWithRelationInput[]
+    orderBy?: MasterScheduleOrderByWithRelationInput | MasterScheduleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Schedules.
+     * Sets the position for listing MasterSchedules.
      */
-    cursor?: ScheduleWhereUniqueInput
+    cursor?: MasterScheduleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Schedules from the position of the cursor.
+     * Take `±n` MasterSchedules from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Schedules.
+     * Skip the first `n` MasterSchedules.
      */
     skip?: number
-    distinct?: ScheduleScalarFieldEnum | ScheduleScalarFieldEnum[]
+    distinct?: MasterScheduleScalarFieldEnum | MasterScheduleScalarFieldEnum[]
   }
 
   /**
-   * Schedule create
+   * MasterSchedule create
    */
-  export type ScheduleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
+    include?: MasterScheduleInclude<ExtArgs> | null
     /**
-     * The data needed to create a Schedule.
+     * The data needed to create a MasterSchedule.
      */
-    data: XOR<ScheduleCreateInput, ScheduleUncheckedCreateInput>
+    data: XOR<MasterScheduleCreateInput, MasterScheduleUncheckedCreateInput>
   }
 
   /**
-   * Schedule createMany
+   * MasterSchedule createMany
    */
-  export type ScheduleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Schedules.
+     * The data used to create many MasterSchedules.
      */
-    data: ScheduleCreateManyInput | ScheduleCreateManyInput[]
+    data: MasterScheduleCreateManyInput | MasterScheduleCreateManyInput[]
   }
 
   /**
-   * Schedule update
+   * MasterSchedule update
    */
-  export type ScheduleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
+    include?: MasterScheduleInclude<ExtArgs> | null
     /**
-     * The data needed to update a Schedule.
+     * The data needed to update a MasterSchedule.
      */
-    data: XOR<ScheduleUpdateInput, ScheduleUncheckedUpdateInput>
+    data: XOR<MasterScheduleUpdateInput, MasterScheduleUncheckedUpdateInput>
     /**
-     * Choose, which Schedule to update.
+     * Choose, which MasterSchedule to update.
      */
-    where: ScheduleWhereUniqueInput
+    where: MasterScheduleWhereUniqueInput
   }
 
   /**
-   * Schedule updateMany
+   * MasterSchedule updateMany
    */
-  export type ScheduleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Schedules.
+     * The data used to update MasterSchedules.
      */
-    data: XOR<ScheduleUpdateManyMutationInput, ScheduleUncheckedUpdateManyInput>
+    data: XOR<MasterScheduleUpdateManyMutationInput, MasterScheduleUncheckedUpdateManyInput>
     /**
-     * Filter which Schedules to update
+     * Filter which MasterSchedules to update
      */
-    where?: ScheduleWhereInput
+    where?: MasterScheduleWhereInput
     /**
-     * Limit how many Schedules to update.
+     * Limit how many MasterSchedules to update.
      */
     limit?: number
   }
 
   /**
-   * Schedule upsert
+   * MasterSchedule upsert
    */
-  export type ScheduleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
+    include?: MasterScheduleInclude<ExtArgs> | null
     /**
-     * The filter to search for the Schedule to update in case it exists.
+     * The filter to search for the MasterSchedule to update in case it exists.
      */
-    where: ScheduleWhereUniqueInput
+    where: MasterScheduleWhereUniqueInput
     /**
-     * In case the Schedule found by the `where` argument doesn't exist, create a new Schedule with this data.
+     * In case the MasterSchedule found by the `where` argument doesn't exist, create a new MasterSchedule with this data.
      */
-    create: XOR<ScheduleCreateInput, ScheduleUncheckedCreateInput>
+    create: XOR<MasterScheduleCreateInput, MasterScheduleUncheckedCreateInput>
     /**
-     * In case the Schedule was found with the provided `where` argument, update it with this data.
+     * In case the MasterSchedule was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ScheduleUpdateInput, ScheduleUncheckedUpdateInput>
+    update: XOR<MasterScheduleUpdateInput, MasterScheduleUncheckedUpdateInput>
   }
 
   /**
-   * Schedule delete
+   * MasterSchedule delete
    */
-  export type ScheduleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
+    include?: MasterScheduleInclude<ExtArgs> | null
     /**
-     * Filter which Schedule to delete.
+     * Filter which MasterSchedule to delete.
      */
-    where: ScheduleWhereUniqueInput
+    where: MasterScheduleWhereUniqueInput
   }
 
   /**
-   * Schedule deleteMany
+   * MasterSchedule deleteMany
    */
-  export type ScheduleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Schedules to delete
+     * Filter which MasterSchedules to delete
      */
-    where?: ScheduleWhereInput
+    where?: MasterScheduleWhereInput
     /**
-     * Limit how many Schedules to delete.
+     * Limit how many MasterSchedules to delete.
      */
     limit?: number
   }
 
   /**
-   * Schedule findRaw
+   * MasterSchedule findRaw
    */
-  export type ScheduleFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
      */
@@ -14950,9 +15961,9 @@ export namespace Prisma {
   }
 
   /**
-   * Schedule aggregateRaw
+   * MasterSchedule aggregateRaw
    */
-  export type ScheduleAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
      */
@@ -14964,9 +15975,9 @@ export namespace Prisma {
   }
 
   /**
-   * Schedule.monday
+   * MasterSchedule.monday
    */
-  export type Schedule$mondayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterSchedule$mondayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Shift
      */
@@ -14983,9 +15994,9 @@ export namespace Prisma {
   }
 
   /**
-   * Schedule.tuesday
+   * MasterSchedule.tuesday
    */
-  export type Schedule$tuesdayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterSchedule$tuesdayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Shift
      */
@@ -15002,9 +16013,9 @@ export namespace Prisma {
   }
 
   /**
-   * Schedule.wednesday
+   * MasterSchedule.wednesday
    */
-  export type Schedule$wednesdayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterSchedule$wednesdayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Shift
      */
@@ -15021,9 +16032,9 @@ export namespace Prisma {
   }
 
   /**
-   * Schedule.thursday
+   * MasterSchedule.thursday
    */
-  export type Schedule$thursdayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterSchedule$thursdayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Shift
      */
@@ -15040,9 +16051,9 @@ export namespace Prisma {
   }
 
   /**
-   * Schedule.friday
+   * MasterSchedule.friday
    */
-  export type Schedule$fridayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterSchedule$fridayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Shift
      */
@@ -15059,9 +16070,9 @@ export namespace Prisma {
   }
 
   /**
-   * Schedule.saturday
+   * MasterSchedule.saturday
    */
-  export type Schedule$saturdayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterSchedule$saturdayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Shift
      */
@@ -15078,9 +16089,9 @@ export namespace Prisma {
   }
 
   /**
-   * Schedule.sunday
+   * MasterSchedule.sunday
    */
-  export type Schedule$sundayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterSchedule$sundayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Shift
      */
@@ -15097,21 +16108,21 @@ export namespace Prisma {
   }
 
   /**
-   * Schedule without action
+   * MasterSchedule without action
    */
-  export type ScheduleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MasterScheduleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Schedule
+     * Select specific fields to fetch from the MasterSchedule
      */
-    select?: ScheduleSelect<ExtArgs> | null
+    select?: MasterScheduleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Schedule
+     * Omit specific fields from the MasterSchedule
      */
-    omit?: ScheduleOmit<ExtArgs> | null
+    omit?: MasterScheduleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ScheduleInclude<ExtArgs> | null
+    include?: MasterScheduleInclude<ExtArgs> | null
   }
 
 
@@ -22876,6 +23887,8376 @@ export namespace Prisma {
 
 
   /**
+   * Model ExpenseRequest
+   */
+
+  export type AggregateExpenseRequest = {
+    _count: ExpenseRequestCountAggregateOutputType | null
+    _avg: ExpenseRequestAvgAggregateOutputType | null
+    _sum: ExpenseRequestSumAggregateOutputType | null
+    _min: ExpenseRequestMinAggregateOutputType | null
+    _max: ExpenseRequestMaxAggregateOutputType | null
+  }
+
+  export type ExpenseRequestAvgAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type ExpenseRequestSumAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type ExpenseRequestMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    amount: number | null
+    category: string | null
+    description: string | null
+    status: string | null
+    date: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ExpenseRequestMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    amount: number | null
+    category: string | null
+    description: string | null
+    status: string | null
+    date: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ExpenseRequestCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    amount: number
+    category: number
+    description: number
+    receiptUrls: number
+    status: number
+    date: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ExpenseRequestAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type ExpenseRequestSumAggregateInputType = {
+    amount?: true
+  }
+
+  export type ExpenseRequestMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    amount?: true
+    category?: true
+    description?: true
+    status?: true
+    date?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ExpenseRequestMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    amount?: true
+    category?: true
+    description?: true
+    status?: true
+    date?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ExpenseRequestCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    amount?: true
+    category?: true
+    description?: true
+    receiptUrls?: true
+    status?: true
+    date?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ExpenseRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ExpenseRequest to aggregate.
+     */
+    where?: ExpenseRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExpenseRequests to fetch.
+     */
+    orderBy?: ExpenseRequestOrderByWithRelationInput | ExpenseRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ExpenseRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExpenseRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExpenseRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ExpenseRequests
+    **/
+    _count?: true | ExpenseRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ExpenseRequestAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ExpenseRequestSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ExpenseRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ExpenseRequestMaxAggregateInputType
+  }
+
+  export type GetExpenseRequestAggregateType<T extends ExpenseRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateExpenseRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateExpenseRequest[P]>
+      : GetScalarType<T[P], AggregateExpenseRequest[P]>
+  }
+
+
+
+
+  export type ExpenseRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExpenseRequestWhereInput
+    orderBy?: ExpenseRequestOrderByWithAggregationInput | ExpenseRequestOrderByWithAggregationInput[]
+    by: ExpenseRequestScalarFieldEnum[] | ExpenseRequestScalarFieldEnum
+    having?: ExpenseRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ExpenseRequestCountAggregateInputType | true
+    _avg?: ExpenseRequestAvgAggregateInputType
+    _sum?: ExpenseRequestSumAggregateInputType
+    _min?: ExpenseRequestMinAggregateInputType
+    _max?: ExpenseRequestMaxAggregateInputType
+  }
+
+  export type ExpenseRequestGroupByOutputType = {
+    id: string
+    employeeId: string
+    amount: number
+    category: string
+    description: string
+    receiptUrls: string[]
+    status: string
+    date: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: ExpenseRequestCountAggregateOutputType | null
+    _avg: ExpenseRequestAvgAggregateOutputType | null
+    _sum: ExpenseRequestSumAggregateOutputType | null
+    _min: ExpenseRequestMinAggregateOutputType | null
+    _max: ExpenseRequestMaxAggregateOutputType | null
+  }
+
+  type GetExpenseRequestGroupByPayload<T extends ExpenseRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ExpenseRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ExpenseRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ExpenseRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], ExpenseRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ExpenseRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    amount?: boolean
+    category?: boolean
+    description?: boolean
+    receiptUrls?: boolean
+    status?: boolean
+    date?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["expenseRequest"]>
+
+
+
+  export type ExpenseRequestSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    amount?: boolean
+    category?: boolean
+    description?: boolean
+    receiptUrls?: boolean
+    status?: boolean
+    date?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ExpenseRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "amount" | "category" | "description" | "receiptUrls" | "status" | "date" | "createdAt" | "updatedAt", ExtArgs["result"]["expenseRequest"]>
+  export type ExpenseRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+  }
+
+  export type $ExpenseRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ExpenseRequest"
+    objects: {
+      employee: Prisma.$EmployeePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      amount: number
+      category: string
+      description: string
+      receiptUrls: string[]
+      status: string
+      date: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["expenseRequest"]>
+    composites: {}
+  }
+
+  type ExpenseRequestGetPayload<S extends boolean | null | undefined | ExpenseRequestDefaultArgs> = $Result.GetResult<Prisma.$ExpenseRequestPayload, S>
+
+  type ExpenseRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ExpenseRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ExpenseRequestCountAggregateInputType | true
+    }
+
+  export interface ExpenseRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ExpenseRequest'], meta: { name: 'ExpenseRequest' } }
+    /**
+     * Find zero or one ExpenseRequest that matches the filter.
+     * @param {ExpenseRequestFindUniqueArgs} args - Arguments to find a ExpenseRequest
+     * @example
+     * // Get one ExpenseRequest
+     * const expenseRequest = await prisma.expenseRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ExpenseRequestFindUniqueArgs>(args: SelectSubset<T, ExpenseRequestFindUniqueArgs<ExtArgs>>): Prisma__ExpenseRequestClient<$Result.GetResult<Prisma.$ExpenseRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ExpenseRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ExpenseRequestFindUniqueOrThrowArgs} args - Arguments to find a ExpenseRequest
+     * @example
+     * // Get one ExpenseRequest
+     * const expenseRequest = await prisma.expenseRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ExpenseRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, ExpenseRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ExpenseRequestClient<$Result.GetResult<Prisma.$ExpenseRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ExpenseRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExpenseRequestFindFirstArgs} args - Arguments to find a ExpenseRequest
+     * @example
+     * // Get one ExpenseRequest
+     * const expenseRequest = await prisma.expenseRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ExpenseRequestFindFirstArgs>(args?: SelectSubset<T, ExpenseRequestFindFirstArgs<ExtArgs>>): Prisma__ExpenseRequestClient<$Result.GetResult<Prisma.$ExpenseRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ExpenseRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExpenseRequestFindFirstOrThrowArgs} args - Arguments to find a ExpenseRequest
+     * @example
+     * // Get one ExpenseRequest
+     * const expenseRequest = await prisma.expenseRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ExpenseRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, ExpenseRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__ExpenseRequestClient<$Result.GetResult<Prisma.$ExpenseRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ExpenseRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExpenseRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ExpenseRequests
+     * const expenseRequests = await prisma.expenseRequest.findMany()
+     * 
+     * // Get first 10 ExpenseRequests
+     * const expenseRequests = await prisma.expenseRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const expenseRequestWithIdOnly = await prisma.expenseRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ExpenseRequestFindManyArgs>(args?: SelectSubset<T, ExpenseRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExpenseRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ExpenseRequest.
+     * @param {ExpenseRequestCreateArgs} args - Arguments to create a ExpenseRequest.
+     * @example
+     * // Create one ExpenseRequest
+     * const ExpenseRequest = await prisma.expenseRequest.create({
+     *   data: {
+     *     // ... data to create a ExpenseRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends ExpenseRequestCreateArgs>(args: SelectSubset<T, ExpenseRequestCreateArgs<ExtArgs>>): Prisma__ExpenseRequestClient<$Result.GetResult<Prisma.$ExpenseRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ExpenseRequests.
+     * @param {ExpenseRequestCreateManyArgs} args - Arguments to create many ExpenseRequests.
+     * @example
+     * // Create many ExpenseRequests
+     * const expenseRequest = await prisma.expenseRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ExpenseRequestCreateManyArgs>(args?: SelectSubset<T, ExpenseRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ExpenseRequest.
+     * @param {ExpenseRequestDeleteArgs} args - Arguments to delete one ExpenseRequest.
+     * @example
+     * // Delete one ExpenseRequest
+     * const ExpenseRequest = await prisma.expenseRequest.delete({
+     *   where: {
+     *     // ... filter to delete one ExpenseRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ExpenseRequestDeleteArgs>(args: SelectSubset<T, ExpenseRequestDeleteArgs<ExtArgs>>): Prisma__ExpenseRequestClient<$Result.GetResult<Prisma.$ExpenseRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ExpenseRequest.
+     * @param {ExpenseRequestUpdateArgs} args - Arguments to update one ExpenseRequest.
+     * @example
+     * // Update one ExpenseRequest
+     * const expenseRequest = await prisma.expenseRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ExpenseRequestUpdateArgs>(args: SelectSubset<T, ExpenseRequestUpdateArgs<ExtArgs>>): Prisma__ExpenseRequestClient<$Result.GetResult<Prisma.$ExpenseRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ExpenseRequests.
+     * @param {ExpenseRequestDeleteManyArgs} args - Arguments to filter ExpenseRequests to delete.
+     * @example
+     * // Delete a few ExpenseRequests
+     * const { count } = await prisma.expenseRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ExpenseRequestDeleteManyArgs>(args?: SelectSubset<T, ExpenseRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ExpenseRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExpenseRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ExpenseRequests
+     * const expenseRequest = await prisma.expenseRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ExpenseRequestUpdateManyArgs>(args: SelectSubset<T, ExpenseRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ExpenseRequest.
+     * @param {ExpenseRequestUpsertArgs} args - Arguments to update or create a ExpenseRequest.
+     * @example
+     * // Update or create a ExpenseRequest
+     * const expenseRequest = await prisma.expenseRequest.upsert({
+     *   create: {
+     *     // ... data to create a ExpenseRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ExpenseRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ExpenseRequestUpsertArgs>(args: SelectSubset<T, ExpenseRequestUpsertArgs<ExtArgs>>): Prisma__ExpenseRequestClient<$Result.GetResult<Prisma.$ExpenseRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ExpenseRequests that matches the filter.
+     * @param {ExpenseRequestFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const expenseRequest = await prisma.expenseRequest.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: ExpenseRequestFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a ExpenseRequest.
+     * @param {ExpenseRequestAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const expenseRequest = await prisma.expenseRequest.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: ExpenseRequestAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of ExpenseRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExpenseRequestCountArgs} args - Arguments to filter ExpenseRequests to count.
+     * @example
+     * // Count the number of ExpenseRequests
+     * const count = await prisma.expenseRequest.count({
+     *   where: {
+     *     // ... the filter for the ExpenseRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends ExpenseRequestCountArgs>(
+      args?: Subset<T, ExpenseRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ExpenseRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ExpenseRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExpenseRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ExpenseRequestAggregateArgs>(args: Subset<T, ExpenseRequestAggregateArgs>): Prisma.PrismaPromise<GetExpenseRequestAggregateType<T>>
+
+    /**
+     * Group by ExpenseRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExpenseRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ExpenseRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ExpenseRequestGroupByArgs['orderBy'] }
+        : { orderBy?: ExpenseRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ExpenseRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetExpenseRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ExpenseRequest model
+   */
+  readonly fields: ExpenseRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ExpenseRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ExpenseRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    employee<T extends EmployeeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeDefaultArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ExpenseRequest model
+   */
+  interface ExpenseRequestFieldRefs {
+    readonly id: FieldRef<"ExpenseRequest", 'String'>
+    readonly employeeId: FieldRef<"ExpenseRequest", 'String'>
+    readonly amount: FieldRef<"ExpenseRequest", 'Float'>
+    readonly category: FieldRef<"ExpenseRequest", 'String'>
+    readonly description: FieldRef<"ExpenseRequest", 'String'>
+    readonly receiptUrls: FieldRef<"ExpenseRequest", 'String[]'>
+    readonly status: FieldRef<"ExpenseRequest", 'String'>
+    readonly date: FieldRef<"ExpenseRequest", 'DateTime'>
+    readonly createdAt: FieldRef<"ExpenseRequest", 'DateTime'>
+    readonly updatedAt: FieldRef<"ExpenseRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ExpenseRequest findUnique
+   */
+  export type ExpenseRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which ExpenseRequest to fetch.
+     */
+    where: ExpenseRequestWhereUniqueInput
+  }
+
+  /**
+   * ExpenseRequest findUniqueOrThrow
+   */
+  export type ExpenseRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which ExpenseRequest to fetch.
+     */
+    where: ExpenseRequestWhereUniqueInput
+  }
+
+  /**
+   * ExpenseRequest findFirst
+   */
+  export type ExpenseRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which ExpenseRequest to fetch.
+     */
+    where?: ExpenseRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExpenseRequests to fetch.
+     */
+    orderBy?: ExpenseRequestOrderByWithRelationInput | ExpenseRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ExpenseRequests.
+     */
+    cursor?: ExpenseRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExpenseRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExpenseRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ExpenseRequests.
+     */
+    distinct?: ExpenseRequestScalarFieldEnum | ExpenseRequestScalarFieldEnum[]
+  }
+
+  /**
+   * ExpenseRequest findFirstOrThrow
+   */
+  export type ExpenseRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which ExpenseRequest to fetch.
+     */
+    where?: ExpenseRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExpenseRequests to fetch.
+     */
+    orderBy?: ExpenseRequestOrderByWithRelationInput | ExpenseRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ExpenseRequests.
+     */
+    cursor?: ExpenseRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExpenseRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExpenseRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ExpenseRequests.
+     */
+    distinct?: ExpenseRequestScalarFieldEnum | ExpenseRequestScalarFieldEnum[]
+  }
+
+  /**
+   * ExpenseRequest findMany
+   */
+  export type ExpenseRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which ExpenseRequests to fetch.
+     */
+    where?: ExpenseRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExpenseRequests to fetch.
+     */
+    orderBy?: ExpenseRequestOrderByWithRelationInput | ExpenseRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ExpenseRequests.
+     */
+    cursor?: ExpenseRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExpenseRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExpenseRequests.
+     */
+    skip?: number
+    distinct?: ExpenseRequestScalarFieldEnum | ExpenseRequestScalarFieldEnum[]
+  }
+
+  /**
+   * ExpenseRequest create
+   */
+  export type ExpenseRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ExpenseRequest.
+     */
+    data: XOR<ExpenseRequestCreateInput, ExpenseRequestUncheckedCreateInput>
+  }
+
+  /**
+   * ExpenseRequest createMany
+   */
+  export type ExpenseRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ExpenseRequests.
+     */
+    data: ExpenseRequestCreateManyInput | ExpenseRequestCreateManyInput[]
+  }
+
+  /**
+   * ExpenseRequest update
+   */
+  export type ExpenseRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ExpenseRequest.
+     */
+    data: XOR<ExpenseRequestUpdateInput, ExpenseRequestUncheckedUpdateInput>
+    /**
+     * Choose, which ExpenseRequest to update.
+     */
+    where: ExpenseRequestWhereUniqueInput
+  }
+
+  /**
+   * ExpenseRequest updateMany
+   */
+  export type ExpenseRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ExpenseRequests.
+     */
+    data: XOR<ExpenseRequestUpdateManyMutationInput, ExpenseRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which ExpenseRequests to update
+     */
+    where?: ExpenseRequestWhereInput
+    /**
+     * Limit how many ExpenseRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ExpenseRequest upsert
+   */
+  export type ExpenseRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ExpenseRequest to update in case it exists.
+     */
+    where: ExpenseRequestWhereUniqueInput
+    /**
+     * In case the ExpenseRequest found by the `where` argument doesn't exist, create a new ExpenseRequest with this data.
+     */
+    create: XOR<ExpenseRequestCreateInput, ExpenseRequestUncheckedCreateInput>
+    /**
+     * In case the ExpenseRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ExpenseRequestUpdateInput, ExpenseRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * ExpenseRequest delete
+   */
+  export type ExpenseRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+    /**
+     * Filter which ExpenseRequest to delete.
+     */
+    where: ExpenseRequestWhereUniqueInput
+  }
+
+  /**
+   * ExpenseRequest deleteMany
+   */
+  export type ExpenseRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ExpenseRequests to delete
+     */
+    where?: ExpenseRequestWhereInput
+    /**
+     * Limit how many ExpenseRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ExpenseRequest findRaw
+   */
+  export type ExpenseRequestFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * ExpenseRequest aggregateRaw
+   */
+  export type ExpenseRequestAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * ExpenseRequest without action
+   */
+  export type ExpenseRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExpenseRequest
+     */
+    select?: ExpenseRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExpenseRequest
+     */
+    omit?: ExpenseRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExpenseRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CompanyLoan
+   */
+
+  export type AggregateCompanyLoan = {
+    _count: CompanyLoanCountAggregateOutputType | null
+    _avg: CompanyLoanAvgAggregateOutputType | null
+    _sum: CompanyLoanSumAggregateOutputType | null
+    _min: CompanyLoanMinAggregateOutputType | null
+    _max: CompanyLoanMaxAggregateOutputType | null
+  }
+
+  export type CompanyLoanAvgAggregateOutputType = {
+    principalAmount: number | null
+    remainingBalance: number | null
+    monthlyDeduction: number | null
+  }
+
+  export type CompanyLoanSumAggregateOutputType = {
+    principalAmount: number | null
+    remainingBalance: number | null
+    monthlyDeduction: number | null
+  }
+
+  export type CompanyLoanMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    principalAmount: number | null
+    remainingBalance: number | null
+    monthlyDeduction: number | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CompanyLoanMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    principalAmount: number | null
+    remainingBalance: number | null
+    monthlyDeduction: number | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CompanyLoanCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    principalAmount: number
+    remainingBalance: number
+    monthlyDeduction: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CompanyLoanAvgAggregateInputType = {
+    principalAmount?: true
+    remainingBalance?: true
+    monthlyDeduction?: true
+  }
+
+  export type CompanyLoanSumAggregateInputType = {
+    principalAmount?: true
+    remainingBalance?: true
+    monthlyDeduction?: true
+  }
+
+  export type CompanyLoanMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    principalAmount?: true
+    remainingBalance?: true
+    monthlyDeduction?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CompanyLoanMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    principalAmount?: true
+    remainingBalance?: true
+    monthlyDeduction?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CompanyLoanCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    principalAmount?: true
+    remainingBalance?: true
+    monthlyDeduction?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CompanyLoanAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompanyLoan to aggregate.
+     */
+    where?: CompanyLoanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyLoans to fetch.
+     */
+    orderBy?: CompanyLoanOrderByWithRelationInput | CompanyLoanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CompanyLoanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyLoans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyLoans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CompanyLoans
+    **/
+    _count?: true | CompanyLoanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CompanyLoanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CompanyLoanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CompanyLoanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CompanyLoanMaxAggregateInputType
+  }
+
+  export type GetCompanyLoanAggregateType<T extends CompanyLoanAggregateArgs> = {
+        [P in keyof T & keyof AggregateCompanyLoan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCompanyLoan[P]>
+      : GetScalarType<T[P], AggregateCompanyLoan[P]>
+  }
+
+
+
+
+  export type CompanyLoanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyLoanWhereInput
+    orderBy?: CompanyLoanOrderByWithAggregationInput | CompanyLoanOrderByWithAggregationInput[]
+    by: CompanyLoanScalarFieldEnum[] | CompanyLoanScalarFieldEnum
+    having?: CompanyLoanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CompanyLoanCountAggregateInputType | true
+    _avg?: CompanyLoanAvgAggregateInputType
+    _sum?: CompanyLoanSumAggregateInputType
+    _min?: CompanyLoanMinAggregateInputType
+    _max?: CompanyLoanMaxAggregateInputType
+  }
+
+  export type CompanyLoanGroupByOutputType = {
+    id: string
+    employeeId: string
+    principalAmount: number
+    remainingBalance: number
+    monthlyDeduction: number
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CompanyLoanCountAggregateOutputType | null
+    _avg: CompanyLoanAvgAggregateOutputType | null
+    _sum: CompanyLoanSumAggregateOutputType | null
+    _min: CompanyLoanMinAggregateOutputType | null
+    _max: CompanyLoanMaxAggregateOutputType | null
+  }
+
+  type GetCompanyLoanGroupByPayload<T extends CompanyLoanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CompanyLoanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CompanyLoanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CompanyLoanGroupByOutputType[P]>
+            : GetScalarType<T[P], CompanyLoanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CompanyLoanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    principalAmount?: boolean
+    remainingBalance?: boolean
+    monthlyDeduction?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["companyLoan"]>
+
+
+
+  export type CompanyLoanSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    principalAmount?: boolean
+    remainingBalance?: boolean
+    monthlyDeduction?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CompanyLoanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "principalAmount" | "remainingBalance" | "monthlyDeduction" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["companyLoan"]>
+  export type CompanyLoanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+  }
+
+  export type $CompanyLoanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CompanyLoan"
+    objects: {
+      employee: Prisma.$EmployeePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      principalAmount: number
+      remainingBalance: number
+      monthlyDeduction: number
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["companyLoan"]>
+    composites: {}
+  }
+
+  type CompanyLoanGetPayload<S extends boolean | null | undefined | CompanyLoanDefaultArgs> = $Result.GetResult<Prisma.$CompanyLoanPayload, S>
+
+  type CompanyLoanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CompanyLoanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CompanyLoanCountAggregateInputType | true
+    }
+
+  export interface CompanyLoanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CompanyLoan'], meta: { name: 'CompanyLoan' } }
+    /**
+     * Find zero or one CompanyLoan that matches the filter.
+     * @param {CompanyLoanFindUniqueArgs} args - Arguments to find a CompanyLoan
+     * @example
+     * // Get one CompanyLoan
+     * const companyLoan = await prisma.companyLoan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CompanyLoanFindUniqueArgs>(args: SelectSubset<T, CompanyLoanFindUniqueArgs<ExtArgs>>): Prisma__CompanyLoanClient<$Result.GetResult<Prisma.$CompanyLoanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CompanyLoan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CompanyLoanFindUniqueOrThrowArgs} args - Arguments to find a CompanyLoan
+     * @example
+     * // Get one CompanyLoan
+     * const companyLoan = await prisma.companyLoan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CompanyLoanFindUniqueOrThrowArgs>(args: SelectSubset<T, CompanyLoanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CompanyLoanClient<$Result.GetResult<Prisma.$CompanyLoanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CompanyLoan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyLoanFindFirstArgs} args - Arguments to find a CompanyLoan
+     * @example
+     * // Get one CompanyLoan
+     * const companyLoan = await prisma.companyLoan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CompanyLoanFindFirstArgs>(args?: SelectSubset<T, CompanyLoanFindFirstArgs<ExtArgs>>): Prisma__CompanyLoanClient<$Result.GetResult<Prisma.$CompanyLoanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CompanyLoan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyLoanFindFirstOrThrowArgs} args - Arguments to find a CompanyLoan
+     * @example
+     * // Get one CompanyLoan
+     * const companyLoan = await prisma.companyLoan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CompanyLoanFindFirstOrThrowArgs>(args?: SelectSubset<T, CompanyLoanFindFirstOrThrowArgs<ExtArgs>>): Prisma__CompanyLoanClient<$Result.GetResult<Prisma.$CompanyLoanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CompanyLoans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyLoanFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CompanyLoans
+     * const companyLoans = await prisma.companyLoan.findMany()
+     * 
+     * // Get first 10 CompanyLoans
+     * const companyLoans = await prisma.companyLoan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const companyLoanWithIdOnly = await prisma.companyLoan.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CompanyLoanFindManyArgs>(args?: SelectSubset<T, CompanyLoanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyLoanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CompanyLoan.
+     * @param {CompanyLoanCreateArgs} args - Arguments to create a CompanyLoan.
+     * @example
+     * // Create one CompanyLoan
+     * const CompanyLoan = await prisma.companyLoan.create({
+     *   data: {
+     *     // ... data to create a CompanyLoan
+     *   }
+     * })
+     * 
+     */
+    create<T extends CompanyLoanCreateArgs>(args: SelectSubset<T, CompanyLoanCreateArgs<ExtArgs>>): Prisma__CompanyLoanClient<$Result.GetResult<Prisma.$CompanyLoanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CompanyLoans.
+     * @param {CompanyLoanCreateManyArgs} args - Arguments to create many CompanyLoans.
+     * @example
+     * // Create many CompanyLoans
+     * const companyLoan = await prisma.companyLoan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CompanyLoanCreateManyArgs>(args?: SelectSubset<T, CompanyLoanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a CompanyLoan.
+     * @param {CompanyLoanDeleteArgs} args - Arguments to delete one CompanyLoan.
+     * @example
+     * // Delete one CompanyLoan
+     * const CompanyLoan = await prisma.companyLoan.delete({
+     *   where: {
+     *     // ... filter to delete one CompanyLoan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CompanyLoanDeleteArgs>(args: SelectSubset<T, CompanyLoanDeleteArgs<ExtArgs>>): Prisma__CompanyLoanClient<$Result.GetResult<Prisma.$CompanyLoanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CompanyLoan.
+     * @param {CompanyLoanUpdateArgs} args - Arguments to update one CompanyLoan.
+     * @example
+     * // Update one CompanyLoan
+     * const companyLoan = await prisma.companyLoan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CompanyLoanUpdateArgs>(args: SelectSubset<T, CompanyLoanUpdateArgs<ExtArgs>>): Prisma__CompanyLoanClient<$Result.GetResult<Prisma.$CompanyLoanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CompanyLoans.
+     * @param {CompanyLoanDeleteManyArgs} args - Arguments to filter CompanyLoans to delete.
+     * @example
+     * // Delete a few CompanyLoans
+     * const { count } = await prisma.companyLoan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CompanyLoanDeleteManyArgs>(args?: SelectSubset<T, CompanyLoanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CompanyLoans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyLoanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CompanyLoans
+     * const companyLoan = await prisma.companyLoan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CompanyLoanUpdateManyArgs>(args: SelectSubset<T, CompanyLoanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CompanyLoan.
+     * @param {CompanyLoanUpsertArgs} args - Arguments to update or create a CompanyLoan.
+     * @example
+     * // Update or create a CompanyLoan
+     * const companyLoan = await prisma.companyLoan.upsert({
+     *   create: {
+     *     // ... data to create a CompanyLoan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CompanyLoan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CompanyLoanUpsertArgs>(args: SelectSubset<T, CompanyLoanUpsertArgs<ExtArgs>>): Prisma__CompanyLoanClient<$Result.GetResult<Prisma.$CompanyLoanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CompanyLoans that matches the filter.
+     * @param {CompanyLoanFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const companyLoan = await prisma.companyLoan.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: CompanyLoanFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a CompanyLoan.
+     * @param {CompanyLoanAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const companyLoan = await prisma.companyLoan.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: CompanyLoanAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of CompanyLoans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyLoanCountArgs} args - Arguments to filter CompanyLoans to count.
+     * @example
+     * // Count the number of CompanyLoans
+     * const count = await prisma.companyLoan.count({
+     *   where: {
+     *     // ... the filter for the CompanyLoans we want to count
+     *   }
+     * })
+    **/
+    count<T extends CompanyLoanCountArgs>(
+      args?: Subset<T, CompanyLoanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CompanyLoanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CompanyLoan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyLoanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CompanyLoanAggregateArgs>(args: Subset<T, CompanyLoanAggregateArgs>): Prisma.PrismaPromise<GetCompanyLoanAggregateType<T>>
+
+    /**
+     * Group by CompanyLoan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyLoanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CompanyLoanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CompanyLoanGroupByArgs['orderBy'] }
+        : { orderBy?: CompanyLoanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CompanyLoanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCompanyLoanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CompanyLoan model
+   */
+  readonly fields: CompanyLoanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CompanyLoan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CompanyLoanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    employee<T extends EmployeeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeDefaultArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CompanyLoan model
+   */
+  interface CompanyLoanFieldRefs {
+    readonly id: FieldRef<"CompanyLoan", 'String'>
+    readonly employeeId: FieldRef<"CompanyLoan", 'String'>
+    readonly principalAmount: FieldRef<"CompanyLoan", 'Float'>
+    readonly remainingBalance: FieldRef<"CompanyLoan", 'Float'>
+    readonly monthlyDeduction: FieldRef<"CompanyLoan", 'Float'>
+    readonly status: FieldRef<"CompanyLoan", 'String'>
+    readonly createdAt: FieldRef<"CompanyLoan", 'DateTime'>
+    readonly updatedAt: FieldRef<"CompanyLoan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CompanyLoan findUnique
+   */
+  export type CompanyLoanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyLoan to fetch.
+     */
+    where: CompanyLoanWhereUniqueInput
+  }
+
+  /**
+   * CompanyLoan findUniqueOrThrow
+   */
+  export type CompanyLoanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyLoan to fetch.
+     */
+    where: CompanyLoanWhereUniqueInput
+  }
+
+  /**
+   * CompanyLoan findFirst
+   */
+  export type CompanyLoanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyLoan to fetch.
+     */
+    where?: CompanyLoanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyLoans to fetch.
+     */
+    orderBy?: CompanyLoanOrderByWithRelationInput | CompanyLoanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompanyLoans.
+     */
+    cursor?: CompanyLoanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyLoans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyLoans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanyLoans.
+     */
+    distinct?: CompanyLoanScalarFieldEnum | CompanyLoanScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyLoan findFirstOrThrow
+   */
+  export type CompanyLoanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyLoan to fetch.
+     */
+    where?: CompanyLoanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyLoans to fetch.
+     */
+    orderBy?: CompanyLoanOrderByWithRelationInput | CompanyLoanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompanyLoans.
+     */
+    cursor?: CompanyLoanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyLoans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyLoans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanyLoans.
+     */
+    distinct?: CompanyLoanScalarFieldEnum | CompanyLoanScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyLoan findMany
+   */
+  export type CompanyLoanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyLoans to fetch.
+     */
+    where?: CompanyLoanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyLoans to fetch.
+     */
+    orderBy?: CompanyLoanOrderByWithRelationInput | CompanyLoanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CompanyLoans.
+     */
+    cursor?: CompanyLoanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyLoans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyLoans.
+     */
+    skip?: number
+    distinct?: CompanyLoanScalarFieldEnum | CompanyLoanScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyLoan create
+   */
+  export type CompanyLoanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CompanyLoan.
+     */
+    data: XOR<CompanyLoanCreateInput, CompanyLoanUncheckedCreateInput>
+  }
+
+  /**
+   * CompanyLoan createMany
+   */
+  export type CompanyLoanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CompanyLoans.
+     */
+    data: CompanyLoanCreateManyInput | CompanyLoanCreateManyInput[]
+  }
+
+  /**
+   * CompanyLoan update
+   */
+  export type CompanyLoanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CompanyLoan.
+     */
+    data: XOR<CompanyLoanUpdateInput, CompanyLoanUncheckedUpdateInput>
+    /**
+     * Choose, which CompanyLoan to update.
+     */
+    where: CompanyLoanWhereUniqueInput
+  }
+
+  /**
+   * CompanyLoan updateMany
+   */
+  export type CompanyLoanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CompanyLoans.
+     */
+    data: XOR<CompanyLoanUpdateManyMutationInput, CompanyLoanUncheckedUpdateManyInput>
+    /**
+     * Filter which CompanyLoans to update
+     */
+    where?: CompanyLoanWhereInput
+    /**
+     * Limit how many CompanyLoans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CompanyLoan upsert
+   */
+  export type CompanyLoanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CompanyLoan to update in case it exists.
+     */
+    where: CompanyLoanWhereUniqueInput
+    /**
+     * In case the CompanyLoan found by the `where` argument doesn't exist, create a new CompanyLoan with this data.
+     */
+    create: XOR<CompanyLoanCreateInput, CompanyLoanUncheckedCreateInput>
+    /**
+     * In case the CompanyLoan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CompanyLoanUpdateInput, CompanyLoanUncheckedUpdateInput>
+  }
+
+  /**
+   * CompanyLoan delete
+   */
+  export type CompanyLoanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+    /**
+     * Filter which CompanyLoan to delete.
+     */
+    where: CompanyLoanWhereUniqueInput
+  }
+
+  /**
+   * CompanyLoan deleteMany
+   */
+  export type CompanyLoanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompanyLoans to delete
+     */
+    where?: CompanyLoanWhereInput
+    /**
+     * Limit how many CompanyLoans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CompanyLoan findRaw
+   */
+  export type CompanyLoanFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * CompanyLoan aggregateRaw
+   */
+  export type CompanyLoanAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * CompanyLoan without action
+   */
+  export type CompanyLoanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyLoan
+     */
+    select?: CompanyLoanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyLoan
+     */
+    omit?: CompanyLoanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyLoanInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CompanyAsset
+   */
+
+  export type AggregateCompanyAsset = {
+    _count: CompanyAssetCountAggregateOutputType | null
+    _avg: CompanyAssetAvgAggregateOutputType | null
+    _sum: CompanyAssetSumAggregateOutputType | null
+    _min: CompanyAssetMinAggregateOutputType | null
+    _max: CompanyAssetMaxAggregateOutputType | null
+  }
+
+  export type CompanyAssetAvgAggregateOutputType = {
+    purchasePrice: number | null
+  }
+
+  export type CompanyAssetSumAggregateOutputType = {
+    purchasePrice: number | null
+  }
+
+  export type CompanyAssetMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    name: string | null
+    type: string | null
+    serialNumber: string | null
+    purchaseDate: Date | null
+    purchasePrice: number | null
+    condition: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CompanyAssetMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    name: string | null
+    type: string | null
+    serialNumber: string | null
+    purchaseDate: Date | null
+    purchasePrice: number | null
+    condition: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CompanyAssetCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    name: number
+    type: number
+    serialNumber: number
+    purchaseDate: number
+    purchasePrice: number
+    condition: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CompanyAssetAvgAggregateInputType = {
+    purchasePrice?: true
+  }
+
+  export type CompanyAssetSumAggregateInputType = {
+    purchasePrice?: true
+  }
+
+  export type CompanyAssetMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    name?: true
+    type?: true
+    serialNumber?: true
+    purchaseDate?: true
+    purchasePrice?: true
+    condition?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CompanyAssetMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    name?: true
+    type?: true
+    serialNumber?: true
+    purchaseDate?: true
+    purchasePrice?: true
+    condition?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CompanyAssetCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    name?: true
+    type?: true
+    serialNumber?: true
+    purchaseDate?: true
+    purchasePrice?: true
+    condition?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CompanyAssetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompanyAsset to aggregate.
+     */
+    where?: CompanyAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyAssets to fetch.
+     */
+    orderBy?: CompanyAssetOrderByWithRelationInput | CompanyAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CompanyAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyAssets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CompanyAssets
+    **/
+    _count?: true | CompanyAssetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CompanyAssetAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CompanyAssetSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CompanyAssetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CompanyAssetMaxAggregateInputType
+  }
+
+  export type GetCompanyAssetAggregateType<T extends CompanyAssetAggregateArgs> = {
+        [P in keyof T & keyof AggregateCompanyAsset]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCompanyAsset[P]>
+      : GetScalarType<T[P], AggregateCompanyAsset[P]>
+  }
+
+
+
+
+  export type CompanyAssetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CompanyAssetWhereInput
+    orderBy?: CompanyAssetOrderByWithAggregationInput | CompanyAssetOrderByWithAggregationInput[]
+    by: CompanyAssetScalarFieldEnum[] | CompanyAssetScalarFieldEnum
+    having?: CompanyAssetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CompanyAssetCountAggregateInputType | true
+    _avg?: CompanyAssetAvgAggregateInputType
+    _sum?: CompanyAssetSumAggregateInputType
+    _min?: CompanyAssetMinAggregateInputType
+    _max?: CompanyAssetMaxAggregateInputType
+  }
+
+  export type CompanyAssetGroupByOutputType = {
+    id: string
+    employeeId: string | null
+    name: string
+    type: string
+    serialNumber: string | null
+    purchaseDate: Date | null
+    purchasePrice: number | null
+    condition: string
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CompanyAssetCountAggregateOutputType | null
+    _avg: CompanyAssetAvgAggregateOutputType | null
+    _sum: CompanyAssetSumAggregateOutputType | null
+    _min: CompanyAssetMinAggregateOutputType | null
+    _max: CompanyAssetMaxAggregateOutputType | null
+  }
+
+  type GetCompanyAssetGroupByPayload<T extends CompanyAssetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CompanyAssetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CompanyAssetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CompanyAssetGroupByOutputType[P]>
+            : GetScalarType<T[P], CompanyAssetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CompanyAssetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    name?: boolean
+    type?: boolean
+    serialNumber?: boolean
+    purchaseDate?: boolean
+    purchasePrice?: boolean
+    condition?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    employee?: boolean | CompanyAsset$employeeArgs<ExtArgs>
+  }, ExtArgs["result"]["companyAsset"]>
+
+
+
+  export type CompanyAssetSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    name?: boolean
+    type?: boolean
+    serialNumber?: boolean
+    purchaseDate?: boolean
+    purchasePrice?: boolean
+    condition?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CompanyAssetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "name" | "type" | "serialNumber" | "purchaseDate" | "purchasePrice" | "condition" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["companyAsset"]>
+  export type CompanyAssetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | CompanyAsset$employeeArgs<ExtArgs>
+  }
+
+  export type $CompanyAssetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CompanyAsset"
+    objects: {
+      employee: Prisma.$EmployeePayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string | null
+      name: string
+      type: string
+      serialNumber: string | null
+      purchaseDate: Date | null
+      purchasePrice: number | null
+      condition: string
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["companyAsset"]>
+    composites: {}
+  }
+
+  type CompanyAssetGetPayload<S extends boolean | null | undefined | CompanyAssetDefaultArgs> = $Result.GetResult<Prisma.$CompanyAssetPayload, S>
+
+  type CompanyAssetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CompanyAssetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CompanyAssetCountAggregateInputType | true
+    }
+
+  export interface CompanyAssetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CompanyAsset'], meta: { name: 'CompanyAsset' } }
+    /**
+     * Find zero or one CompanyAsset that matches the filter.
+     * @param {CompanyAssetFindUniqueArgs} args - Arguments to find a CompanyAsset
+     * @example
+     * // Get one CompanyAsset
+     * const companyAsset = await prisma.companyAsset.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CompanyAssetFindUniqueArgs>(args: SelectSubset<T, CompanyAssetFindUniqueArgs<ExtArgs>>): Prisma__CompanyAssetClient<$Result.GetResult<Prisma.$CompanyAssetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CompanyAsset that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CompanyAssetFindUniqueOrThrowArgs} args - Arguments to find a CompanyAsset
+     * @example
+     * // Get one CompanyAsset
+     * const companyAsset = await prisma.companyAsset.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CompanyAssetFindUniqueOrThrowArgs>(args: SelectSubset<T, CompanyAssetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CompanyAssetClient<$Result.GetResult<Prisma.$CompanyAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CompanyAsset that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssetFindFirstArgs} args - Arguments to find a CompanyAsset
+     * @example
+     * // Get one CompanyAsset
+     * const companyAsset = await prisma.companyAsset.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CompanyAssetFindFirstArgs>(args?: SelectSubset<T, CompanyAssetFindFirstArgs<ExtArgs>>): Prisma__CompanyAssetClient<$Result.GetResult<Prisma.$CompanyAssetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CompanyAsset that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssetFindFirstOrThrowArgs} args - Arguments to find a CompanyAsset
+     * @example
+     * // Get one CompanyAsset
+     * const companyAsset = await prisma.companyAsset.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CompanyAssetFindFirstOrThrowArgs>(args?: SelectSubset<T, CompanyAssetFindFirstOrThrowArgs<ExtArgs>>): Prisma__CompanyAssetClient<$Result.GetResult<Prisma.$CompanyAssetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CompanyAssets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CompanyAssets
+     * const companyAssets = await prisma.companyAsset.findMany()
+     * 
+     * // Get first 10 CompanyAssets
+     * const companyAssets = await prisma.companyAsset.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const companyAssetWithIdOnly = await prisma.companyAsset.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CompanyAssetFindManyArgs>(args?: SelectSubset<T, CompanyAssetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CompanyAssetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CompanyAsset.
+     * @param {CompanyAssetCreateArgs} args - Arguments to create a CompanyAsset.
+     * @example
+     * // Create one CompanyAsset
+     * const CompanyAsset = await prisma.companyAsset.create({
+     *   data: {
+     *     // ... data to create a CompanyAsset
+     *   }
+     * })
+     * 
+     */
+    create<T extends CompanyAssetCreateArgs>(args: SelectSubset<T, CompanyAssetCreateArgs<ExtArgs>>): Prisma__CompanyAssetClient<$Result.GetResult<Prisma.$CompanyAssetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CompanyAssets.
+     * @param {CompanyAssetCreateManyArgs} args - Arguments to create many CompanyAssets.
+     * @example
+     * // Create many CompanyAssets
+     * const companyAsset = await prisma.companyAsset.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CompanyAssetCreateManyArgs>(args?: SelectSubset<T, CompanyAssetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a CompanyAsset.
+     * @param {CompanyAssetDeleteArgs} args - Arguments to delete one CompanyAsset.
+     * @example
+     * // Delete one CompanyAsset
+     * const CompanyAsset = await prisma.companyAsset.delete({
+     *   where: {
+     *     // ... filter to delete one CompanyAsset
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CompanyAssetDeleteArgs>(args: SelectSubset<T, CompanyAssetDeleteArgs<ExtArgs>>): Prisma__CompanyAssetClient<$Result.GetResult<Prisma.$CompanyAssetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CompanyAsset.
+     * @param {CompanyAssetUpdateArgs} args - Arguments to update one CompanyAsset.
+     * @example
+     * // Update one CompanyAsset
+     * const companyAsset = await prisma.companyAsset.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CompanyAssetUpdateArgs>(args: SelectSubset<T, CompanyAssetUpdateArgs<ExtArgs>>): Prisma__CompanyAssetClient<$Result.GetResult<Prisma.$CompanyAssetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CompanyAssets.
+     * @param {CompanyAssetDeleteManyArgs} args - Arguments to filter CompanyAssets to delete.
+     * @example
+     * // Delete a few CompanyAssets
+     * const { count } = await prisma.companyAsset.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CompanyAssetDeleteManyArgs>(args?: SelectSubset<T, CompanyAssetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CompanyAssets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CompanyAssets
+     * const companyAsset = await prisma.companyAsset.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CompanyAssetUpdateManyArgs>(args: SelectSubset<T, CompanyAssetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CompanyAsset.
+     * @param {CompanyAssetUpsertArgs} args - Arguments to update or create a CompanyAsset.
+     * @example
+     * // Update or create a CompanyAsset
+     * const companyAsset = await prisma.companyAsset.upsert({
+     *   create: {
+     *     // ... data to create a CompanyAsset
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CompanyAsset we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CompanyAssetUpsertArgs>(args: SelectSubset<T, CompanyAssetUpsertArgs<ExtArgs>>): Prisma__CompanyAssetClient<$Result.GetResult<Prisma.$CompanyAssetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CompanyAssets that matches the filter.
+     * @param {CompanyAssetFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const companyAsset = await prisma.companyAsset.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: CompanyAssetFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a CompanyAsset.
+     * @param {CompanyAssetAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const companyAsset = await prisma.companyAsset.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: CompanyAssetAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of CompanyAssets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssetCountArgs} args - Arguments to filter CompanyAssets to count.
+     * @example
+     * // Count the number of CompanyAssets
+     * const count = await prisma.companyAsset.count({
+     *   where: {
+     *     // ... the filter for the CompanyAssets we want to count
+     *   }
+     * })
+    **/
+    count<T extends CompanyAssetCountArgs>(
+      args?: Subset<T, CompanyAssetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CompanyAssetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CompanyAsset.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CompanyAssetAggregateArgs>(args: Subset<T, CompanyAssetAggregateArgs>): Prisma.PrismaPromise<GetCompanyAssetAggregateType<T>>
+
+    /**
+     * Group by CompanyAsset.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CompanyAssetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CompanyAssetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CompanyAssetGroupByArgs['orderBy'] }
+        : { orderBy?: CompanyAssetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CompanyAssetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCompanyAssetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CompanyAsset model
+   */
+  readonly fields: CompanyAssetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CompanyAsset.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CompanyAssetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    employee<T extends CompanyAsset$employeeArgs<ExtArgs> = {}>(args?: Subset<T, CompanyAsset$employeeArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CompanyAsset model
+   */
+  interface CompanyAssetFieldRefs {
+    readonly id: FieldRef<"CompanyAsset", 'String'>
+    readonly employeeId: FieldRef<"CompanyAsset", 'String'>
+    readonly name: FieldRef<"CompanyAsset", 'String'>
+    readonly type: FieldRef<"CompanyAsset", 'String'>
+    readonly serialNumber: FieldRef<"CompanyAsset", 'String'>
+    readonly purchaseDate: FieldRef<"CompanyAsset", 'DateTime'>
+    readonly purchasePrice: FieldRef<"CompanyAsset", 'Float'>
+    readonly condition: FieldRef<"CompanyAsset", 'String'>
+    readonly status: FieldRef<"CompanyAsset", 'String'>
+    readonly createdAt: FieldRef<"CompanyAsset", 'DateTime'>
+    readonly updatedAt: FieldRef<"CompanyAsset", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CompanyAsset findUnique
+   */
+  export type CompanyAssetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyAsset to fetch.
+     */
+    where: CompanyAssetWhereUniqueInput
+  }
+
+  /**
+   * CompanyAsset findUniqueOrThrow
+   */
+  export type CompanyAssetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyAsset to fetch.
+     */
+    where: CompanyAssetWhereUniqueInput
+  }
+
+  /**
+   * CompanyAsset findFirst
+   */
+  export type CompanyAssetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyAsset to fetch.
+     */
+    where?: CompanyAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyAssets to fetch.
+     */
+    orderBy?: CompanyAssetOrderByWithRelationInput | CompanyAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompanyAssets.
+     */
+    cursor?: CompanyAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyAssets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanyAssets.
+     */
+    distinct?: CompanyAssetScalarFieldEnum | CompanyAssetScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyAsset findFirstOrThrow
+   */
+  export type CompanyAssetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyAsset to fetch.
+     */
+    where?: CompanyAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyAssets to fetch.
+     */
+    orderBy?: CompanyAssetOrderByWithRelationInput | CompanyAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CompanyAssets.
+     */
+    cursor?: CompanyAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyAssets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CompanyAssets.
+     */
+    distinct?: CompanyAssetScalarFieldEnum | CompanyAssetScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyAsset findMany
+   */
+  export type CompanyAssetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+    /**
+     * Filter, which CompanyAssets to fetch.
+     */
+    where?: CompanyAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CompanyAssets to fetch.
+     */
+    orderBy?: CompanyAssetOrderByWithRelationInput | CompanyAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CompanyAssets.
+     */
+    cursor?: CompanyAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CompanyAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CompanyAssets.
+     */
+    skip?: number
+    distinct?: CompanyAssetScalarFieldEnum | CompanyAssetScalarFieldEnum[]
+  }
+
+  /**
+   * CompanyAsset create
+   */
+  export type CompanyAssetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CompanyAsset.
+     */
+    data: XOR<CompanyAssetCreateInput, CompanyAssetUncheckedCreateInput>
+  }
+
+  /**
+   * CompanyAsset createMany
+   */
+  export type CompanyAssetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CompanyAssets.
+     */
+    data: CompanyAssetCreateManyInput | CompanyAssetCreateManyInput[]
+  }
+
+  /**
+   * CompanyAsset update
+   */
+  export type CompanyAssetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CompanyAsset.
+     */
+    data: XOR<CompanyAssetUpdateInput, CompanyAssetUncheckedUpdateInput>
+    /**
+     * Choose, which CompanyAsset to update.
+     */
+    where: CompanyAssetWhereUniqueInput
+  }
+
+  /**
+   * CompanyAsset updateMany
+   */
+  export type CompanyAssetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CompanyAssets.
+     */
+    data: XOR<CompanyAssetUpdateManyMutationInput, CompanyAssetUncheckedUpdateManyInput>
+    /**
+     * Filter which CompanyAssets to update
+     */
+    where?: CompanyAssetWhereInput
+    /**
+     * Limit how many CompanyAssets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CompanyAsset upsert
+   */
+  export type CompanyAssetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CompanyAsset to update in case it exists.
+     */
+    where: CompanyAssetWhereUniqueInput
+    /**
+     * In case the CompanyAsset found by the `where` argument doesn't exist, create a new CompanyAsset with this data.
+     */
+    create: XOR<CompanyAssetCreateInput, CompanyAssetUncheckedCreateInput>
+    /**
+     * In case the CompanyAsset was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CompanyAssetUpdateInput, CompanyAssetUncheckedUpdateInput>
+  }
+
+  /**
+   * CompanyAsset delete
+   */
+  export type CompanyAssetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+    /**
+     * Filter which CompanyAsset to delete.
+     */
+    where: CompanyAssetWhereUniqueInput
+  }
+
+  /**
+   * CompanyAsset deleteMany
+   */
+  export type CompanyAssetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CompanyAssets to delete
+     */
+    where?: CompanyAssetWhereInput
+    /**
+     * Limit how many CompanyAssets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CompanyAsset findRaw
+   */
+  export type CompanyAssetFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * CompanyAsset aggregateRaw
+   */
+  export type CompanyAssetAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * CompanyAsset.employee
+   */
+  export type CompanyAsset$employeeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Employee
+     */
+    select?: EmployeeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Employee
+     */
+    omit?: EmployeeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeInclude<ExtArgs> | null
+    where?: EmployeeWhereInput
+  }
+
+  /**
+   * CompanyAsset without action
+   */
+  export type CompanyAssetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyAsset
+     */
+    select?: CompanyAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CompanyAsset
+     */
+    omit?: CompanyAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CompanyAssetInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model LedgerEntry
+   */
+
+  export type AggregateLedgerEntry = {
+    _count: LedgerEntryCountAggregateOutputType | null
+    _avg: LedgerEntryAvgAggregateOutputType | null
+    _sum: LedgerEntrySumAggregateOutputType | null
+    _min: LedgerEntryMinAggregateOutputType | null
+    _max: LedgerEntryMaxAggregateOutputType | null
+  }
+
+  export type LedgerEntryAvgAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type LedgerEntrySumAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type LedgerEntryMinAggregateOutputType = {
+    id: string | null
+    date: Date | null
+    type: string | null
+    category: string | null
+    amount: number | null
+    description: string | null
+    referenceId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LedgerEntryMaxAggregateOutputType = {
+    id: string | null
+    date: Date | null
+    type: string | null
+    category: string | null
+    amount: number | null
+    description: string | null
+    referenceId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LedgerEntryCountAggregateOutputType = {
+    id: number
+    date: number
+    type: number
+    category: number
+    amount: number
+    description: number
+    referenceId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type LedgerEntryAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type LedgerEntrySumAggregateInputType = {
+    amount?: true
+  }
+
+  export type LedgerEntryMinAggregateInputType = {
+    id?: true
+    date?: true
+    type?: true
+    category?: true
+    amount?: true
+    description?: true
+    referenceId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LedgerEntryMaxAggregateInputType = {
+    id?: true
+    date?: true
+    type?: true
+    category?: true
+    amount?: true
+    description?: true
+    referenceId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LedgerEntryCountAggregateInputType = {
+    id?: true
+    date?: true
+    type?: true
+    category?: true
+    amount?: true
+    description?: true
+    referenceId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type LedgerEntryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LedgerEntry to aggregate.
+     */
+    where?: LedgerEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LedgerEntries to fetch.
+     */
+    orderBy?: LedgerEntryOrderByWithRelationInput | LedgerEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LedgerEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LedgerEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LedgerEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LedgerEntries
+    **/
+    _count?: true | LedgerEntryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LedgerEntryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LedgerEntrySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LedgerEntryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LedgerEntryMaxAggregateInputType
+  }
+
+  export type GetLedgerEntryAggregateType<T extends LedgerEntryAggregateArgs> = {
+        [P in keyof T & keyof AggregateLedgerEntry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLedgerEntry[P]>
+      : GetScalarType<T[P], AggregateLedgerEntry[P]>
+  }
+
+
+
+
+  export type LedgerEntryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LedgerEntryWhereInput
+    orderBy?: LedgerEntryOrderByWithAggregationInput | LedgerEntryOrderByWithAggregationInput[]
+    by: LedgerEntryScalarFieldEnum[] | LedgerEntryScalarFieldEnum
+    having?: LedgerEntryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LedgerEntryCountAggregateInputType | true
+    _avg?: LedgerEntryAvgAggregateInputType
+    _sum?: LedgerEntrySumAggregateInputType
+    _min?: LedgerEntryMinAggregateInputType
+    _max?: LedgerEntryMaxAggregateInputType
+  }
+
+  export type LedgerEntryGroupByOutputType = {
+    id: string
+    date: Date
+    type: string
+    category: string
+    amount: number
+    description: string | null
+    referenceId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: LedgerEntryCountAggregateOutputType | null
+    _avg: LedgerEntryAvgAggregateOutputType | null
+    _sum: LedgerEntrySumAggregateOutputType | null
+    _min: LedgerEntryMinAggregateOutputType | null
+    _max: LedgerEntryMaxAggregateOutputType | null
+  }
+
+  type GetLedgerEntryGroupByPayload<T extends LedgerEntryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LedgerEntryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LedgerEntryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LedgerEntryGroupByOutputType[P]>
+            : GetScalarType<T[P], LedgerEntryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LedgerEntrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    date?: boolean
+    type?: boolean
+    category?: boolean
+    amount?: boolean
+    description?: boolean
+    referenceId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["ledgerEntry"]>
+
+
+
+  export type LedgerEntrySelectScalar = {
+    id?: boolean
+    date?: boolean
+    type?: boolean
+    category?: boolean
+    amount?: boolean
+    description?: boolean
+    referenceId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type LedgerEntryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "type" | "category" | "amount" | "description" | "referenceId" | "createdAt" | "updatedAt", ExtArgs["result"]["ledgerEntry"]>
+
+  export type $LedgerEntryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LedgerEntry"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      date: Date
+      type: string
+      category: string
+      amount: number
+      description: string | null
+      referenceId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["ledgerEntry"]>
+    composites: {}
+  }
+
+  type LedgerEntryGetPayload<S extends boolean | null | undefined | LedgerEntryDefaultArgs> = $Result.GetResult<Prisma.$LedgerEntryPayload, S>
+
+  type LedgerEntryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LedgerEntryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LedgerEntryCountAggregateInputType | true
+    }
+
+  export interface LedgerEntryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LedgerEntry'], meta: { name: 'LedgerEntry' } }
+    /**
+     * Find zero or one LedgerEntry that matches the filter.
+     * @param {LedgerEntryFindUniqueArgs} args - Arguments to find a LedgerEntry
+     * @example
+     * // Get one LedgerEntry
+     * const ledgerEntry = await prisma.ledgerEntry.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LedgerEntryFindUniqueArgs>(args: SelectSubset<T, LedgerEntryFindUniqueArgs<ExtArgs>>): Prisma__LedgerEntryClient<$Result.GetResult<Prisma.$LedgerEntryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one LedgerEntry that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LedgerEntryFindUniqueOrThrowArgs} args - Arguments to find a LedgerEntry
+     * @example
+     * // Get one LedgerEntry
+     * const ledgerEntry = await prisma.ledgerEntry.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LedgerEntryFindUniqueOrThrowArgs>(args: SelectSubset<T, LedgerEntryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LedgerEntryClient<$Result.GetResult<Prisma.$LedgerEntryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LedgerEntry that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LedgerEntryFindFirstArgs} args - Arguments to find a LedgerEntry
+     * @example
+     * // Get one LedgerEntry
+     * const ledgerEntry = await prisma.ledgerEntry.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LedgerEntryFindFirstArgs>(args?: SelectSubset<T, LedgerEntryFindFirstArgs<ExtArgs>>): Prisma__LedgerEntryClient<$Result.GetResult<Prisma.$LedgerEntryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LedgerEntry that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LedgerEntryFindFirstOrThrowArgs} args - Arguments to find a LedgerEntry
+     * @example
+     * // Get one LedgerEntry
+     * const ledgerEntry = await prisma.ledgerEntry.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LedgerEntryFindFirstOrThrowArgs>(args?: SelectSubset<T, LedgerEntryFindFirstOrThrowArgs<ExtArgs>>): Prisma__LedgerEntryClient<$Result.GetResult<Prisma.$LedgerEntryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more LedgerEntries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LedgerEntryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LedgerEntries
+     * const ledgerEntries = await prisma.ledgerEntry.findMany()
+     * 
+     * // Get first 10 LedgerEntries
+     * const ledgerEntries = await prisma.ledgerEntry.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const ledgerEntryWithIdOnly = await prisma.ledgerEntry.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LedgerEntryFindManyArgs>(args?: SelectSubset<T, LedgerEntryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LedgerEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a LedgerEntry.
+     * @param {LedgerEntryCreateArgs} args - Arguments to create a LedgerEntry.
+     * @example
+     * // Create one LedgerEntry
+     * const LedgerEntry = await prisma.ledgerEntry.create({
+     *   data: {
+     *     // ... data to create a LedgerEntry
+     *   }
+     * })
+     * 
+     */
+    create<T extends LedgerEntryCreateArgs>(args: SelectSubset<T, LedgerEntryCreateArgs<ExtArgs>>): Prisma__LedgerEntryClient<$Result.GetResult<Prisma.$LedgerEntryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many LedgerEntries.
+     * @param {LedgerEntryCreateManyArgs} args - Arguments to create many LedgerEntries.
+     * @example
+     * // Create many LedgerEntries
+     * const ledgerEntry = await prisma.ledgerEntry.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LedgerEntryCreateManyArgs>(args?: SelectSubset<T, LedgerEntryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a LedgerEntry.
+     * @param {LedgerEntryDeleteArgs} args - Arguments to delete one LedgerEntry.
+     * @example
+     * // Delete one LedgerEntry
+     * const LedgerEntry = await prisma.ledgerEntry.delete({
+     *   where: {
+     *     // ... filter to delete one LedgerEntry
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LedgerEntryDeleteArgs>(args: SelectSubset<T, LedgerEntryDeleteArgs<ExtArgs>>): Prisma__LedgerEntryClient<$Result.GetResult<Prisma.$LedgerEntryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one LedgerEntry.
+     * @param {LedgerEntryUpdateArgs} args - Arguments to update one LedgerEntry.
+     * @example
+     * // Update one LedgerEntry
+     * const ledgerEntry = await prisma.ledgerEntry.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LedgerEntryUpdateArgs>(args: SelectSubset<T, LedgerEntryUpdateArgs<ExtArgs>>): Prisma__LedgerEntryClient<$Result.GetResult<Prisma.$LedgerEntryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more LedgerEntries.
+     * @param {LedgerEntryDeleteManyArgs} args - Arguments to filter LedgerEntries to delete.
+     * @example
+     * // Delete a few LedgerEntries
+     * const { count } = await prisma.ledgerEntry.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LedgerEntryDeleteManyArgs>(args?: SelectSubset<T, LedgerEntryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LedgerEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LedgerEntryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LedgerEntries
+     * const ledgerEntry = await prisma.ledgerEntry.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LedgerEntryUpdateManyArgs>(args: SelectSubset<T, LedgerEntryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one LedgerEntry.
+     * @param {LedgerEntryUpsertArgs} args - Arguments to update or create a LedgerEntry.
+     * @example
+     * // Update or create a LedgerEntry
+     * const ledgerEntry = await prisma.ledgerEntry.upsert({
+     *   create: {
+     *     // ... data to create a LedgerEntry
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LedgerEntry we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LedgerEntryUpsertArgs>(args: SelectSubset<T, LedgerEntryUpsertArgs<ExtArgs>>): Prisma__LedgerEntryClient<$Result.GetResult<Prisma.$LedgerEntryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more LedgerEntries that matches the filter.
+     * @param {LedgerEntryFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const ledgerEntry = await prisma.ledgerEntry.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: LedgerEntryFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a LedgerEntry.
+     * @param {LedgerEntryAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const ledgerEntry = await prisma.ledgerEntry.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: LedgerEntryAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of LedgerEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LedgerEntryCountArgs} args - Arguments to filter LedgerEntries to count.
+     * @example
+     * // Count the number of LedgerEntries
+     * const count = await prisma.ledgerEntry.count({
+     *   where: {
+     *     // ... the filter for the LedgerEntries we want to count
+     *   }
+     * })
+    **/
+    count<T extends LedgerEntryCountArgs>(
+      args?: Subset<T, LedgerEntryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LedgerEntryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LedgerEntry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LedgerEntryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LedgerEntryAggregateArgs>(args: Subset<T, LedgerEntryAggregateArgs>): Prisma.PrismaPromise<GetLedgerEntryAggregateType<T>>
+
+    /**
+     * Group by LedgerEntry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LedgerEntryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LedgerEntryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LedgerEntryGroupByArgs['orderBy'] }
+        : { orderBy?: LedgerEntryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LedgerEntryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLedgerEntryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LedgerEntry model
+   */
+  readonly fields: LedgerEntryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LedgerEntry.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LedgerEntryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LedgerEntry model
+   */
+  interface LedgerEntryFieldRefs {
+    readonly id: FieldRef<"LedgerEntry", 'String'>
+    readonly date: FieldRef<"LedgerEntry", 'DateTime'>
+    readonly type: FieldRef<"LedgerEntry", 'String'>
+    readonly category: FieldRef<"LedgerEntry", 'String'>
+    readonly amount: FieldRef<"LedgerEntry", 'Float'>
+    readonly description: FieldRef<"LedgerEntry", 'String'>
+    readonly referenceId: FieldRef<"LedgerEntry", 'String'>
+    readonly createdAt: FieldRef<"LedgerEntry", 'DateTime'>
+    readonly updatedAt: FieldRef<"LedgerEntry", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LedgerEntry findUnique
+   */
+  export type LedgerEntryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: LedgerEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: LedgerEntryOmit<ExtArgs> | null
+    /**
+     * Filter, which LedgerEntry to fetch.
+     */
+    where: LedgerEntryWhereUniqueInput
+  }
+
+  /**
+   * LedgerEntry findUniqueOrThrow
+   */
+  export type LedgerEntryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: LedgerEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: LedgerEntryOmit<ExtArgs> | null
+    /**
+     * Filter, which LedgerEntry to fetch.
+     */
+    where: LedgerEntryWhereUniqueInput
+  }
+
+  /**
+   * LedgerEntry findFirst
+   */
+  export type LedgerEntryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: LedgerEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: LedgerEntryOmit<ExtArgs> | null
+    /**
+     * Filter, which LedgerEntry to fetch.
+     */
+    where?: LedgerEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LedgerEntries to fetch.
+     */
+    orderBy?: LedgerEntryOrderByWithRelationInput | LedgerEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LedgerEntries.
+     */
+    cursor?: LedgerEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LedgerEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LedgerEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LedgerEntries.
+     */
+    distinct?: LedgerEntryScalarFieldEnum | LedgerEntryScalarFieldEnum[]
+  }
+
+  /**
+   * LedgerEntry findFirstOrThrow
+   */
+  export type LedgerEntryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: LedgerEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: LedgerEntryOmit<ExtArgs> | null
+    /**
+     * Filter, which LedgerEntry to fetch.
+     */
+    where?: LedgerEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LedgerEntries to fetch.
+     */
+    orderBy?: LedgerEntryOrderByWithRelationInput | LedgerEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LedgerEntries.
+     */
+    cursor?: LedgerEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LedgerEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LedgerEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LedgerEntries.
+     */
+    distinct?: LedgerEntryScalarFieldEnum | LedgerEntryScalarFieldEnum[]
+  }
+
+  /**
+   * LedgerEntry findMany
+   */
+  export type LedgerEntryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: LedgerEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: LedgerEntryOmit<ExtArgs> | null
+    /**
+     * Filter, which LedgerEntries to fetch.
+     */
+    where?: LedgerEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LedgerEntries to fetch.
+     */
+    orderBy?: LedgerEntryOrderByWithRelationInput | LedgerEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LedgerEntries.
+     */
+    cursor?: LedgerEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LedgerEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LedgerEntries.
+     */
+    skip?: number
+    distinct?: LedgerEntryScalarFieldEnum | LedgerEntryScalarFieldEnum[]
+  }
+
+  /**
+   * LedgerEntry create
+   */
+  export type LedgerEntryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: LedgerEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: LedgerEntryOmit<ExtArgs> | null
+    /**
+     * The data needed to create a LedgerEntry.
+     */
+    data: XOR<LedgerEntryCreateInput, LedgerEntryUncheckedCreateInput>
+  }
+
+  /**
+   * LedgerEntry createMany
+   */
+  export type LedgerEntryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LedgerEntries.
+     */
+    data: LedgerEntryCreateManyInput | LedgerEntryCreateManyInput[]
+  }
+
+  /**
+   * LedgerEntry update
+   */
+  export type LedgerEntryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: LedgerEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: LedgerEntryOmit<ExtArgs> | null
+    /**
+     * The data needed to update a LedgerEntry.
+     */
+    data: XOR<LedgerEntryUpdateInput, LedgerEntryUncheckedUpdateInput>
+    /**
+     * Choose, which LedgerEntry to update.
+     */
+    where: LedgerEntryWhereUniqueInput
+  }
+
+  /**
+   * LedgerEntry updateMany
+   */
+  export type LedgerEntryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LedgerEntries.
+     */
+    data: XOR<LedgerEntryUpdateManyMutationInput, LedgerEntryUncheckedUpdateManyInput>
+    /**
+     * Filter which LedgerEntries to update
+     */
+    where?: LedgerEntryWhereInput
+    /**
+     * Limit how many LedgerEntries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LedgerEntry upsert
+   */
+  export type LedgerEntryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: LedgerEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: LedgerEntryOmit<ExtArgs> | null
+    /**
+     * The filter to search for the LedgerEntry to update in case it exists.
+     */
+    where: LedgerEntryWhereUniqueInput
+    /**
+     * In case the LedgerEntry found by the `where` argument doesn't exist, create a new LedgerEntry with this data.
+     */
+    create: XOR<LedgerEntryCreateInput, LedgerEntryUncheckedCreateInput>
+    /**
+     * In case the LedgerEntry was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LedgerEntryUpdateInput, LedgerEntryUncheckedUpdateInput>
+  }
+
+  /**
+   * LedgerEntry delete
+   */
+  export type LedgerEntryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: LedgerEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: LedgerEntryOmit<ExtArgs> | null
+    /**
+     * Filter which LedgerEntry to delete.
+     */
+    where: LedgerEntryWhereUniqueInput
+  }
+
+  /**
+   * LedgerEntry deleteMany
+   */
+  export type LedgerEntryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LedgerEntries to delete
+     */
+    where?: LedgerEntryWhereInput
+    /**
+     * Limit how many LedgerEntries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * LedgerEntry findRaw
+   */
+  export type LedgerEntryFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * LedgerEntry aggregateRaw
+   */
+  export type LedgerEntryAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * LedgerEntry without action
+   */
+  export type LedgerEntryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: LedgerEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: LedgerEntryOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BiometricDevice
+   */
+
+  export type AggregateBiometricDevice = {
+    _count: BiometricDeviceCountAggregateOutputType | null
+    _avg: BiometricDeviceAvgAggregateOutputType | null
+    _sum: BiometricDeviceSumAggregateOutputType | null
+    _min: BiometricDeviceMinAggregateOutputType | null
+    _max: BiometricDeviceMaxAggregateOutputType | null
+  }
+
+  export type BiometricDeviceAvgAggregateOutputType = {
+    port: number | null
+  }
+
+  export type BiometricDeviceSumAggregateOutputType = {
+    port: number | null
+  }
+
+  export type BiometricDeviceMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    branchId: string | null
+    ip: string | null
+    port: number | null
+    status: string | null
+    lastSync: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BiometricDeviceMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    branchId: string | null
+    ip: string | null
+    port: number | null
+    status: string | null
+    lastSync: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BiometricDeviceCountAggregateOutputType = {
+    id: number
+    name: number
+    branchId: number
+    ip: number
+    port: number
+    status: number
+    lastSync: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BiometricDeviceAvgAggregateInputType = {
+    port?: true
+  }
+
+  export type BiometricDeviceSumAggregateInputType = {
+    port?: true
+  }
+
+  export type BiometricDeviceMinAggregateInputType = {
+    id?: true
+    name?: true
+    branchId?: true
+    ip?: true
+    port?: true
+    status?: true
+    lastSync?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BiometricDeviceMaxAggregateInputType = {
+    id?: true
+    name?: true
+    branchId?: true
+    ip?: true
+    port?: true
+    status?: true
+    lastSync?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BiometricDeviceCountAggregateInputType = {
+    id?: true
+    name?: true
+    branchId?: true
+    ip?: true
+    port?: true
+    status?: true
+    lastSync?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BiometricDeviceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BiometricDevice to aggregate.
+     */
+    where?: BiometricDeviceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BiometricDevices to fetch.
+     */
+    orderBy?: BiometricDeviceOrderByWithRelationInput | BiometricDeviceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BiometricDeviceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BiometricDevices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BiometricDevices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BiometricDevices
+    **/
+    _count?: true | BiometricDeviceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BiometricDeviceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BiometricDeviceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BiometricDeviceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BiometricDeviceMaxAggregateInputType
+  }
+
+  export type GetBiometricDeviceAggregateType<T extends BiometricDeviceAggregateArgs> = {
+        [P in keyof T & keyof AggregateBiometricDevice]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBiometricDevice[P]>
+      : GetScalarType<T[P], AggregateBiometricDevice[P]>
+  }
+
+
+
+
+  export type BiometricDeviceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BiometricDeviceWhereInput
+    orderBy?: BiometricDeviceOrderByWithAggregationInput | BiometricDeviceOrderByWithAggregationInput[]
+    by: BiometricDeviceScalarFieldEnum[] | BiometricDeviceScalarFieldEnum
+    having?: BiometricDeviceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BiometricDeviceCountAggregateInputType | true
+    _avg?: BiometricDeviceAvgAggregateInputType
+    _sum?: BiometricDeviceSumAggregateInputType
+    _min?: BiometricDeviceMinAggregateInputType
+    _max?: BiometricDeviceMaxAggregateInputType
+  }
+
+  export type BiometricDeviceGroupByOutputType = {
+    id: string
+    name: string
+    branchId: string
+    ip: string
+    port: number
+    status: string
+    lastSync: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: BiometricDeviceCountAggregateOutputType | null
+    _avg: BiometricDeviceAvgAggregateOutputType | null
+    _sum: BiometricDeviceSumAggregateOutputType | null
+    _min: BiometricDeviceMinAggregateOutputType | null
+    _max: BiometricDeviceMaxAggregateOutputType | null
+  }
+
+  type GetBiometricDeviceGroupByPayload<T extends BiometricDeviceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BiometricDeviceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BiometricDeviceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BiometricDeviceGroupByOutputType[P]>
+            : GetScalarType<T[P], BiometricDeviceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BiometricDeviceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    branchId?: boolean
+    ip?: boolean
+    port?: boolean
+    status?: boolean
+    lastSync?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    branch?: boolean | BranchDefaultArgs<ExtArgs>
+    rawLogs?: boolean | BiometricDevice$rawLogsArgs<ExtArgs>
+    _count?: boolean | BiometricDeviceCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["biometricDevice"]>
+
+
+
+  export type BiometricDeviceSelectScalar = {
+    id?: boolean
+    name?: boolean
+    branchId?: boolean
+    ip?: boolean
+    port?: boolean
+    status?: boolean
+    lastSync?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BiometricDeviceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "branchId" | "ip" | "port" | "status" | "lastSync" | "createdAt" | "updatedAt", ExtArgs["result"]["biometricDevice"]>
+  export type BiometricDeviceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    branch?: boolean | BranchDefaultArgs<ExtArgs>
+    rawLogs?: boolean | BiometricDevice$rawLogsArgs<ExtArgs>
+    _count?: boolean | BiometricDeviceCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $BiometricDevicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BiometricDevice"
+    objects: {
+      branch: Prisma.$BranchPayload<ExtArgs>
+      rawLogs: Prisma.$RawBiometricLogPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      branchId: string
+      ip: string
+      port: number
+      status: string
+      lastSync: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["biometricDevice"]>
+    composites: {}
+  }
+
+  type BiometricDeviceGetPayload<S extends boolean | null | undefined | BiometricDeviceDefaultArgs> = $Result.GetResult<Prisma.$BiometricDevicePayload, S>
+
+  type BiometricDeviceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BiometricDeviceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BiometricDeviceCountAggregateInputType | true
+    }
+
+  export interface BiometricDeviceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BiometricDevice'], meta: { name: 'BiometricDevice' } }
+    /**
+     * Find zero or one BiometricDevice that matches the filter.
+     * @param {BiometricDeviceFindUniqueArgs} args - Arguments to find a BiometricDevice
+     * @example
+     * // Get one BiometricDevice
+     * const biometricDevice = await prisma.biometricDevice.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BiometricDeviceFindUniqueArgs>(args: SelectSubset<T, BiometricDeviceFindUniqueArgs<ExtArgs>>): Prisma__BiometricDeviceClient<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BiometricDevice that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BiometricDeviceFindUniqueOrThrowArgs} args - Arguments to find a BiometricDevice
+     * @example
+     * // Get one BiometricDevice
+     * const biometricDevice = await prisma.biometricDevice.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BiometricDeviceFindUniqueOrThrowArgs>(args: SelectSubset<T, BiometricDeviceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BiometricDeviceClient<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BiometricDevice that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BiometricDeviceFindFirstArgs} args - Arguments to find a BiometricDevice
+     * @example
+     * // Get one BiometricDevice
+     * const biometricDevice = await prisma.biometricDevice.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BiometricDeviceFindFirstArgs>(args?: SelectSubset<T, BiometricDeviceFindFirstArgs<ExtArgs>>): Prisma__BiometricDeviceClient<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BiometricDevice that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BiometricDeviceFindFirstOrThrowArgs} args - Arguments to find a BiometricDevice
+     * @example
+     * // Get one BiometricDevice
+     * const biometricDevice = await prisma.biometricDevice.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BiometricDeviceFindFirstOrThrowArgs>(args?: SelectSubset<T, BiometricDeviceFindFirstOrThrowArgs<ExtArgs>>): Prisma__BiometricDeviceClient<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BiometricDevices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BiometricDeviceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BiometricDevices
+     * const biometricDevices = await prisma.biometricDevice.findMany()
+     * 
+     * // Get first 10 BiometricDevices
+     * const biometricDevices = await prisma.biometricDevice.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const biometricDeviceWithIdOnly = await prisma.biometricDevice.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BiometricDeviceFindManyArgs>(args?: SelectSubset<T, BiometricDeviceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BiometricDevice.
+     * @param {BiometricDeviceCreateArgs} args - Arguments to create a BiometricDevice.
+     * @example
+     * // Create one BiometricDevice
+     * const BiometricDevice = await prisma.biometricDevice.create({
+     *   data: {
+     *     // ... data to create a BiometricDevice
+     *   }
+     * })
+     * 
+     */
+    create<T extends BiometricDeviceCreateArgs>(args: SelectSubset<T, BiometricDeviceCreateArgs<ExtArgs>>): Prisma__BiometricDeviceClient<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BiometricDevices.
+     * @param {BiometricDeviceCreateManyArgs} args - Arguments to create many BiometricDevices.
+     * @example
+     * // Create many BiometricDevices
+     * const biometricDevice = await prisma.biometricDevice.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BiometricDeviceCreateManyArgs>(args?: SelectSubset<T, BiometricDeviceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a BiometricDevice.
+     * @param {BiometricDeviceDeleteArgs} args - Arguments to delete one BiometricDevice.
+     * @example
+     * // Delete one BiometricDevice
+     * const BiometricDevice = await prisma.biometricDevice.delete({
+     *   where: {
+     *     // ... filter to delete one BiometricDevice
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BiometricDeviceDeleteArgs>(args: SelectSubset<T, BiometricDeviceDeleteArgs<ExtArgs>>): Prisma__BiometricDeviceClient<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BiometricDevice.
+     * @param {BiometricDeviceUpdateArgs} args - Arguments to update one BiometricDevice.
+     * @example
+     * // Update one BiometricDevice
+     * const biometricDevice = await prisma.biometricDevice.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BiometricDeviceUpdateArgs>(args: SelectSubset<T, BiometricDeviceUpdateArgs<ExtArgs>>): Prisma__BiometricDeviceClient<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BiometricDevices.
+     * @param {BiometricDeviceDeleteManyArgs} args - Arguments to filter BiometricDevices to delete.
+     * @example
+     * // Delete a few BiometricDevices
+     * const { count } = await prisma.biometricDevice.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BiometricDeviceDeleteManyArgs>(args?: SelectSubset<T, BiometricDeviceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BiometricDevices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BiometricDeviceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BiometricDevices
+     * const biometricDevice = await prisma.biometricDevice.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BiometricDeviceUpdateManyArgs>(args: SelectSubset<T, BiometricDeviceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one BiometricDevice.
+     * @param {BiometricDeviceUpsertArgs} args - Arguments to update or create a BiometricDevice.
+     * @example
+     * // Update or create a BiometricDevice
+     * const biometricDevice = await prisma.biometricDevice.upsert({
+     *   create: {
+     *     // ... data to create a BiometricDevice
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BiometricDevice we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BiometricDeviceUpsertArgs>(args: SelectSubset<T, BiometricDeviceUpsertArgs<ExtArgs>>): Prisma__BiometricDeviceClient<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BiometricDevices that matches the filter.
+     * @param {BiometricDeviceFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const biometricDevice = await prisma.biometricDevice.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: BiometricDeviceFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a BiometricDevice.
+     * @param {BiometricDeviceAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const biometricDevice = await prisma.biometricDevice.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: BiometricDeviceAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of BiometricDevices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BiometricDeviceCountArgs} args - Arguments to filter BiometricDevices to count.
+     * @example
+     * // Count the number of BiometricDevices
+     * const count = await prisma.biometricDevice.count({
+     *   where: {
+     *     // ... the filter for the BiometricDevices we want to count
+     *   }
+     * })
+    **/
+    count<T extends BiometricDeviceCountArgs>(
+      args?: Subset<T, BiometricDeviceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BiometricDeviceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BiometricDevice.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BiometricDeviceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BiometricDeviceAggregateArgs>(args: Subset<T, BiometricDeviceAggregateArgs>): Prisma.PrismaPromise<GetBiometricDeviceAggregateType<T>>
+
+    /**
+     * Group by BiometricDevice.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BiometricDeviceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BiometricDeviceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BiometricDeviceGroupByArgs['orderBy'] }
+        : { orderBy?: BiometricDeviceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BiometricDeviceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBiometricDeviceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BiometricDevice model
+   */
+  readonly fields: BiometricDeviceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BiometricDevice.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BiometricDeviceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    branch<T extends BranchDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BranchDefaultArgs<ExtArgs>>): Prisma__BranchClient<$Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    rawLogs<T extends BiometricDevice$rawLogsArgs<ExtArgs> = {}>(args?: Subset<T, BiometricDevice$rawLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RawBiometricLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BiometricDevice model
+   */
+  interface BiometricDeviceFieldRefs {
+    readonly id: FieldRef<"BiometricDevice", 'String'>
+    readonly name: FieldRef<"BiometricDevice", 'String'>
+    readonly branchId: FieldRef<"BiometricDevice", 'String'>
+    readonly ip: FieldRef<"BiometricDevice", 'String'>
+    readonly port: FieldRef<"BiometricDevice", 'Int'>
+    readonly status: FieldRef<"BiometricDevice", 'String'>
+    readonly lastSync: FieldRef<"BiometricDevice", 'DateTime'>
+    readonly createdAt: FieldRef<"BiometricDevice", 'DateTime'>
+    readonly updatedAt: FieldRef<"BiometricDevice", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BiometricDevice findUnique
+   */
+  export type BiometricDeviceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+    /**
+     * Filter, which BiometricDevice to fetch.
+     */
+    where: BiometricDeviceWhereUniqueInput
+  }
+
+  /**
+   * BiometricDevice findUniqueOrThrow
+   */
+  export type BiometricDeviceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+    /**
+     * Filter, which BiometricDevice to fetch.
+     */
+    where: BiometricDeviceWhereUniqueInput
+  }
+
+  /**
+   * BiometricDevice findFirst
+   */
+  export type BiometricDeviceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+    /**
+     * Filter, which BiometricDevice to fetch.
+     */
+    where?: BiometricDeviceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BiometricDevices to fetch.
+     */
+    orderBy?: BiometricDeviceOrderByWithRelationInput | BiometricDeviceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BiometricDevices.
+     */
+    cursor?: BiometricDeviceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BiometricDevices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BiometricDevices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BiometricDevices.
+     */
+    distinct?: BiometricDeviceScalarFieldEnum | BiometricDeviceScalarFieldEnum[]
+  }
+
+  /**
+   * BiometricDevice findFirstOrThrow
+   */
+  export type BiometricDeviceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+    /**
+     * Filter, which BiometricDevice to fetch.
+     */
+    where?: BiometricDeviceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BiometricDevices to fetch.
+     */
+    orderBy?: BiometricDeviceOrderByWithRelationInput | BiometricDeviceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BiometricDevices.
+     */
+    cursor?: BiometricDeviceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BiometricDevices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BiometricDevices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BiometricDevices.
+     */
+    distinct?: BiometricDeviceScalarFieldEnum | BiometricDeviceScalarFieldEnum[]
+  }
+
+  /**
+   * BiometricDevice findMany
+   */
+  export type BiometricDeviceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+    /**
+     * Filter, which BiometricDevices to fetch.
+     */
+    where?: BiometricDeviceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BiometricDevices to fetch.
+     */
+    orderBy?: BiometricDeviceOrderByWithRelationInput | BiometricDeviceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BiometricDevices.
+     */
+    cursor?: BiometricDeviceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BiometricDevices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BiometricDevices.
+     */
+    skip?: number
+    distinct?: BiometricDeviceScalarFieldEnum | BiometricDeviceScalarFieldEnum[]
+  }
+
+  /**
+   * BiometricDevice create
+   */
+  export type BiometricDeviceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BiometricDevice.
+     */
+    data: XOR<BiometricDeviceCreateInput, BiometricDeviceUncheckedCreateInput>
+  }
+
+  /**
+   * BiometricDevice createMany
+   */
+  export type BiometricDeviceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BiometricDevices.
+     */
+    data: BiometricDeviceCreateManyInput | BiometricDeviceCreateManyInput[]
+  }
+
+  /**
+   * BiometricDevice update
+   */
+  export type BiometricDeviceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BiometricDevice.
+     */
+    data: XOR<BiometricDeviceUpdateInput, BiometricDeviceUncheckedUpdateInput>
+    /**
+     * Choose, which BiometricDevice to update.
+     */
+    where: BiometricDeviceWhereUniqueInput
+  }
+
+  /**
+   * BiometricDevice updateMany
+   */
+  export type BiometricDeviceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BiometricDevices.
+     */
+    data: XOR<BiometricDeviceUpdateManyMutationInput, BiometricDeviceUncheckedUpdateManyInput>
+    /**
+     * Filter which BiometricDevices to update
+     */
+    where?: BiometricDeviceWhereInput
+    /**
+     * Limit how many BiometricDevices to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BiometricDevice upsert
+   */
+  export type BiometricDeviceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BiometricDevice to update in case it exists.
+     */
+    where: BiometricDeviceWhereUniqueInput
+    /**
+     * In case the BiometricDevice found by the `where` argument doesn't exist, create a new BiometricDevice with this data.
+     */
+    create: XOR<BiometricDeviceCreateInput, BiometricDeviceUncheckedCreateInput>
+    /**
+     * In case the BiometricDevice was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BiometricDeviceUpdateInput, BiometricDeviceUncheckedUpdateInput>
+  }
+
+  /**
+   * BiometricDevice delete
+   */
+  export type BiometricDeviceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+    /**
+     * Filter which BiometricDevice to delete.
+     */
+    where: BiometricDeviceWhereUniqueInput
+  }
+
+  /**
+   * BiometricDevice deleteMany
+   */
+  export type BiometricDeviceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BiometricDevices to delete
+     */
+    where?: BiometricDeviceWhereInput
+    /**
+     * Limit how many BiometricDevices to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BiometricDevice findRaw
+   */
+  export type BiometricDeviceFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * BiometricDevice aggregateRaw
+   */
+  export type BiometricDeviceAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * BiometricDevice.rawLogs
+   */
+  export type BiometricDevice$rawLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+    where?: RawBiometricLogWhereInput
+    orderBy?: RawBiometricLogOrderByWithRelationInput | RawBiometricLogOrderByWithRelationInput[]
+    cursor?: RawBiometricLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RawBiometricLogScalarFieldEnum | RawBiometricLogScalarFieldEnum[]
+  }
+
+  /**
+   * BiometricDevice without action
+   */
+  export type BiometricDeviceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BiometricDevice
+     */
+    select?: BiometricDeviceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BiometricDevice
+     */
+    omit?: BiometricDeviceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BiometricDeviceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RawBiometricLog
+   */
+
+  export type AggregateRawBiometricLog = {
+    _count: RawBiometricLogCountAggregateOutputType | null
+    _avg: RawBiometricLogAvgAggregateOutputType | null
+    _sum: RawBiometricLogSumAggregateOutputType | null
+    _min: RawBiometricLogMinAggregateOutputType | null
+    _max: RawBiometricLogMaxAggregateOutputType | null
+  }
+
+  export type RawBiometricLogAvgAggregateOutputType = {
+    state: number | null
+  }
+
+  export type RawBiometricLogSumAggregateOutputType = {
+    state: number | null
+  }
+
+  export type RawBiometricLogMinAggregateOutputType = {
+    id: string | null
+    deviceUserId: string | null
+    timestamp: Date | null
+    state: number | null
+    deviceId: string | null
+    isProcessed: boolean | null
+    processNote: string | null
+    createdAt: Date | null
+  }
+
+  export type RawBiometricLogMaxAggregateOutputType = {
+    id: string | null
+    deviceUserId: string | null
+    timestamp: Date | null
+    state: number | null
+    deviceId: string | null
+    isProcessed: boolean | null
+    processNote: string | null
+    createdAt: Date | null
+  }
+
+  export type RawBiometricLogCountAggregateOutputType = {
+    id: number
+    deviceUserId: number
+    timestamp: number
+    state: number
+    deviceId: number
+    isProcessed: number
+    processNote: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type RawBiometricLogAvgAggregateInputType = {
+    state?: true
+  }
+
+  export type RawBiometricLogSumAggregateInputType = {
+    state?: true
+  }
+
+  export type RawBiometricLogMinAggregateInputType = {
+    id?: true
+    deviceUserId?: true
+    timestamp?: true
+    state?: true
+    deviceId?: true
+    isProcessed?: true
+    processNote?: true
+    createdAt?: true
+  }
+
+  export type RawBiometricLogMaxAggregateInputType = {
+    id?: true
+    deviceUserId?: true
+    timestamp?: true
+    state?: true
+    deviceId?: true
+    isProcessed?: true
+    processNote?: true
+    createdAt?: true
+  }
+
+  export type RawBiometricLogCountAggregateInputType = {
+    id?: true
+    deviceUserId?: true
+    timestamp?: true
+    state?: true
+    deviceId?: true
+    isProcessed?: true
+    processNote?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type RawBiometricLogAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RawBiometricLog to aggregate.
+     */
+    where?: RawBiometricLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RawBiometricLogs to fetch.
+     */
+    orderBy?: RawBiometricLogOrderByWithRelationInput | RawBiometricLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RawBiometricLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RawBiometricLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RawBiometricLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RawBiometricLogs
+    **/
+    _count?: true | RawBiometricLogCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RawBiometricLogAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RawBiometricLogSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RawBiometricLogMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RawBiometricLogMaxAggregateInputType
+  }
+
+  export type GetRawBiometricLogAggregateType<T extends RawBiometricLogAggregateArgs> = {
+        [P in keyof T & keyof AggregateRawBiometricLog]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRawBiometricLog[P]>
+      : GetScalarType<T[P], AggregateRawBiometricLog[P]>
+  }
+
+
+
+
+  export type RawBiometricLogGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RawBiometricLogWhereInput
+    orderBy?: RawBiometricLogOrderByWithAggregationInput | RawBiometricLogOrderByWithAggregationInput[]
+    by: RawBiometricLogScalarFieldEnum[] | RawBiometricLogScalarFieldEnum
+    having?: RawBiometricLogScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RawBiometricLogCountAggregateInputType | true
+    _avg?: RawBiometricLogAvgAggregateInputType
+    _sum?: RawBiometricLogSumAggregateInputType
+    _min?: RawBiometricLogMinAggregateInputType
+    _max?: RawBiometricLogMaxAggregateInputType
+  }
+
+  export type RawBiometricLogGroupByOutputType = {
+    id: string
+    deviceUserId: string
+    timestamp: Date
+    state: number | null
+    deviceId: string
+    isProcessed: boolean
+    processNote: string | null
+    createdAt: Date
+    _count: RawBiometricLogCountAggregateOutputType | null
+    _avg: RawBiometricLogAvgAggregateOutputType | null
+    _sum: RawBiometricLogSumAggregateOutputType | null
+    _min: RawBiometricLogMinAggregateOutputType | null
+    _max: RawBiometricLogMaxAggregateOutputType | null
+  }
+
+  type GetRawBiometricLogGroupByPayload<T extends RawBiometricLogGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RawBiometricLogGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RawBiometricLogGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RawBiometricLogGroupByOutputType[P]>
+            : GetScalarType<T[P], RawBiometricLogGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RawBiometricLogSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    deviceUserId?: boolean
+    timestamp?: boolean
+    state?: boolean
+    deviceId?: boolean
+    isProcessed?: boolean
+    processNote?: boolean
+    createdAt?: boolean
+    device?: boolean | BiometricDeviceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rawBiometricLog"]>
+
+
+
+  export type RawBiometricLogSelectScalar = {
+    id?: boolean
+    deviceUserId?: boolean
+    timestamp?: boolean
+    state?: boolean
+    deviceId?: boolean
+    isProcessed?: boolean
+    processNote?: boolean
+    createdAt?: boolean
+  }
+
+  export type RawBiometricLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "deviceUserId" | "timestamp" | "state" | "deviceId" | "isProcessed" | "processNote" | "createdAt", ExtArgs["result"]["rawBiometricLog"]>
+  export type RawBiometricLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    device?: boolean | BiometricDeviceDefaultArgs<ExtArgs>
+  }
+
+  export type $RawBiometricLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RawBiometricLog"
+    objects: {
+      device: Prisma.$BiometricDevicePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      deviceUserId: string
+      timestamp: Date
+      state: number | null
+      deviceId: string
+      isProcessed: boolean
+      processNote: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["rawBiometricLog"]>
+    composites: {}
+  }
+
+  type RawBiometricLogGetPayload<S extends boolean | null | undefined | RawBiometricLogDefaultArgs> = $Result.GetResult<Prisma.$RawBiometricLogPayload, S>
+
+  type RawBiometricLogCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RawBiometricLogFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RawBiometricLogCountAggregateInputType | true
+    }
+
+  export interface RawBiometricLogDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RawBiometricLog'], meta: { name: 'RawBiometricLog' } }
+    /**
+     * Find zero or one RawBiometricLog that matches the filter.
+     * @param {RawBiometricLogFindUniqueArgs} args - Arguments to find a RawBiometricLog
+     * @example
+     * // Get one RawBiometricLog
+     * const rawBiometricLog = await prisma.rawBiometricLog.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RawBiometricLogFindUniqueArgs>(args: SelectSubset<T, RawBiometricLogFindUniqueArgs<ExtArgs>>): Prisma__RawBiometricLogClient<$Result.GetResult<Prisma.$RawBiometricLogPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RawBiometricLog that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RawBiometricLogFindUniqueOrThrowArgs} args - Arguments to find a RawBiometricLog
+     * @example
+     * // Get one RawBiometricLog
+     * const rawBiometricLog = await prisma.rawBiometricLog.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RawBiometricLogFindUniqueOrThrowArgs>(args: SelectSubset<T, RawBiometricLogFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RawBiometricLogClient<$Result.GetResult<Prisma.$RawBiometricLogPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RawBiometricLog that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RawBiometricLogFindFirstArgs} args - Arguments to find a RawBiometricLog
+     * @example
+     * // Get one RawBiometricLog
+     * const rawBiometricLog = await prisma.rawBiometricLog.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RawBiometricLogFindFirstArgs>(args?: SelectSubset<T, RawBiometricLogFindFirstArgs<ExtArgs>>): Prisma__RawBiometricLogClient<$Result.GetResult<Prisma.$RawBiometricLogPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RawBiometricLog that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RawBiometricLogFindFirstOrThrowArgs} args - Arguments to find a RawBiometricLog
+     * @example
+     * // Get one RawBiometricLog
+     * const rawBiometricLog = await prisma.rawBiometricLog.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RawBiometricLogFindFirstOrThrowArgs>(args?: SelectSubset<T, RawBiometricLogFindFirstOrThrowArgs<ExtArgs>>): Prisma__RawBiometricLogClient<$Result.GetResult<Prisma.$RawBiometricLogPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RawBiometricLogs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RawBiometricLogFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RawBiometricLogs
+     * const rawBiometricLogs = await prisma.rawBiometricLog.findMany()
+     * 
+     * // Get first 10 RawBiometricLogs
+     * const rawBiometricLogs = await prisma.rawBiometricLog.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const rawBiometricLogWithIdOnly = await prisma.rawBiometricLog.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RawBiometricLogFindManyArgs>(args?: SelectSubset<T, RawBiometricLogFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RawBiometricLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RawBiometricLog.
+     * @param {RawBiometricLogCreateArgs} args - Arguments to create a RawBiometricLog.
+     * @example
+     * // Create one RawBiometricLog
+     * const RawBiometricLog = await prisma.rawBiometricLog.create({
+     *   data: {
+     *     // ... data to create a RawBiometricLog
+     *   }
+     * })
+     * 
+     */
+    create<T extends RawBiometricLogCreateArgs>(args: SelectSubset<T, RawBiometricLogCreateArgs<ExtArgs>>): Prisma__RawBiometricLogClient<$Result.GetResult<Prisma.$RawBiometricLogPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RawBiometricLogs.
+     * @param {RawBiometricLogCreateManyArgs} args - Arguments to create many RawBiometricLogs.
+     * @example
+     * // Create many RawBiometricLogs
+     * const rawBiometricLog = await prisma.rawBiometricLog.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RawBiometricLogCreateManyArgs>(args?: SelectSubset<T, RawBiometricLogCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a RawBiometricLog.
+     * @param {RawBiometricLogDeleteArgs} args - Arguments to delete one RawBiometricLog.
+     * @example
+     * // Delete one RawBiometricLog
+     * const RawBiometricLog = await prisma.rawBiometricLog.delete({
+     *   where: {
+     *     // ... filter to delete one RawBiometricLog
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RawBiometricLogDeleteArgs>(args: SelectSubset<T, RawBiometricLogDeleteArgs<ExtArgs>>): Prisma__RawBiometricLogClient<$Result.GetResult<Prisma.$RawBiometricLogPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RawBiometricLog.
+     * @param {RawBiometricLogUpdateArgs} args - Arguments to update one RawBiometricLog.
+     * @example
+     * // Update one RawBiometricLog
+     * const rawBiometricLog = await prisma.rawBiometricLog.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RawBiometricLogUpdateArgs>(args: SelectSubset<T, RawBiometricLogUpdateArgs<ExtArgs>>): Prisma__RawBiometricLogClient<$Result.GetResult<Prisma.$RawBiometricLogPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RawBiometricLogs.
+     * @param {RawBiometricLogDeleteManyArgs} args - Arguments to filter RawBiometricLogs to delete.
+     * @example
+     * // Delete a few RawBiometricLogs
+     * const { count } = await prisma.rawBiometricLog.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RawBiometricLogDeleteManyArgs>(args?: SelectSubset<T, RawBiometricLogDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RawBiometricLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RawBiometricLogUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RawBiometricLogs
+     * const rawBiometricLog = await prisma.rawBiometricLog.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RawBiometricLogUpdateManyArgs>(args: SelectSubset<T, RawBiometricLogUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one RawBiometricLog.
+     * @param {RawBiometricLogUpsertArgs} args - Arguments to update or create a RawBiometricLog.
+     * @example
+     * // Update or create a RawBiometricLog
+     * const rawBiometricLog = await prisma.rawBiometricLog.upsert({
+     *   create: {
+     *     // ... data to create a RawBiometricLog
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RawBiometricLog we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RawBiometricLogUpsertArgs>(args: SelectSubset<T, RawBiometricLogUpsertArgs<ExtArgs>>): Prisma__RawBiometricLogClient<$Result.GetResult<Prisma.$RawBiometricLogPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RawBiometricLogs that matches the filter.
+     * @param {RawBiometricLogFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const rawBiometricLog = await prisma.rawBiometricLog.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: RawBiometricLogFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a RawBiometricLog.
+     * @param {RawBiometricLogAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const rawBiometricLog = await prisma.rawBiometricLog.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: RawBiometricLogAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of RawBiometricLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RawBiometricLogCountArgs} args - Arguments to filter RawBiometricLogs to count.
+     * @example
+     * // Count the number of RawBiometricLogs
+     * const count = await prisma.rawBiometricLog.count({
+     *   where: {
+     *     // ... the filter for the RawBiometricLogs we want to count
+     *   }
+     * })
+    **/
+    count<T extends RawBiometricLogCountArgs>(
+      args?: Subset<T, RawBiometricLogCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RawBiometricLogCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RawBiometricLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RawBiometricLogAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RawBiometricLogAggregateArgs>(args: Subset<T, RawBiometricLogAggregateArgs>): Prisma.PrismaPromise<GetRawBiometricLogAggregateType<T>>
+
+    /**
+     * Group by RawBiometricLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RawBiometricLogGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RawBiometricLogGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RawBiometricLogGroupByArgs['orderBy'] }
+        : { orderBy?: RawBiometricLogGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RawBiometricLogGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRawBiometricLogGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RawBiometricLog model
+   */
+  readonly fields: RawBiometricLogFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RawBiometricLog.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RawBiometricLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    device<T extends BiometricDeviceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BiometricDeviceDefaultArgs<ExtArgs>>): Prisma__BiometricDeviceClient<$Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RawBiometricLog model
+   */
+  interface RawBiometricLogFieldRefs {
+    readonly id: FieldRef<"RawBiometricLog", 'String'>
+    readonly deviceUserId: FieldRef<"RawBiometricLog", 'String'>
+    readonly timestamp: FieldRef<"RawBiometricLog", 'DateTime'>
+    readonly state: FieldRef<"RawBiometricLog", 'Int'>
+    readonly deviceId: FieldRef<"RawBiometricLog", 'String'>
+    readonly isProcessed: FieldRef<"RawBiometricLog", 'Boolean'>
+    readonly processNote: FieldRef<"RawBiometricLog", 'String'>
+    readonly createdAt: FieldRef<"RawBiometricLog", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RawBiometricLog findUnique
+   */
+  export type RawBiometricLogFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+    /**
+     * Filter, which RawBiometricLog to fetch.
+     */
+    where: RawBiometricLogWhereUniqueInput
+  }
+
+  /**
+   * RawBiometricLog findUniqueOrThrow
+   */
+  export type RawBiometricLogFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+    /**
+     * Filter, which RawBiometricLog to fetch.
+     */
+    where: RawBiometricLogWhereUniqueInput
+  }
+
+  /**
+   * RawBiometricLog findFirst
+   */
+  export type RawBiometricLogFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+    /**
+     * Filter, which RawBiometricLog to fetch.
+     */
+    where?: RawBiometricLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RawBiometricLogs to fetch.
+     */
+    orderBy?: RawBiometricLogOrderByWithRelationInput | RawBiometricLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RawBiometricLogs.
+     */
+    cursor?: RawBiometricLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RawBiometricLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RawBiometricLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RawBiometricLogs.
+     */
+    distinct?: RawBiometricLogScalarFieldEnum | RawBiometricLogScalarFieldEnum[]
+  }
+
+  /**
+   * RawBiometricLog findFirstOrThrow
+   */
+  export type RawBiometricLogFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+    /**
+     * Filter, which RawBiometricLog to fetch.
+     */
+    where?: RawBiometricLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RawBiometricLogs to fetch.
+     */
+    orderBy?: RawBiometricLogOrderByWithRelationInput | RawBiometricLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RawBiometricLogs.
+     */
+    cursor?: RawBiometricLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RawBiometricLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RawBiometricLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RawBiometricLogs.
+     */
+    distinct?: RawBiometricLogScalarFieldEnum | RawBiometricLogScalarFieldEnum[]
+  }
+
+  /**
+   * RawBiometricLog findMany
+   */
+  export type RawBiometricLogFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+    /**
+     * Filter, which RawBiometricLogs to fetch.
+     */
+    where?: RawBiometricLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RawBiometricLogs to fetch.
+     */
+    orderBy?: RawBiometricLogOrderByWithRelationInput | RawBiometricLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RawBiometricLogs.
+     */
+    cursor?: RawBiometricLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RawBiometricLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RawBiometricLogs.
+     */
+    skip?: number
+    distinct?: RawBiometricLogScalarFieldEnum | RawBiometricLogScalarFieldEnum[]
+  }
+
+  /**
+   * RawBiometricLog create
+   */
+  export type RawBiometricLogCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RawBiometricLog.
+     */
+    data: XOR<RawBiometricLogCreateInput, RawBiometricLogUncheckedCreateInput>
+  }
+
+  /**
+   * RawBiometricLog createMany
+   */
+  export type RawBiometricLogCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RawBiometricLogs.
+     */
+    data: RawBiometricLogCreateManyInput | RawBiometricLogCreateManyInput[]
+  }
+
+  /**
+   * RawBiometricLog update
+   */
+  export type RawBiometricLogUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RawBiometricLog.
+     */
+    data: XOR<RawBiometricLogUpdateInput, RawBiometricLogUncheckedUpdateInput>
+    /**
+     * Choose, which RawBiometricLog to update.
+     */
+    where: RawBiometricLogWhereUniqueInput
+  }
+
+  /**
+   * RawBiometricLog updateMany
+   */
+  export type RawBiometricLogUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RawBiometricLogs.
+     */
+    data: XOR<RawBiometricLogUpdateManyMutationInput, RawBiometricLogUncheckedUpdateManyInput>
+    /**
+     * Filter which RawBiometricLogs to update
+     */
+    where?: RawBiometricLogWhereInput
+    /**
+     * Limit how many RawBiometricLogs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RawBiometricLog upsert
+   */
+  export type RawBiometricLogUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RawBiometricLog to update in case it exists.
+     */
+    where: RawBiometricLogWhereUniqueInput
+    /**
+     * In case the RawBiometricLog found by the `where` argument doesn't exist, create a new RawBiometricLog with this data.
+     */
+    create: XOR<RawBiometricLogCreateInput, RawBiometricLogUncheckedCreateInput>
+    /**
+     * In case the RawBiometricLog was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RawBiometricLogUpdateInput, RawBiometricLogUncheckedUpdateInput>
+  }
+
+  /**
+   * RawBiometricLog delete
+   */
+  export type RawBiometricLogDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+    /**
+     * Filter which RawBiometricLog to delete.
+     */
+    where: RawBiometricLogWhereUniqueInput
+  }
+
+  /**
+   * RawBiometricLog deleteMany
+   */
+  export type RawBiometricLogDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RawBiometricLogs to delete
+     */
+    where?: RawBiometricLogWhereInput
+    /**
+     * Limit how many RawBiometricLogs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RawBiometricLog findRaw
+   */
+  export type RawBiometricLogFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * RawBiometricLog aggregateRaw
+   */
+  export type RawBiometricLogAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * RawBiometricLog without action
+   */
+  export type RawBiometricLogDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RawBiometricLog
+     */
+    select?: RawBiometricLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RawBiometricLog
+     */
+    omit?: RawBiometricLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RawBiometricLogInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Holiday
+   */
+
+  export type AggregateHoliday = {
+    _count: HolidayCountAggregateOutputType | null
+    _avg: HolidayAvgAggregateOutputType | null
+    _sum: HolidaySumAggregateOutputType | null
+    _min: HolidayMinAggregateOutputType | null
+    _max: HolidayMaxAggregateOutputType | null
+  }
+
+  export type HolidayAvgAggregateOutputType = {
+    multiplier: number | null
+  }
+
+  export type HolidaySumAggregateOutputType = {
+    multiplier: number | null
+  }
+
+  export type HolidayMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    date: Date | null
+    type: string | null
+    multiplier: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HolidayMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    date: Date | null
+    type: string | null
+    multiplier: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HolidayCountAggregateOutputType = {
+    id: number
+    name: number
+    date: number
+    type: number
+    multiplier: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type HolidayAvgAggregateInputType = {
+    multiplier?: true
+  }
+
+  export type HolidaySumAggregateInputType = {
+    multiplier?: true
+  }
+
+  export type HolidayMinAggregateInputType = {
+    id?: true
+    name?: true
+    date?: true
+    type?: true
+    multiplier?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HolidayMaxAggregateInputType = {
+    id?: true
+    name?: true
+    date?: true
+    type?: true
+    multiplier?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HolidayCountAggregateInputType = {
+    id?: true
+    name?: true
+    date?: true
+    type?: true
+    multiplier?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type HolidayAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Holiday to aggregate.
+     */
+    where?: HolidayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Holidays to fetch.
+     */
+    orderBy?: HolidayOrderByWithRelationInput | HolidayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HolidayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Holidays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Holidays.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Holidays
+    **/
+    _count?: true | HolidayCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HolidayAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HolidaySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HolidayMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HolidayMaxAggregateInputType
+  }
+
+  export type GetHolidayAggregateType<T extends HolidayAggregateArgs> = {
+        [P in keyof T & keyof AggregateHoliday]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHoliday[P]>
+      : GetScalarType<T[P], AggregateHoliday[P]>
+  }
+
+
+
+
+  export type HolidayGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HolidayWhereInput
+    orderBy?: HolidayOrderByWithAggregationInput | HolidayOrderByWithAggregationInput[]
+    by: HolidayScalarFieldEnum[] | HolidayScalarFieldEnum
+    having?: HolidayScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HolidayCountAggregateInputType | true
+    _avg?: HolidayAvgAggregateInputType
+    _sum?: HolidaySumAggregateInputType
+    _min?: HolidayMinAggregateInputType
+    _max?: HolidayMaxAggregateInputType
+  }
+
+  export type HolidayGroupByOutputType = {
+    id: string
+    name: string
+    date: Date
+    type: string
+    multiplier: number
+    createdAt: Date
+    updatedAt: Date
+    _count: HolidayCountAggregateOutputType | null
+    _avg: HolidayAvgAggregateOutputType | null
+    _sum: HolidaySumAggregateOutputType | null
+    _min: HolidayMinAggregateOutputType | null
+    _max: HolidayMaxAggregateOutputType | null
+  }
+
+  type GetHolidayGroupByPayload<T extends HolidayGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HolidayGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HolidayGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HolidayGroupByOutputType[P]>
+            : GetScalarType<T[P], HolidayGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HolidaySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    date?: boolean
+    type?: boolean
+    multiplier?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["holiday"]>
+
+
+
+  export type HolidaySelectScalar = {
+    id?: boolean
+    name?: boolean
+    date?: boolean
+    type?: boolean
+    multiplier?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type HolidayOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "date" | "type" | "multiplier" | "createdAt" | "updatedAt", ExtArgs["result"]["holiday"]>
+
+  export type $HolidayPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Holiday"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      date: Date
+      type: string
+      multiplier: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["holiday"]>
+    composites: {}
+  }
+
+  type HolidayGetPayload<S extends boolean | null | undefined | HolidayDefaultArgs> = $Result.GetResult<Prisma.$HolidayPayload, S>
+
+  type HolidayCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HolidayFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HolidayCountAggregateInputType | true
+    }
+
+  export interface HolidayDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Holiday'], meta: { name: 'Holiday' } }
+    /**
+     * Find zero or one Holiday that matches the filter.
+     * @param {HolidayFindUniqueArgs} args - Arguments to find a Holiday
+     * @example
+     * // Get one Holiday
+     * const holiday = await prisma.holiday.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HolidayFindUniqueArgs>(args: SelectSubset<T, HolidayFindUniqueArgs<ExtArgs>>): Prisma__HolidayClient<$Result.GetResult<Prisma.$HolidayPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Holiday that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HolidayFindUniqueOrThrowArgs} args - Arguments to find a Holiday
+     * @example
+     * // Get one Holiday
+     * const holiday = await prisma.holiday.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HolidayFindUniqueOrThrowArgs>(args: SelectSubset<T, HolidayFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HolidayClient<$Result.GetResult<Prisma.$HolidayPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Holiday that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HolidayFindFirstArgs} args - Arguments to find a Holiday
+     * @example
+     * // Get one Holiday
+     * const holiday = await prisma.holiday.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HolidayFindFirstArgs>(args?: SelectSubset<T, HolidayFindFirstArgs<ExtArgs>>): Prisma__HolidayClient<$Result.GetResult<Prisma.$HolidayPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Holiday that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HolidayFindFirstOrThrowArgs} args - Arguments to find a Holiday
+     * @example
+     * // Get one Holiday
+     * const holiday = await prisma.holiday.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HolidayFindFirstOrThrowArgs>(args?: SelectSubset<T, HolidayFindFirstOrThrowArgs<ExtArgs>>): Prisma__HolidayClient<$Result.GetResult<Prisma.$HolidayPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Holidays that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HolidayFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Holidays
+     * const holidays = await prisma.holiday.findMany()
+     * 
+     * // Get first 10 Holidays
+     * const holidays = await prisma.holiday.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const holidayWithIdOnly = await prisma.holiday.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HolidayFindManyArgs>(args?: SelectSubset<T, HolidayFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HolidayPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Holiday.
+     * @param {HolidayCreateArgs} args - Arguments to create a Holiday.
+     * @example
+     * // Create one Holiday
+     * const Holiday = await prisma.holiday.create({
+     *   data: {
+     *     // ... data to create a Holiday
+     *   }
+     * })
+     * 
+     */
+    create<T extends HolidayCreateArgs>(args: SelectSubset<T, HolidayCreateArgs<ExtArgs>>): Prisma__HolidayClient<$Result.GetResult<Prisma.$HolidayPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Holidays.
+     * @param {HolidayCreateManyArgs} args - Arguments to create many Holidays.
+     * @example
+     * // Create many Holidays
+     * const holiday = await prisma.holiday.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HolidayCreateManyArgs>(args?: SelectSubset<T, HolidayCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Holiday.
+     * @param {HolidayDeleteArgs} args - Arguments to delete one Holiday.
+     * @example
+     * // Delete one Holiday
+     * const Holiday = await prisma.holiday.delete({
+     *   where: {
+     *     // ... filter to delete one Holiday
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HolidayDeleteArgs>(args: SelectSubset<T, HolidayDeleteArgs<ExtArgs>>): Prisma__HolidayClient<$Result.GetResult<Prisma.$HolidayPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Holiday.
+     * @param {HolidayUpdateArgs} args - Arguments to update one Holiday.
+     * @example
+     * // Update one Holiday
+     * const holiday = await prisma.holiday.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HolidayUpdateArgs>(args: SelectSubset<T, HolidayUpdateArgs<ExtArgs>>): Prisma__HolidayClient<$Result.GetResult<Prisma.$HolidayPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Holidays.
+     * @param {HolidayDeleteManyArgs} args - Arguments to filter Holidays to delete.
+     * @example
+     * // Delete a few Holidays
+     * const { count } = await prisma.holiday.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HolidayDeleteManyArgs>(args?: SelectSubset<T, HolidayDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Holidays.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HolidayUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Holidays
+     * const holiday = await prisma.holiday.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HolidayUpdateManyArgs>(args: SelectSubset<T, HolidayUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Holiday.
+     * @param {HolidayUpsertArgs} args - Arguments to update or create a Holiday.
+     * @example
+     * // Update or create a Holiday
+     * const holiday = await prisma.holiday.upsert({
+     *   create: {
+     *     // ... data to create a Holiday
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Holiday we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HolidayUpsertArgs>(args: SelectSubset<T, HolidayUpsertArgs<ExtArgs>>): Prisma__HolidayClient<$Result.GetResult<Prisma.$HolidayPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Holidays that matches the filter.
+     * @param {HolidayFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const holiday = await prisma.holiday.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: HolidayFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a Holiday.
+     * @param {HolidayAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const holiday = await prisma.holiday.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: HolidayAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of Holidays.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HolidayCountArgs} args - Arguments to filter Holidays to count.
+     * @example
+     * // Count the number of Holidays
+     * const count = await prisma.holiday.count({
+     *   where: {
+     *     // ... the filter for the Holidays we want to count
+     *   }
+     * })
+    **/
+    count<T extends HolidayCountArgs>(
+      args?: Subset<T, HolidayCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HolidayCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Holiday.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HolidayAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HolidayAggregateArgs>(args: Subset<T, HolidayAggregateArgs>): Prisma.PrismaPromise<GetHolidayAggregateType<T>>
+
+    /**
+     * Group by Holiday.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HolidayGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HolidayGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HolidayGroupByArgs['orderBy'] }
+        : { orderBy?: HolidayGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HolidayGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHolidayGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Holiday model
+   */
+  readonly fields: HolidayFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Holiday.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HolidayClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Holiday model
+   */
+  interface HolidayFieldRefs {
+    readonly id: FieldRef<"Holiday", 'String'>
+    readonly name: FieldRef<"Holiday", 'String'>
+    readonly date: FieldRef<"Holiday", 'DateTime'>
+    readonly type: FieldRef<"Holiday", 'String'>
+    readonly multiplier: FieldRef<"Holiday", 'Float'>
+    readonly createdAt: FieldRef<"Holiday", 'DateTime'>
+    readonly updatedAt: FieldRef<"Holiday", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Holiday findUnique
+   */
+  export type HolidayFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holiday
+     */
+    select?: HolidaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holiday
+     */
+    omit?: HolidayOmit<ExtArgs> | null
+    /**
+     * Filter, which Holiday to fetch.
+     */
+    where: HolidayWhereUniqueInput
+  }
+
+  /**
+   * Holiday findUniqueOrThrow
+   */
+  export type HolidayFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holiday
+     */
+    select?: HolidaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holiday
+     */
+    omit?: HolidayOmit<ExtArgs> | null
+    /**
+     * Filter, which Holiday to fetch.
+     */
+    where: HolidayWhereUniqueInput
+  }
+
+  /**
+   * Holiday findFirst
+   */
+  export type HolidayFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holiday
+     */
+    select?: HolidaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holiday
+     */
+    omit?: HolidayOmit<ExtArgs> | null
+    /**
+     * Filter, which Holiday to fetch.
+     */
+    where?: HolidayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Holidays to fetch.
+     */
+    orderBy?: HolidayOrderByWithRelationInput | HolidayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Holidays.
+     */
+    cursor?: HolidayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Holidays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Holidays.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Holidays.
+     */
+    distinct?: HolidayScalarFieldEnum | HolidayScalarFieldEnum[]
+  }
+
+  /**
+   * Holiday findFirstOrThrow
+   */
+  export type HolidayFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holiday
+     */
+    select?: HolidaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holiday
+     */
+    omit?: HolidayOmit<ExtArgs> | null
+    /**
+     * Filter, which Holiday to fetch.
+     */
+    where?: HolidayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Holidays to fetch.
+     */
+    orderBy?: HolidayOrderByWithRelationInput | HolidayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Holidays.
+     */
+    cursor?: HolidayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Holidays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Holidays.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Holidays.
+     */
+    distinct?: HolidayScalarFieldEnum | HolidayScalarFieldEnum[]
+  }
+
+  /**
+   * Holiday findMany
+   */
+  export type HolidayFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holiday
+     */
+    select?: HolidaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holiday
+     */
+    omit?: HolidayOmit<ExtArgs> | null
+    /**
+     * Filter, which Holidays to fetch.
+     */
+    where?: HolidayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Holidays to fetch.
+     */
+    orderBy?: HolidayOrderByWithRelationInput | HolidayOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Holidays.
+     */
+    cursor?: HolidayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Holidays from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Holidays.
+     */
+    skip?: number
+    distinct?: HolidayScalarFieldEnum | HolidayScalarFieldEnum[]
+  }
+
+  /**
+   * Holiday create
+   */
+  export type HolidayCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holiday
+     */
+    select?: HolidaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holiday
+     */
+    omit?: HolidayOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Holiday.
+     */
+    data: XOR<HolidayCreateInput, HolidayUncheckedCreateInput>
+  }
+
+  /**
+   * Holiday createMany
+   */
+  export type HolidayCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Holidays.
+     */
+    data: HolidayCreateManyInput | HolidayCreateManyInput[]
+  }
+
+  /**
+   * Holiday update
+   */
+  export type HolidayUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holiday
+     */
+    select?: HolidaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holiday
+     */
+    omit?: HolidayOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Holiday.
+     */
+    data: XOR<HolidayUpdateInput, HolidayUncheckedUpdateInput>
+    /**
+     * Choose, which Holiday to update.
+     */
+    where: HolidayWhereUniqueInput
+  }
+
+  /**
+   * Holiday updateMany
+   */
+  export type HolidayUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Holidays.
+     */
+    data: XOR<HolidayUpdateManyMutationInput, HolidayUncheckedUpdateManyInput>
+    /**
+     * Filter which Holidays to update
+     */
+    where?: HolidayWhereInput
+    /**
+     * Limit how many Holidays to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Holiday upsert
+   */
+  export type HolidayUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holiday
+     */
+    select?: HolidaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holiday
+     */
+    omit?: HolidayOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Holiday to update in case it exists.
+     */
+    where: HolidayWhereUniqueInput
+    /**
+     * In case the Holiday found by the `where` argument doesn't exist, create a new Holiday with this data.
+     */
+    create: XOR<HolidayCreateInput, HolidayUncheckedCreateInput>
+    /**
+     * In case the Holiday was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HolidayUpdateInput, HolidayUncheckedUpdateInput>
+  }
+
+  /**
+   * Holiday delete
+   */
+  export type HolidayDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holiday
+     */
+    select?: HolidaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holiday
+     */
+    omit?: HolidayOmit<ExtArgs> | null
+    /**
+     * Filter which Holiday to delete.
+     */
+    where: HolidayWhereUniqueInput
+  }
+
+  /**
+   * Holiday deleteMany
+   */
+  export type HolidayDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Holidays to delete
+     */
+    where?: HolidayWhereInput
+    /**
+     * Limit how many Holidays to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Holiday findRaw
+   */
+  export type HolidayFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * Holiday aggregateRaw
+   */
+  export type HolidayAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * Holiday without action
+   */
+  export type HolidayDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holiday
+     */
+    select?: HolidaySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holiday
+     */
+    omit?: HolidayOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ScheduleOverride
+   */
+
+  export type AggregateScheduleOverride = {
+    _count: ScheduleOverrideCountAggregateOutputType | null
+    _min: ScheduleOverrideMinAggregateOutputType | null
+    _max: ScheduleOverrideMaxAggregateOutputType | null
+  }
+
+  export type ScheduleOverrideMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    date: Date | null
+    startTime: string | null
+    endTime: string | null
+    isRestDay: boolean | null
+    reason: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ScheduleOverrideMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    date: Date | null
+    startTime: string | null
+    endTime: string | null
+    isRestDay: boolean | null
+    reason: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ScheduleOverrideCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    date: number
+    startTime: number
+    endTime: number
+    isRestDay: number
+    reason: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ScheduleOverrideMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    date?: true
+    startTime?: true
+    endTime?: true
+    isRestDay?: true
+    reason?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ScheduleOverrideMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    date?: true
+    startTime?: true
+    endTime?: true
+    isRestDay?: true
+    reason?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ScheduleOverrideCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    date?: true
+    startTime?: true
+    endTime?: true
+    isRestDay?: true
+    reason?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ScheduleOverrideAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ScheduleOverride to aggregate.
+     */
+    where?: ScheduleOverrideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleOverrides to fetch.
+     */
+    orderBy?: ScheduleOverrideOrderByWithRelationInput | ScheduleOverrideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ScheduleOverrideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleOverrides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleOverrides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ScheduleOverrides
+    **/
+    _count?: true | ScheduleOverrideCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ScheduleOverrideMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ScheduleOverrideMaxAggregateInputType
+  }
+
+  export type GetScheduleOverrideAggregateType<T extends ScheduleOverrideAggregateArgs> = {
+        [P in keyof T & keyof AggregateScheduleOverride]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateScheduleOverride[P]>
+      : GetScalarType<T[P], AggregateScheduleOverride[P]>
+  }
+
+
+
+
+  export type ScheduleOverrideGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ScheduleOverrideWhereInput
+    orderBy?: ScheduleOverrideOrderByWithAggregationInput | ScheduleOverrideOrderByWithAggregationInput[]
+    by: ScheduleOverrideScalarFieldEnum[] | ScheduleOverrideScalarFieldEnum
+    having?: ScheduleOverrideScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ScheduleOverrideCountAggregateInputType | true
+    _min?: ScheduleOverrideMinAggregateInputType
+    _max?: ScheduleOverrideMaxAggregateInputType
+  }
+
+  export type ScheduleOverrideGroupByOutputType = {
+    id: string
+    employeeId: string
+    date: Date
+    startTime: string | null
+    endTime: string | null
+    isRestDay: boolean
+    reason: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: ScheduleOverrideCountAggregateOutputType | null
+    _min: ScheduleOverrideMinAggregateOutputType | null
+    _max: ScheduleOverrideMaxAggregateOutputType | null
+  }
+
+  type GetScheduleOverrideGroupByPayload<T extends ScheduleOverrideGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ScheduleOverrideGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ScheduleOverrideGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ScheduleOverrideGroupByOutputType[P]>
+            : GetScalarType<T[P], ScheduleOverrideGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ScheduleOverrideSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    date?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    isRestDay?: boolean
+    reason?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["scheduleOverride"]>
+
+
+
+  export type ScheduleOverrideSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    date?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    isRestDay?: boolean
+    reason?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ScheduleOverrideOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "date" | "startTime" | "endTime" | "isRestDay" | "reason" | "createdAt" | "updatedAt", ExtArgs["result"]["scheduleOverride"]>
+  export type ScheduleOverrideInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+  }
+
+  export type $ScheduleOverridePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ScheduleOverride"
+    objects: {
+      employee: Prisma.$EmployeePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      date: Date
+      startTime: string | null
+      endTime: string | null
+      isRestDay: boolean
+      reason: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["scheduleOverride"]>
+    composites: {}
+  }
+
+  type ScheduleOverrideGetPayload<S extends boolean | null | undefined | ScheduleOverrideDefaultArgs> = $Result.GetResult<Prisma.$ScheduleOverridePayload, S>
+
+  type ScheduleOverrideCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ScheduleOverrideFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ScheduleOverrideCountAggregateInputType | true
+    }
+
+  export interface ScheduleOverrideDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ScheduleOverride'], meta: { name: 'ScheduleOverride' } }
+    /**
+     * Find zero or one ScheduleOverride that matches the filter.
+     * @param {ScheduleOverrideFindUniqueArgs} args - Arguments to find a ScheduleOverride
+     * @example
+     * // Get one ScheduleOverride
+     * const scheduleOverride = await prisma.scheduleOverride.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ScheduleOverrideFindUniqueArgs>(args: SelectSubset<T, ScheduleOverrideFindUniqueArgs<ExtArgs>>): Prisma__ScheduleOverrideClient<$Result.GetResult<Prisma.$ScheduleOverridePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ScheduleOverride that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ScheduleOverrideFindUniqueOrThrowArgs} args - Arguments to find a ScheduleOverride
+     * @example
+     * // Get one ScheduleOverride
+     * const scheduleOverride = await prisma.scheduleOverride.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ScheduleOverrideFindUniqueOrThrowArgs>(args: SelectSubset<T, ScheduleOverrideFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ScheduleOverrideClient<$Result.GetResult<Prisma.$ScheduleOverridePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ScheduleOverride that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleOverrideFindFirstArgs} args - Arguments to find a ScheduleOverride
+     * @example
+     * // Get one ScheduleOverride
+     * const scheduleOverride = await prisma.scheduleOverride.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ScheduleOverrideFindFirstArgs>(args?: SelectSubset<T, ScheduleOverrideFindFirstArgs<ExtArgs>>): Prisma__ScheduleOverrideClient<$Result.GetResult<Prisma.$ScheduleOverridePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ScheduleOverride that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleOverrideFindFirstOrThrowArgs} args - Arguments to find a ScheduleOverride
+     * @example
+     * // Get one ScheduleOverride
+     * const scheduleOverride = await prisma.scheduleOverride.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ScheduleOverrideFindFirstOrThrowArgs>(args?: SelectSubset<T, ScheduleOverrideFindFirstOrThrowArgs<ExtArgs>>): Prisma__ScheduleOverrideClient<$Result.GetResult<Prisma.$ScheduleOverridePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ScheduleOverrides that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleOverrideFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ScheduleOverrides
+     * const scheduleOverrides = await prisma.scheduleOverride.findMany()
+     * 
+     * // Get first 10 ScheduleOverrides
+     * const scheduleOverrides = await prisma.scheduleOverride.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const scheduleOverrideWithIdOnly = await prisma.scheduleOverride.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ScheduleOverrideFindManyArgs>(args?: SelectSubset<T, ScheduleOverrideFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScheduleOverridePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ScheduleOverride.
+     * @param {ScheduleOverrideCreateArgs} args - Arguments to create a ScheduleOverride.
+     * @example
+     * // Create one ScheduleOverride
+     * const ScheduleOverride = await prisma.scheduleOverride.create({
+     *   data: {
+     *     // ... data to create a ScheduleOverride
+     *   }
+     * })
+     * 
+     */
+    create<T extends ScheduleOverrideCreateArgs>(args: SelectSubset<T, ScheduleOverrideCreateArgs<ExtArgs>>): Prisma__ScheduleOverrideClient<$Result.GetResult<Prisma.$ScheduleOverridePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ScheduleOverrides.
+     * @param {ScheduleOverrideCreateManyArgs} args - Arguments to create many ScheduleOverrides.
+     * @example
+     * // Create many ScheduleOverrides
+     * const scheduleOverride = await prisma.scheduleOverride.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ScheduleOverrideCreateManyArgs>(args?: SelectSubset<T, ScheduleOverrideCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ScheduleOverride.
+     * @param {ScheduleOverrideDeleteArgs} args - Arguments to delete one ScheduleOverride.
+     * @example
+     * // Delete one ScheduleOverride
+     * const ScheduleOverride = await prisma.scheduleOverride.delete({
+     *   where: {
+     *     // ... filter to delete one ScheduleOverride
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ScheduleOverrideDeleteArgs>(args: SelectSubset<T, ScheduleOverrideDeleteArgs<ExtArgs>>): Prisma__ScheduleOverrideClient<$Result.GetResult<Prisma.$ScheduleOverridePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ScheduleOverride.
+     * @param {ScheduleOverrideUpdateArgs} args - Arguments to update one ScheduleOverride.
+     * @example
+     * // Update one ScheduleOverride
+     * const scheduleOverride = await prisma.scheduleOverride.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ScheduleOverrideUpdateArgs>(args: SelectSubset<T, ScheduleOverrideUpdateArgs<ExtArgs>>): Prisma__ScheduleOverrideClient<$Result.GetResult<Prisma.$ScheduleOverridePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ScheduleOverrides.
+     * @param {ScheduleOverrideDeleteManyArgs} args - Arguments to filter ScheduleOverrides to delete.
+     * @example
+     * // Delete a few ScheduleOverrides
+     * const { count } = await prisma.scheduleOverride.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ScheduleOverrideDeleteManyArgs>(args?: SelectSubset<T, ScheduleOverrideDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ScheduleOverrides.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleOverrideUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ScheduleOverrides
+     * const scheduleOverride = await prisma.scheduleOverride.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ScheduleOverrideUpdateManyArgs>(args: SelectSubset<T, ScheduleOverrideUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ScheduleOverride.
+     * @param {ScheduleOverrideUpsertArgs} args - Arguments to update or create a ScheduleOverride.
+     * @example
+     * // Update or create a ScheduleOverride
+     * const scheduleOverride = await prisma.scheduleOverride.upsert({
+     *   create: {
+     *     // ... data to create a ScheduleOverride
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ScheduleOverride we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ScheduleOverrideUpsertArgs>(args: SelectSubset<T, ScheduleOverrideUpsertArgs<ExtArgs>>): Prisma__ScheduleOverrideClient<$Result.GetResult<Prisma.$ScheduleOverridePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ScheduleOverrides that matches the filter.
+     * @param {ScheduleOverrideFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const scheduleOverride = await prisma.scheduleOverride.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: ScheduleOverrideFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a ScheduleOverride.
+     * @param {ScheduleOverrideAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const scheduleOverride = await prisma.scheduleOverride.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: ScheduleOverrideAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of ScheduleOverrides.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleOverrideCountArgs} args - Arguments to filter ScheduleOverrides to count.
+     * @example
+     * // Count the number of ScheduleOverrides
+     * const count = await prisma.scheduleOverride.count({
+     *   where: {
+     *     // ... the filter for the ScheduleOverrides we want to count
+     *   }
+     * })
+    **/
+    count<T extends ScheduleOverrideCountArgs>(
+      args?: Subset<T, ScheduleOverrideCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ScheduleOverrideCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ScheduleOverride.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleOverrideAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ScheduleOverrideAggregateArgs>(args: Subset<T, ScheduleOverrideAggregateArgs>): Prisma.PrismaPromise<GetScheduleOverrideAggregateType<T>>
+
+    /**
+     * Group by ScheduleOverride.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ScheduleOverrideGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ScheduleOverrideGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ScheduleOverrideGroupByArgs['orderBy'] }
+        : { orderBy?: ScheduleOverrideGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ScheduleOverrideGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetScheduleOverrideGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ScheduleOverride model
+   */
+  readonly fields: ScheduleOverrideFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ScheduleOverride.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ScheduleOverrideClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    employee<T extends EmployeeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeDefaultArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ScheduleOverride model
+   */
+  interface ScheduleOverrideFieldRefs {
+    readonly id: FieldRef<"ScheduleOverride", 'String'>
+    readonly employeeId: FieldRef<"ScheduleOverride", 'String'>
+    readonly date: FieldRef<"ScheduleOverride", 'DateTime'>
+    readonly startTime: FieldRef<"ScheduleOverride", 'String'>
+    readonly endTime: FieldRef<"ScheduleOverride", 'String'>
+    readonly isRestDay: FieldRef<"ScheduleOverride", 'Boolean'>
+    readonly reason: FieldRef<"ScheduleOverride", 'String'>
+    readonly createdAt: FieldRef<"ScheduleOverride", 'DateTime'>
+    readonly updatedAt: FieldRef<"ScheduleOverride", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ScheduleOverride findUnique
+   */
+  export type ScheduleOverrideFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleOverride to fetch.
+     */
+    where: ScheduleOverrideWhereUniqueInput
+  }
+
+  /**
+   * ScheduleOverride findUniqueOrThrow
+   */
+  export type ScheduleOverrideFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleOverride to fetch.
+     */
+    where: ScheduleOverrideWhereUniqueInput
+  }
+
+  /**
+   * ScheduleOverride findFirst
+   */
+  export type ScheduleOverrideFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleOverride to fetch.
+     */
+    where?: ScheduleOverrideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleOverrides to fetch.
+     */
+    orderBy?: ScheduleOverrideOrderByWithRelationInput | ScheduleOverrideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ScheduleOverrides.
+     */
+    cursor?: ScheduleOverrideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleOverrides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleOverrides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ScheduleOverrides.
+     */
+    distinct?: ScheduleOverrideScalarFieldEnum | ScheduleOverrideScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleOverride findFirstOrThrow
+   */
+  export type ScheduleOverrideFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleOverride to fetch.
+     */
+    where?: ScheduleOverrideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleOverrides to fetch.
+     */
+    orderBy?: ScheduleOverrideOrderByWithRelationInput | ScheduleOverrideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ScheduleOverrides.
+     */
+    cursor?: ScheduleOverrideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleOverrides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleOverrides.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ScheduleOverrides.
+     */
+    distinct?: ScheduleOverrideScalarFieldEnum | ScheduleOverrideScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleOverride findMany
+   */
+  export type ScheduleOverrideFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+    /**
+     * Filter, which ScheduleOverrides to fetch.
+     */
+    where?: ScheduleOverrideWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ScheduleOverrides to fetch.
+     */
+    orderBy?: ScheduleOverrideOrderByWithRelationInput | ScheduleOverrideOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ScheduleOverrides.
+     */
+    cursor?: ScheduleOverrideWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ScheduleOverrides from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ScheduleOverrides.
+     */
+    skip?: number
+    distinct?: ScheduleOverrideScalarFieldEnum | ScheduleOverrideScalarFieldEnum[]
+  }
+
+  /**
+   * ScheduleOverride create
+   */
+  export type ScheduleOverrideCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ScheduleOverride.
+     */
+    data: XOR<ScheduleOverrideCreateInput, ScheduleOverrideUncheckedCreateInput>
+  }
+
+  /**
+   * ScheduleOverride createMany
+   */
+  export type ScheduleOverrideCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ScheduleOverrides.
+     */
+    data: ScheduleOverrideCreateManyInput | ScheduleOverrideCreateManyInput[]
+  }
+
+  /**
+   * ScheduleOverride update
+   */
+  export type ScheduleOverrideUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ScheduleOverride.
+     */
+    data: XOR<ScheduleOverrideUpdateInput, ScheduleOverrideUncheckedUpdateInput>
+    /**
+     * Choose, which ScheduleOverride to update.
+     */
+    where: ScheduleOverrideWhereUniqueInput
+  }
+
+  /**
+   * ScheduleOverride updateMany
+   */
+  export type ScheduleOverrideUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ScheduleOverrides.
+     */
+    data: XOR<ScheduleOverrideUpdateManyMutationInput, ScheduleOverrideUncheckedUpdateManyInput>
+    /**
+     * Filter which ScheduleOverrides to update
+     */
+    where?: ScheduleOverrideWhereInput
+    /**
+     * Limit how many ScheduleOverrides to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ScheduleOverride upsert
+   */
+  export type ScheduleOverrideUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ScheduleOverride to update in case it exists.
+     */
+    where: ScheduleOverrideWhereUniqueInput
+    /**
+     * In case the ScheduleOverride found by the `where` argument doesn't exist, create a new ScheduleOverride with this data.
+     */
+    create: XOR<ScheduleOverrideCreateInput, ScheduleOverrideUncheckedCreateInput>
+    /**
+     * In case the ScheduleOverride was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ScheduleOverrideUpdateInput, ScheduleOverrideUncheckedUpdateInput>
+  }
+
+  /**
+   * ScheduleOverride delete
+   */
+  export type ScheduleOverrideDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+    /**
+     * Filter which ScheduleOverride to delete.
+     */
+    where: ScheduleOverrideWhereUniqueInput
+  }
+
+  /**
+   * ScheduleOverride deleteMany
+   */
+  export type ScheduleOverrideDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ScheduleOverrides to delete
+     */
+    where?: ScheduleOverrideWhereInput
+    /**
+     * Limit how many ScheduleOverrides to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ScheduleOverride findRaw
+   */
+  export type ScheduleOverrideFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * ScheduleOverride aggregateRaw
+   */
+  export type ScheduleOverrideAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * ScheduleOverride without action
+   */
+  export type ScheduleOverrideDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ScheduleOverride
+     */
+    select?: ScheduleOverrideSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ScheduleOverride
+     */
+    omit?: ScheduleOverrideOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ScheduleOverrideInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -22899,6 +32280,7 @@ export namespace Prisma {
     description: 'description',
     isManager: 'isManager',
     parentRoleId: 'parentRoleId',
+    gracePeriodMinutes: 'gracePeriodMinutes',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -22964,6 +32346,8 @@ export namespace Prisma {
     baseSalary: 'baseSalary',
     workFactor: 'workFactor',
     branchId: 'branchId',
+    biometricId: 'biometricId',
+    employeeNo: 'employeeNo',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -23036,7 +32420,7 @@ export namespace Prisma {
   export type ShiftScalarFieldEnum = (typeof ShiftScalarFieldEnum)[keyof typeof ShiftScalarFieldEnum]
 
 
-  export const ScheduleScalarFieldEnum: {
+  export const MasterScheduleScalarFieldEnum: {
     id: 'id',
     employeeId: 'employeeId',
     mondayId: 'mondayId',
@@ -23050,7 +32434,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type ScheduleScalarFieldEnum = (typeof ScheduleScalarFieldEnum)[keyof typeof ScheduleScalarFieldEnum]
+  export type MasterScheduleScalarFieldEnum = (typeof MasterScheduleScalarFieldEnum)[keyof typeof MasterScheduleScalarFieldEnum]
 
 
   export const TimeRequestScalarFieldEnum: {
@@ -23193,6 +32577,125 @@ export namespace Prisma {
   export type PayrollRecordScalarFieldEnum = (typeof PayrollRecordScalarFieldEnum)[keyof typeof PayrollRecordScalarFieldEnum]
 
 
+  export const ExpenseRequestScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    amount: 'amount',
+    category: 'category',
+    description: 'description',
+    receiptUrls: 'receiptUrls',
+    status: 'status',
+    date: 'date',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ExpenseRequestScalarFieldEnum = (typeof ExpenseRequestScalarFieldEnum)[keyof typeof ExpenseRequestScalarFieldEnum]
+
+
+  export const CompanyLoanScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    principalAmount: 'principalAmount',
+    remainingBalance: 'remainingBalance',
+    monthlyDeduction: 'monthlyDeduction',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CompanyLoanScalarFieldEnum = (typeof CompanyLoanScalarFieldEnum)[keyof typeof CompanyLoanScalarFieldEnum]
+
+
+  export const CompanyAssetScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    name: 'name',
+    type: 'type',
+    serialNumber: 'serialNumber',
+    purchaseDate: 'purchaseDate',
+    purchasePrice: 'purchasePrice',
+    condition: 'condition',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CompanyAssetScalarFieldEnum = (typeof CompanyAssetScalarFieldEnum)[keyof typeof CompanyAssetScalarFieldEnum]
+
+
+  export const LedgerEntryScalarFieldEnum: {
+    id: 'id',
+    date: 'date',
+    type: 'type',
+    category: 'category',
+    amount: 'amount',
+    description: 'description',
+    referenceId: 'referenceId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type LedgerEntryScalarFieldEnum = (typeof LedgerEntryScalarFieldEnum)[keyof typeof LedgerEntryScalarFieldEnum]
+
+
+  export const BiometricDeviceScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    branchId: 'branchId',
+    ip: 'ip',
+    port: 'port',
+    status: 'status',
+    lastSync: 'lastSync',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BiometricDeviceScalarFieldEnum = (typeof BiometricDeviceScalarFieldEnum)[keyof typeof BiometricDeviceScalarFieldEnum]
+
+
+  export const RawBiometricLogScalarFieldEnum: {
+    id: 'id',
+    deviceUserId: 'deviceUserId',
+    timestamp: 'timestamp',
+    state: 'state',
+    deviceId: 'deviceId',
+    isProcessed: 'isProcessed',
+    processNote: 'processNote',
+    createdAt: 'createdAt'
+  };
+
+  export type RawBiometricLogScalarFieldEnum = (typeof RawBiometricLogScalarFieldEnum)[keyof typeof RawBiometricLogScalarFieldEnum]
+
+
+  export const HolidayScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    date: 'date',
+    type: 'type',
+    multiplier: 'multiplier',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type HolidayScalarFieldEnum = (typeof HolidayScalarFieldEnum)[keyof typeof HolidayScalarFieldEnum]
+
+
+  export const ScheduleOverrideScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    date: 'date',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    isRestDay: 'isRestDay',
+    reason: 'reason',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ScheduleOverrideScalarFieldEnum = (typeof ScheduleOverrideScalarFieldEnum)[keyof typeof ScheduleOverrideScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -23250,20 +32753,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -23274,6 +32763,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -23365,6 +32868,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Role"> | string | null
     isManager?: BoolFilter<"Role"> | boolean
     parentRoleId?: StringNullableFilter<"Role"> | string | null
+    gracePeriodMinutes?: IntFilter<"Role"> | number
     createdAt?: DateTimeFilter<"Role"> | Date | string
     updatedAt?: DateTimeFilter<"Role"> | Date | string
     parentRole?: XOR<RoleNullableScalarRelationFilter, RoleWhereInput> | null
@@ -23379,6 +32883,7 @@ export namespace Prisma {
     description?: SortOrder
     isManager?: SortOrder
     parentRoleId?: SortOrder
+    gracePeriodMinutes?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     parentRole?: RoleOrderByWithRelationInput
@@ -23396,6 +32901,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Role"> | string | null
     isManager?: BoolFilter<"Role"> | boolean
     parentRoleId?: StringNullableFilter<"Role"> | string | null
+    gracePeriodMinutes?: IntFilter<"Role"> | number
     createdAt?: DateTimeFilter<"Role"> | Date | string
     updatedAt?: DateTimeFilter<"Role"> | Date | string
     parentRole?: XOR<RoleNullableScalarRelationFilter, RoleWhereInput> | null
@@ -23410,11 +32916,14 @@ export namespace Prisma {
     description?: SortOrder
     isManager?: SortOrder
     parentRoleId?: SortOrder
+    gracePeriodMinutes?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: RoleCountOrderByAggregateInput
+    _avg?: RoleAvgOrderByAggregateInput
     _max?: RoleMaxOrderByAggregateInput
     _min?: RoleMinOrderByAggregateInput
+    _sum?: RoleSumOrderByAggregateInput
   }
 
   export type RoleScalarWhereWithAggregatesInput = {
@@ -23426,6 +32935,7 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Role"> | string | null
     isManager?: BoolWithAggregatesFilter<"Role"> | boolean
     parentRoleId?: StringNullableWithAggregatesFilter<"Role"> | string | null
+    gracePeriodMinutes?: IntWithAggregatesFilter<"Role"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Role"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Role"> | Date | string
   }
@@ -23518,6 +33028,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Branch"> | Date | string
     users?: UserListRelationFilter
     employees?: EmployeeListRelationFilter
+    biometricDevices?: BiometricDeviceListRelationFilter
   }
 
   export type BranchOrderByWithRelationInput = {
@@ -23529,6 +33040,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     users?: UserOrderByRelationAggregateInput
     employees?: EmployeeOrderByRelationAggregateInput
+    biometricDevices?: BiometricDeviceOrderByRelationAggregateInput
   }
 
   export type BranchWhereUniqueInput = Prisma.AtLeast<{
@@ -23543,6 +33055,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Branch"> | Date | string
     users?: UserListRelationFilter
     employees?: EmployeeListRelationFilter
+    biometricDevices?: BiometricDeviceListRelationFilter
   }, "id" | "name">
 
   export type BranchOrderByWithAggregationInput = {
@@ -23603,17 +33116,23 @@ export namespace Prisma {
     baseSalary?: FloatFilter<"Employee"> | number
     workFactor?: IntFilter<"Employee"> | number
     branchId?: StringNullableFilter<"Employee"> | string | null
+    biometricId?: StringNullableFilter<"Employee"> | string | null
+    employeeNo?: StringNullableFilter<"Employee"> | string | null
     createdAt?: DateTimeFilter<"Employee"> | Date | string
     updatedAt?: DateTimeFilter<"Employee"> | Date | string
     department?: XOR<DepartmentNullableScalarRelationFilter, DepartmentWhereInput> | null
     position?: XOR<PositionNullableScalarRelationFilter, PositionWhereInput> | null
     branch?: XOR<BranchNullableScalarRelationFilter, BranchWhereInput> | null
-    schedule?: XOR<ScheduleNullableScalarRelationFilter, ScheduleWhereInput> | null
+    masterSchedule?: XOR<MasterScheduleNullableScalarRelationFilter, MasterScheduleWhereInput> | null
+    scheduleOverrides?: ScheduleOverrideListRelationFilter
     benefits?: EmployeeBenefitListRelationFilter
     timeRequests?: TimeRequestListRelationFilter
     leaveRequests?: LeaveRequestListRelationFilter
     attendances?: AttendanceListRelationFilter
     payrollRecords?: PayrollRecordListRelationFilter
+    expenses?: ExpenseRequestListRelationFilter
+    loans?: CompanyLoanListRelationFilter
+    assets?: CompanyAssetListRelationFilter
   }
 
   export type EmployeeOrderByWithRelationInput = {
@@ -23647,17 +33166,23 @@ export namespace Prisma {
     baseSalary?: SortOrder
     workFactor?: SortOrder
     branchId?: SortOrder
+    biometricId?: SortOrder
+    employeeNo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     department?: DepartmentOrderByWithRelationInput
     position?: PositionOrderByWithRelationInput
     branch?: BranchOrderByWithRelationInput
-    schedule?: ScheduleOrderByWithRelationInput
+    masterSchedule?: MasterScheduleOrderByWithRelationInput
+    scheduleOverrides?: ScheduleOverrideOrderByRelationAggregateInput
     benefits?: EmployeeBenefitOrderByRelationAggregateInput
     timeRequests?: TimeRequestOrderByRelationAggregateInput
     leaveRequests?: LeaveRequestOrderByRelationAggregateInput
     attendances?: AttendanceOrderByRelationAggregateInput
     payrollRecords?: PayrollRecordOrderByRelationAggregateInput
+    expenses?: ExpenseRequestOrderByRelationAggregateInput
+    loans?: CompanyLoanOrderByRelationAggregateInput
+    assets?: CompanyAssetOrderByRelationAggregateInput
   }
 
   export type EmployeeWhereUniqueInput = Prisma.AtLeast<{
@@ -23694,17 +33219,23 @@ export namespace Prisma {
     baseSalary?: FloatFilter<"Employee"> | number
     workFactor?: IntFilter<"Employee"> | number
     branchId?: StringNullableFilter<"Employee"> | string | null
+    biometricId?: StringNullableFilter<"Employee"> | string | null
+    employeeNo?: StringNullableFilter<"Employee"> | string | null
     createdAt?: DateTimeFilter<"Employee"> | Date | string
     updatedAt?: DateTimeFilter<"Employee"> | Date | string
     department?: XOR<DepartmentNullableScalarRelationFilter, DepartmentWhereInput> | null
     position?: XOR<PositionNullableScalarRelationFilter, PositionWhereInput> | null
     branch?: XOR<BranchNullableScalarRelationFilter, BranchWhereInput> | null
-    schedule?: XOR<ScheduleNullableScalarRelationFilter, ScheduleWhereInput> | null
+    masterSchedule?: XOR<MasterScheduleNullableScalarRelationFilter, MasterScheduleWhereInput> | null
+    scheduleOverrides?: ScheduleOverrideListRelationFilter
     benefits?: EmployeeBenefitListRelationFilter
     timeRequests?: TimeRequestListRelationFilter
     leaveRequests?: LeaveRequestListRelationFilter
     attendances?: AttendanceListRelationFilter
     payrollRecords?: PayrollRecordListRelationFilter
+    expenses?: ExpenseRequestListRelationFilter
+    loans?: CompanyLoanListRelationFilter
+    assets?: CompanyAssetListRelationFilter
   }, "id" | "email">
 
   export type EmployeeOrderByWithAggregationInput = {
@@ -23738,6 +33269,8 @@ export namespace Prisma {
     baseSalary?: SortOrder
     workFactor?: SortOrder
     branchId?: SortOrder
+    biometricId?: SortOrder
+    employeeNo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: EmployeeCountOrderByAggregateInput
@@ -23781,6 +33314,8 @@ export namespace Prisma {
     baseSalary?: FloatWithAggregatesFilter<"Employee"> | number
     workFactor?: IntWithAggregatesFilter<"Employee"> | number
     branchId?: StringNullableWithAggregatesFilter<"Employee"> | string | null
+    biometricId?: StringNullableWithAggregatesFilter<"Employee"> | string | null
+    employeeNo?: StringNullableWithAggregatesFilter<"Employee"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Employee"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Employee"> | Date | string
   }
@@ -24055,13 +33590,13 @@ export namespace Prisma {
     status?: StringFilter<"Shift"> | string
     createdAt?: DateTimeFilter<"Shift"> | Date | string
     updatedAt?: DateTimeFilter<"Shift"> | Date | string
-    mondaySchedules?: ScheduleListRelationFilter
-    tuesdaySchedules?: ScheduleListRelationFilter
-    wednesdaySchedules?: ScheduleListRelationFilter
-    thursdaySchedules?: ScheduleListRelationFilter
-    fridaySchedules?: ScheduleListRelationFilter
-    saturdaySchedules?: ScheduleListRelationFilter
-    sundaySchedules?: ScheduleListRelationFilter
+    mondayMasterSchedules?: MasterScheduleListRelationFilter
+    tuesdayMasterSchedules?: MasterScheduleListRelationFilter
+    wednesdayMasterSchedules?: MasterScheduleListRelationFilter
+    thursdayMasterSchedules?: MasterScheduleListRelationFilter
+    fridayMasterSchedules?: MasterScheduleListRelationFilter
+    saturdayMasterSchedules?: MasterScheduleListRelationFilter
+    sundayMasterSchedules?: MasterScheduleListRelationFilter
   }
 
   export type ShiftOrderByWithRelationInput = {
@@ -24075,13 +33610,13 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    mondaySchedules?: ScheduleOrderByRelationAggregateInput
-    tuesdaySchedules?: ScheduleOrderByRelationAggregateInput
-    wednesdaySchedules?: ScheduleOrderByRelationAggregateInput
-    thursdaySchedules?: ScheduleOrderByRelationAggregateInput
-    fridaySchedules?: ScheduleOrderByRelationAggregateInput
-    saturdaySchedules?: ScheduleOrderByRelationAggregateInput
-    sundaySchedules?: ScheduleOrderByRelationAggregateInput
+    mondayMasterSchedules?: MasterScheduleOrderByRelationAggregateInput
+    tuesdayMasterSchedules?: MasterScheduleOrderByRelationAggregateInput
+    wednesdayMasterSchedules?: MasterScheduleOrderByRelationAggregateInput
+    thursdayMasterSchedules?: MasterScheduleOrderByRelationAggregateInput
+    fridayMasterSchedules?: MasterScheduleOrderByRelationAggregateInput
+    saturdayMasterSchedules?: MasterScheduleOrderByRelationAggregateInput
+    sundayMasterSchedules?: MasterScheduleOrderByRelationAggregateInput
   }
 
   export type ShiftWhereUniqueInput = Prisma.AtLeast<{
@@ -24098,13 +33633,13 @@ export namespace Prisma {
     status?: StringFilter<"Shift"> | string
     createdAt?: DateTimeFilter<"Shift"> | Date | string
     updatedAt?: DateTimeFilter<"Shift"> | Date | string
-    mondaySchedules?: ScheduleListRelationFilter
-    tuesdaySchedules?: ScheduleListRelationFilter
-    wednesdaySchedules?: ScheduleListRelationFilter
-    thursdaySchedules?: ScheduleListRelationFilter
-    fridaySchedules?: ScheduleListRelationFilter
-    saturdaySchedules?: ScheduleListRelationFilter
-    sundaySchedules?: ScheduleListRelationFilter
+    mondayMasterSchedules?: MasterScheduleListRelationFilter
+    tuesdayMasterSchedules?: MasterScheduleListRelationFilter
+    wednesdayMasterSchedules?: MasterScheduleListRelationFilter
+    thursdayMasterSchedules?: MasterScheduleListRelationFilter
+    fridayMasterSchedules?: MasterScheduleListRelationFilter
+    saturdayMasterSchedules?: MasterScheduleListRelationFilter
+    sundayMasterSchedules?: MasterScheduleListRelationFilter
   }, "id" | "name">
 
   export type ShiftOrderByWithAggregationInput = {
@@ -24141,21 +33676,21 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Shift"> | Date | string
   }
 
-  export type ScheduleWhereInput = {
-    AND?: ScheduleWhereInput | ScheduleWhereInput[]
-    OR?: ScheduleWhereInput[]
-    NOT?: ScheduleWhereInput | ScheduleWhereInput[]
-    id?: StringFilter<"Schedule"> | string
-    employeeId?: StringFilter<"Schedule"> | string
-    mondayId?: StringNullableFilter<"Schedule"> | string | null
-    tuesdayId?: StringNullableFilter<"Schedule"> | string | null
-    wednesdayId?: StringNullableFilter<"Schedule"> | string | null
-    thursdayId?: StringNullableFilter<"Schedule"> | string | null
-    fridayId?: StringNullableFilter<"Schedule"> | string | null
-    saturdayId?: StringNullableFilter<"Schedule"> | string | null
-    sundayId?: StringNullableFilter<"Schedule"> | string | null
-    createdAt?: DateTimeFilter<"Schedule"> | Date | string
-    updatedAt?: DateTimeFilter<"Schedule"> | Date | string
+  export type MasterScheduleWhereInput = {
+    AND?: MasterScheduleWhereInput | MasterScheduleWhereInput[]
+    OR?: MasterScheduleWhereInput[]
+    NOT?: MasterScheduleWhereInput | MasterScheduleWhereInput[]
+    id?: StringFilter<"MasterSchedule"> | string
+    employeeId?: StringFilter<"MasterSchedule"> | string
+    mondayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    tuesdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    wednesdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    thursdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    fridayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    saturdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    sundayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    createdAt?: DateTimeFilter<"MasterSchedule"> | Date | string
+    updatedAt?: DateTimeFilter<"MasterSchedule"> | Date | string
     employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
     monday?: XOR<ShiftNullableScalarRelationFilter, ShiftWhereInput> | null
     tuesday?: XOR<ShiftNullableScalarRelationFilter, ShiftWhereInput> | null
@@ -24166,7 +33701,7 @@ export namespace Prisma {
     sunday?: XOR<ShiftNullableScalarRelationFilter, ShiftWhereInput> | null
   }
 
-  export type ScheduleOrderByWithRelationInput = {
+  export type MasterScheduleOrderByWithRelationInput = {
     id?: SortOrder
     employeeId?: SortOrder
     mondayId?: SortOrder
@@ -24188,21 +33723,21 @@ export namespace Prisma {
     sunday?: ShiftOrderByWithRelationInput
   }
 
-  export type ScheduleWhereUniqueInput = Prisma.AtLeast<{
+  export type MasterScheduleWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     employeeId?: string
-    AND?: ScheduleWhereInput | ScheduleWhereInput[]
-    OR?: ScheduleWhereInput[]
-    NOT?: ScheduleWhereInput | ScheduleWhereInput[]
-    mondayId?: StringNullableFilter<"Schedule"> | string | null
-    tuesdayId?: StringNullableFilter<"Schedule"> | string | null
-    wednesdayId?: StringNullableFilter<"Schedule"> | string | null
-    thursdayId?: StringNullableFilter<"Schedule"> | string | null
-    fridayId?: StringNullableFilter<"Schedule"> | string | null
-    saturdayId?: StringNullableFilter<"Schedule"> | string | null
-    sundayId?: StringNullableFilter<"Schedule"> | string | null
-    createdAt?: DateTimeFilter<"Schedule"> | Date | string
-    updatedAt?: DateTimeFilter<"Schedule"> | Date | string
+    AND?: MasterScheduleWhereInput | MasterScheduleWhereInput[]
+    OR?: MasterScheduleWhereInput[]
+    NOT?: MasterScheduleWhereInput | MasterScheduleWhereInput[]
+    mondayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    tuesdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    wednesdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    thursdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    fridayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    saturdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    sundayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    createdAt?: DateTimeFilter<"MasterSchedule"> | Date | string
+    updatedAt?: DateTimeFilter<"MasterSchedule"> | Date | string
     employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
     monday?: XOR<ShiftNullableScalarRelationFilter, ShiftWhereInput> | null
     tuesday?: XOR<ShiftNullableScalarRelationFilter, ShiftWhereInput> | null
@@ -24213,7 +33748,7 @@ export namespace Prisma {
     sunday?: XOR<ShiftNullableScalarRelationFilter, ShiftWhereInput> | null
   }, "id" | "employeeId">
 
-  export type ScheduleOrderByWithAggregationInput = {
+  export type MasterScheduleOrderByWithAggregationInput = {
     id?: SortOrder
     employeeId?: SortOrder
     mondayId?: SortOrder
@@ -24225,26 +33760,26 @@ export namespace Prisma {
     sundayId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: ScheduleCountOrderByAggregateInput
-    _max?: ScheduleMaxOrderByAggregateInput
-    _min?: ScheduleMinOrderByAggregateInput
+    _count?: MasterScheduleCountOrderByAggregateInput
+    _max?: MasterScheduleMaxOrderByAggregateInput
+    _min?: MasterScheduleMinOrderByAggregateInput
   }
 
-  export type ScheduleScalarWhereWithAggregatesInput = {
-    AND?: ScheduleScalarWhereWithAggregatesInput | ScheduleScalarWhereWithAggregatesInput[]
-    OR?: ScheduleScalarWhereWithAggregatesInput[]
-    NOT?: ScheduleScalarWhereWithAggregatesInput | ScheduleScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Schedule"> | string
-    employeeId?: StringWithAggregatesFilter<"Schedule"> | string
-    mondayId?: StringNullableWithAggregatesFilter<"Schedule"> | string | null
-    tuesdayId?: StringNullableWithAggregatesFilter<"Schedule"> | string | null
-    wednesdayId?: StringNullableWithAggregatesFilter<"Schedule"> | string | null
-    thursdayId?: StringNullableWithAggregatesFilter<"Schedule"> | string | null
-    fridayId?: StringNullableWithAggregatesFilter<"Schedule"> | string | null
-    saturdayId?: StringNullableWithAggregatesFilter<"Schedule"> | string | null
-    sundayId?: StringNullableWithAggregatesFilter<"Schedule"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Schedule"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Schedule"> | Date | string
+  export type MasterScheduleScalarWhereWithAggregatesInput = {
+    AND?: MasterScheduleScalarWhereWithAggregatesInput | MasterScheduleScalarWhereWithAggregatesInput[]
+    OR?: MasterScheduleScalarWhereWithAggregatesInput[]
+    NOT?: MasterScheduleScalarWhereWithAggregatesInput | MasterScheduleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MasterSchedule"> | string
+    employeeId?: StringWithAggregatesFilter<"MasterSchedule"> | string
+    mondayId?: StringNullableWithAggregatesFilter<"MasterSchedule"> | string | null
+    tuesdayId?: StringNullableWithAggregatesFilter<"MasterSchedule"> | string | null
+    wednesdayId?: StringNullableWithAggregatesFilter<"MasterSchedule"> | string | null
+    thursdayId?: StringNullableWithAggregatesFilter<"MasterSchedule"> | string | null
+    fridayId?: StringNullableWithAggregatesFilter<"MasterSchedule"> | string | null
+    saturdayId?: StringNullableWithAggregatesFilter<"MasterSchedule"> | string | null
+    sundayId?: StringNullableWithAggregatesFilter<"MasterSchedule"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"MasterSchedule"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MasterSchedule"> | Date | string
   }
 
   export type TimeRequestWhereInput = {
@@ -24952,6 +34487,614 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"PayrollRecord"> | Date | string
   }
 
+  export type ExpenseRequestWhereInput = {
+    AND?: ExpenseRequestWhereInput | ExpenseRequestWhereInput[]
+    OR?: ExpenseRequestWhereInput[]
+    NOT?: ExpenseRequestWhereInput | ExpenseRequestWhereInput[]
+    id?: StringFilter<"ExpenseRequest"> | string
+    employeeId?: StringFilter<"ExpenseRequest"> | string
+    amount?: FloatFilter<"ExpenseRequest"> | number
+    category?: StringFilter<"ExpenseRequest"> | string
+    description?: StringFilter<"ExpenseRequest"> | string
+    receiptUrls?: StringNullableListFilter<"ExpenseRequest">
+    status?: StringFilter<"ExpenseRequest"> | string
+    date?: DateTimeFilter<"ExpenseRequest"> | Date | string
+    createdAt?: DateTimeFilter<"ExpenseRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"ExpenseRequest"> | Date | string
+    employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
+  }
+
+  export type ExpenseRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    amount?: SortOrder
+    category?: SortOrder
+    description?: SortOrder
+    receiptUrls?: SortOrder
+    status?: SortOrder
+    date?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    employee?: EmployeeOrderByWithRelationInput
+  }
+
+  export type ExpenseRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ExpenseRequestWhereInput | ExpenseRequestWhereInput[]
+    OR?: ExpenseRequestWhereInput[]
+    NOT?: ExpenseRequestWhereInput | ExpenseRequestWhereInput[]
+    employeeId?: StringFilter<"ExpenseRequest"> | string
+    amount?: FloatFilter<"ExpenseRequest"> | number
+    category?: StringFilter<"ExpenseRequest"> | string
+    description?: StringFilter<"ExpenseRequest"> | string
+    receiptUrls?: StringNullableListFilter<"ExpenseRequest">
+    status?: StringFilter<"ExpenseRequest"> | string
+    date?: DateTimeFilter<"ExpenseRequest"> | Date | string
+    createdAt?: DateTimeFilter<"ExpenseRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"ExpenseRequest"> | Date | string
+    employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
+  }, "id">
+
+  export type ExpenseRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    amount?: SortOrder
+    category?: SortOrder
+    description?: SortOrder
+    receiptUrls?: SortOrder
+    status?: SortOrder
+    date?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ExpenseRequestCountOrderByAggregateInput
+    _avg?: ExpenseRequestAvgOrderByAggregateInput
+    _max?: ExpenseRequestMaxOrderByAggregateInput
+    _min?: ExpenseRequestMinOrderByAggregateInput
+    _sum?: ExpenseRequestSumOrderByAggregateInput
+  }
+
+  export type ExpenseRequestScalarWhereWithAggregatesInput = {
+    AND?: ExpenseRequestScalarWhereWithAggregatesInput | ExpenseRequestScalarWhereWithAggregatesInput[]
+    OR?: ExpenseRequestScalarWhereWithAggregatesInput[]
+    NOT?: ExpenseRequestScalarWhereWithAggregatesInput | ExpenseRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ExpenseRequest"> | string
+    employeeId?: StringWithAggregatesFilter<"ExpenseRequest"> | string
+    amount?: FloatWithAggregatesFilter<"ExpenseRequest"> | number
+    category?: StringWithAggregatesFilter<"ExpenseRequest"> | string
+    description?: StringWithAggregatesFilter<"ExpenseRequest"> | string
+    receiptUrls?: StringNullableListFilter<"ExpenseRequest">
+    status?: StringWithAggregatesFilter<"ExpenseRequest"> | string
+    date?: DateTimeWithAggregatesFilter<"ExpenseRequest"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"ExpenseRequest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ExpenseRequest"> | Date | string
+  }
+
+  export type CompanyLoanWhereInput = {
+    AND?: CompanyLoanWhereInput | CompanyLoanWhereInput[]
+    OR?: CompanyLoanWhereInput[]
+    NOT?: CompanyLoanWhereInput | CompanyLoanWhereInput[]
+    id?: StringFilter<"CompanyLoan"> | string
+    employeeId?: StringFilter<"CompanyLoan"> | string
+    principalAmount?: FloatFilter<"CompanyLoan"> | number
+    remainingBalance?: FloatFilter<"CompanyLoan"> | number
+    monthlyDeduction?: FloatFilter<"CompanyLoan"> | number
+    status?: StringFilter<"CompanyLoan"> | string
+    createdAt?: DateTimeFilter<"CompanyLoan"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyLoan"> | Date | string
+    employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
+  }
+
+  export type CompanyLoanOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    principalAmount?: SortOrder
+    remainingBalance?: SortOrder
+    monthlyDeduction?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    employee?: EmployeeOrderByWithRelationInput
+  }
+
+  export type CompanyLoanWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CompanyLoanWhereInput | CompanyLoanWhereInput[]
+    OR?: CompanyLoanWhereInput[]
+    NOT?: CompanyLoanWhereInput | CompanyLoanWhereInput[]
+    employeeId?: StringFilter<"CompanyLoan"> | string
+    principalAmount?: FloatFilter<"CompanyLoan"> | number
+    remainingBalance?: FloatFilter<"CompanyLoan"> | number
+    monthlyDeduction?: FloatFilter<"CompanyLoan"> | number
+    status?: StringFilter<"CompanyLoan"> | string
+    createdAt?: DateTimeFilter<"CompanyLoan"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyLoan"> | Date | string
+    employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
+  }, "id">
+
+  export type CompanyLoanOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    principalAmount?: SortOrder
+    remainingBalance?: SortOrder
+    monthlyDeduction?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CompanyLoanCountOrderByAggregateInput
+    _avg?: CompanyLoanAvgOrderByAggregateInput
+    _max?: CompanyLoanMaxOrderByAggregateInput
+    _min?: CompanyLoanMinOrderByAggregateInput
+    _sum?: CompanyLoanSumOrderByAggregateInput
+  }
+
+  export type CompanyLoanScalarWhereWithAggregatesInput = {
+    AND?: CompanyLoanScalarWhereWithAggregatesInput | CompanyLoanScalarWhereWithAggregatesInput[]
+    OR?: CompanyLoanScalarWhereWithAggregatesInput[]
+    NOT?: CompanyLoanScalarWhereWithAggregatesInput | CompanyLoanScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CompanyLoan"> | string
+    employeeId?: StringWithAggregatesFilter<"CompanyLoan"> | string
+    principalAmount?: FloatWithAggregatesFilter<"CompanyLoan"> | number
+    remainingBalance?: FloatWithAggregatesFilter<"CompanyLoan"> | number
+    monthlyDeduction?: FloatWithAggregatesFilter<"CompanyLoan"> | number
+    status?: StringWithAggregatesFilter<"CompanyLoan"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CompanyLoan"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CompanyLoan"> | Date | string
+  }
+
+  export type CompanyAssetWhereInput = {
+    AND?: CompanyAssetWhereInput | CompanyAssetWhereInput[]
+    OR?: CompanyAssetWhereInput[]
+    NOT?: CompanyAssetWhereInput | CompanyAssetWhereInput[]
+    id?: StringFilter<"CompanyAsset"> | string
+    employeeId?: StringNullableFilter<"CompanyAsset"> | string | null
+    name?: StringFilter<"CompanyAsset"> | string
+    type?: StringFilter<"CompanyAsset"> | string
+    serialNumber?: StringNullableFilter<"CompanyAsset"> | string | null
+    purchaseDate?: DateTimeNullableFilter<"CompanyAsset"> | Date | string | null
+    purchasePrice?: FloatNullableFilter<"CompanyAsset"> | number | null
+    condition?: StringFilter<"CompanyAsset"> | string
+    status?: StringFilter<"CompanyAsset"> | string
+    createdAt?: DateTimeFilter<"CompanyAsset"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyAsset"> | Date | string
+    employee?: XOR<EmployeeNullableScalarRelationFilter, EmployeeWhereInput> | null
+  }
+
+  export type CompanyAssetOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    serialNumber?: SortOrder
+    purchaseDate?: SortOrder
+    purchasePrice?: SortOrder
+    condition?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    employee?: EmployeeOrderByWithRelationInput
+  }
+
+  export type CompanyAssetWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    serialNumber?: string
+    AND?: CompanyAssetWhereInput | CompanyAssetWhereInput[]
+    OR?: CompanyAssetWhereInput[]
+    NOT?: CompanyAssetWhereInput | CompanyAssetWhereInput[]
+    employeeId?: StringNullableFilter<"CompanyAsset"> | string | null
+    name?: StringFilter<"CompanyAsset"> | string
+    type?: StringFilter<"CompanyAsset"> | string
+    purchaseDate?: DateTimeNullableFilter<"CompanyAsset"> | Date | string | null
+    purchasePrice?: FloatNullableFilter<"CompanyAsset"> | number | null
+    condition?: StringFilter<"CompanyAsset"> | string
+    status?: StringFilter<"CompanyAsset"> | string
+    createdAt?: DateTimeFilter<"CompanyAsset"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyAsset"> | Date | string
+    employee?: XOR<EmployeeNullableScalarRelationFilter, EmployeeWhereInput> | null
+  }, "id" | "serialNumber">
+
+  export type CompanyAssetOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    serialNumber?: SortOrder
+    purchaseDate?: SortOrder
+    purchasePrice?: SortOrder
+    condition?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CompanyAssetCountOrderByAggregateInput
+    _avg?: CompanyAssetAvgOrderByAggregateInput
+    _max?: CompanyAssetMaxOrderByAggregateInput
+    _min?: CompanyAssetMinOrderByAggregateInput
+    _sum?: CompanyAssetSumOrderByAggregateInput
+  }
+
+  export type CompanyAssetScalarWhereWithAggregatesInput = {
+    AND?: CompanyAssetScalarWhereWithAggregatesInput | CompanyAssetScalarWhereWithAggregatesInput[]
+    OR?: CompanyAssetScalarWhereWithAggregatesInput[]
+    NOT?: CompanyAssetScalarWhereWithAggregatesInput | CompanyAssetScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CompanyAsset"> | string
+    employeeId?: StringNullableWithAggregatesFilter<"CompanyAsset"> | string | null
+    name?: StringWithAggregatesFilter<"CompanyAsset"> | string
+    type?: StringWithAggregatesFilter<"CompanyAsset"> | string
+    serialNumber?: StringNullableWithAggregatesFilter<"CompanyAsset"> | string | null
+    purchaseDate?: DateTimeNullableWithAggregatesFilter<"CompanyAsset"> | Date | string | null
+    purchasePrice?: FloatNullableWithAggregatesFilter<"CompanyAsset"> | number | null
+    condition?: StringWithAggregatesFilter<"CompanyAsset"> | string
+    status?: StringWithAggregatesFilter<"CompanyAsset"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CompanyAsset"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CompanyAsset"> | Date | string
+  }
+
+  export type LedgerEntryWhereInput = {
+    AND?: LedgerEntryWhereInput | LedgerEntryWhereInput[]
+    OR?: LedgerEntryWhereInput[]
+    NOT?: LedgerEntryWhereInput | LedgerEntryWhereInput[]
+    id?: StringFilter<"LedgerEntry"> | string
+    date?: DateTimeFilter<"LedgerEntry"> | Date | string
+    type?: StringFilter<"LedgerEntry"> | string
+    category?: StringFilter<"LedgerEntry"> | string
+    amount?: FloatFilter<"LedgerEntry"> | number
+    description?: StringNullableFilter<"LedgerEntry"> | string | null
+    referenceId?: StringNullableFilter<"LedgerEntry"> | string | null
+    createdAt?: DateTimeFilter<"LedgerEntry"> | Date | string
+    updatedAt?: DateTimeFilter<"LedgerEntry"> | Date | string
+  }
+
+  export type LedgerEntryOrderByWithRelationInput = {
+    id?: SortOrder
+    date?: SortOrder
+    type?: SortOrder
+    category?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    referenceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LedgerEntryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: LedgerEntryWhereInput | LedgerEntryWhereInput[]
+    OR?: LedgerEntryWhereInput[]
+    NOT?: LedgerEntryWhereInput | LedgerEntryWhereInput[]
+    date?: DateTimeFilter<"LedgerEntry"> | Date | string
+    type?: StringFilter<"LedgerEntry"> | string
+    category?: StringFilter<"LedgerEntry"> | string
+    amount?: FloatFilter<"LedgerEntry"> | number
+    description?: StringNullableFilter<"LedgerEntry"> | string | null
+    referenceId?: StringNullableFilter<"LedgerEntry"> | string | null
+    createdAt?: DateTimeFilter<"LedgerEntry"> | Date | string
+    updatedAt?: DateTimeFilter<"LedgerEntry"> | Date | string
+  }, "id">
+
+  export type LedgerEntryOrderByWithAggregationInput = {
+    id?: SortOrder
+    date?: SortOrder
+    type?: SortOrder
+    category?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    referenceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: LedgerEntryCountOrderByAggregateInput
+    _avg?: LedgerEntryAvgOrderByAggregateInput
+    _max?: LedgerEntryMaxOrderByAggregateInput
+    _min?: LedgerEntryMinOrderByAggregateInput
+    _sum?: LedgerEntrySumOrderByAggregateInput
+  }
+
+  export type LedgerEntryScalarWhereWithAggregatesInput = {
+    AND?: LedgerEntryScalarWhereWithAggregatesInput | LedgerEntryScalarWhereWithAggregatesInput[]
+    OR?: LedgerEntryScalarWhereWithAggregatesInput[]
+    NOT?: LedgerEntryScalarWhereWithAggregatesInput | LedgerEntryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"LedgerEntry"> | string
+    date?: DateTimeWithAggregatesFilter<"LedgerEntry"> | Date | string
+    type?: StringWithAggregatesFilter<"LedgerEntry"> | string
+    category?: StringWithAggregatesFilter<"LedgerEntry"> | string
+    amount?: FloatWithAggregatesFilter<"LedgerEntry"> | number
+    description?: StringNullableWithAggregatesFilter<"LedgerEntry"> | string | null
+    referenceId?: StringNullableWithAggregatesFilter<"LedgerEntry"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"LedgerEntry"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"LedgerEntry"> | Date | string
+  }
+
+  export type BiometricDeviceWhereInput = {
+    AND?: BiometricDeviceWhereInput | BiometricDeviceWhereInput[]
+    OR?: BiometricDeviceWhereInput[]
+    NOT?: BiometricDeviceWhereInput | BiometricDeviceWhereInput[]
+    id?: StringFilter<"BiometricDevice"> | string
+    name?: StringFilter<"BiometricDevice"> | string
+    branchId?: StringFilter<"BiometricDevice"> | string
+    ip?: StringFilter<"BiometricDevice"> | string
+    port?: IntFilter<"BiometricDevice"> | number
+    status?: StringFilter<"BiometricDevice"> | string
+    lastSync?: DateTimeNullableFilter<"BiometricDevice"> | Date | string | null
+    createdAt?: DateTimeFilter<"BiometricDevice"> | Date | string
+    updatedAt?: DateTimeFilter<"BiometricDevice"> | Date | string
+    branch?: XOR<BranchScalarRelationFilter, BranchWhereInput>
+    rawLogs?: RawBiometricLogListRelationFilter
+  }
+
+  export type BiometricDeviceOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    branchId?: SortOrder
+    ip?: SortOrder
+    port?: SortOrder
+    status?: SortOrder
+    lastSync?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    branch?: BranchOrderByWithRelationInput
+    rawLogs?: RawBiometricLogOrderByRelationAggregateInput
+  }
+
+  export type BiometricDeviceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BiometricDeviceWhereInput | BiometricDeviceWhereInput[]
+    OR?: BiometricDeviceWhereInput[]
+    NOT?: BiometricDeviceWhereInput | BiometricDeviceWhereInput[]
+    name?: StringFilter<"BiometricDevice"> | string
+    branchId?: StringFilter<"BiometricDevice"> | string
+    ip?: StringFilter<"BiometricDevice"> | string
+    port?: IntFilter<"BiometricDevice"> | number
+    status?: StringFilter<"BiometricDevice"> | string
+    lastSync?: DateTimeNullableFilter<"BiometricDevice"> | Date | string | null
+    createdAt?: DateTimeFilter<"BiometricDevice"> | Date | string
+    updatedAt?: DateTimeFilter<"BiometricDevice"> | Date | string
+    branch?: XOR<BranchScalarRelationFilter, BranchWhereInput>
+    rawLogs?: RawBiometricLogListRelationFilter
+  }, "id">
+
+  export type BiometricDeviceOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    branchId?: SortOrder
+    ip?: SortOrder
+    port?: SortOrder
+    status?: SortOrder
+    lastSync?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BiometricDeviceCountOrderByAggregateInput
+    _avg?: BiometricDeviceAvgOrderByAggregateInput
+    _max?: BiometricDeviceMaxOrderByAggregateInput
+    _min?: BiometricDeviceMinOrderByAggregateInput
+    _sum?: BiometricDeviceSumOrderByAggregateInput
+  }
+
+  export type BiometricDeviceScalarWhereWithAggregatesInput = {
+    AND?: BiometricDeviceScalarWhereWithAggregatesInput | BiometricDeviceScalarWhereWithAggregatesInput[]
+    OR?: BiometricDeviceScalarWhereWithAggregatesInput[]
+    NOT?: BiometricDeviceScalarWhereWithAggregatesInput | BiometricDeviceScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BiometricDevice"> | string
+    name?: StringWithAggregatesFilter<"BiometricDevice"> | string
+    branchId?: StringWithAggregatesFilter<"BiometricDevice"> | string
+    ip?: StringWithAggregatesFilter<"BiometricDevice"> | string
+    port?: IntWithAggregatesFilter<"BiometricDevice"> | number
+    status?: StringWithAggregatesFilter<"BiometricDevice"> | string
+    lastSync?: DateTimeNullableWithAggregatesFilter<"BiometricDevice"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"BiometricDevice"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BiometricDevice"> | Date | string
+  }
+
+  export type RawBiometricLogWhereInput = {
+    AND?: RawBiometricLogWhereInput | RawBiometricLogWhereInput[]
+    OR?: RawBiometricLogWhereInput[]
+    NOT?: RawBiometricLogWhereInput | RawBiometricLogWhereInput[]
+    id?: StringFilter<"RawBiometricLog"> | string
+    deviceUserId?: StringFilter<"RawBiometricLog"> | string
+    timestamp?: DateTimeFilter<"RawBiometricLog"> | Date | string
+    state?: IntNullableFilter<"RawBiometricLog"> | number | null
+    deviceId?: StringFilter<"RawBiometricLog"> | string
+    isProcessed?: BoolFilter<"RawBiometricLog"> | boolean
+    processNote?: StringNullableFilter<"RawBiometricLog"> | string | null
+    createdAt?: DateTimeFilter<"RawBiometricLog"> | Date | string
+    device?: XOR<BiometricDeviceScalarRelationFilter, BiometricDeviceWhereInput>
+  }
+
+  export type RawBiometricLogOrderByWithRelationInput = {
+    id?: SortOrder
+    deviceUserId?: SortOrder
+    timestamp?: SortOrder
+    state?: SortOrder
+    deviceId?: SortOrder
+    isProcessed?: SortOrder
+    processNote?: SortOrder
+    createdAt?: SortOrder
+    device?: BiometricDeviceOrderByWithRelationInput
+  }
+
+  export type RawBiometricLogWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    deviceId_deviceUserId_timestamp?: RawBiometricLogDeviceIdDeviceUserIdTimestampCompoundUniqueInput
+    AND?: RawBiometricLogWhereInput | RawBiometricLogWhereInput[]
+    OR?: RawBiometricLogWhereInput[]
+    NOT?: RawBiometricLogWhereInput | RawBiometricLogWhereInput[]
+    deviceUserId?: StringFilter<"RawBiometricLog"> | string
+    timestamp?: DateTimeFilter<"RawBiometricLog"> | Date | string
+    state?: IntNullableFilter<"RawBiometricLog"> | number | null
+    deviceId?: StringFilter<"RawBiometricLog"> | string
+    isProcessed?: BoolFilter<"RawBiometricLog"> | boolean
+    processNote?: StringNullableFilter<"RawBiometricLog"> | string | null
+    createdAt?: DateTimeFilter<"RawBiometricLog"> | Date | string
+    device?: XOR<BiometricDeviceScalarRelationFilter, BiometricDeviceWhereInput>
+  }, "id" | "deviceId_deviceUserId_timestamp">
+
+  export type RawBiometricLogOrderByWithAggregationInput = {
+    id?: SortOrder
+    deviceUserId?: SortOrder
+    timestamp?: SortOrder
+    state?: SortOrder
+    deviceId?: SortOrder
+    isProcessed?: SortOrder
+    processNote?: SortOrder
+    createdAt?: SortOrder
+    _count?: RawBiometricLogCountOrderByAggregateInput
+    _avg?: RawBiometricLogAvgOrderByAggregateInput
+    _max?: RawBiometricLogMaxOrderByAggregateInput
+    _min?: RawBiometricLogMinOrderByAggregateInput
+    _sum?: RawBiometricLogSumOrderByAggregateInput
+  }
+
+  export type RawBiometricLogScalarWhereWithAggregatesInput = {
+    AND?: RawBiometricLogScalarWhereWithAggregatesInput | RawBiometricLogScalarWhereWithAggregatesInput[]
+    OR?: RawBiometricLogScalarWhereWithAggregatesInput[]
+    NOT?: RawBiometricLogScalarWhereWithAggregatesInput | RawBiometricLogScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RawBiometricLog"> | string
+    deviceUserId?: StringWithAggregatesFilter<"RawBiometricLog"> | string
+    timestamp?: DateTimeWithAggregatesFilter<"RawBiometricLog"> | Date | string
+    state?: IntNullableWithAggregatesFilter<"RawBiometricLog"> | number | null
+    deviceId?: StringWithAggregatesFilter<"RawBiometricLog"> | string
+    isProcessed?: BoolWithAggregatesFilter<"RawBiometricLog"> | boolean
+    processNote?: StringNullableWithAggregatesFilter<"RawBiometricLog"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"RawBiometricLog"> | Date | string
+  }
+
+  export type HolidayWhereInput = {
+    AND?: HolidayWhereInput | HolidayWhereInput[]
+    OR?: HolidayWhereInput[]
+    NOT?: HolidayWhereInput | HolidayWhereInput[]
+    id?: StringFilter<"Holiday"> | string
+    name?: StringFilter<"Holiday"> | string
+    date?: DateTimeFilter<"Holiday"> | Date | string
+    type?: StringFilter<"Holiday"> | string
+    multiplier?: FloatFilter<"Holiday"> | number
+    createdAt?: DateTimeFilter<"Holiday"> | Date | string
+    updatedAt?: DateTimeFilter<"Holiday"> | Date | string
+  }
+
+  export type HolidayOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    type?: SortOrder
+    multiplier?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HolidayWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    date?: Date | string
+    AND?: HolidayWhereInput | HolidayWhereInput[]
+    OR?: HolidayWhereInput[]
+    NOT?: HolidayWhereInput | HolidayWhereInput[]
+    name?: StringFilter<"Holiday"> | string
+    type?: StringFilter<"Holiday"> | string
+    multiplier?: FloatFilter<"Holiday"> | number
+    createdAt?: DateTimeFilter<"Holiday"> | Date | string
+    updatedAt?: DateTimeFilter<"Holiday"> | Date | string
+  }, "id" | "date">
+
+  export type HolidayOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    type?: SortOrder
+    multiplier?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: HolidayCountOrderByAggregateInput
+    _avg?: HolidayAvgOrderByAggregateInput
+    _max?: HolidayMaxOrderByAggregateInput
+    _min?: HolidayMinOrderByAggregateInput
+    _sum?: HolidaySumOrderByAggregateInput
+  }
+
+  export type HolidayScalarWhereWithAggregatesInput = {
+    AND?: HolidayScalarWhereWithAggregatesInput | HolidayScalarWhereWithAggregatesInput[]
+    OR?: HolidayScalarWhereWithAggregatesInput[]
+    NOT?: HolidayScalarWhereWithAggregatesInput | HolidayScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Holiday"> | string
+    name?: StringWithAggregatesFilter<"Holiday"> | string
+    date?: DateTimeWithAggregatesFilter<"Holiday"> | Date | string
+    type?: StringWithAggregatesFilter<"Holiday"> | string
+    multiplier?: FloatWithAggregatesFilter<"Holiday"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Holiday"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Holiday"> | Date | string
+  }
+
+  export type ScheduleOverrideWhereInput = {
+    AND?: ScheduleOverrideWhereInput | ScheduleOverrideWhereInput[]
+    OR?: ScheduleOverrideWhereInput[]
+    NOT?: ScheduleOverrideWhereInput | ScheduleOverrideWhereInput[]
+    id?: StringFilter<"ScheduleOverride"> | string
+    employeeId?: StringFilter<"ScheduleOverride"> | string
+    date?: DateTimeFilter<"ScheduleOverride"> | Date | string
+    startTime?: StringNullableFilter<"ScheduleOverride"> | string | null
+    endTime?: StringNullableFilter<"ScheduleOverride"> | string | null
+    isRestDay?: BoolFilter<"ScheduleOverride"> | boolean
+    reason?: StringNullableFilter<"ScheduleOverride"> | string | null
+    createdAt?: DateTimeFilter<"ScheduleOverride"> | Date | string
+    updatedAt?: DateTimeFilter<"ScheduleOverride"> | Date | string
+    employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
+  }
+
+  export type ScheduleOverrideOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    isRestDay?: SortOrder
+    reason?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    employee?: EmployeeOrderByWithRelationInput
+  }
+
+  export type ScheduleOverrideWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    employeeId_date?: ScheduleOverrideEmployeeIdDateCompoundUniqueInput
+    AND?: ScheduleOverrideWhereInput | ScheduleOverrideWhereInput[]
+    OR?: ScheduleOverrideWhereInput[]
+    NOT?: ScheduleOverrideWhereInput | ScheduleOverrideWhereInput[]
+    employeeId?: StringFilter<"ScheduleOverride"> | string
+    date?: DateTimeFilter<"ScheduleOverride"> | Date | string
+    startTime?: StringNullableFilter<"ScheduleOverride"> | string | null
+    endTime?: StringNullableFilter<"ScheduleOverride"> | string | null
+    isRestDay?: BoolFilter<"ScheduleOverride"> | boolean
+    reason?: StringNullableFilter<"ScheduleOverride"> | string | null
+    createdAt?: DateTimeFilter<"ScheduleOverride"> | Date | string
+    updatedAt?: DateTimeFilter<"ScheduleOverride"> | Date | string
+    employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
+  }, "id" | "employeeId_date">
+
+  export type ScheduleOverrideOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    isRestDay?: SortOrder
+    reason?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ScheduleOverrideCountOrderByAggregateInput
+    _max?: ScheduleOverrideMaxOrderByAggregateInput
+    _min?: ScheduleOverrideMinOrderByAggregateInput
+  }
+
+  export type ScheduleOverrideScalarWhereWithAggregatesInput = {
+    AND?: ScheduleOverrideScalarWhereWithAggregatesInput | ScheduleOverrideScalarWhereWithAggregatesInput[]
+    OR?: ScheduleOverrideScalarWhereWithAggregatesInput[]
+    NOT?: ScheduleOverrideScalarWhereWithAggregatesInput | ScheduleOverrideScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ScheduleOverride"> | string
+    employeeId?: StringWithAggregatesFilter<"ScheduleOverride"> | string
+    date?: DateTimeWithAggregatesFilter<"ScheduleOverride"> | Date | string
+    startTime?: StringNullableWithAggregatesFilter<"ScheduleOverride"> | string | null
+    endTime?: StringNullableWithAggregatesFilter<"ScheduleOverride"> | string | null
+    isRestDay?: BoolWithAggregatesFilter<"ScheduleOverride"> | boolean
+    reason?: StringNullableWithAggregatesFilter<"ScheduleOverride"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"ScheduleOverride"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ScheduleOverride"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -25032,6 +35175,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     isManager?: boolean
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     parentRole?: RoleCreateNestedOneWithoutChildRolesInput
@@ -25046,6 +35190,7 @@ export namespace Prisma {
     description?: string | null
     isManager?: boolean
     parentRoleId?: string | null
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     childRoles?: RoleUncheckedCreateNestedManyWithoutParentRoleInput
@@ -25057,6 +35202,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parentRole?: RoleUpdateOneWithoutChildRolesNestedInput
@@ -25070,6 +35216,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
     parentRoleId?: NullableStringFieldUpdateOperationsInput | string | null
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     childRoles?: RoleUncheckedUpdateManyWithoutParentRoleNestedInput
@@ -25083,6 +35230,7 @@ export namespace Prisma {
     description?: string | null
     isManager?: boolean
     parentRoleId?: string | null
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -25091,6 +35239,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -25100,6 +35249,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
     parentRoleId?: NullableStringFieldUpdateOperationsInput | string | null
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -25192,6 +35342,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutBranchInput
     employees?: EmployeeCreateNestedManyWithoutBranchInput
+    biometricDevices?: BiometricDeviceCreateNestedManyWithoutBranchInput
   }
 
   export type BranchUncheckedCreateInput = {
@@ -25203,6 +35354,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutBranchInput
     employees?: EmployeeUncheckedCreateNestedManyWithoutBranchInput
+    biometricDevices?: BiometricDeviceUncheckedCreateNestedManyWithoutBranchInput
   }
 
   export type BranchUpdateInput = {
@@ -25213,6 +35365,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutBranchNestedInput
     employees?: EmployeeUpdateManyWithoutBranchNestedInput
+    biometricDevices?: BiometricDeviceUpdateManyWithoutBranchNestedInput
   }
 
   export type BranchUncheckedUpdateInput = {
@@ -25223,6 +35376,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutBranchNestedInput
     employees?: EmployeeUncheckedUpdateManyWithoutBranchNestedInput
+    biometricDevices?: BiometricDeviceUncheckedUpdateManyWithoutBranchNestedInput
   }
 
   export type BranchCreateManyInput = {
@@ -25278,17 +35432,23 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     department?: DepartmentCreateNestedOneWithoutEmployeesInput
     position?: PositionCreateNestedOneWithoutEmployeesInput
     branch?: BranchCreateNestedOneWithoutEmployeesInput
-    schedule?: ScheduleCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateInput = {
@@ -25322,14 +35482,20 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    schedule?: ScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeUpdateInput = {
@@ -25359,17 +35525,23 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     department?: DepartmentUpdateOneWithoutEmployeesNestedInput
     position?: PositionUpdateOneWithoutEmployeesNestedInput
     branch?: BranchUpdateOneWithoutEmployeesNestedInput
-    schedule?: ScheduleUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateInput = {
@@ -25402,14 +35574,20 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schedule?: ScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeCreateManyInput = {
@@ -25443,6 +35621,8 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -25474,6 +35654,8 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -25508,6 +35690,8 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -25779,13 +35963,13 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSundayInput
   }
 
   export type ShiftUncheckedCreateInput = {
@@ -25799,13 +35983,13 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleUncheckedCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleUncheckedCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSundayInput
   }
 
   export type ShiftUpdateInput = {
@@ -25818,13 +36002,13 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUpdateManyWithoutSundayNestedInput
+    mondayMasterSchedules?: MasterScheduleUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUpdateManyWithoutSundayNestedInput
   }
 
   export type ShiftUncheckedUpdateInput = {
@@ -25837,13 +36021,13 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUncheckedUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUncheckedUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUncheckedUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUncheckedUpdateManyWithoutSundayNestedInput
+    mondayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSundayNestedInput
   }
 
   export type ShiftCreateManyInput = {
@@ -25883,21 +36067,21 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleCreateInput = {
+  export type MasterScheduleCreateInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    employee: EmployeeCreateNestedOneWithoutScheduleInput
-    monday?: ShiftCreateNestedOneWithoutMondaySchedulesInput
-    tuesday?: ShiftCreateNestedOneWithoutTuesdaySchedulesInput
-    wednesday?: ShiftCreateNestedOneWithoutWednesdaySchedulesInput
-    thursday?: ShiftCreateNestedOneWithoutThursdaySchedulesInput
-    friday?: ShiftCreateNestedOneWithoutFridaySchedulesInput
-    saturday?: ShiftCreateNestedOneWithoutSaturdaySchedulesInput
-    sunday?: ShiftCreateNestedOneWithoutSundaySchedulesInput
+    employee: EmployeeCreateNestedOneWithoutMasterScheduleInput
+    monday?: ShiftCreateNestedOneWithoutMondayMasterSchedulesInput
+    tuesday?: ShiftCreateNestedOneWithoutTuesdayMasterSchedulesInput
+    wednesday?: ShiftCreateNestedOneWithoutWednesdayMasterSchedulesInput
+    thursday?: ShiftCreateNestedOneWithoutThursdayMasterSchedulesInput
+    friday?: ShiftCreateNestedOneWithoutFridayMasterSchedulesInput
+    saturday?: ShiftCreateNestedOneWithoutSaturdayMasterSchedulesInput
+    sunday?: ShiftCreateNestedOneWithoutSundayMasterSchedulesInput
   }
 
-  export type ScheduleUncheckedCreateInput = {
+  export type MasterScheduleUncheckedCreateInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -25911,20 +36095,20 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleUpdateInput = {
+  export type MasterScheduleUpdateInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    employee?: EmployeeUpdateOneRequiredWithoutScheduleNestedInput
-    monday?: ShiftUpdateOneWithoutMondaySchedulesNestedInput
-    tuesday?: ShiftUpdateOneWithoutTuesdaySchedulesNestedInput
-    wednesday?: ShiftUpdateOneWithoutWednesdaySchedulesNestedInput
-    thursday?: ShiftUpdateOneWithoutThursdaySchedulesNestedInput
-    friday?: ShiftUpdateOneWithoutFridaySchedulesNestedInput
-    saturday?: ShiftUpdateOneWithoutSaturdaySchedulesNestedInput
-    sunday?: ShiftUpdateOneWithoutSundaySchedulesNestedInput
+    employee?: EmployeeUpdateOneRequiredWithoutMasterScheduleNestedInput
+    monday?: ShiftUpdateOneWithoutMondayMasterSchedulesNestedInput
+    tuesday?: ShiftUpdateOneWithoutTuesdayMasterSchedulesNestedInput
+    wednesday?: ShiftUpdateOneWithoutWednesdayMasterSchedulesNestedInput
+    thursday?: ShiftUpdateOneWithoutThursdayMasterSchedulesNestedInput
+    friday?: ShiftUpdateOneWithoutFridayMasterSchedulesNestedInput
+    saturday?: ShiftUpdateOneWithoutSaturdayMasterSchedulesNestedInput
+    sunday?: ShiftUpdateOneWithoutSundayMasterSchedulesNestedInput
   }
 
-  export type ScheduleUncheckedUpdateInput = {
+  export type MasterScheduleUncheckedUpdateInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25937,7 +36121,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleCreateManyInput = {
+  export type MasterScheduleCreateManyInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -25951,12 +36135,12 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleUpdateManyMutationInput = {
+  export type MasterScheduleUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUncheckedUpdateManyInput = {
+  export type MasterScheduleUncheckedUpdateManyInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26772,6 +36956,637 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ExpenseRequestCreateInput = {
+    id?: string
+    amount: number
+    category: string
+    description: string
+    receiptUrls?: ExpenseRequestCreatereceiptUrlsInput | string[]
+    status?: string
+    date?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employee: EmployeeCreateNestedOneWithoutExpensesInput
+  }
+
+  export type ExpenseRequestUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    amount: number
+    category: string
+    description: string
+    receiptUrls?: ExpenseRequestCreatereceiptUrlsInput | string[]
+    status?: string
+    date?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ExpenseRequestUpdateInput = {
+    amount?: FloatFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    receiptUrls?: ExpenseRequestUpdatereceiptUrlsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: EmployeeUpdateOneRequiredWithoutExpensesNestedInput
+  }
+
+  export type ExpenseRequestUncheckedUpdateInput = {
+    employeeId?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    receiptUrls?: ExpenseRequestUpdatereceiptUrlsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExpenseRequestCreateManyInput = {
+    id?: string
+    employeeId: string
+    amount: number
+    category: string
+    description: string
+    receiptUrls?: ExpenseRequestCreatereceiptUrlsInput | string[]
+    status?: string
+    date?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ExpenseRequestUpdateManyMutationInput = {
+    amount?: FloatFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    receiptUrls?: ExpenseRequestUpdatereceiptUrlsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExpenseRequestUncheckedUpdateManyInput = {
+    employeeId?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    receiptUrls?: ExpenseRequestUpdatereceiptUrlsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyLoanCreateInput = {
+    id?: string
+    principalAmount: number
+    remainingBalance: number
+    monthlyDeduction: number
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employee: EmployeeCreateNestedOneWithoutLoansInput
+  }
+
+  export type CompanyLoanUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    principalAmount: number
+    remainingBalance: number
+    monthlyDeduction: number
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyLoanUpdateInput = {
+    principalAmount?: FloatFieldUpdateOperationsInput | number
+    remainingBalance?: FloatFieldUpdateOperationsInput | number
+    monthlyDeduction?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: EmployeeUpdateOneRequiredWithoutLoansNestedInput
+  }
+
+  export type CompanyLoanUncheckedUpdateInput = {
+    employeeId?: StringFieldUpdateOperationsInput | string
+    principalAmount?: FloatFieldUpdateOperationsInput | number
+    remainingBalance?: FloatFieldUpdateOperationsInput | number
+    monthlyDeduction?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyLoanCreateManyInput = {
+    id?: string
+    employeeId: string
+    principalAmount: number
+    remainingBalance: number
+    monthlyDeduction: number
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyLoanUpdateManyMutationInput = {
+    principalAmount?: FloatFieldUpdateOperationsInput | number
+    remainingBalance?: FloatFieldUpdateOperationsInput | number
+    monthlyDeduction?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyLoanUncheckedUpdateManyInput = {
+    employeeId?: StringFieldUpdateOperationsInput | string
+    principalAmount?: FloatFieldUpdateOperationsInput | number
+    remainingBalance?: FloatFieldUpdateOperationsInput | number
+    monthlyDeduction?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssetCreateInput = {
+    id?: string
+    name: string
+    type: string
+    serialNumber?: string | null
+    purchaseDate?: Date | string | null
+    purchasePrice?: number | null
+    condition?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employee?: EmployeeCreateNestedOneWithoutAssetsInput
+  }
+
+  export type CompanyAssetUncheckedCreateInput = {
+    id?: string
+    employeeId?: string | null
+    name: string
+    type: string
+    serialNumber?: string | null
+    purchaseDate?: Date | string | null
+    purchasePrice?: number | null
+    condition?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyAssetUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    serialNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    purchaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    purchasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    condition?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: EmployeeUpdateOneWithoutAssetsNestedInput
+  }
+
+  export type CompanyAssetUncheckedUpdateInput = {
+    employeeId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    serialNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    purchaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    purchasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    condition?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssetCreateManyInput = {
+    id?: string
+    employeeId?: string | null
+    name: string
+    type: string
+    serialNumber?: string | null
+    purchaseDate?: Date | string | null
+    purchasePrice?: number | null
+    condition?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyAssetUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    serialNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    purchaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    purchasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    condition?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssetUncheckedUpdateManyInput = {
+    employeeId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    serialNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    purchaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    purchasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    condition?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LedgerEntryCreateInput = {
+    id?: string
+    date?: Date | string
+    type: string
+    category: string
+    amount: number
+    description?: string | null
+    referenceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LedgerEntryUncheckedCreateInput = {
+    id?: string
+    date?: Date | string
+    type: string
+    category: string
+    amount: number
+    description?: string | null
+    referenceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LedgerEntryUpdateInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LedgerEntryUncheckedUpdateInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LedgerEntryCreateManyInput = {
+    id?: string
+    date?: Date | string
+    type: string
+    category: string
+    amount: number
+    description?: string | null
+    referenceId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LedgerEntryUpdateManyMutationInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LedgerEntryUncheckedUpdateManyInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    amount?: FloatFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BiometricDeviceCreateInput = {
+    id?: string
+    name: string
+    ip: string
+    port?: number
+    status?: string
+    lastSync?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    branch: BranchCreateNestedOneWithoutBiometricDevicesInput
+    rawLogs?: RawBiometricLogCreateNestedManyWithoutDeviceInput
+  }
+
+  export type BiometricDeviceUncheckedCreateInput = {
+    id?: string
+    name: string
+    branchId: string
+    ip: string
+    port?: number
+    status?: string
+    lastSync?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rawLogs?: RawBiometricLogUncheckedCreateNestedManyWithoutDeviceInput
+  }
+
+  export type BiometricDeviceUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    ip?: StringFieldUpdateOperationsInput | string
+    port?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    lastSync?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    branch?: BranchUpdateOneRequiredWithoutBiometricDevicesNestedInput
+    rawLogs?: RawBiometricLogUpdateManyWithoutDeviceNestedInput
+  }
+
+  export type BiometricDeviceUncheckedUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    branchId?: StringFieldUpdateOperationsInput | string
+    ip?: StringFieldUpdateOperationsInput | string
+    port?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    lastSync?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rawLogs?: RawBiometricLogUncheckedUpdateManyWithoutDeviceNestedInput
+  }
+
+  export type BiometricDeviceCreateManyInput = {
+    id?: string
+    name: string
+    branchId: string
+    ip: string
+    port?: number
+    status?: string
+    lastSync?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BiometricDeviceUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    ip?: StringFieldUpdateOperationsInput | string
+    port?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    lastSync?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BiometricDeviceUncheckedUpdateManyInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    branchId?: StringFieldUpdateOperationsInput | string
+    ip?: StringFieldUpdateOperationsInput | string
+    port?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    lastSync?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RawBiometricLogCreateInput = {
+    id?: string
+    deviceUserId: string
+    timestamp: Date | string
+    state?: number | null
+    isProcessed?: boolean
+    processNote?: string | null
+    createdAt?: Date | string
+    device: BiometricDeviceCreateNestedOneWithoutRawLogsInput
+  }
+
+  export type RawBiometricLogUncheckedCreateInput = {
+    id?: string
+    deviceUserId: string
+    timestamp: Date | string
+    state?: number | null
+    deviceId: string
+    isProcessed?: boolean
+    processNote?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RawBiometricLogUpdateInput = {
+    deviceUserId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    state?: NullableIntFieldUpdateOperationsInput | number | null
+    isProcessed?: BoolFieldUpdateOperationsInput | boolean
+    processNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    device?: BiometricDeviceUpdateOneRequiredWithoutRawLogsNestedInput
+  }
+
+  export type RawBiometricLogUncheckedUpdateInput = {
+    deviceUserId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    state?: NullableIntFieldUpdateOperationsInput | number | null
+    deviceId?: StringFieldUpdateOperationsInput | string
+    isProcessed?: BoolFieldUpdateOperationsInput | boolean
+    processNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RawBiometricLogCreateManyInput = {
+    id?: string
+    deviceUserId: string
+    timestamp: Date | string
+    state?: number | null
+    deviceId: string
+    isProcessed?: boolean
+    processNote?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RawBiometricLogUpdateManyMutationInput = {
+    deviceUserId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    state?: NullableIntFieldUpdateOperationsInput | number | null
+    isProcessed?: BoolFieldUpdateOperationsInput | boolean
+    processNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RawBiometricLogUncheckedUpdateManyInput = {
+    deviceUserId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    state?: NullableIntFieldUpdateOperationsInput | number | null
+    deviceId?: StringFieldUpdateOperationsInput | string
+    isProcessed?: BoolFieldUpdateOperationsInput | boolean
+    processNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HolidayCreateInput = {
+    id?: string
+    name: string
+    date: Date | string
+    type: string
+    multiplier?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HolidayUncheckedCreateInput = {
+    id?: string
+    name: string
+    date: Date | string
+    type: string
+    multiplier?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HolidayUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    multiplier?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HolidayUncheckedUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    multiplier?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HolidayCreateManyInput = {
+    id?: string
+    name: string
+    date: Date | string
+    type: string
+    multiplier?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HolidayUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    multiplier?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HolidayUncheckedUpdateManyInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: StringFieldUpdateOperationsInput | string
+    multiplier?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleOverrideCreateInput = {
+    id?: string
+    date: Date | string
+    startTime?: string | null
+    endTime?: string | null
+    isRestDay?: boolean
+    reason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employee: EmployeeCreateNestedOneWithoutScheduleOverridesInput
+  }
+
+  export type ScheduleOverrideUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    date: Date | string
+    startTime?: string | null
+    endTime?: string | null
+    isRestDay?: boolean
+    reason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ScheduleOverrideUpdateInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    isRestDay?: BoolFieldUpdateOperationsInput | boolean
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: EmployeeUpdateOneRequiredWithoutScheduleOverridesNestedInput
+  }
+
+  export type ScheduleOverrideUncheckedUpdateInput = {
+    employeeId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    isRestDay?: BoolFieldUpdateOperationsInput | boolean
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleOverrideCreateManyInput = {
+    id?: string
+    employeeId: string
+    date: Date | string
+    startTime?: string | null
+    endTime?: string | null
+    isRestDay?: boolean
+    reason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ScheduleOverrideUpdateManyMutationInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    isRestDay?: BoolFieldUpdateOperationsInput | boolean
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleOverrideUncheckedUpdateManyInput = {
+    employeeId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    isRestDay?: BoolFieldUpdateOperationsInput | boolean
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -26923,6 +37738,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type RoleNullableScalarRelationFilter = {
     is?: RoleWhereInput | null
     isNot?: RoleWhereInput | null
@@ -26964,8 +37790,13 @@ export namespace Prisma {
     description?: SortOrder
     isManager?: SortOrder
     parentRoleId?: SortOrder
+    gracePeriodMinutes?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type RoleAvgOrderByAggregateInput = {
+    gracePeriodMinutes?: SortOrder
   }
 
   export type RoleMaxOrderByAggregateInput = {
@@ -26974,6 +37805,7 @@ export namespace Prisma {
     description?: SortOrder
     isManager?: SortOrder
     parentRoleId?: SortOrder
+    gracePeriodMinutes?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -26984,8 +37816,13 @@ export namespace Prisma {
     description?: SortOrder
     isManager?: SortOrder
     parentRoleId?: SortOrder
+    gracePeriodMinutes?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type RoleSumOrderByAggregateInput = {
+    gracePeriodMinutes?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -26994,6 +37831,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type RolePermissionRoleIdModuleCompoundUniqueInput = {
@@ -27043,7 +37896,17 @@ export namespace Prisma {
     none?: EmployeeWhereInput
   }
 
+  export type BiometricDeviceListRelationFilter = {
+    every?: BiometricDeviceWhereInput
+    some?: BiometricDeviceWhereInput
+    none?: BiometricDeviceWhereInput
+  }
+
   export type EmployeeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BiometricDeviceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27097,17 +37960,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type DepartmentNullableScalarRelationFilter = {
     is?: DepartmentWhereInput | null
     isNot?: DepartmentWhereInput | null
@@ -27118,9 +37970,15 @@ export namespace Prisma {
     isNot?: PositionWhereInput | null
   }
 
-  export type ScheduleNullableScalarRelationFilter = {
-    is?: ScheduleWhereInput | null
-    isNot?: ScheduleWhereInput | null
+  export type MasterScheduleNullableScalarRelationFilter = {
+    is?: MasterScheduleWhereInput | null
+    isNot?: MasterScheduleWhereInput | null
+  }
+
+  export type ScheduleOverrideListRelationFilter = {
+    every?: ScheduleOverrideWhereInput
+    some?: ScheduleOverrideWhereInput
+    none?: ScheduleOverrideWhereInput
   }
 
   export type EmployeeBenefitListRelationFilter = {
@@ -27153,6 +38011,28 @@ export namespace Prisma {
     none?: PayrollRecordWhereInput
   }
 
+  export type ExpenseRequestListRelationFilter = {
+    every?: ExpenseRequestWhereInput
+    some?: ExpenseRequestWhereInput
+    none?: ExpenseRequestWhereInput
+  }
+
+  export type CompanyLoanListRelationFilter = {
+    every?: CompanyLoanWhereInput
+    some?: CompanyLoanWhereInput
+    none?: CompanyLoanWhereInput
+  }
+
+  export type CompanyAssetListRelationFilter = {
+    every?: CompanyAssetWhereInput
+    some?: CompanyAssetWhereInput
+    none?: CompanyAssetWhereInput
+  }
+
+  export type ScheduleOverrideOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type EmployeeBenefitOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -27170,6 +38050,18 @@ export namespace Prisma {
   }
 
   export type PayrollRecordOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ExpenseRequestOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CompanyLoanOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CompanyAssetOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27204,6 +38096,8 @@ export namespace Prisma {
     baseSalary?: SortOrder
     workFactor?: SortOrder
     branchId?: SortOrder
+    biometricId?: SortOrder
+    employeeNo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -27244,6 +38138,8 @@ export namespace Prisma {
     baseSalary?: SortOrder
     workFactor?: SortOrder
     branchId?: SortOrder
+    biometricId?: SortOrder
+    employeeNo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -27279,6 +38175,8 @@ export namespace Prisma {
     baseSalary?: SortOrder
     workFactor?: SortOrder
     branchId?: SortOrder
+    biometricId?: SortOrder
+    employeeNo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -27317,22 +38215,6 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type BenefitPlanCountOrderByAggregateInput = {
@@ -27496,13 +38378,13 @@ export namespace Prisma {
     isSet?: boolean
   }
 
-  export type ScheduleListRelationFilter = {
-    every?: ScheduleWhereInput
-    some?: ScheduleWhereInput
-    none?: ScheduleWhereInput
+  export type MasterScheduleListRelationFilter = {
+    every?: MasterScheduleWhereInput
+    some?: MasterScheduleWhereInput
+    none?: MasterScheduleWhereInput
   }
 
-  export type ScheduleOrderByRelationAggregateInput = {
+  export type MasterScheduleOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27573,7 +38455,7 @@ export namespace Prisma {
     isNot?: ShiftWhereInput | null
   }
 
-  export type ScheduleCountOrderByAggregateInput = {
+  export type MasterScheduleCountOrderByAggregateInput = {
     id?: SortOrder
     employeeId?: SortOrder
     mondayId?: SortOrder
@@ -27587,7 +38469,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type ScheduleMaxOrderByAggregateInput = {
+  export type MasterScheduleMaxOrderByAggregateInput = {
     id?: SortOrder
     employeeId?: SortOrder
     mondayId?: SortOrder
@@ -27601,7 +38483,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type ScheduleMinOrderByAggregateInput = {
+  export type MasterScheduleMinOrderByAggregateInput = {
     id?: SortOrder
     employeeId?: SortOrder
     mondayId?: SortOrder
@@ -28083,6 +38965,414 @@ export namespace Prisma {
     workFactor?: SortOrder
   }
 
+  export type ExpenseRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    amount?: SortOrder
+    category?: SortOrder
+    description?: SortOrder
+    receiptUrls?: SortOrder
+    status?: SortOrder
+    date?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ExpenseRequestAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type ExpenseRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    amount?: SortOrder
+    category?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
+    date?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ExpenseRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    amount?: SortOrder
+    category?: SortOrder
+    description?: SortOrder
+    status?: SortOrder
+    date?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ExpenseRequestSumOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type CompanyLoanCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    principalAmount?: SortOrder
+    remainingBalance?: SortOrder
+    monthlyDeduction?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyLoanAvgOrderByAggregateInput = {
+    principalAmount?: SortOrder
+    remainingBalance?: SortOrder
+    monthlyDeduction?: SortOrder
+  }
+
+  export type CompanyLoanMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    principalAmount?: SortOrder
+    remainingBalance?: SortOrder
+    monthlyDeduction?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyLoanMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    principalAmount?: SortOrder
+    remainingBalance?: SortOrder
+    monthlyDeduction?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyLoanSumOrderByAggregateInput = {
+    principalAmount?: SortOrder
+    remainingBalance?: SortOrder
+    monthlyDeduction?: SortOrder
+  }
+
+  export type EmployeeNullableScalarRelationFilter = {
+    is?: EmployeeWhereInput | null
+    isNot?: EmployeeWhereInput | null
+  }
+
+  export type CompanyAssetCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    serialNumber?: SortOrder
+    purchaseDate?: SortOrder
+    purchasePrice?: SortOrder
+    condition?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyAssetAvgOrderByAggregateInput = {
+    purchasePrice?: SortOrder
+  }
+
+  export type CompanyAssetMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    serialNumber?: SortOrder
+    purchaseDate?: SortOrder
+    purchasePrice?: SortOrder
+    condition?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyAssetMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    name?: SortOrder
+    type?: SortOrder
+    serialNumber?: SortOrder
+    purchaseDate?: SortOrder
+    purchasePrice?: SortOrder
+    condition?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CompanyAssetSumOrderByAggregateInput = {
+    purchasePrice?: SortOrder
+  }
+
+  export type LedgerEntryCountOrderByAggregateInput = {
+    id?: SortOrder
+    date?: SortOrder
+    type?: SortOrder
+    category?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    referenceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LedgerEntryAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type LedgerEntryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    date?: SortOrder
+    type?: SortOrder
+    category?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    referenceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LedgerEntryMinOrderByAggregateInput = {
+    id?: SortOrder
+    date?: SortOrder
+    type?: SortOrder
+    category?: SortOrder
+    amount?: SortOrder
+    description?: SortOrder
+    referenceId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LedgerEntrySumOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type BranchScalarRelationFilter = {
+    is?: BranchWhereInput
+    isNot?: BranchWhereInput
+  }
+
+  export type RawBiometricLogListRelationFilter = {
+    every?: RawBiometricLogWhereInput
+    some?: RawBiometricLogWhereInput
+    none?: RawBiometricLogWhereInput
+  }
+
+  export type RawBiometricLogOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BiometricDeviceCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    branchId?: SortOrder
+    ip?: SortOrder
+    port?: SortOrder
+    status?: SortOrder
+    lastSync?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BiometricDeviceAvgOrderByAggregateInput = {
+    port?: SortOrder
+  }
+
+  export type BiometricDeviceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    branchId?: SortOrder
+    ip?: SortOrder
+    port?: SortOrder
+    status?: SortOrder
+    lastSync?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BiometricDeviceMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    branchId?: SortOrder
+    ip?: SortOrder
+    port?: SortOrder
+    status?: SortOrder
+    lastSync?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BiometricDeviceSumOrderByAggregateInput = {
+    port?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
+  }
+
+  export type BiometricDeviceScalarRelationFilter = {
+    is?: BiometricDeviceWhereInput
+    isNot?: BiometricDeviceWhereInput
+  }
+
+  export type RawBiometricLogDeviceIdDeviceUserIdTimestampCompoundUniqueInput = {
+    deviceId: string
+    deviceUserId: string
+    timestamp: Date | string
+  }
+
+  export type RawBiometricLogCountOrderByAggregateInput = {
+    id?: SortOrder
+    deviceUserId?: SortOrder
+    timestamp?: SortOrder
+    state?: SortOrder
+    deviceId?: SortOrder
+    isProcessed?: SortOrder
+    processNote?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RawBiometricLogAvgOrderByAggregateInput = {
+    state?: SortOrder
+  }
+
+  export type RawBiometricLogMaxOrderByAggregateInput = {
+    id?: SortOrder
+    deviceUserId?: SortOrder
+    timestamp?: SortOrder
+    state?: SortOrder
+    deviceId?: SortOrder
+    isProcessed?: SortOrder
+    processNote?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RawBiometricLogMinOrderByAggregateInput = {
+    id?: SortOrder
+    deviceUserId?: SortOrder
+    timestamp?: SortOrder
+    state?: SortOrder
+    deviceId?: SortOrder
+    isProcessed?: SortOrder
+    processNote?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RawBiometricLogSumOrderByAggregateInput = {
+    state?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
+  export type HolidayCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    type?: SortOrder
+    multiplier?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HolidayAvgOrderByAggregateInput = {
+    multiplier?: SortOrder
+  }
+
+  export type HolidayMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    type?: SortOrder
+    multiplier?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HolidayMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    type?: SortOrder
+    multiplier?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HolidaySumOrderByAggregateInput = {
+    multiplier?: SortOrder
+  }
+
+  export type ScheduleOverrideEmployeeIdDateCompoundUniqueInput = {
+    employeeId: string
+    date: Date | string
+  }
+
+  export type ScheduleOverrideCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    isRestDay?: SortOrder
+    reason?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ScheduleOverrideMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    isRestDay?: SortOrder
+    reason?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ScheduleOverrideMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    isRestDay?: SortOrder
+    reason?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type RoleCreateNestedOneWithoutUsersInput = {
     create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
     connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
@@ -28220,6 +39510,14 @@ export namespace Prisma {
     set?: boolean
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type RoleUpdateOneWithoutChildRolesNestedInput = {
     create?: XOR<RoleCreateWithoutChildRolesInput, RoleUncheckedCreateWithoutChildRolesInput>
     connectOrCreate?: RoleCreateOrConnectWithoutChildRolesInput
@@ -28342,6 +39640,13 @@ export namespace Prisma {
     connect?: EmployeeWhereUniqueInput | EmployeeWhereUniqueInput[]
   }
 
+  export type BiometricDeviceCreateNestedManyWithoutBranchInput = {
+    create?: XOR<BiometricDeviceCreateWithoutBranchInput, BiometricDeviceUncheckedCreateWithoutBranchInput> | BiometricDeviceCreateWithoutBranchInput[] | BiometricDeviceUncheckedCreateWithoutBranchInput[]
+    connectOrCreate?: BiometricDeviceCreateOrConnectWithoutBranchInput | BiometricDeviceCreateOrConnectWithoutBranchInput[]
+    createMany?: BiometricDeviceCreateManyBranchInputEnvelope
+    connect?: BiometricDeviceWhereUniqueInput | BiometricDeviceWhereUniqueInput[]
+  }
+
   export type UserUncheckedCreateNestedManyWithoutBranchInput = {
     create?: XOR<UserCreateWithoutBranchInput, UserUncheckedCreateWithoutBranchInput> | UserCreateWithoutBranchInput[] | UserUncheckedCreateWithoutBranchInput[]
     connectOrCreate?: UserCreateOrConnectWithoutBranchInput | UserCreateOrConnectWithoutBranchInput[]
@@ -28354,6 +39659,13 @@ export namespace Prisma {
     connectOrCreate?: EmployeeCreateOrConnectWithoutBranchInput | EmployeeCreateOrConnectWithoutBranchInput[]
     createMany?: EmployeeCreateManyBranchInputEnvelope
     connect?: EmployeeWhereUniqueInput | EmployeeWhereUniqueInput[]
+  }
+
+  export type BiometricDeviceUncheckedCreateNestedManyWithoutBranchInput = {
+    create?: XOR<BiometricDeviceCreateWithoutBranchInput, BiometricDeviceUncheckedCreateWithoutBranchInput> | BiometricDeviceCreateWithoutBranchInput[] | BiometricDeviceUncheckedCreateWithoutBranchInput[]
+    connectOrCreate?: BiometricDeviceCreateOrConnectWithoutBranchInput | BiometricDeviceCreateOrConnectWithoutBranchInput[]
+    createMany?: BiometricDeviceCreateManyBranchInputEnvelope
+    connect?: BiometricDeviceWhereUniqueInput | BiometricDeviceWhereUniqueInput[]
   }
 
   export type UserUpdateManyWithoutBranchNestedInput = {
@@ -28384,6 +39696,20 @@ export namespace Prisma {
     deleteMany?: EmployeeScalarWhereInput | EmployeeScalarWhereInput[]
   }
 
+  export type BiometricDeviceUpdateManyWithoutBranchNestedInput = {
+    create?: XOR<BiometricDeviceCreateWithoutBranchInput, BiometricDeviceUncheckedCreateWithoutBranchInput> | BiometricDeviceCreateWithoutBranchInput[] | BiometricDeviceUncheckedCreateWithoutBranchInput[]
+    connectOrCreate?: BiometricDeviceCreateOrConnectWithoutBranchInput | BiometricDeviceCreateOrConnectWithoutBranchInput[]
+    upsert?: BiometricDeviceUpsertWithWhereUniqueWithoutBranchInput | BiometricDeviceUpsertWithWhereUniqueWithoutBranchInput[]
+    createMany?: BiometricDeviceCreateManyBranchInputEnvelope
+    set?: BiometricDeviceWhereUniqueInput | BiometricDeviceWhereUniqueInput[]
+    disconnect?: BiometricDeviceWhereUniqueInput | BiometricDeviceWhereUniqueInput[]
+    delete?: BiometricDeviceWhereUniqueInput | BiometricDeviceWhereUniqueInput[]
+    connect?: BiometricDeviceWhereUniqueInput | BiometricDeviceWhereUniqueInput[]
+    update?: BiometricDeviceUpdateWithWhereUniqueWithoutBranchInput | BiometricDeviceUpdateWithWhereUniqueWithoutBranchInput[]
+    updateMany?: BiometricDeviceUpdateManyWithWhereWithoutBranchInput | BiometricDeviceUpdateManyWithWhereWithoutBranchInput[]
+    deleteMany?: BiometricDeviceScalarWhereInput | BiometricDeviceScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateManyWithoutBranchNestedInput = {
     create?: XOR<UserCreateWithoutBranchInput, UserUncheckedCreateWithoutBranchInput> | UserCreateWithoutBranchInput[] | UserUncheckedCreateWithoutBranchInput[]
     connectOrCreate?: UserCreateOrConnectWithoutBranchInput | UserCreateOrConnectWithoutBranchInput[]
@@ -28412,6 +39738,20 @@ export namespace Prisma {
     deleteMany?: EmployeeScalarWhereInput | EmployeeScalarWhereInput[]
   }
 
+  export type BiometricDeviceUncheckedUpdateManyWithoutBranchNestedInput = {
+    create?: XOR<BiometricDeviceCreateWithoutBranchInput, BiometricDeviceUncheckedCreateWithoutBranchInput> | BiometricDeviceCreateWithoutBranchInput[] | BiometricDeviceUncheckedCreateWithoutBranchInput[]
+    connectOrCreate?: BiometricDeviceCreateOrConnectWithoutBranchInput | BiometricDeviceCreateOrConnectWithoutBranchInput[]
+    upsert?: BiometricDeviceUpsertWithWhereUniqueWithoutBranchInput | BiometricDeviceUpsertWithWhereUniqueWithoutBranchInput[]
+    createMany?: BiometricDeviceCreateManyBranchInputEnvelope
+    set?: BiometricDeviceWhereUniqueInput | BiometricDeviceWhereUniqueInput[]
+    disconnect?: BiometricDeviceWhereUniqueInput | BiometricDeviceWhereUniqueInput[]
+    delete?: BiometricDeviceWhereUniqueInput | BiometricDeviceWhereUniqueInput[]
+    connect?: BiometricDeviceWhereUniqueInput | BiometricDeviceWhereUniqueInput[]
+    update?: BiometricDeviceUpdateWithWhereUniqueWithoutBranchInput | BiometricDeviceUpdateWithWhereUniqueWithoutBranchInput[]
+    updateMany?: BiometricDeviceUpdateManyWithWhereWithoutBranchInput | BiometricDeviceUpdateManyWithWhereWithoutBranchInput[]
+    deleteMany?: BiometricDeviceScalarWhereInput | BiometricDeviceScalarWhereInput[]
+  }
+
   export type DepartmentCreateNestedOneWithoutEmployeesInput = {
     create?: XOR<DepartmentCreateWithoutEmployeesInput, DepartmentUncheckedCreateWithoutEmployeesInput>
     connectOrCreate?: DepartmentCreateOrConnectWithoutEmployeesInput
@@ -28430,10 +39770,17 @@ export namespace Prisma {
     connect?: BranchWhereUniqueInput
   }
 
-  export type ScheduleCreateNestedOneWithoutEmployeeInput = {
-    create?: XOR<ScheduleCreateWithoutEmployeeInput, ScheduleUncheckedCreateWithoutEmployeeInput>
-    connectOrCreate?: ScheduleCreateOrConnectWithoutEmployeeInput
-    connect?: ScheduleWhereUniqueInput
+  export type MasterScheduleCreateNestedOneWithoutEmployeeInput = {
+    create?: XOR<MasterScheduleCreateWithoutEmployeeInput, MasterScheduleUncheckedCreateWithoutEmployeeInput>
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutEmployeeInput
+    connect?: MasterScheduleWhereUniqueInput
+  }
+
+  export type ScheduleOverrideCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<ScheduleOverrideCreateWithoutEmployeeInput, ScheduleOverrideUncheckedCreateWithoutEmployeeInput> | ScheduleOverrideCreateWithoutEmployeeInput[] | ScheduleOverrideUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: ScheduleOverrideCreateOrConnectWithoutEmployeeInput | ScheduleOverrideCreateOrConnectWithoutEmployeeInput[]
+    createMany?: ScheduleOverrideCreateManyEmployeeInputEnvelope
+    connect?: ScheduleOverrideWhereUniqueInput | ScheduleOverrideWhereUniqueInput[]
   }
 
   export type EmployeeBenefitCreateNestedManyWithoutEmployeeInput = {
@@ -28471,10 +39818,38 @@ export namespace Prisma {
     connect?: PayrollRecordWhereUniqueInput | PayrollRecordWhereUniqueInput[]
   }
 
-  export type ScheduleUncheckedCreateNestedOneWithoutEmployeeInput = {
-    create?: XOR<ScheduleCreateWithoutEmployeeInput, ScheduleUncheckedCreateWithoutEmployeeInput>
-    connectOrCreate?: ScheduleCreateOrConnectWithoutEmployeeInput
-    connect?: ScheduleWhereUniqueInput
+  export type ExpenseRequestCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<ExpenseRequestCreateWithoutEmployeeInput, ExpenseRequestUncheckedCreateWithoutEmployeeInput> | ExpenseRequestCreateWithoutEmployeeInput[] | ExpenseRequestUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: ExpenseRequestCreateOrConnectWithoutEmployeeInput | ExpenseRequestCreateOrConnectWithoutEmployeeInput[]
+    createMany?: ExpenseRequestCreateManyEmployeeInputEnvelope
+    connect?: ExpenseRequestWhereUniqueInput | ExpenseRequestWhereUniqueInput[]
+  }
+
+  export type CompanyLoanCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<CompanyLoanCreateWithoutEmployeeInput, CompanyLoanUncheckedCreateWithoutEmployeeInput> | CompanyLoanCreateWithoutEmployeeInput[] | CompanyLoanUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: CompanyLoanCreateOrConnectWithoutEmployeeInput | CompanyLoanCreateOrConnectWithoutEmployeeInput[]
+    createMany?: CompanyLoanCreateManyEmployeeInputEnvelope
+    connect?: CompanyLoanWhereUniqueInput | CompanyLoanWhereUniqueInput[]
+  }
+
+  export type CompanyAssetCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<CompanyAssetCreateWithoutEmployeeInput, CompanyAssetUncheckedCreateWithoutEmployeeInput> | CompanyAssetCreateWithoutEmployeeInput[] | CompanyAssetUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: CompanyAssetCreateOrConnectWithoutEmployeeInput | CompanyAssetCreateOrConnectWithoutEmployeeInput[]
+    createMany?: CompanyAssetCreateManyEmployeeInputEnvelope
+    connect?: CompanyAssetWhereUniqueInput | CompanyAssetWhereUniqueInput[]
+  }
+
+  export type MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput = {
+    create?: XOR<MasterScheduleCreateWithoutEmployeeInput, MasterScheduleUncheckedCreateWithoutEmployeeInput>
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutEmployeeInput
+    connect?: MasterScheduleWhereUniqueInput
+  }
+
+  export type ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<ScheduleOverrideCreateWithoutEmployeeInput, ScheduleOverrideUncheckedCreateWithoutEmployeeInput> | ScheduleOverrideCreateWithoutEmployeeInput[] | ScheduleOverrideUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: ScheduleOverrideCreateOrConnectWithoutEmployeeInput | ScheduleOverrideCreateOrConnectWithoutEmployeeInput[]
+    createMany?: ScheduleOverrideCreateManyEmployeeInputEnvelope
+    connect?: ScheduleOverrideWhereUniqueInput | ScheduleOverrideWhereUniqueInput[]
   }
 
   export type EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput = {
@@ -28512,20 +39887,33 @@ export namespace Prisma {
     connect?: PayrollRecordWhereUniqueInput | PayrollRecordWhereUniqueInput[]
   }
 
+  export type ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<ExpenseRequestCreateWithoutEmployeeInput, ExpenseRequestUncheckedCreateWithoutEmployeeInput> | ExpenseRequestCreateWithoutEmployeeInput[] | ExpenseRequestUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: ExpenseRequestCreateOrConnectWithoutEmployeeInput | ExpenseRequestCreateOrConnectWithoutEmployeeInput[]
+    createMany?: ExpenseRequestCreateManyEmployeeInputEnvelope
+    connect?: ExpenseRequestWhereUniqueInput | ExpenseRequestWhereUniqueInput[]
+  }
+
+  export type CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<CompanyLoanCreateWithoutEmployeeInput, CompanyLoanUncheckedCreateWithoutEmployeeInput> | CompanyLoanCreateWithoutEmployeeInput[] | CompanyLoanUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: CompanyLoanCreateOrConnectWithoutEmployeeInput | CompanyLoanCreateOrConnectWithoutEmployeeInput[]
+    createMany?: CompanyLoanCreateManyEmployeeInputEnvelope
+    connect?: CompanyLoanWhereUniqueInput | CompanyLoanWhereUniqueInput[]
+  }
+
+  export type CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<CompanyAssetCreateWithoutEmployeeInput, CompanyAssetUncheckedCreateWithoutEmployeeInput> | CompanyAssetCreateWithoutEmployeeInput[] | CompanyAssetUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: CompanyAssetCreateOrConnectWithoutEmployeeInput | CompanyAssetCreateOrConnectWithoutEmployeeInput[]
+    createMany?: CompanyAssetCreateManyEmployeeInputEnvelope
+    connect?: CompanyAssetWhereUniqueInput | CompanyAssetWhereUniqueInput[]
+  }
+
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
     unset?: boolean
   }
 
   export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
@@ -28563,14 +39951,28 @@ export namespace Prisma {
     update?: XOR<XOR<BranchUpdateToOneWithWhereWithoutEmployeesInput, BranchUpdateWithoutEmployeesInput>, BranchUncheckedUpdateWithoutEmployeesInput>
   }
 
-  export type ScheduleUpdateOneWithoutEmployeeNestedInput = {
-    create?: XOR<ScheduleCreateWithoutEmployeeInput, ScheduleUncheckedCreateWithoutEmployeeInput>
-    connectOrCreate?: ScheduleCreateOrConnectWithoutEmployeeInput
-    upsert?: ScheduleUpsertWithoutEmployeeInput
-    disconnect?: ScheduleWhereInput | boolean
-    delete?: ScheduleWhereInput | boolean
-    connect?: ScheduleWhereUniqueInput
-    update?: XOR<XOR<ScheduleUpdateToOneWithWhereWithoutEmployeeInput, ScheduleUpdateWithoutEmployeeInput>, ScheduleUncheckedUpdateWithoutEmployeeInput>
+  export type MasterScheduleUpdateOneWithoutEmployeeNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutEmployeeInput, MasterScheduleUncheckedCreateWithoutEmployeeInput>
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutEmployeeInput
+    upsert?: MasterScheduleUpsertWithoutEmployeeInput
+    disconnect?: MasterScheduleWhereInput | boolean
+    delete?: MasterScheduleWhereInput | boolean
+    connect?: MasterScheduleWhereUniqueInput
+    update?: XOR<XOR<MasterScheduleUpdateToOneWithWhereWithoutEmployeeInput, MasterScheduleUpdateWithoutEmployeeInput>, MasterScheduleUncheckedUpdateWithoutEmployeeInput>
+  }
+
+  export type ScheduleOverrideUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<ScheduleOverrideCreateWithoutEmployeeInput, ScheduleOverrideUncheckedCreateWithoutEmployeeInput> | ScheduleOverrideCreateWithoutEmployeeInput[] | ScheduleOverrideUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: ScheduleOverrideCreateOrConnectWithoutEmployeeInput | ScheduleOverrideCreateOrConnectWithoutEmployeeInput[]
+    upsert?: ScheduleOverrideUpsertWithWhereUniqueWithoutEmployeeInput | ScheduleOverrideUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: ScheduleOverrideCreateManyEmployeeInputEnvelope
+    set?: ScheduleOverrideWhereUniqueInput | ScheduleOverrideWhereUniqueInput[]
+    disconnect?: ScheduleOverrideWhereUniqueInput | ScheduleOverrideWhereUniqueInput[]
+    delete?: ScheduleOverrideWhereUniqueInput | ScheduleOverrideWhereUniqueInput[]
+    connect?: ScheduleOverrideWhereUniqueInput | ScheduleOverrideWhereUniqueInput[]
+    update?: ScheduleOverrideUpdateWithWhereUniqueWithoutEmployeeInput | ScheduleOverrideUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: ScheduleOverrideUpdateManyWithWhereWithoutEmployeeInput | ScheduleOverrideUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: ScheduleOverrideScalarWhereInput | ScheduleOverrideScalarWhereInput[]
   }
 
   export type EmployeeBenefitUpdateManyWithoutEmployeeNestedInput = {
@@ -28643,14 +40045,70 @@ export namespace Prisma {
     deleteMany?: PayrollRecordScalarWhereInput | PayrollRecordScalarWhereInput[]
   }
 
-  export type ScheduleUncheckedUpdateOneWithoutEmployeeNestedInput = {
-    create?: XOR<ScheduleCreateWithoutEmployeeInput, ScheduleUncheckedCreateWithoutEmployeeInput>
-    connectOrCreate?: ScheduleCreateOrConnectWithoutEmployeeInput
-    upsert?: ScheduleUpsertWithoutEmployeeInput
-    disconnect?: ScheduleWhereInput | boolean
-    delete?: ScheduleWhereInput | boolean
-    connect?: ScheduleWhereUniqueInput
-    update?: XOR<XOR<ScheduleUpdateToOneWithWhereWithoutEmployeeInput, ScheduleUpdateWithoutEmployeeInput>, ScheduleUncheckedUpdateWithoutEmployeeInput>
+  export type ExpenseRequestUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<ExpenseRequestCreateWithoutEmployeeInput, ExpenseRequestUncheckedCreateWithoutEmployeeInput> | ExpenseRequestCreateWithoutEmployeeInput[] | ExpenseRequestUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: ExpenseRequestCreateOrConnectWithoutEmployeeInput | ExpenseRequestCreateOrConnectWithoutEmployeeInput[]
+    upsert?: ExpenseRequestUpsertWithWhereUniqueWithoutEmployeeInput | ExpenseRequestUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: ExpenseRequestCreateManyEmployeeInputEnvelope
+    set?: ExpenseRequestWhereUniqueInput | ExpenseRequestWhereUniqueInput[]
+    disconnect?: ExpenseRequestWhereUniqueInput | ExpenseRequestWhereUniqueInput[]
+    delete?: ExpenseRequestWhereUniqueInput | ExpenseRequestWhereUniqueInput[]
+    connect?: ExpenseRequestWhereUniqueInput | ExpenseRequestWhereUniqueInput[]
+    update?: ExpenseRequestUpdateWithWhereUniqueWithoutEmployeeInput | ExpenseRequestUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: ExpenseRequestUpdateManyWithWhereWithoutEmployeeInput | ExpenseRequestUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: ExpenseRequestScalarWhereInput | ExpenseRequestScalarWhereInput[]
+  }
+
+  export type CompanyLoanUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<CompanyLoanCreateWithoutEmployeeInput, CompanyLoanUncheckedCreateWithoutEmployeeInput> | CompanyLoanCreateWithoutEmployeeInput[] | CompanyLoanUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: CompanyLoanCreateOrConnectWithoutEmployeeInput | CompanyLoanCreateOrConnectWithoutEmployeeInput[]
+    upsert?: CompanyLoanUpsertWithWhereUniqueWithoutEmployeeInput | CompanyLoanUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: CompanyLoanCreateManyEmployeeInputEnvelope
+    set?: CompanyLoanWhereUniqueInput | CompanyLoanWhereUniqueInput[]
+    disconnect?: CompanyLoanWhereUniqueInput | CompanyLoanWhereUniqueInput[]
+    delete?: CompanyLoanWhereUniqueInput | CompanyLoanWhereUniqueInput[]
+    connect?: CompanyLoanWhereUniqueInput | CompanyLoanWhereUniqueInput[]
+    update?: CompanyLoanUpdateWithWhereUniqueWithoutEmployeeInput | CompanyLoanUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: CompanyLoanUpdateManyWithWhereWithoutEmployeeInput | CompanyLoanUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: CompanyLoanScalarWhereInput | CompanyLoanScalarWhereInput[]
+  }
+
+  export type CompanyAssetUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<CompanyAssetCreateWithoutEmployeeInput, CompanyAssetUncheckedCreateWithoutEmployeeInput> | CompanyAssetCreateWithoutEmployeeInput[] | CompanyAssetUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: CompanyAssetCreateOrConnectWithoutEmployeeInput | CompanyAssetCreateOrConnectWithoutEmployeeInput[]
+    upsert?: CompanyAssetUpsertWithWhereUniqueWithoutEmployeeInput | CompanyAssetUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: CompanyAssetCreateManyEmployeeInputEnvelope
+    set?: CompanyAssetWhereUniqueInput | CompanyAssetWhereUniqueInput[]
+    disconnect?: CompanyAssetWhereUniqueInput | CompanyAssetWhereUniqueInput[]
+    delete?: CompanyAssetWhereUniqueInput | CompanyAssetWhereUniqueInput[]
+    connect?: CompanyAssetWhereUniqueInput | CompanyAssetWhereUniqueInput[]
+    update?: CompanyAssetUpdateWithWhereUniqueWithoutEmployeeInput | CompanyAssetUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: CompanyAssetUpdateManyWithWhereWithoutEmployeeInput | CompanyAssetUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: CompanyAssetScalarWhereInput | CompanyAssetScalarWhereInput[]
+  }
+
+  export type MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutEmployeeInput, MasterScheduleUncheckedCreateWithoutEmployeeInput>
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutEmployeeInput
+    upsert?: MasterScheduleUpsertWithoutEmployeeInput
+    disconnect?: MasterScheduleWhereInput | boolean
+    delete?: MasterScheduleWhereInput | boolean
+    connect?: MasterScheduleWhereUniqueInput
+    update?: XOR<XOR<MasterScheduleUpdateToOneWithWhereWithoutEmployeeInput, MasterScheduleUpdateWithoutEmployeeInput>, MasterScheduleUncheckedUpdateWithoutEmployeeInput>
+  }
+
+  export type ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<ScheduleOverrideCreateWithoutEmployeeInput, ScheduleOverrideUncheckedCreateWithoutEmployeeInput> | ScheduleOverrideCreateWithoutEmployeeInput[] | ScheduleOverrideUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: ScheduleOverrideCreateOrConnectWithoutEmployeeInput | ScheduleOverrideCreateOrConnectWithoutEmployeeInput[]
+    upsert?: ScheduleOverrideUpsertWithWhereUniqueWithoutEmployeeInput | ScheduleOverrideUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: ScheduleOverrideCreateManyEmployeeInputEnvelope
+    set?: ScheduleOverrideWhereUniqueInput | ScheduleOverrideWhereUniqueInput[]
+    disconnect?: ScheduleOverrideWhereUniqueInput | ScheduleOverrideWhereUniqueInput[]
+    delete?: ScheduleOverrideWhereUniqueInput | ScheduleOverrideWhereUniqueInput[]
+    connect?: ScheduleOverrideWhereUniqueInput | ScheduleOverrideWhereUniqueInput[]
+    update?: ScheduleOverrideUpdateWithWhereUniqueWithoutEmployeeInput | ScheduleOverrideUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: ScheduleOverrideUpdateManyWithWhereWithoutEmployeeInput | ScheduleOverrideUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: ScheduleOverrideScalarWhereInput | ScheduleOverrideScalarWhereInput[]
   }
 
   export type EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput = {
@@ -28721,6 +40179,48 @@ export namespace Prisma {
     update?: PayrollRecordUpdateWithWhereUniqueWithoutEmployeeInput | PayrollRecordUpdateWithWhereUniqueWithoutEmployeeInput[]
     updateMany?: PayrollRecordUpdateManyWithWhereWithoutEmployeeInput | PayrollRecordUpdateManyWithWhereWithoutEmployeeInput[]
     deleteMany?: PayrollRecordScalarWhereInput | PayrollRecordScalarWhereInput[]
+  }
+
+  export type ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<ExpenseRequestCreateWithoutEmployeeInput, ExpenseRequestUncheckedCreateWithoutEmployeeInput> | ExpenseRequestCreateWithoutEmployeeInput[] | ExpenseRequestUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: ExpenseRequestCreateOrConnectWithoutEmployeeInput | ExpenseRequestCreateOrConnectWithoutEmployeeInput[]
+    upsert?: ExpenseRequestUpsertWithWhereUniqueWithoutEmployeeInput | ExpenseRequestUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: ExpenseRequestCreateManyEmployeeInputEnvelope
+    set?: ExpenseRequestWhereUniqueInput | ExpenseRequestWhereUniqueInput[]
+    disconnect?: ExpenseRequestWhereUniqueInput | ExpenseRequestWhereUniqueInput[]
+    delete?: ExpenseRequestWhereUniqueInput | ExpenseRequestWhereUniqueInput[]
+    connect?: ExpenseRequestWhereUniqueInput | ExpenseRequestWhereUniqueInput[]
+    update?: ExpenseRequestUpdateWithWhereUniqueWithoutEmployeeInput | ExpenseRequestUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: ExpenseRequestUpdateManyWithWhereWithoutEmployeeInput | ExpenseRequestUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: ExpenseRequestScalarWhereInput | ExpenseRequestScalarWhereInput[]
+  }
+
+  export type CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<CompanyLoanCreateWithoutEmployeeInput, CompanyLoanUncheckedCreateWithoutEmployeeInput> | CompanyLoanCreateWithoutEmployeeInput[] | CompanyLoanUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: CompanyLoanCreateOrConnectWithoutEmployeeInput | CompanyLoanCreateOrConnectWithoutEmployeeInput[]
+    upsert?: CompanyLoanUpsertWithWhereUniqueWithoutEmployeeInput | CompanyLoanUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: CompanyLoanCreateManyEmployeeInputEnvelope
+    set?: CompanyLoanWhereUniqueInput | CompanyLoanWhereUniqueInput[]
+    disconnect?: CompanyLoanWhereUniqueInput | CompanyLoanWhereUniqueInput[]
+    delete?: CompanyLoanWhereUniqueInput | CompanyLoanWhereUniqueInput[]
+    connect?: CompanyLoanWhereUniqueInput | CompanyLoanWhereUniqueInput[]
+    update?: CompanyLoanUpdateWithWhereUniqueWithoutEmployeeInput | CompanyLoanUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: CompanyLoanUpdateManyWithWhereWithoutEmployeeInput | CompanyLoanUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: CompanyLoanScalarWhereInput | CompanyLoanScalarWhereInput[]
+  }
+
+  export type CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<CompanyAssetCreateWithoutEmployeeInput, CompanyAssetUncheckedCreateWithoutEmployeeInput> | CompanyAssetCreateWithoutEmployeeInput[] | CompanyAssetUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: CompanyAssetCreateOrConnectWithoutEmployeeInput | CompanyAssetCreateOrConnectWithoutEmployeeInput[]
+    upsert?: CompanyAssetUpsertWithWhereUniqueWithoutEmployeeInput | CompanyAssetUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: CompanyAssetCreateManyEmployeeInputEnvelope
+    set?: CompanyAssetWhereUniqueInput | CompanyAssetWhereUniqueInput[]
+    disconnect?: CompanyAssetWhereUniqueInput | CompanyAssetWhereUniqueInput[]
+    delete?: CompanyAssetWhereUniqueInput | CompanyAssetWhereUniqueInput[]
+    connect?: CompanyAssetWhereUniqueInput | CompanyAssetWhereUniqueInput[]
+    update?: CompanyAssetUpdateWithWhereUniqueWithoutEmployeeInput | CompanyAssetUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: CompanyAssetUpdateManyWithWhereWithoutEmployeeInput | CompanyAssetUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: CompanyAssetScalarWhereInput | CompanyAssetScalarWhereInput[]
   }
 
   export type EmployeeBenefitCreateNestedManyWithoutBenefitPlanInput = {
@@ -28939,102 +40439,102 @@ export namespace Prisma {
     set: string[]
   }
 
-  export type ScheduleCreateNestedManyWithoutMondayInput = {
-    create?: XOR<ScheduleCreateWithoutMondayInput, ScheduleUncheckedCreateWithoutMondayInput> | ScheduleCreateWithoutMondayInput[] | ScheduleUncheckedCreateWithoutMondayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutMondayInput | ScheduleCreateOrConnectWithoutMondayInput[]
-    createMany?: ScheduleCreateManyMondayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleCreateNestedManyWithoutMondayInput = {
+    create?: XOR<MasterScheduleCreateWithoutMondayInput, MasterScheduleUncheckedCreateWithoutMondayInput> | MasterScheduleCreateWithoutMondayInput[] | MasterScheduleUncheckedCreateWithoutMondayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutMondayInput | MasterScheduleCreateOrConnectWithoutMondayInput[]
+    createMany?: MasterScheduleCreateManyMondayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleCreateNestedManyWithoutTuesdayInput = {
-    create?: XOR<ScheduleCreateWithoutTuesdayInput, ScheduleUncheckedCreateWithoutTuesdayInput> | ScheduleCreateWithoutTuesdayInput[] | ScheduleUncheckedCreateWithoutTuesdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutTuesdayInput | ScheduleCreateOrConnectWithoutTuesdayInput[]
-    createMany?: ScheduleCreateManyTuesdayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleCreateNestedManyWithoutTuesdayInput = {
+    create?: XOR<MasterScheduleCreateWithoutTuesdayInput, MasterScheduleUncheckedCreateWithoutTuesdayInput> | MasterScheduleCreateWithoutTuesdayInput[] | MasterScheduleUncheckedCreateWithoutTuesdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutTuesdayInput | MasterScheduleCreateOrConnectWithoutTuesdayInput[]
+    createMany?: MasterScheduleCreateManyTuesdayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleCreateNestedManyWithoutWednesdayInput = {
-    create?: XOR<ScheduleCreateWithoutWednesdayInput, ScheduleUncheckedCreateWithoutWednesdayInput> | ScheduleCreateWithoutWednesdayInput[] | ScheduleUncheckedCreateWithoutWednesdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutWednesdayInput | ScheduleCreateOrConnectWithoutWednesdayInput[]
-    createMany?: ScheduleCreateManyWednesdayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleCreateNestedManyWithoutWednesdayInput = {
+    create?: XOR<MasterScheduleCreateWithoutWednesdayInput, MasterScheduleUncheckedCreateWithoutWednesdayInput> | MasterScheduleCreateWithoutWednesdayInput[] | MasterScheduleUncheckedCreateWithoutWednesdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutWednesdayInput | MasterScheduleCreateOrConnectWithoutWednesdayInput[]
+    createMany?: MasterScheduleCreateManyWednesdayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleCreateNestedManyWithoutThursdayInput = {
-    create?: XOR<ScheduleCreateWithoutThursdayInput, ScheduleUncheckedCreateWithoutThursdayInput> | ScheduleCreateWithoutThursdayInput[] | ScheduleUncheckedCreateWithoutThursdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutThursdayInput | ScheduleCreateOrConnectWithoutThursdayInput[]
-    createMany?: ScheduleCreateManyThursdayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleCreateNestedManyWithoutThursdayInput = {
+    create?: XOR<MasterScheduleCreateWithoutThursdayInput, MasterScheduleUncheckedCreateWithoutThursdayInput> | MasterScheduleCreateWithoutThursdayInput[] | MasterScheduleUncheckedCreateWithoutThursdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutThursdayInput | MasterScheduleCreateOrConnectWithoutThursdayInput[]
+    createMany?: MasterScheduleCreateManyThursdayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleCreateNestedManyWithoutFridayInput = {
-    create?: XOR<ScheduleCreateWithoutFridayInput, ScheduleUncheckedCreateWithoutFridayInput> | ScheduleCreateWithoutFridayInput[] | ScheduleUncheckedCreateWithoutFridayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutFridayInput | ScheduleCreateOrConnectWithoutFridayInput[]
-    createMany?: ScheduleCreateManyFridayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleCreateNestedManyWithoutFridayInput = {
+    create?: XOR<MasterScheduleCreateWithoutFridayInput, MasterScheduleUncheckedCreateWithoutFridayInput> | MasterScheduleCreateWithoutFridayInput[] | MasterScheduleUncheckedCreateWithoutFridayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutFridayInput | MasterScheduleCreateOrConnectWithoutFridayInput[]
+    createMany?: MasterScheduleCreateManyFridayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleCreateNestedManyWithoutSaturdayInput = {
-    create?: XOR<ScheduleCreateWithoutSaturdayInput, ScheduleUncheckedCreateWithoutSaturdayInput> | ScheduleCreateWithoutSaturdayInput[] | ScheduleUncheckedCreateWithoutSaturdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutSaturdayInput | ScheduleCreateOrConnectWithoutSaturdayInput[]
-    createMany?: ScheduleCreateManySaturdayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleCreateNestedManyWithoutSaturdayInput = {
+    create?: XOR<MasterScheduleCreateWithoutSaturdayInput, MasterScheduleUncheckedCreateWithoutSaturdayInput> | MasterScheduleCreateWithoutSaturdayInput[] | MasterScheduleUncheckedCreateWithoutSaturdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutSaturdayInput | MasterScheduleCreateOrConnectWithoutSaturdayInput[]
+    createMany?: MasterScheduleCreateManySaturdayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleCreateNestedManyWithoutSundayInput = {
-    create?: XOR<ScheduleCreateWithoutSundayInput, ScheduleUncheckedCreateWithoutSundayInput> | ScheduleCreateWithoutSundayInput[] | ScheduleUncheckedCreateWithoutSundayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutSundayInput | ScheduleCreateOrConnectWithoutSundayInput[]
-    createMany?: ScheduleCreateManySundayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleCreateNestedManyWithoutSundayInput = {
+    create?: XOR<MasterScheduleCreateWithoutSundayInput, MasterScheduleUncheckedCreateWithoutSundayInput> | MasterScheduleCreateWithoutSundayInput[] | MasterScheduleUncheckedCreateWithoutSundayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutSundayInput | MasterScheduleCreateOrConnectWithoutSundayInput[]
+    createMany?: MasterScheduleCreateManySundayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleUncheckedCreateNestedManyWithoutMondayInput = {
-    create?: XOR<ScheduleCreateWithoutMondayInput, ScheduleUncheckedCreateWithoutMondayInput> | ScheduleCreateWithoutMondayInput[] | ScheduleUncheckedCreateWithoutMondayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutMondayInput | ScheduleCreateOrConnectWithoutMondayInput[]
-    createMany?: ScheduleCreateManyMondayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleUncheckedCreateNestedManyWithoutMondayInput = {
+    create?: XOR<MasterScheduleCreateWithoutMondayInput, MasterScheduleUncheckedCreateWithoutMondayInput> | MasterScheduleCreateWithoutMondayInput[] | MasterScheduleUncheckedCreateWithoutMondayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutMondayInput | MasterScheduleCreateOrConnectWithoutMondayInput[]
+    createMany?: MasterScheduleCreateManyMondayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleUncheckedCreateNestedManyWithoutTuesdayInput = {
-    create?: XOR<ScheduleCreateWithoutTuesdayInput, ScheduleUncheckedCreateWithoutTuesdayInput> | ScheduleCreateWithoutTuesdayInput[] | ScheduleUncheckedCreateWithoutTuesdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutTuesdayInput | ScheduleCreateOrConnectWithoutTuesdayInput[]
-    createMany?: ScheduleCreateManyTuesdayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleUncheckedCreateNestedManyWithoutTuesdayInput = {
+    create?: XOR<MasterScheduleCreateWithoutTuesdayInput, MasterScheduleUncheckedCreateWithoutTuesdayInput> | MasterScheduleCreateWithoutTuesdayInput[] | MasterScheduleUncheckedCreateWithoutTuesdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutTuesdayInput | MasterScheduleCreateOrConnectWithoutTuesdayInput[]
+    createMany?: MasterScheduleCreateManyTuesdayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleUncheckedCreateNestedManyWithoutWednesdayInput = {
-    create?: XOR<ScheduleCreateWithoutWednesdayInput, ScheduleUncheckedCreateWithoutWednesdayInput> | ScheduleCreateWithoutWednesdayInput[] | ScheduleUncheckedCreateWithoutWednesdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutWednesdayInput | ScheduleCreateOrConnectWithoutWednesdayInput[]
-    createMany?: ScheduleCreateManyWednesdayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleUncheckedCreateNestedManyWithoutWednesdayInput = {
+    create?: XOR<MasterScheduleCreateWithoutWednesdayInput, MasterScheduleUncheckedCreateWithoutWednesdayInput> | MasterScheduleCreateWithoutWednesdayInput[] | MasterScheduleUncheckedCreateWithoutWednesdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutWednesdayInput | MasterScheduleCreateOrConnectWithoutWednesdayInput[]
+    createMany?: MasterScheduleCreateManyWednesdayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleUncheckedCreateNestedManyWithoutThursdayInput = {
-    create?: XOR<ScheduleCreateWithoutThursdayInput, ScheduleUncheckedCreateWithoutThursdayInput> | ScheduleCreateWithoutThursdayInput[] | ScheduleUncheckedCreateWithoutThursdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutThursdayInput | ScheduleCreateOrConnectWithoutThursdayInput[]
-    createMany?: ScheduleCreateManyThursdayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleUncheckedCreateNestedManyWithoutThursdayInput = {
+    create?: XOR<MasterScheduleCreateWithoutThursdayInput, MasterScheduleUncheckedCreateWithoutThursdayInput> | MasterScheduleCreateWithoutThursdayInput[] | MasterScheduleUncheckedCreateWithoutThursdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutThursdayInput | MasterScheduleCreateOrConnectWithoutThursdayInput[]
+    createMany?: MasterScheduleCreateManyThursdayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleUncheckedCreateNestedManyWithoutFridayInput = {
-    create?: XOR<ScheduleCreateWithoutFridayInput, ScheduleUncheckedCreateWithoutFridayInput> | ScheduleCreateWithoutFridayInput[] | ScheduleUncheckedCreateWithoutFridayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutFridayInput | ScheduleCreateOrConnectWithoutFridayInput[]
-    createMany?: ScheduleCreateManyFridayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleUncheckedCreateNestedManyWithoutFridayInput = {
+    create?: XOR<MasterScheduleCreateWithoutFridayInput, MasterScheduleUncheckedCreateWithoutFridayInput> | MasterScheduleCreateWithoutFridayInput[] | MasterScheduleUncheckedCreateWithoutFridayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutFridayInput | MasterScheduleCreateOrConnectWithoutFridayInput[]
+    createMany?: MasterScheduleCreateManyFridayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleUncheckedCreateNestedManyWithoutSaturdayInput = {
-    create?: XOR<ScheduleCreateWithoutSaturdayInput, ScheduleUncheckedCreateWithoutSaturdayInput> | ScheduleCreateWithoutSaturdayInput[] | ScheduleUncheckedCreateWithoutSaturdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutSaturdayInput | ScheduleCreateOrConnectWithoutSaturdayInput[]
-    createMany?: ScheduleCreateManySaturdayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleUncheckedCreateNestedManyWithoutSaturdayInput = {
+    create?: XOR<MasterScheduleCreateWithoutSaturdayInput, MasterScheduleUncheckedCreateWithoutSaturdayInput> | MasterScheduleCreateWithoutSaturdayInput[] | MasterScheduleUncheckedCreateWithoutSaturdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutSaturdayInput | MasterScheduleCreateOrConnectWithoutSaturdayInput[]
+    createMany?: MasterScheduleCreateManySaturdayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
-  export type ScheduleUncheckedCreateNestedManyWithoutSundayInput = {
-    create?: XOR<ScheduleCreateWithoutSundayInput, ScheduleUncheckedCreateWithoutSundayInput> | ScheduleCreateWithoutSundayInput[] | ScheduleUncheckedCreateWithoutSundayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutSundayInput | ScheduleCreateOrConnectWithoutSundayInput[]
-    createMany?: ScheduleCreateManySundayInputEnvelope
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
+  export type MasterScheduleUncheckedCreateNestedManyWithoutSundayInput = {
+    create?: XOR<MasterScheduleCreateWithoutSundayInput, MasterScheduleUncheckedCreateWithoutSundayInput> | MasterScheduleCreateWithoutSundayInput[] | MasterScheduleUncheckedCreateWithoutSundayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutSundayInput | MasterScheduleCreateOrConnectWithoutSundayInput[]
+    createMany?: MasterScheduleCreateManySundayInputEnvelope
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
   }
 
   export type ShiftUpdateworkDaysInput = {
@@ -29051,326 +40551,326 @@ export namespace Prisma {
     unset?: boolean
   }
 
-  export type ScheduleUpdateManyWithoutMondayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutMondayInput, ScheduleUncheckedCreateWithoutMondayInput> | ScheduleCreateWithoutMondayInput[] | ScheduleUncheckedCreateWithoutMondayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutMondayInput | ScheduleCreateOrConnectWithoutMondayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutMondayInput | ScheduleUpsertWithWhereUniqueWithoutMondayInput[]
-    createMany?: ScheduleCreateManyMondayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutMondayInput | ScheduleUpdateWithWhereUniqueWithoutMondayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutMondayInput | ScheduleUpdateManyWithWhereWithoutMondayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUpdateManyWithoutMondayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutMondayInput, MasterScheduleUncheckedCreateWithoutMondayInput> | MasterScheduleCreateWithoutMondayInput[] | MasterScheduleUncheckedCreateWithoutMondayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutMondayInput | MasterScheduleCreateOrConnectWithoutMondayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutMondayInput | MasterScheduleUpsertWithWhereUniqueWithoutMondayInput[]
+    createMany?: MasterScheduleCreateManyMondayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutMondayInput | MasterScheduleUpdateWithWhereUniqueWithoutMondayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutMondayInput | MasterScheduleUpdateManyWithWhereWithoutMondayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUpdateManyWithoutTuesdayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutTuesdayInput, ScheduleUncheckedCreateWithoutTuesdayInput> | ScheduleCreateWithoutTuesdayInput[] | ScheduleUncheckedCreateWithoutTuesdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutTuesdayInput | ScheduleCreateOrConnectWithoutTuesdayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutTuesdayInput | ScheduleUpsertWithWhereUniqueWithoutTuesdayInput[]
-    createMany?: ScheduleCreateManyTuesdayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutTuesdayInput | ScheduleUpdateWithWhereUniqueWithoutTuesdayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutTuesdayInput | ScheduleUpdateManyWithWhereWithoutTuesdayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUpdateManyWithoutTuesdayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutTuesdayInput, MasterScheduleUncheckedCreateWithoutTuesdayInput> | MasterScheduleCreateWithoutTuesdayInput[] | MasterScheduleUncheckedCreateWithoutTuesdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutTuesdayInput | MasterScheduleCreateOrConnectWithoutTuesdayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutTuesdayInput | MasterScheduleUpsertWithWhereUniqueWithoutTuesdayInput[]
+    createMany?: MasterScheduleCreateManyTuesdayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutTuesdayInput | MasterScheduleUpdateWithWhereUniqueWithoutTuesdayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutTuesdayInput | MasterScheduleUpdateManyWithWhereWithoutTuesdayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUpdateManyWithoutWednesdayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutWednesdayInput, ScheduleUncheckedCreateWithoutWednesdayInput> | ScheduleCreateWithoutWednesdayInput[] | ScheduleUncheckedCreateWithoutWednesdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutWednesdayInput | ScheduleCreateOrConnectWithoutWednesdayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutWednesdayInput | ScheduleUpsertWithWhereUniqueWithoutWednesdayInput[]
-    createMany?: ScheduleCreateManyWednesdayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutWednesdayInput | ScheduleUpdateWithWhereUniqueWithoutWednesdayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutWednesdayInput | ScheduleUpdateManyWithWhereWithoutWednesdayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUpdateManyWithoutWednesdayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutWednesdayInput, MasterScheduleUncheckedCreateWithoutWednesdayInput> | MasterScheduleCreateWithoutWednesdayInput[] | MasterScheduleUncheckedCreateWithoutWednesdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutWednesdayInput | MasterScheduleCreateOrConnectWithoutWednesdayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutWednesdayInput | MasterScheduleUpsertWithWhereUniqueWithoutWednesdayInput[]
+    createMany?: MasterScheduleCreateManyWednesdayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutWednesdayInput | MasterScheduleUpdateWithWhereUniqueWithoutWednesdayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutWednesdayInput | MasterScheduleUpdateManyWithWhereWithoutWednesdayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUpdateManyWithoutThursdayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutThursdayInput, ScheduleUncheckedCreateWithoutThursdayInput> | ScheduleCreateWithoutThursdayInput[] | ScheduleUncheckedCreateWithoutThursdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutThursdayInput | ScheduleCreateOrConnectWithoutThursdayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutThursdayInput | ScheduleUpsertWithWhereUniqueWithoutThursdayInput[]
-    createMany?: ScheduleCreateManyThursdayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutThursdayInput | ScheduleUpdateWithWhereUniqueWithoutThursdayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutThursdayInput | ScheduleUpdateManyWithWhereWithoutThursdayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUpdateManyWithoutThursdayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutThursdayInput, MasterScheduleUncheckedCreateWithoutThursdayInput> | MasterScheduleCreateWithoutThursdayInput[] | MasterScheduleUncheckedCreateWithoutThursdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutThursdayInput | MasterScheduleCreateOrConnectWithoutThursdayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutThursdayInput | MasterScheduleUpsertWithWhereUniqueWithoutThursdayInput[]
+    createMany?: MasterScheduleCreateManyThursdayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutThursdayInput | MasterScheduleUpdateWithWhereUniqueWithoutThursdayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutThursdayInput | MasterScheduleUpdateManyWithWhereWithoutThursdayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUpdateManyWithoutFridayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutFridayInput, ScheduleUncheckedCreateWithoutFridayInput> | ScheduleCreateWithoutFridayInput[] | ScheduleUncheckedCreateWithoutFridayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutFridayInput | ScheduleCreateOrConnectWithoutFridayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutFridayInput | ScheduleUpsertWithWhereUniqueWithoutFridayInput[]
-    createMany?: ScheduleCreateManyFridayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutFridayInput | ScheduleUpdateWithWhereUniqueWithoutFridayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutFridayInput | ScheduleUpdateManyWithWhereWithoutFridayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUpdateManyWithoutFridayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutFridayInput, MasterScheduleUncheckedCreateWithoutFridayInput> | MasterScheduleCreateWithoutFridayInput[] | MasterScheduleUncheckedCreateWithoutFridayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutFridayInput | MasterScheduleCreateOrConnectWithoutFridayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutFridayInput | MasterScheduleUpsertWithWhereUniqueWithoutFridayInput[]
+    createMany?: MasterScheduleCreateManyFridayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutFridayInput | MasterScheduleUpdateWithWhereUniqueWithoutFridayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutFridayInput | MasterScheduleUpdateManyWithWhereWithoutFridayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUpdateManyWithoutSaturdayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutSaturdayInput, ScheduleUncheckedCreateWithoutSaturdayInput> | ScheduleCreateWithoutSaturdayInput[] | ScheduleUncheckedCreateWithoutSaturdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutSaturdayInput | ScheduleCreateOrConnectWithoutSaturdayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutSaturdayInput | ScheduleUpsertWithWhereUniqueWithoutSaturdayInput[]
-    createMany?: ScheduleCreateManySaturdayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutSaturdayInput | ScheduleUpdateWithWhereUniqueWithoutSaturdayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutSaturdayInput | ScheduleUpdateManyWithWhereWithoutSaturdayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUpdateManyWithoutSaturdayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutSaturdayInput, MasterScheduleUncheckedCreateWithoutSaturdayInput> | MasterScheduleCreateWithoutSaturdayInput[] | MasterScheduleUncheckedCreateWithoutSaturdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutSaturdayInput | MasterScheduleCreateOrConnectWithoutSaturdayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutSaturdayInput | MasterScheduleUpsertWithWhereUniqueWithoutSaturdayInput[]
+    createMany?: MasterScheduleCreateManySaturdayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutSaturdayInput | MasterScheduleUpdateWithWhereUniqueWithoutSaturdayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutSaturdayInput | MasterScheduleUpdateManyWithWhereWithoutSaturdayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUpdateManyWithoutSundayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutSundayInput, ScheduleUncheckedCreateWithoutSundayInput> | ScheduleCreateWithoutSundayInput[] | ScheduleUncheckedCreateWithoutSundayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutSundayInput | ScheduleCreateOrConnectWithoutSundayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutSundayInput | ScheduleUpsertWithWhereUniqueWithoutSundayInput[]
-    createMany?: ScheduleCreateManySundayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutSundayInput | ScheduleUpdateWithWhereUniqueWithoutSundayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutSundayInput | ScheduleUpdateManyWithWhereWithoutSundayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUpdateManyWithoutSundayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutSundayInput, MasterScheduleUncheckedCreateWithoutSundayInput> | MasterScheduleCreateWithoutSundayInput[] | MasterScheduleUncheckedCreateWithoutSundayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutSundayInput | MasterScheduleCreateOrConnectWithoutSundayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutSundayInput | MasterScheduleUpsertWithWhereUniqueWithoutSundayInput[]
+    createMany?: MasterScheduleCreateManySundayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutSundayInput | MasterScheduleUpdateWithWhereUniqueWithoutSundayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutSundayInput | MasterScheduleUpdateManyWithWhereWithoutSundayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutMondayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutMondayInput, ScheduleUncheckedCreateWithoutMondayInput> | ScheduleCreateWithoutMondayInput[] | ScheduleUncheckedCreateWithoutMondayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutMondayInput | ScheduleCreateOrConnectWithoutMondayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutMondayInput | ScheduleUpsertWithWhereUniqueWithoutMondayInput[]
-    createMany?: ScheduleCreateManyMondayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutMondayInput | ScheduleUpdateWithWhereUniqueWithoutMondayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutMondayInput | ScheduleUpdateManyWithWhereWithoutMondayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUncheckedUpdateManyWithoutMondayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutMondayInput, MasterScheduleUncheckedCreateWithoutMondayInput> | MasterScheduleCreateWithoutMondayInput[] | MasterScheduleUncheckedCreateWithoutMondayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutMondayInput | MasterScheduleCreateOrConnectWithoutMondayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutMondayInput | MasterScheduleUpsertWithWhereUniqueWithoutMondayInput[]
+    createMany?: MasterScheduleCreateManyMondayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutMondayInput | MasterScheduleUpdateWithWhereUniqueWithoutMondayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutMondayInput | MasterScheduleUpdateManyWithWhereWithoutMondayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutTuesdayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutTuesdayInput, ScheduleUncheckedCreateWithoutTuesdayInput> | ScheduleCreateWithoutTuesdayInput[] | ScheduleUncheckedCreateWithoutTuesdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutTuesdayInput | ScheduleCreateOrConnectWithoutTuesdayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutTuesdayInput | ScheduleUpsertWithWhereUniqueWithoutTuesdayInput[]
-    createMany?: ScheduleCreateManyTuesdayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutTuesdayInput | ScheduleUpdateWithWhereUniqueWithoutTuesdayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutTuesdayInput | ScheduleUpdateManyWithWhereWithoutTuesdayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUncheckedUpdateManyWithoutTuesdayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutTuesdayInput, MasterScheduleUncheckedCreateWithoutTuesdayInput> | MasterScheduleCreateWithoutTuesdayInput[] | MasterScheduleUncheckedCreateWithoutTuesdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutTuesdayInput | MasterScheduleCreateOrConnectWithoutTuesdayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutTuesdayInput | MasterScheduleUpsertWithWhereUniqueWithoutTuesdayInput[]
+    createMany?: MasterScheduleCreateManyTuesdayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutTuesdayInput | MasterScheduleUpdateWithWhereUniqueWithoutTuesdayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutTuesdayInput | MasterScheduleUpdateManyWithWhereWithoutTuesdayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutWednesdayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutWednesdayInput, ScheduleUncheckedCreateWithoutWednesdayInput> | ScheduleCreateWithoutWednesdayInput[] | ScheduleUncheckedCreateWithoutWednesdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutWednesdayInput | ScheduleCreateOrConnectWithoutWednesdayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutWednesdayInput | ScheduleUpsertWithWhereUniqueWithoutWednesdayInput[]
-    createMany?: ScheduleCreateManyWednesdayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutWednesdayInput | ScheduleUpdateWithWhereUniqueWithoutWednesdayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutWednesdayInput | ScheduleUpdateManyWithWhereWithoutWednesdayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUncheckedUpdateManyWithoutWednesdayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutWednesdayInput, MasterScheduleUncheckedCreateWithoutWednesdayInput> | MasterScheduleCreateWithoutWednesdayInput[] | MasterScheduleUncheckedCreateWithoutWednesdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutWednesdayInput | MasterScheduleCreateOrConnectWithoutWednesdayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutWednesdayInput | MasterScheduleUpsertWithWhereUniqueWithoutWednesdayInput[]
+    createMany?: MasterScheduleCreateManyWednesdayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutWednesdayInput | MasterScheduleUpdateWithWhereUniqueWithoutWednesdayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutWednesdayInput | MasterScheduleUpdateManyWithWhereWithoutWednesdayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutThursdayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutThursdayInput, ScheduleUncheckedCreateWithoutThursdayInput> | ScheduleCreateWithoutThursdayInput[] | ScheduleUncheckedCreateWithoutThursdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutThursdayInput | ScheduleCreateOrConnectWithoutThursdayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutThursdayInput | ScheduleUpsertWithWhereUniqueWithoutThursdayInput[]
-    createMany?: ScheduleCreateManyThursdayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutThursdayInput | ScheduleUpdateWithWhereUniqueWithoutThursdayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutThursdayInput | ScheduleUpdateManyWithWhereWithoutThursdayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUncheckedUpdateManyWithoutThursdayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutThursdayInput, MasterScheduleUncheckedCreateWithoutThursdayInput> | MasterScheduleCreateWithoutThursdayInput[] | MasterScheduleUncheckedCreateWithoutThursdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutThursdayInput | MasterScheduleCreateOrConnectWithoutThursdayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutThursdayInput | MasterScheduleUpsertWithWhereUniqueWithoutThursdayInput[]
+    createMany?: MasterScheduleCreateManyThursdayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutThursdayInput | MasterScheduleUpdateWithWhereUniqueWithoutThursdayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutThursdayInput | MasterScheduleUpdateManyWithWhereWithoutThursdayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutFridayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutFridayInput, ScheduleUncheckedCreateWithoutFridayInput> | ScheduleCreateWithoutFridayInput[] | ScheduleUncheckedCreateWithoutFridayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutFridayInput | ScheduleCreateOrConnectWithoutFridayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutFridayInput | ScheduleUpsertWithWhereUniqueWithoutFridayInput[]
-    createMany?: ScheduleCreateManyFridayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutFridayInput | ScheduleUpdateWithWhereUniqueWithoutFridayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutFridayInput | ScheduleUpdateManyWithWhereWithoutFridayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUncheckedUpdateManyWithoutFridayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutFridayInput, MasterScheduleUncheckedCreateWithoutFridayInput> | MasterScheduleCreateWithoutFridayInput[] | MasterScheduleUncheckedCreateWithoutFridayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutFridayInput | MasterScheduleCreateOrConnectWithoutFridayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutFridayInput | MasterScheduleUpsertWithWhereUniqueWithoutFridayInput[]
+    createMany?: MasterScheduleCreateManyFridayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutFridayInput | MasterScheduleUpdateWithWhereUniqueWithoutFridayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutFridayInput | MasterScheduleUpdateManyWithWhereWithoutFridayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutSaturdayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutSaturdayInput, ScheduleUncheckedCreateWithoutSaturdayInput> | ScheduleCreateWithoutSaturdayInput[] | ScheduleUncheckedCreateWithoutSaturdayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutSaturdayInput | ScheduleCreateOrConnectWithoutSaturdayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutSaturdayInput | ScheduleUpsertWithWhereUniqueWithoutSaturdayInput[]
-    createMany?: ScheduleCreateManySaturdayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutSaturdayInput | ScheduleUpdateWithWhereUniqueWithoutSaturdayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutSaturdayInput | ScheduleUpdateManyWithWhereWithoutSaturdayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUncheckedUpdateManyWithoutSaturdayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutSaturdayInput, MasterScheduleUncheckedCreateWithoutSaturdayInput> | MasterScheduleCreateWithoutSaturdayInput[] | MasterScheduleUncheckedCreateWithoutSaturdayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutSaturdayInput | MasterScheduleCreateOrConnectWithoutSaturdayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutSaturdayInput | MasterScheduleUpsertWithWhereUniqueWithoutSaturdayInput[]
+    createMany?: MasterScheduleCreateManySaturdayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutSaturdayInput | MasterScheduleUpdateWithWhereUniqueWithoutSaturdayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutSaturdayInput | MasterScheduleUpdateManyWithWhereWithoutSaturdayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutSundayNestedInput = {
-    create?: XOR<ScheduleCreateWithoutSundayInput, ScheduleUncheckedCreateWithoutSundayInput> | ScheduleCreateWithoutSundayInput[] | ScheduleUncheckedCreateWithoutSundayInput[]
-    connectOrCreate?: ScheduleCreateOrConnectWithoutSundayInput | ScheduleCreateOrConnectWithoutSundayInput[]
-    upsert?: ScheduleUpsertWithWhereUniqueWithoutSundayInput | ScheduleUpsertWithWhereUniqueWithoutSundayInput[]
-    createMany?: ScheduleCreateManySundayInputEnvelope
-    set?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    disconnect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    delete?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    connect?: ScheduleWhereUniqueInput | ScheduleWhereUniqueInput[]
-    update?: ScheduleUpdateWithWhereUniqueWithoutSundayInput | ScheduleUpdateWithWhereUniqueWithoutSundayInput[]
-    updateMany?: ScheduleUpdateManyWithWhereWithoutSundayInput | ScheduleUpdateManyWithWhereWithoutSundayInput[]
-    deleteMany?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
+  export type MasterScheduleUncheckedUpdateManyWithoutSundayNestedInput = {
+    create?: XOR<MasterScheduleCreateWithoutSundayInput, MasterScheduleUncheckedCreateWithoutSundayInput> | MasterScheduleCreateWithoutSundayInput[] | MasterScheduleUncheckedCreateWithoutSundayInput[]
+    connectOrCreate?: MasterScheduleCreateOrConnectWithoutSundayInput | MasterScheduleCreateOrConnectWithoutSundayInput[]
+    upsert?: MasterScheduleUpsertWithWhereUniqueWithoutSundayInput | MasterScheduleUpsertWithWhereUniqueWithoutSundayInput[]
+    createMany?: MasterScheduleCreateManySundayInputEnvelope
+    set?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    disconnect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    delete?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    connect?: MasterScheduleWhereUniqueInput | MasterScheduleWhereUniqueInput[]
+    update?: MasterScheduleUpdateWithWhereUniqueWithoutSundayInput | MasterScheduleUpdateWithWhereUniqueWithoutSundayInput[]
+    updateMany?: MasterScheduleUpdateManyWithWhereWithoutSundayInput | MasterScheduleUpdateManyWithWhereWithoutSundayInput[]
+    deleteMany?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
   }
 
-  export type EmployeeCreateNestedOneWithoutScheduleInput = {
-    create?: XOR<EmployeeCreateWithoutScheduleInput, EmployeeUncheckedCreateWithoutScheduleInput>
-    connectOrCreate?: EmployeeCreateOrConnectWithoutScheduleInput
+  export type EmployeeCreateNestedOneWithoutMasterScheduleInput = {
+    create?: XOR<EmployeeCreateWithoutMasterScheduleInput, EmployeeUncheckedCreateWithoutMasterScheduleInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutMasterScheduleInput
     connect?: EmployeeWhereUniqueInput
   }
 
-  export type ShiftCreateNestedOneWithoutMondaySchedulesInput = {
-    create?: XOR<ShiftCreateWithoutMondaySchedulesInput, ShiftUncheckedCreateWithoutMondaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutMondaySchedulesInput
+  export type ShiftCreateNestedOneWithoutMondayMasterSchedulesInput = {
+    create?: XOR<ShiftCreateWithoutMondayMasterSchedulesInput, ShiftUncheckedCreateWithoutMondayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutMondayMasterSchedulesInput
     connect?: ShiftWhereUniqueInput
   }
 
-  export type ShiftCreateNestedOneWithoutTuesdaySchedulesInput = {
-    create?: XOR<ShiftCreateWithoutTuesdaySchedulesInput, ShiftUncheckedCreateWithoutTuesdaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutTuesdaySchedulesInput
+  export type ShiftCreateNestedOneWithoutTuesdayMasterSchedulesInput = {
+    create?: XOR<ShiftCreateWithoutTuesdayMasterSchedulesInput, ShiftUncheckedCreateWithoutTuesdayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutTuesdayMasterSchedulesInput
     connect?: ShiftWhereUniqueInput
   }
 
-  export type ShiftCreateNestedOneWithoutWednesdaySchedulesInput = {
-    create?: XOR<ShiftCreateWithoutWednesdaySchedulesInput, ShiftUncheckedCreateWithoutWednesdaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutWednesdaySchedulesInput
+  export type ShiftCreateNestedOneWithoutWednesdayMasterSchedulesInput = {
+    create?: XOR<ShiftCreateWithoutWednesdayMasterSchedulesInput, ShiftUncheckedCreateWithoutWednesdayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutWednesdayMasterSchedulesInput
     connect?: ShiftWhereUniqueInput
   }
 
-  export type ShiftCreateNestedOneWithoutThursdaySchedulesInput = {
-    create?: XOR<ShiftCreateWithoutThursdaySchedulesInput, ShiftUncheckedCreateWithoutThursdaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutThursdaySchedulesInput
+  export type ShiftCreateNestedOneWithoutThursdayMasterSchedulesInput = {
+    create?: XOR<ShiftCreateWithoutThursdayMasterSchedulesInput, ShiftUncheckedCreateWithoutThursdayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutThursdayMasterSchedulesInput
     connect?: ShiftWhereUniqueInput
   }
 
-  export type ShiftCreateNestedOneWithoutFridaySchedulesInput = {
-    create?: XOR<ShiftCreateWithoutFridaySchedulesInput, ShiftUncheckedCreateWithoutFridaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutFridaySchedulesInput
+  export type ShiftCreateNestedOneWithoutFridayMasterSchedulesInput = {
+    create?: XOR<ShiftCreateWithoutFridayMasterSchedulesInput, ShiftUncheckedCreateWithoutFridayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutFridayMasterSchedulesInput
     connect?: ShiftWhereUniqueInput
   }
 
-  export type ShiftCreateNestedOneWithoutSaturdaySchedulesInput = {
-    create?: XOR<ShiftCreateWithoutSaturdaySchedulesInput, ShiftUncheckedCreateWithoutSaturdaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutSaturdaySchedulesInput
+  export type ShiftCreateNestedOneWithoutSaturdayMasterSchedulesInput = {
+    create?: XOR<ShiftCreateWithoutSaturdayMasterSchedulesInput, ShiftUncheckedCreateWithoutSaturdayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutSaturdayMasterSchedulesInput
     connect?: ShiftWhereUniqueInput
   }
 
-  export type ShiftCreateNestedOneWithoutSundaySchedulesInput = {
-    create?: XOR<ShiftCreateWithoutSundaySchedulesInput, ShiftUncheckedCreateWithoutSundaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutSundaySchedulesInput
+  export type ShiftCreateNestedOneWithoutSundayMasterSchedulesInput = {
+    create?: XOR<ShiftCreateWithoutSundayMasterSchedulesInput, ShiftUncheckedCreateWithoutSundayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutSundayMasterSchedulesInput
     connect?: ShiftWhereUniqueInput
   }
 
-  export type EmployeeUpdateOneRequiredWithoutScheduleNestedInput = {
-    create?: XOR<EmployeeCreateWithoutScheduleInput, EmployeeUncheckedCreateWithoutScheduleInput>
-    connectOrCreate?: EmployeeCreateOrConnectWithoutScheduleInput
-    upsert?: EmployeeUpsertWithoutScheduleInput
+  export type EmployeeUpdateOneRequiredWithoutMasterScheduleNestedInput = {
+    create?: XOR<EmployeeCreateWithoutMasterScheduleInput, EmployeeUncheckedCreateWithoutMasterScheduleInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutMasterScheduleInput
+    upsert?: EmployeeUpsertWithoutMasterScheduleInput
     connect?: EmployeeWhereUniqueInput
-    update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutScheduleInput, EmployeeUpdateWithoutScheduleInput>, EmployeeUncheckedUpdateWithoutScheduleInput>
+    update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutMasterScheduleInput, EmployeeUpdateWithoutMasterScheduleInput>, EmployeeUncheckedUpdateWithoutMasterScheduleInput>
   }
 
-  export type ShiftUpdateOneWithoutMondaySchedulesNestedInput = {
-    create?: XOR<ShiftCreateWithoutMondaySchedulesInput, ShiftUncheckedCreateWithoutMondaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutMondaySchedulesInput
-    upsert?: ShiftUpsertWithoutMondaySchedulesInput
+  export type ShiftUpdateOneWithoutMondayMasterSchedulesNestedInput = {
+    create?: XOR<ShiftCreateWithoutMondayMasterSchedulesInput, ShiftUncheckedCreateWithoutMondayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutMondayMasterSchedulesInput
+    upsert?: ShiftUpsertWithoutMondayMasterSchedulesInput
     disconnect?: boolean
     delete?: ShiftWhereInput | boolean
     connect?: ShiftWhereUniqueInput
-    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutMondaySchedulesInput, ShiftUpdateWithoutMondaySchedulesInput>, ShiftUncheckedUpdateWithoutMondaySchedulesInput>
+    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutMondayMasterSchedulesInput, ShiftUpdateWithoutMondayMasterSchedulesInput>, ShiftUncheckedUpdateWithoutMondayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateOneWithoutTuesdaySchedulesNestedInput = {
-    create?: XOR<ShiftCreateWithoutTuesdaySchedulesInput, ShiftUncheckedCreateWithoutTuesdaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutTuesdaySchedulesInput
-    upsert?: ShiftUpsertWithoutTuesdaySchedulesInput
+  export type ShiftUpdateOneWithoutTuesdayMasterSchedulesNestedInput = {
+    create?: XOR<ShiftCreateWithoutTuesdayMasterSchedulesInput, ShiftUncheckedCreateWithoutTuesdayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutTuesdayMasterSchedulesInput
+    upsert?: ShiftUpsertWithoutTuesdayMasterSchedulesInput
     disconnect?: boolean
     delete?: ShiftWhereInput | boolean
     connect?: ShiftWhereUniqueInput
-    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutTuesdaySchedulesInput, ShiftUpdateWithoutTuesdaySchedulesInput>, ShiftUncheckedUpdateWithoutTuesdaySchedulesInput>
+    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutTuesdayMasterSchedulesInput, ShiftUpdateWithoutTuesdayMasterSchedulesInput>, ShiftUncheckedUpdateWithoutTuesdayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateOneWithoutWednesdaySchedulesNestedInput = {
-    create?: XOR<ShiftCreateWithoutWednesdaySchedulesInput, ShiftUncheckedCreateWithoutWednesdaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutWednesdaySchedulesInput
-    upsert?: ShiftUpsertWithoutWednesdaySchedulesInput
+  export type ShiftUpdateOneWithoutWednesdayMasterSchedulesNestedInput = {
+    create?: XOR<ShiftCreateWithoutWednesdayMasterSchedulesInput, ShiftUncheckedCreateWithoutWednesdayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutWednesdayMasterSchedulesInput
+    upsert?: ShiftUpsertWithoutWednesdayMasterSchedulesInput
     disconnect?: boolean
     delete?: ShiftWhereInput | boolean
     connect?: ShiftWhereUniqueInput
-    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutWednesdaySchedulesInput, ShiftUpdateWithoutWednesdaySchedulesInput>, ShiftUncheckedUpdateWithoutWednesdaySchedulesInput>
+    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutWednesdayMasterSchedulesInput, ShiftUpdateWithoutWednesdayMasterSchedulesInput>, ShiftUncheckedUpdateWithoutWednesdayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateOneWithoutThursdaySchedulesNestedInput = {
-    create?: XOR<ShiftCreateWithoutThursdaySchedulesInput, ShiftUncheckedCreateWithoutThursdaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutThursdaySchedulesInput
-    upsert?: ShiftUpsertWithoutThursdaySchedulesInput
+  export type ShiftUpdateOneWithoutThursdayMasterSchedulesNestedInput = {
+    create?: XOR<ShiftCreateWithoutThursdayMasterSchedulesInput, ShiftUncheckedCreateWithoutThursdayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutThursdayMasterSchedulesInput
+    upsert?: ShiftUpsertWithoutThursdayMasterSchedulesInput
     disconnect?: boolean
     delete?: ShiftWhereInput | boolean
     connect?: ShiftWhereUniqueInput
-    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutThursdaySchedulesInput, ShiftUpdateWithoutThursdaySchedulesInput>, ShiftUncheckedUpdateWithoutThursdaySchedulesInput>
+    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutThursdayMasterSchedulesInput, ShiftUpdateWithoutThursdayMasterSchedulesInput>, ShiftUncheckedUpdateWithoutThursdayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateOneWithoutFridaySchedulesNestedInput = {
-    create?: XOR<ShiftCreateWithoutFridaySchedulesInput, ShiftUncheckedCreateWithoutFridaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutFridaySchedulesInput
-    upsert?: ShiftUpsertWithoutFridaySchedulesInput
+  export type ShiftUpdateOneWithoutFridayMasterSchedulesNestedInput = {
+    create?: XOR<ShiftCreateWithoutFridayMasterSchedulesInput, ShiftUncheckedCreateWithoutFridayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutFridayMasterSchedulesInput
+    upsert?: ShiftUpsertWithoutFridayMasterSchedulesInput
     disconnect?: boolean
     delete?: ShiftWhereInput | boolean
     connect?: ShiftWhereUniqueInput
-    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutFridaySchedulesInput, ShiftUpdateWithoutFridaySchedulesInput>, ShiftUncheckedUpdateWithoutFridaySchedulesInput>
+    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutFridayMasterSchedulesInput, ShiftUpdateWithoutFridayMasterSchedulesInput>, ShiftUncheckedUpdateWithoutFridayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateOneWithoutSaturdaySchedulesNestedInput = {
-    create?: XOR<ShiftCreateWithoutSaturdaySchedulesInput, ShiftUncheckedCreateWithoutSaturdaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutSaturdaySchedulesInput
-    upsert?: ShiftUpsertWithoutSaturdaySchedulesInput
+  export type ShiftUpdateOneWithoutSaturdayMasterSchedulesNestedInput = {
+    create?: XOR<ShiftCreateWithoutSaturdayMasterSchedulesInput, ShiftUncheckedCreateWithoutSaturdayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutSaturdayMasterSchedulesInput
+    upsert?: ShiftUpsertWithoutSaturdayMasterSchedulesInput
     disconnect?: boolean
     delete?: ShiftWhereInput | boolean
     connect?: ShiftWhereUniqueInput
-    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutSaturdaySchedulesInput, ShiftUpdateWithoutSaturdaySchedulesInput>, ShiftUncheckedUpdateWithoutSaturdaySchedulesInput>
+    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutSaturdayMasterSchedulesInput, ShiftUpdateWithoutSaturdayMasterSchedulesInput>, ShiftUncheckedUpdateWithoutSaturdayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateOneWithoutSundaySchedulesNestedInput = {
-    create?: XOR<ShiftCreateWithoutSundaySchedulesInput, ShiftUncheckedCreateWithoutSundaySchedulesInput>
-    connectOrCreate?: ShiftCreateOrConnectWithoutSundaySchedulesInput
-    upsert?: ShiftUpsertWithoutSundaySchedulesInput
+  export type ShiftUpdateOneWithoutSundayMasterSchedulesNestedInput = {
+    create?: XOR<ShiftCreateWithoutSundayMasterSchedulesInput, ShiftUncheckedCreateWithoutSundayMasterSchedulesInput>
+    connectOrCreate?: ShiftCreateOrConnectWithoutSundayMasterSchedulesInput
+    upsert?: ShiftUpsertWithoutSundayMasterSchedulesInput
     disconnect?: boolean
     delete?: ShiftWhereInput | boolean
     connect?: ShiftWhereUniqueInput
-    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutSundaySchedulesInput, ShiftUpdateWithoutSundaySchedulesInput>, ShiftUncheckedUpdateWithoutSundaySchedulesInput>
+    update?: XOR<XOR<ShiftUpdateToOneWithWhereWithoutSundayMasterSchedulesInput, ShiftUpdateWithoutSundayMasterSchedulesInput>, ShiftUncheckedUpdateWithoutSundayMasterSchedulesInput>
   }
 
   export type EmployeeCreateNestedOneWithoutTimeRequestsInput = {
@@ -29499,6 +40999,152 @@ export namespace Prisma {
     update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutPayrollRecordsInput, EmployeeUpdateWithoutPayrollRecordsInput>, EmployeeUncheckedUpdateWithoutPayrollRecordsInput>
   }
 
+  export type ExpenseRequestCreatereceiptUrlsInput = {
+    set: string[]
+  }
+
+  export type EmployeeCreateNestedOneWithoutExpensesInput = {
+    create?: XOR<EmployeeCreateWithoutExpensesInput, EmployeeUncheckedCreateWithoutExpensesInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutExpensesInput
+    connect?: EmployeeWhereUniqueInput
+  }
+
+  export type ExpenseRequestUpdatereceiptUrlsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type EmployeeUpdateOneRequiredWithoutExpensesNestedInput = {
+    create?: XOR<EmployeeCreateWithoutExpensesInput, EmployeeUncheckedCreateWithoutExpensesInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutExpensesInput
+    upsert?: EmployeeUpsertWithoutExpensesInput
+    connect?: EmployeeWhereUniqueInput
+    update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutExpensesInput, EmployeeUpdateWithoutExpensesInput>, EmployeeUncheckedUpdateWithoutExpensesInput>
+  }
+
+  export type EmployeeCreateNestedOneWithoutLoansInput = {
+    create?: XOR<EmployeeCreateWithoutLoansInput, EmployeeUncheckedCreateWithoutLoansInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutLoansInput
+    connect?: EmployeeWhereUniqueInput
+  }
+
+  export type EmployeeUpdateOneRequiredWithoutLoansNestedInput = {
+    create?: XOR<EmployeeCreateWithoutLoansInput, EmployeeUncheckedCreateWithoutLoansInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutLoansInput
+    upsert?: EmployeeUpsertWithoutLoansInput
+    connect?: EmployeeWhereUniqueInput
+    update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutLoansInput, EmployeeUpdateWithoutLoansInput>, EmployeeUncheckedUpdateWithoutLoansInput>
+  }
+
+  export type EmployeeCreateNestedOneWithoutAssetsInput = {
+    create?: XOR<EmployeeCreateWithoutAssetsInput, EmployeeUncheckedCreateWithoutAssetsInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutAssetsInput
+    connect?: EmployeeWhereUniqueInput
+  }
+
+  export type EmployeeUpdateOneWithoutAssetsNestedInput = {
+    create?: XOR<EmployeeCreateWithoutAssetsInput, EmployeeUncheckedCreateWithoutAssetsInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutAssetsInput
+    upsert?: EmployeeUpsertWithoutAssetsInput
+    disconnect?: boolean
+    delete?: EmployeeWhereInput | boolean
+    connect?: EmployeeWhereUniqueInput
+    update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutAssetsInput, EmployeeUpdateWithoutAssetsInput>, EmployeeUncheckedUpdateWithoutAssetsInput>
+  }
+
+  export type BranchCreateNestedOneWithoutBiometricDevicesInput = {
+    create?: XOR<BranchCreateWithoutBiometricDevicesInput, BranchUncheckedCreateWithoutBiometricDevicesInput>
+    connectOrCreate?: BranchCreateOrConnectWithoutBiometricDevicesInput
+    connect?: BranchWhereUniqueInput
+  }
+
+  export type RawBiometricLogCreateNestedManyWithoutDeviceInput = {
+    create?: XOR<RawBiometricLogCreateWithoutDeviceInput, RawBiometricLogUncheckedCreateWithoutDeviceInput> | RawBiometricLogCreateWithoutDeviceInput[] | RawBiometricLogUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: RawBiometricLogCreateOrConnectWithoutDeviceInput | RawBiometricLogCreateOrConnectWithoutDeviceInput[]
+    createMany?: RawBiometricLogCreateManyDeviceInputEnvelope
+    connect?: RawBiometricLogWhereUniqueInput | RawBiometricLogWhereUniqueInput[]
+  }
+
+  export type RawBiometricLogUncheckedCreateNestedManyWithoutDeviceInput = {
+    create?: XOR<RawBiometricLogCreateWithoutDeviceInput, RawBiometricLogUncheckedCreateWithoutDeviceInput> | RawBiometricLogCreateWithoutDeviceInput[] | RawBiometricLogUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: RawBiometricLogCreateOrConnectWithoutDeviceInput | RawBiometricLogCreateOrConnectWithoutDeviceInput[]
+    createMany?: RawBiometricLogCreateManyDeviceInputEnvelope
+    connect?: RawBiometricLogWhereUniqueInput | RawBiometricLogWhereUniqueInput[]
+  }
+
+  export type BranchUpdateOneRequiredWithoutBiometricDevicesNestedInput = {
+    create?: XOR<BranchCreateWithoutBiometricDevicesInput, BranchUncheckedCreateWithoutBiometricDevicesInput>
+    connectOrCreate?: BranchCreateOrConnectWithoutBiometricDevicesInput
+    upsert?: BranchUpsertWithoutBiometricDevicesInput
+    connect?: BranchWhereUniqueInput
+    update?: XOR<XOR<BranchUpdateToOneWithWhereWithoutBiometricDevicesInput, BranchUpdateWithoutBiometricDevicesInput>, BranchUncheckedUpdateWithoutBiometricDevicesInput>
+  }
+
+  export type RawBiometricLogUpdateManyWithoutDeviceNestedInput = {
+    create?: XOR<RawBiometricLogCreateWithoutDeviceInput, RawBiometricLogUncheckedCreateWithoutDeviceInput> | RawBiometricLogCreateWithoutDeviceInput[] | RawBiometricLogUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: RawBiometricLogCreateOrConnectWithoutDeviceInput | RawBiometricLogCreateOrConnectWithoutDeviceInput[]
+    upsert?: RawBiometricLogUpsertWithWhereUniqueWithoutDeviceInput | RawBiometricLogUpsertWithWhereUniqueWithoutDeviceInput[]
+    createMany?: RawBiometricLogCreateManyDeviceInputEnvelope
+    set?: RawBiometricLogWhereUniqueInput | RawBiometricLogWhereUniqueInput[]
+    disconnect?: RawBiometricLogWhereUniqueInput | RawBiometricLogWhereUniqueInput[]
+    delete?: RawBiometricLogWhereUniqueInput | RawBiometricLogWhereUniqueInput[]
+    connect?: RawBiometricLogWhereUniqueInput | RawBiometricLogWhereUniqueInput[]
+    update?: RawBiometricLogUpdateWithWhereUniqueWithoutDeviceInput | RawBiometricLogUpdateWithWhereUniqueWithoutDeviceInput[]
+    updateMany?: RawBiometricLogUpdateManyWithWhereWithoutDeviceInput | RawBiometricLogUpdateManyWithWhereWithoutDeviceInput[]
+    deleteMany?: RawBiometricLogScalarWhereInput | RawBiometricLogScalarWhereInput[]
+  }
+
+  export type RawBiometricLogUncheckedUpdateManyWithoutDeviceNestedInput = {
+    create?: XOR<RawBiometricLogCreateWithoutDeviceInput, RawBiometricLogUncheckedCreateWithoutDeviceInput> | RawBiometricLogCreateWithoutDeviceInput[] | RawBiometricLogUncheckedCreateWithoutDeviceInput[]
+    connectOrCreate?: RawBiometricLogCreateOrConnectWithoutDeviceInput | RawBiometricLogCreateOrConnectWithoutDeviceInput[]
+    upsert?: RawBiometricLogUpsertWithWhereUniqueWithoutDeviceInput | RawBiometricLogUpsertWithWhereUniqueWithoutDeviceInput[]
+    createMany?: RawBiometricLogCreateManyDeviceInputEnvelope
+    set?: RawBiometricLogWhereUniqueInput | RawBiometricLogWhereUniqueInput[]
+    disconnect?: RawBiometricLogWhereUniqueInput | RawBiometricLogWhereUniqueInput[]
+    delete?: RawBiometricLogWhereUniqueInput | RawBiometricLogWhereUniqueInput[]
+    connect?: RawBiometricLogWhereUniqueInput | RawBiometricLogWhereUniqueInput[]
+    update?: RawBiometricLogUpdateWithWhereUniqueWithoutDeviceInput | RawBiometricLogUpdateWithWhereUniqueWithoutDeviceInput[]
+    updateMany?: RawBiometricLogUpdateManyWithWhereWithoutDeviceInput | RawBiometricLogUpdateManyWithWhereWithoutDeviceInput[]
+    deleteMany?: RawBiometricLogScalarWhereInput | RawBiometricLogScalarWhereInput[]
+  }
+
+  export type BiometricDeviceCreateNestedOneWithoutRawLogsInput = {
+    create?: XOR<BiometricDeviceCreateWithoutRawLogsInput, BiometricDeviceUncheckedCreateWithoutRawLogsInput>
+    connectOrCreate?: BiometricDeviceCreateOrConnectWithoutRawLogsInput
+    connect?: BiometricDeviceWhereUniqueInput
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+    unset?: boolean
+  }
+
+  export type BiometricDeviceUpdateOneRequiredWithoutRawLogsNestedInput = {
+    create?: XOR<BiometricDeviceCreateWithoutRawLogsInput, BiometricDeviceUncheckedCreateWithoutRawLogsInput>
+    connectOrCreate?: BiometricDeviceCreateOrConnectWithoutRawLogsInput
+    upsert?: BiometricDeviceUpsertWithoutRawLogsInput
+    connect?: BiometricDeviceWhereUniqueInput
+    update?: XOR<XOR<BiometricDeviceUpdateToOneWithWhereWithoutRawLogsInput, BiometricDeviceUpdateWithoutRawLogsInput>, BiometricDeviceUncheckedUpdateWithoutRawLogsInput>
+  }
+
+  export type EmployeeCreateNestedOneWithoutScheduleOverridesInput = {
+    create?: XOR<EmployeeCreateWithoutScheduleOverridesInput, EmployeeUncheckedCreateWithoutScheduleOverridesInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutScheduleOverridesInput
+    connect?: EmployeeWhereUniqueInput
+  }
+
+  export type EmployeeUpdateOneRequiredWithoutScheduleOverridesNestedInput = {
+    create?: XOR<EmployeeCreateWithoutScheduleOverridesInput, EmployeeUncheckedCreateWithoutScheduleOverridesInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutScheduleOverridesInput
+    upsert?: EmployeeUpsertWithoutScheduleOverridesInput
+    connect?: EmployeeWhereUniqueInput
+    update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutScheduleOverridesInput, EmployeeUpdateWithoutScheduleOverridesInput>, EmployeeUncheckedUpdateWithoutScheduleOverridesInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -29624,16 +41270,20 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-    isSet?: boolean
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -29645,6 +41295,18 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    isSet?: boolean
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -29678,22 +41340,6 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -29723,11 +41369,29 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
   export type RoleCreateWithoutUsersInput = {
     id?: string
     name: string
     description?: string | null
     isManager?: boolean
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     parentRole?: RoleCreateNestedOneWithoutChildRolesInput
@@ -29741,6 +41405,7 @@ export namespace Prisma {
     description?: string | null
     isManager?: boolean
     parentRoleId?: string | null
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     childRoles?: RoleUncheckedCreateNestedManyWithoutParentRoleInput
@@ -29760,6 +41425,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     employees?: EmployeeCreateNestedManyWithoutBranchInput
+    biometricDevices?: BiometricDeviceCreateNestedManyWithoutBranchInput
   }
 
   export type BranchUncheckedCreateWithoutUsersInput = {
@@ -29770,6 +41436,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     employees?: EmployeeUncheckedCreateNestedManyWithoutBranchInput
+    biometricDevices?: BiometricDeviceUncheckedCreateNestedManyWithoutBranchInput
   }
 
   export type BranchCreateOrConnectWithoutUsersInput = {
@@ -29815,6 +41482,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parentRole?: RoleUpdateOneWithoutChildRolesNestedInput
@@ -29827,6 +41495,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
     parentRoleId?: NullableStringFieldUpdateOperationsInput | string | null
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     childRoles?: RoleUncheckedUpdateManyWithoutParentRoleNestedInput
@@ -29851,6 +41520,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     employees?: EmployeeUpdateManyWithoutBranchNestedInput
+    biometricDevices?: BiometricDeviceUpdateManyWithoutBranchNestedInput
   }
 
   export type BranchUncheckedUpdateWithoutUsersInput = {
@@ -29860,6 +41530,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     employees?: EmployeeUncheckedUpdateManyWithoutBranchNestedInput
+    biometricDevices?: BiometricDeviceUncheckedUpdateManyWithoutBranchNestedInput
   }
 
   export type ActionLogUpsertWithWhereUniqueWithoutUserInput = {
@@ -29894,6 +41565,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     isManager?: boolean
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     parentRole?: RoleCreateNestedOneWithoutChildRolesInput
@@ -29907,6 +41579,7 @@ export namespace Prisma {
     description?: string | null
     isManager?: boolean
     parentRoleId?: string | null
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutRoleInput
@@ -29923,6 +41596,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     isManager?: boolean
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     childRoles?: RoleCreateNestedManyWithoutParentRoleInput
@@ -29935,6 +41609,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     isManager?: boolean
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     childRoles?: RoleUncheckedCreateNestedManyWithoutParentRoleInput
@@ -30028,6 +41703,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parentRole?: RoleUpdateOneWithoutChildRolesNestedInput
@@ -30040,6 +41716,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
     parentRoleId?: NullableStringFieldUpdateOperationsInput | string | null
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutRoleNestedInput
@@ -30071,6 +41748,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Role"> | string | null
     isManager?: BoolFilter<"Role"> | boolean
     parentRoleId?: StringNullableFilter<"Role"> | string | null
+    gracePeriodMinutes?: IntFilter<"Role"> | number
     createdAt?: DateTimeFilter<"Role"> | Date | string
     updatedAt?: DateTimeFilter<"Role"> | Date | string
   }
@@ -30141,6 +41819,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     isManager?: boolean
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     parentRole?: RoleCreateNestedOneWithoutChildRolesInput
@@ -30154,6 +41833,7 @@ export namespace Prisma {
     description?: string | null
     isManager?: boolean
     parentRoleId?: string | null
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     childRoles?: RoleUncheckedCreateNestedManyWithoutParentRoleInput
@@ -30180,6 +41860,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parentRole?: RoleUpdateOneWithoutChildRolesNestedInput
@@ -30192,6 +41873,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
     parentRoleId?: NullableStringFieldUpdateOperationsInput | string | null
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     childRoles?: RoleUncheckedUpdateManyWithoutParentRoleNestedInput
@@ -30257,16 +41939,22 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     department?: DepartmentCreateNestedOneWithoutEmployeesInput
     position?: PositionCreateNestedOneWithoutEmployeesInput
-    schedule?: ScheduleCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateWithoutBranchInput = {
@@ -30299,14 +41987,20 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    schedule?: ScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeCreateOrConnectWithoutBranchInput = {
@@ -30316,6 +42010,39 @@ export namespace Prisma {
 
   export type EmployeeCreateManyBranchInputEnvelope = {
     data: EmployeeCreateManyBranchInput | EmployeeCreateManyBranchInput[]
+  }
+
+  export type BiometricDeviceCreateWithoutBranchInput = {
+    id?: string
+    name: string
+    ip: string
+    port?: number
+    status?: string
+    lastSync?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rawLogs?: RawBiometricLogCreateNestedManyWithoutDeviceInput
+  }
+
+  export type BiometricDeviceUncheckedCreateWithoutBranchInput = {
+    id?: string
+    name: string
+    ip: string
+    port?: number
+    status?: string
+    lastSync?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rawLogs?: RawBiometricLogUncheckedCreateNestedManyWithoutDeviceInput
+  }
+
+  export type BiometricDeviceCreateOrConnectWithoutBranchInput = {
+    where: BiometricDeviceWhereUniqueInput
+    create: XOR<BiometricDeviceCreateWithoutBranchInput, BiometricDeviceUncheckedCreateWithoutBranchInput>
+  }
+
+  export type BiometricDeviceCreateManyBranchInputEnvelope = {
+    data: BiometricDeviceCreateManyBranchInput | BiometricDeviceCreateManyBranchInput[]
   }
 
   export type UserUpsertWithWhereUniqueWithoutBranchInput = {
@@ -30384,8 +42111,41 @@ export namespace Prisma {
     baseSalary?: FloatFilter<"Employee"> | number
     workFactor?: IntFilter<"Employee"> | number
     branchId?: StringNullableFilter<"Employee"> | string | null
+    biometricId?: StringNullableFilter<"Employee"> | string | null
+    employeeNo?: StringNullableFilter<"Employee"> | string | null
     createdAt?: DateTimeFilter<"Employee"> | Date | string
     updatedAt?: DateTimeFilter<"Employee"> | Date | string
+  }
+
+  export type BiometricDeviceUpsertWithWhereUniqueWithoutBranchInput = {
+    where: BiometricDeviceWhereUniqueInput
+    update: XOR<BiometricDeviceUpdateWithoutBranchInput, BiometricDeviceUncheckedUpdateWithoutBranchInput>
+    create: XOR<BiometricDeviceCreateWithoutBranchInput, BiometricDeviceUncheckedCreateWithoutBranchInput>
+  }
+
+  export type BiometricDeviceUpdateWithWhereUniqueWithoutBranchInput = {
+    where: BiometricDeviceWhereUniqueInput
+    data: XOR<BiometricDeviceUpdateWithoutBranchInput, BiometricDeviceUncheckedUpdateWithoutBranchInput>
+  }
+
+  export type BiometricDeviceUpdateManyWithWhereWithoutBranchInput = {
+    where: BiometricDeviceScalarWhereInput
+    data: XOR<BiometricDeviceUpdateManyMutationInput, BiometricDeviceUncheckedUpdateManyWithoutBranchInput>
+  }
+
+  export type BiometricDeviceScalarWhereInput = {
+    AND?: BiometricDeviceScalarWhereInput | BiometricDeviceScalarWhereInput[]
+    OR?: BiometricDeviceScalarWhereInput[]
+    NOT?: BiometricDeviceScalarWhereInput | BiometricDeviceScalarWhereInput[]
+    id?: StringFilter<"BiometricDevice"> | string
+    name?: StringFilter<"BiometricDevice"> | string
+    branchId?: StringFilter<"BiometricDevice"> | string
+    ip?: StringFilter<"BiometricDevice"> | string
+    port?: IntFilter<"BiometricDevice"> | number
+    status?: StringFilter<"BiometricDevice"> | string
+    lastSync?: DateTimeNullableFilter<"BiometricDevice"> | Date | string | null
+    createdAt?: DateTimeFilter<"BiometricDevice"> | Date | string
+    updatedAt?: DateTimeFilter<"BiometricDevice"> | Date | string
   }
 
   export type DepartmentCreateWithoutEmployeesInput = {
@@ -30446,6 +42206,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutBranchInput
+    biometricDevices?: BiometricDeviceCreateNestedManyWithoutBranchInput
   }
 
   export type BranchUncheckedCreateWithoutEmployeesInput = {
@@ -30456,6 +42217,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutBranchInput
+    biometricDevices?: BiometricDeviceUncheckedCreateNestedManyWithoutBranchInput
   }
 
   export type BranchCreateOrConnectWithoutEmployeesInput = {
@@ -30463,20 +42225,20 @@ export namespace Prisma {
     create: XOR<BranchCreateWithoutEmployeesInput, BranchUncheckedCreateWithoutEmployeesInput>
   }
 
-  export type ScheduleCreateWithoutEmployeeInput = {
+  export type MasterScheduleCreateWithoutEmployeeInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    monday?: ShiftCreateNestedOneWithoutMondaySchedulesInput
-    tuesday?: ShiftCreateNestedOneWithoutTuesdaySchedulesInput
-    wednesday?: ShiftCreateNestedOneWithoutWednesdaySchedulesInput
-    thursday?: ShiftCreateNestedOneWithoutThursdaySchedulesInput
-    friday?: ShiftCreateNestedOneWithoutFridaySchedulesInput
-    saturday?: ShiftCreateNestedOneWithoutSaturdaySchedulesInput
-    sunday?: ShiftCreateNestedOneWithoutSundaySchedulesInput
+    monday?: ShiftCreateNestedOneWithoutMondayMasterSchedulesInput
+    tuesday?: ShiftCreateNestedOneWithoutTuesdayMasterSchedulesInput
+    wednesday?: ShiftCreateNestedOneWithoutWednesdayMasterSchedulesInput
+    thursday?: ShiftCreateNestedOneWithoutThursdayMasterSchedulesInput
+    friday?: ShiftCreateNestedOneWithoutFridayMasterSchedulesInput
+    saturday?: ShiftCreateNestedOneWithoutSaturdayMasterSchedulesInput
+    sunday?: ShiftCreateNestedOneWithoutSundayMasterSchedulesInput
   }
 
-  export type ScheduleUncheckedCreateWithoutEmployeeInput = {
+  export type MasterScheduleUncheckedCreateWithoutEmployeeInput = {
     id?: string
     mondayId?: string | null
     tuesdayId?: string | null
@@ -30489,9 +42251,40 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateOrConnectWithoutEmployeeInput = {
-    where: ScheduleWhereUniqueInput
-    create: XOR<ScheduleCreateWithoutEmployeeInput, ScheduleUncheckedCreateWithoutEmployeeInput>
+  export type MasterScheduleCreateOrConnectWithoutEmployeeInput = {
+    where: MasterScheduleWhereUniqueInput
+    create: XOR<MasterScheduleCreateWithoutEmployeeInput, MasterScheduleUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type ScheduleOverrideCreateWithoutEmployeeInput = {
+    id?: string
+    date: Date | string
+    startTime?: string | null
+    endTime?: string | null
+    isRestDay?: boolean
+    reason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ScheduleOverrideUncheckedCreateWithoutEmployeeInput = {
+    id?: string
+    date: Date | string
+    startTime?: string | null
+    endTime?: string | null
+    isRestDay?: boolean
+    reason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ScheduleOverrideCreateOrConnectWithoutEmployeeInput = {
+    where: ScheduleOverrideWhereUniqueInput
+    create: XOR<ScheduleOverrideCreateWithoutEmployeeInput, ScheduleOverrideUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type ScheduleOverrideCreateManyEmployeeInputEnvelope = {
+    data: ScheduleOverrideCreateManyEmployeeInput | ScheduleOverrideCreateManyEmployeeInput[]
   }
 
   export type EmployeeBenefitCreateWithoutEmployeeInput = {
@@ -30727,6 +42520,103 @@ export namespace Prisma {
     data: PayrollRecordCreateManyEmployeeInput | PayrollRecordCreateManyEmployeeInput[]
   }
 
+  export type ExpenseRequestCreateWithoutEmployeeInput = {
+    id?: string
+    amount: number
+    category: string
+    description: string
+    receiptUrls?: ExpenseRequestCreatereceiptUrlsInput | string[]
+    status?: string
+    date?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ExpenseRequestUncheckedCreateWithoutEmployeeInput = {
+    id?: string
+    amount: number
+    category: string
+    description: string
+    receiptUrls?: ExpenseRequestCreatereceiptUrlsInput | string[]
+    status?: string
+    date?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ExpenseRequestCreateOrConnectWithoutEmployeeInput = {
+    where: ExpenseRequestWhereUniqueInput
+    create: XOR<ExpenseRequestCreateWithoutEmployeeInput, ExpenseRequestUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type ExpenseRequestCreateManyEmployeeInputEnvelope = {
+    data: ExpenseRequestCreateManyEmployeeInput | ExpenseRequestCreateManyEmployeeInput[]
+  }
+
+  export type CompanyLoanCreateWithoutEmployeeInput = {
+    id?: string
+    principalAmount: number
+    remainingBalance: number
+    monthlyDeduction: number
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyLoanUncheckedCreateWithoutEmployeeInput = {
+    id?: string
+    principalAmount: number
+    remainingBalance: number
+    monthlyDeduction: number
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyLoanCreateOrConnectWithoutEmployeeInput = {
+    where: CompanyLoanWhereUniqueInput
+    create: XOR<CompanyLoanCreateWithoutEmployeeInput, CompanyLoanUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type CompanyLoanCreateManyEmployeeInputEnvelope = {
+    data: CompanyLoanCreateManyEmployeeInput | CompanyLoanCreateManyEmployeeInput[]
+  }
+
+  export type CompanyAssetCreateWithoutEmployeeInput = {
+    id?: string
+    name: string
+    type: string
+    serialNumber?: string | null
+    purchaseDate?: Date | string | null
+    purchasePrice?: number | null
+    condition?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyAssetUncheckedCreateWithoutEmployeeInput = {
+    id?: string
+    name: string
+    type: string
+    serialNumber?: string | null
+    purchaseDate?: Date | string | null
+    purchasePrice?: number | null
+    condition?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyAssetCreateOrConnectWithoutEmployeeInput = {
+    where: CompanyAssetWhereUniqueInput
+    create: XOR<CompanyAssetCreateWithoutEmployeeInput, CompanyAssetUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type CompanyAssetCreateManyEmployeeInputEnvelope = {
+    data: CompanyAssetCreateManyEmployeeInput | CompanyAssetCreateManyEmployeeInput[]
+  }
+
   export type DepartmentUpsertWithoutEmployeesInput = {
     update: XOR<DepartmentUpdateWithoutEmployeesInput, DepartmentUncheckedUpdateWithoutEmployeesInput>
     create: XOR<DepartmentCreateWithoutEmployeesInput, DepartmentUncheckedCreateWithoutEmployeesInput>
@@ -30803,6 +42693,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutBranchNestedInput
+    biometricDevices?: BiometricDeviceUpdateManyWithoutBranchNestedInput
   }
 
   export type BranchUncheckedUpdateWithoutEmployeesInput = {
@@ -30812,32 +42703,33 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutBranchNestedInput
+    biometricDevices?: BiometricDeviceUncheckedUpdateManyWithoutBranchNestedInput
   }
 
-  export type ScheduleUpsertWithoutEmployeeInput = {
-    update: XOR<ScheduleUpdateWithoutEmployeeInput, ScheduleUncheckedUpdateWithoutEmployeeInput>
-    create: XOR<ScheduleCreateWithoutEmployeeInput, ScheduleUncheckedCreateWithoutEmployeeInput>
-    where?: ScheduleWhereInput
+  export type MasterScheduleUpsertWithoutEmployeeInput = {
+    update: XOR<MasterScheduleUpdateWithoutEmployeeInput, MasterScheduleUncheckedUpdateWithoutEmployeeInput>
+    create: XOR<MasterScheduleCreateWithoutEmployeeInput, MasterScheduleUncheckedCreateWithoutEmployeeInput>
+    where?: MasterScheduleWhereInput
   }
 
-  export type ScheduleUpdateToOneWithWhereWithoutEmployeeInput = {
-    where?: ScheduleWhereInput
-    data: XOR<ScheduleUpdateWithoutEmployeeInput, ScheduleUncheckedUpdateWithoutEmployeeInput>
+  export type MasterScheduleUpdateToOneWithWhereWithoutEmployeeInput = {
+    where?: MasterScheduleWhereInput
+    data: XOR<MasterScheduleUpdateWithoutEmployeeInput, MasterScheduleUncheckedUpdateWithoutEmployeeInput>
   }
 
-  export type ScheduleUpdateWithoutEmployeeInput = {
+  export type MasterScheduleUpdateWithoutEmployeeInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    monday?: ShiftUpdateOneWithoutMondaySchedulesNestedInput
-    tuesday?: ShiftUpdateOneWithoutTuesdaySchedulesNestedInput
-    wednesday?: ShiftUpdateOneWithoutWednesdaySchedulesNestedInput
-    thursday?: ShiftUpdateOneWithoutThursdaySchedulesNestedInput
-    friday?: ShiftUpdateOneWithoutFridaySchedulesNestedInput
-    saturday?: ShiftUpdateOneWithoutSaturdaySchedulesNestedInput
-    sunday?: ShiftUpdateOneWithoutSundaySchedulesNestedInput
+    monday?: ShiftUpdateOneWithoutMondayMasterSchedulesNestedInput
+    tuesday?: ShiftUpdateOneWithoutTuesdayMasterSchedulesNestedInput
+    wednesday?: ShiftUpdateOneWithoutWednesdayMasterSchedulesNestedInput
+    thursday?: ShiftUpdateOneWithoutThursdayMasterSchedulesNestedInput
+    friday?: ShiftUpdateOneWithoutFridayMasterSchedulesNestedInput
+    saturday?: ShiftUpdateOneWithoutSaturdayMasterSchedulesNestedInput
+    sunday?: ShiftUpdateOneWithoutSundayMasterSchedulesNestedInput
   }
 
-  export type ScheduleUncheckedUpdateWithoutEmployeeInput = {
+  export type MasterScheduleUncheckedUpdateWithoutEmployeeInput = {
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
     wednesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30847,6 +42739,37 @@ export namespace Prisma {
     sundayId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleOverrideUpsertWithWhereUniqueWithoutEmployeeInput = {
+    where: ScheduleOverrideWhereUniqueInput
+    update: XOR<ScheduleOverrideUpdateWithoutEmployeeInput, ScheduleOverrideUncheckedUpdateWithoutEmployeeInput>
+    create: XOR<ScheduleOverrideCreateWithoutEmployeeInput, ScheduleOverrideUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type ScheduleOverrideUpdateWithWhereUniqueWithoutEmployeeInput = {
+    where: ScheduleOverrideWhereUniqueInput
+    data: XOR<ScheduleOverrideUpdateWithoutEmployeeInput, ScheduleOverrideUncheckedUpdateWithoutEmployeeInput>
+  }
+
+  export type ScheduleOverrideUpdateManyWithWhereWithoutEmployeeInput = {
+    where: ScheduleOverrideScalarWhereInput
+    data: XOR<ScheduleOverrideUpdateManyMutationInput, ScheduleOverrideUncheckedUpdateManyWithoutEmployeeInput>
+  }
+
+  export type ScheduleOverrideScalarWhereInput = {
+    AND?: ScheduleOverrideScalarWhereInput | ScheduleOverrideScalarWhereInput[]
+    OR?: ScheduleOverrideScalarWhereInput[]
+    NOT?: ScheduleOverrideScalarWhereInput | ScheduleOverrideScalarWhereInput[]
+    id?: StringFilter<"ScheduleOverride"> | string
+    employeeId?: StringFilter<"ScheduleOverride"> | string
+    date?: DateTimeFilter<"ScheduleOverride"> | Date | string
+    startTime?: StringNullableFilter<"ScheduleOverride"> | string | null
+    endTime?: StringNullableFilter<"ScheduleOverride"> | string | null
+    isRestDay?: BoolFilter<"ScheduleOverride"> | boolean
+    reason?: StringNullableFilter<"ScheduleOverride"> | string | null
+    createdAt?: DateTimeFilter<"ScheduleOverride"> | Date | string
+    updatedAt?: DateTimeFilter<"ScheduleOverride"> | Date | string
   }
 
   export type EmployeeBenefitUpsertWithWhereUniqueWithoutEmployeeInput = {
@@ -31043,6 +42966,101 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"PayrollRecord"> | Date | string
   }
 
+  export type ExpenseRequestUpsertWithWhereUniqueWithoutEmployeeInput = {
+    where: ExpenseRequestWhereUniqueInput
+    update: XOR<ExpenseRequestUpdateWithoutEmployeeInput, ExpenseRequestUncheckedUpdateWithoutEmployeeInput>
+    create: XOR<ExpenseRequestCreateWithoutEmployeeInput, ExpenseRequestUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type ExpenseRequestUpdateWithWhereUniqueWithoutEmployeeInput = {
+    where: ExpenseRequestWhereUniqueInput
+    data: XOR<ExpenseRequestUpdateWithoutEmployeeInput, ExpenseRequestUncheckedUpdateWithoutEmployeeInput>
+  }
+
+  export type ExpenseRequestUpdateManyWithWhereWithoutEmployeeInput = {
+    where: ExpenseRequestScalarWhereInput
+    data: XOR<ExpenseRequestUpdateManyMutationInput, ExpenseRequestUncheckedUpdateManyWithoutEmployeeInput>
+  }
+
+  export type ExpenseRequestScalarWhereInput = {
+    AND?: ExpenseRequestScalarWhereInput | ExpenseRequestScalarWhereInput[]
+    OR?: ExpenseRequestScalarWhereInput[]
+    NOT?: ExpenseRequestScalarWhereInput | ExpenseRequestScalarWhereInput[]
+    id?: StringFilter<"ExpenseRequest"> | string
+    employeeId?: StringFilter<"ExpenseRequest"> | string
+    amount?: FloatFilter<"ExpenseRequest"> | number
+    category?: StringFilter<"ExpenseRequest"> | string
+    description?: StringFilter<"ExpenseRequest"> | string
+    receiptUrls?: StringNullableListFilter<"ExpenseRequest">
+    status?: StringFilter<"ExpenseRequest"> | string
+    date?: DateTimeFilter<"ExpenseRequest"> | Date | string
+    createdAt?: DateTimeFilter<"ExpenseRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"ExpenseRequest"> | Date | string
+  }
+
+  export type CompanyLoanUpsertWithWhereUniqueWithoutEmployeeInput = {
+    where: CompanyLoanWhereUniqueInput
+    update: XOR<CompanyLoanUpdateWithoutEmployeeInput, CompanyLoanUncheckedUpdateWithoutEmployeeInput>
+    create: XOR<CompanyLoanCreateWithoutEmployeeInput, CompanyLoanUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type CompanyLoanUpdateWithWhereUniqueWithoutEmployeeInput = {
+    where: CompanyLoanWhereUniqueInput
+    data: XOR<CompanyLoanUpdateWithoutEmployeeInput, CompanyLoanUncheckedUpdateWithoutEmployeeInput>
+  }
+
+  export type CompanyLoanUpdateManyWithWhereWithoutEmployeeInput = {
+    where: CompanyLoanScalarWhereInput
+    data: XOR<CompanyLoanUpdateManyMutationInput, CompanyLoanUncheckedUpdateManyWithoutEmployeeInput>
+  }
+
+  export type CompanyLoanScalarWhereInput = {
+    AND?: CompanyLoanScalarWhereInput | CompanyLoanScalarWhereInput[]
+    OR?: CompanyLoanScalarWhereInput[]
+    NOT?: CompanyLoanScalarWhereInput | CompanyLoanScalarWhereInput[]
+    id?: StringFilter<"CompanyLoan"> | string
+    employeeId?: StringFilter<"CompanyLoan"> | string
+    principalAmount?: FloatFilter<"CompanyLoan"> | number
+    remainingBalance?: FloatFilter<"CompanyLoan"> | number
+    monthlyDeduction?: FloatFilter<"CompanyLoan"> | number
+    status?: StringFilter<"CompanyLoan"> | string
+    createdAt?: DateTimeFilter<"CompanyLoan"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyLoan"> | Date | string
+  }
+
+  export type CompanyAssetUpsertWithWhereUniqueWithoutEmployeeInput = {
+    where: CompanyAssetWhereUniqueInput
+    update: XOR<CompanyAssetUpdateWithoutEmployeeInput, CompanyAssetUncheckedUpdateWithoutEmployeeInput>
+    create: XOR<CompanyAssetCreateWithoutEmployeeInput, CompanyAssetUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type CompanyAssetUpdateWithWhereUniqueWithoutEmployeeInput = {
+    where: CompanyAssetWhereUniqueInput
+    data: XOR<CompanyAssetUpdateWithoutEmployeeInput, CompanyAssetUncheckedUpdateWithoutEmployeeInput>
+  }
+
+  export type CompanyAssetUpdateManyWithWhereWithoutEmployeeInput = {
+    where: CompanyAssetScalarWhereInput
+    data: XOR<CompanyAssetUpdateManyMutationInput, CompanyAssetUncheckedUpdateManyWithoutEmployeeInput>
+  }
+
+  export type CompanyAssetScalarWhereInput = {
+    AND?: CompanyAssetScalarWhereInput | CompanyAssetScalarWhereInput[]
+    OR?: CompanyAssetScalarWhereInput[]
+    NOT?: CompanyAssetScalarWhereInput | CompanyAssetScalarWhereInput[]
+    id?: StringFilter<"CompanyAsset"> | string
+    employeeId?: StringNullableFilter<"CompanyAsset"> | string | null
+    name?: StringFilter<"CompanyAsset"> | string
+    type?: StringFilter<"CompanyAsset"> | string
+    serialNumber?: StringNullableFilter<"CompanyAsset"> | string | null
+    purchaseDate?: DateTimeNullableFilter<"CompanyAsset"> | Date | string | null
+    purchasePrice?: FloatNullableFilter<"CompanyAsset"> | number | null
+    condition?: StringFilter<"CompanyAsset"> | string
+    status?: StringFilter<"CompanyAsset"> | string
+    createdAt?: DateTimeFilter<"CompanyAsset"> | Date | string
+    updatedAt?: DateTimeFilter<"CompanyAsset"> | Date | string
+  }
+
   export type EmployeeBenefitCreateWithoutBenefitPlanInput = {
     id?: string
     status?: string
@@ -31112,16 +43130,22 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     department?: DepartmentCreateNestedOneWithoutEmployeesInput
     position?: PositionCreateNestedOneWithoutEmployeesInput
     branch?: BranchCreateNestedOneWithoutEmployeesInput
-    schedule?: ScheduleCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateWithoutBenefitsInput = {
@@ -31155,13 +43179,19 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    schedule?: ScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeCreateOrConnectWithoutBenefitsInput = {
@@ -31230,16 +43260,22 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     department?: DepartmentUpdateOneWithoutEmployeesNestedInput
     position?: PositionUpdateOneWithoutEmployeesNestedInput
     branch?: BranchUpdateOneWithoutEmployeesNestedInput
-    schedule?: ScheduleUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateWithoutBenefitsInput = {
@@ -31272,13 +43308,19 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schedule?: ScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
   }
 
   export type BenefitPlanUpsertWithoutEnrollmentsInput = {
@@ -31365,16 +43407,22 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     position?: PositionCreateNestedOneWithoutEmployeesInput
     branch?: BranchCreateNestedOneWithoutEmployeesInput
-    schedule?: ScheduleCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateWithoutDepartmentInput = {
@@ -31407,14 +43455,20 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    schedule?: ScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeCreateOrConnectWithoutDepartmentInput = {
@@ -31524,16 +43578,22 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     department?: DepartmentCreateNestedOneWithoutEmployeesInput
     branch?: BranchCreateNestedOneWithoutEmployeesInput
-    schedule?: ScheduleCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateWithoutPositionInput = {
@@ -31566,14 +43626,20 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    schedule?: ScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeCreateOrConnectWithoutPositionInput = {
@@ -31630,20 +43696,20 @@ export namespace Prisma {
     data: XOR<EmployeeUpdateManyMutationInput, EmployeeUncheckedUpdateManyWithoutPositionInput>
   }
 
-  export type ScheduleCreateWithoutMondayInput = {
+  export type MasterScheduleCreateWithoutMondayInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    employee: EmployeeCreateNestedOneWithoutScheduleInput
-    tuesday?: ShiftCreateNestedOneWithoutTuesdaySchedulesInput
-    wednesday?: ShiftCreateNestedOneWithoutWednesdaySchedulesInput
-    thursday?: ShiftCreateNestedOneWithoutThursdaySchedulesInput
-    friday?: ShiftCreateNestedOneWithoutFridaySchedulesInput
-    saturday?: ShiftCreateNestedOneWithoutSaturdaySchedulesInput
-    sunday?: ShiftCreateNestedOneWithoutSundaySchedulesInput
+    employee: EmployeeCreateNestedOneWithoutMasterScheduleInput
+    tuesday?: ShiftCreateNestedOneWithoutTuesdayMasterSchedulesInput
+    wednesday?: ShiftCreateNestedOneWithoutWednesdayMasterSchedulesInput
+    thursday?: ShiftCreateNestedOneWithoutThursdayMasterSchedulesInput
+    friday?: ShiftCreateNestedOneWithoutFridayMasterSchedulesInput
+    saturday?: ShiftCreateNestedOneWithoutSaturdayMasterSchedulesInput
+    sunday?: ShiftCreateNestedOneWithoutSundayMasterSchedulesInput
   }
 
-  export type ScheduleUncheckedCreateWithoutMondayInput = {
+  export type MasterScheduleUncheckedCreateWithoutMondayInput = {
     id?: string
     employeeId: string
     tuesdayId?: string | null
@@ -31656,29 +43722,29 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateOrConnectWithoutMondayInput = {
-    where: ScheduleWhereUniqueInput
-    create: XOR<ScheduleCreateWithoutMondayInput, ScheduleUncheckedCreateWithoutMondayInput>
+  export type MasterScheduleCreateOrConnectWithoutMondayInput = {
+    where: MasterScheduleWhereUniqueInput
+    create: XOR<MasterScheduleCreateWithoutMondayInput, MasterScheduleUncheckedCreateWithoutMondayInput>
   }
 
-  export type ScheduleCreateManyMondayInputEnvelope = {
-    data: ScheduleCreateManyMondayInput | ScheduleCreateManyMondayInput[]
+  export type MasterScheduleCreateManyMondayInputEnvelope = {
+    data: MasterScheduleCreateManyMondayInput | MasterScheduleCreateManyMondayInput[]
   }
 
-  export type ScheduleCreateWithoutTuesdayInput = {
+  export type MasterScheduleCreateWithoutTuesdayInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    employee: EmployeeCreateNestedOneWithoutScheduleInput
-    monday?: ShiftCreateNestedOneWithoutMondaySchedulesInput
-    wednesday?: ShiftCreateNestedOneWithoutWednesdaySchedulesInput
-    thursday?: ShiftCreateNestedOneWithoutThursdaySchedulesInput
-    friday?: ShiftCreateNestedOneWithoutFridaySchedulesInput
-    saturday?: ShiftCreateNestedOneWithoutSaturdaySchedulesInput
-    sunday?: ShiftCreateNestedOneWithoutSundaySchedulesInput
+    employee: EmployeeCreateNestedOneWithoutMasterScheduleInput
+    monday?: ShiftCreateNestedOneWithoutMondayMasterSchedulesInput
+    wednesday?: ShiftCreateNestedOneWithoutWednesdayMasterSchedulesInput
+    thursday?: ShiftCreateNestedOneWithoutThursdayMasterSchedulesInput
+    friday?: ShiftCreateNestedOneWithoutFridayMasterSchedulesInput
+    saturday?: ShiftCreateNestedOneWithoutSaturdayMasterSchedulesInput
+    sunday?: ShiftCreateNestedOneWithoutSundayMasterSchedulesInput
   }
 
-  export type ScheduleUncheckedCreateWithoutTuesdayInput = {
+  export type MasterScheduleUncheckedCreateWithoutTuesdayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -31691,29 +43757,29 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateOrConnectWithoutTuesdayInput = {
-    where: ScheduleWhereUniqueInput
-    create: XOR<ScheduleCreateWithoutTuesdayInput, ScheduleUncheckedCreateWithoutTuesdayInput>
+  export type MasterScheduleCreateOrConnectWithoutTuesdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    create: XOR<MasterScheduleCreateWithoutTuesdayInput, MasterScheduleUncheckedCreateWithoutTuesdayInput>
   }
 
-  export type ScheduleCreateManyTuesdayInputEnvelope = {
-    data: ScheduleCreateManyTuesdayInput | ScheduleCreateManyTuesdayInput[]
+  export type MasterScheduleCreateManyTuesdayInputEnvelope = {
+    data: MasterScheduleCreateManyTuesdayInput | MasterScheduleCreateManyTuesdayInput[]
   }
 
-  export type ScheduleCreateWithoutWednesdayInput = {
+  export type MasterScheduleCreateWithoutWednesdayInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    employee: EmployeeCreateNestedOneWithoutScheduleInput
-    monday?: ShiftCreateNestedOneWithoutMondaySchedulesInput
-    tuesday?: ShiftCreateNestedOneWithoutTuesdaySchedulesInput
-    thursday?: ShiftCreateNestedOneWithoutThursdaySchedulesInput
-    friday?: ShiftCreateNestedOneWithoutFridaySchedulesInput
-    saturday?: ShiftCreateNestedOneWithoutSaturdaySchedulesInput
-    sunday?: ShiftCreateNestedOneWithoutSundaySchedulesInput
+    employee: EmployeeCreateNestedOneWithoutMasterScheduleInput
+    monday?: ShiftCreateNestedOneWithoutMondayMasterSchedulesInput
+    tuesday?: ShiftCreateNestedOneWithoutTuesdayMasterSchedulesInput
+    thursday?: ShiftCreateNestedOneWithoutThursdayMasterSchedulesInput
+    friday?: ShiftCreateNestedOneWithoutFridayMasterSchedulesInput
+    saturday?: ShiftCreateNestedOneWithoutSaturdayMasterSchedulesInput
+    sunday?: ShiftCreateNestedOneWithoutSundayMasterSchedulesInput
   }
 
-  export type ScheduleUncheckedCreateWithoutWednesdayInput = {
+  export type MasterScheduleUncheckedCreateWithoutWednesdayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -31726,29 +43792,29 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateOrConnectWithoutWednesdayInput = {
-    where: ScheduleWhereUniqueInput
-    create: XOR<ScheduleCreateWithoutWednesdayInput, ScheduleUncheckedCreateWithoutWednesdayInput>
+  export type MasterScheduleCreateOrConnectWithoutWednesdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    create: XOR<MasterScheduleCreateWithoutWednesdayInput, MasterScheduleUncheckedCreateWithoutWednesdayInput>
   }
 
-  export type ScheduleCreateManyWednesdayInputEnvelope = {
-    data: ScheduleCreateManyWednesdayInput | ScheduleCreateManyWednesdayInput[]
+  export type MasterScheduleCreateManyWednesdayInputEnvelope = {
+    data: MasterScheduleCreateManyWednesdayInput | MasterScheduleCreateManyWednesdayInput[]
   }
 
-  export type ScheduleCreateWithoutThursdayInput = {
+  export type MasterScheduleCreateWithoutThursdayInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    employee: EmployeeCreateNestedOneWithoutScheduleInput
-    monday?: ShiftCreateNestedOneWithoutMondaySchedulesInput
-    tuesday?: ShiftCreateNestedOneWithoutTuesdaySchedulesInput
-    wednesday?: ShiftCreateNestedOneWithoutWednesdaySchedulesInput
-    friday?: ShiftCreateNestedOneWithoutFridaySchedulesInput
-    saturday?: ShiftCreateNestedOneWithoutSaturdaySchedulesInput
-    sunday?: ShiftCreateNestedOneWithoutSundaySchedulesInput
+    employee: EmployeeCreateNestedOneWithoutMasterScheduleInput
+    monday?: ShiftCreateNestedOneWithoutMondayMasterSchedulesInput
+    tuesday?: ShiftCreateNestedOneWithoutTuesdayMasterSchedulesInput
+    wednesday?: ShiftCreateNestedOneWithoutWednesdayMasterSchedulesInput
+    friday?: ShiftCreateNestedOneWithoutFridayMasterSchedulesInput
+    saturday?: ShiftCreateNestedOneWithoutSaturdayMasterSchedulesInput
+    sunday?: ShiftCreateNestedOneWithoutSundayMasterSchedulesInput
   }
 
-  export type ScheduleUncheckedCreateWithoutThursdayInput = {
+  export type MasterScheduleUncheckedCreateWithoutThursdayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -31761,29 +43827,29 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateOrConnectWithoutThursdayInput = {
-    where: ScheduleWhereUniqueInput
-    create: XOR<ScheduleCreateWithoutThursdayInput, ScheduleUncheckedCreateWithoutThursdayInput>
+  export type MasterScheduleCreateOrConnectWithoutThursdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    create: XOR<MasterScheduleCreateWithoutThursdayInput, MasterScheduleUncheckedCreateWithoutThursdayInput>
   }
 
-  export type ScheduleCreateManyThursdayInputEnvelope = {
-    data: ScheduleCreateManyThursdayInput | ScheduleCreateManyThursdayInput[]
+  export type MasterScheduleCreateManyThursdayInputEnvelope = {
+    data: MasterScheduleCreateManyThursdayInput | MasterScheduleCreateManyThursdayInput[]
   }
 
-  export type ScheduleCreateWithoutFridayInput = {
+  export type MasterScheduleCreateWithoutFridayInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    employee: EmployeeCreateNestedOneWithoutScheduleInput
-    monday?: ShiftCreateNestedOneWithoutMondaySchedulesInput
-    tuesday?: ShiftCreateNestedOneWithoutTuesdaySchedulesInput
-    wednesday?: ShiftCreateNestedOneWithoutWednesdaySchedulesInput
-    thursday?: ShiftCreateNestedOneWithoutThursdaySchedulesInput
-    saturday?: ShiftCreateNestedOneWithoutSaturdaySchedulesInput
-    sunday?: ShiftCreateNestedOneWithoutSundaySchedulesInput
+    employee: EmployeeCreateNestedOneWithoutMasterScheduleInput
+    monday?: ShiftCreateNestedOneWithoutMondayMasterSchedulesInput
+    tuesday?: ShiftCreateNestedOneWithoutTuesdayMasterSchedulesInput
+    wednesday?: ShiftCreateNestedOneWithoutWednesdayMasterSchedulesInput
+    thursday?: ShiftCreateNestedOneWithoutThursdayMasterSchedulesInput
+    saturday?: ShiftCreateNestedOneWithoutSaturdayMasterSchedulesInput
+    sunday?: ShiftCreateNestedOneWithoutSundayMasterSchedulesInput
   }
 
-  export type ScheduleUncheckedCreateWithoutFridayInput = {
+  export type MasterScheduleUncheckedCreateWithoutFridayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -31796,29 +43862,29 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateOrConnectWithoutFridayInput = {
-    where: ScheduleWhereUniqueInput
-    create: XOR<ScheduleCreateWithoutFridayInput, ScheduleUncheckedCreateWithoutFridayInput>
+  export type MasterScheduleCreateOrConnectWithoutFridayInput = {
+    where: MasterScheduleWhereUniqueInput
+    create: XOR<MasterScheduleCreateWithoutFridayInput, MasterScheduleUncheckedCreateWithoutFridayInput>
   }
 
-  export type ScheduleCreateManyFridayInputEnvelope = {
-    data: ScheduleCreateManyFridayInput | ScheduleCreateManyFridayInput[]
+  export type MasterScheduleCreateManyFridayInputEnvelope = {
+    data: MasterScheduleCreateManyFridayInput | MasterScheduleCreateManyFridayInput[]
   }
 
-  export type ScheduleCreateWithoutSaturdayInput = {
+  export type MasterScheduleCreateWithoutSaturdayInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    employee: EmployeeCreateNestedOneWithoutScheduleInput
-    monday?: ShiftCreateNestedOneWithoutMondaySchedulesInput
-    tuesday?: ShiftCreateNestedOneWithoutTuesdaySchedulesInput
-    wednesday?: ShiftCreateNestedOneWithoutWednesdaySchedulesInput
-    thursday?: ShiftCreateNestedOneWithoutThursdaySchedulesInput
-    friday?: ShiftCreateNestedOneWithoutFridaySchedulesInput
-    sunday?: ShiftCreateNestedOneWithoutSundaySchedulesInput
+    employee: EmployeeCreateNestedOneWithoutMasterScheduleInput
+    monday?: ShiftCreateNestedOneWithoutMondayMasterSchedulesInput
+    tuesday?: ShiftCreateNestedOneWithoutTuesdayMasterSchedulesInput
+    wednesday?: ShiftCreateNestedOneWithoutWednesdayMasterSchedulesInput
+    thursday?: ShiftCreateNestedOneWithoutThursdayMasterSchedulesInput
+    friday?: ShiftCreateNestedOneWithoutFridayMasterSchedulesInput
+    sunday?: ShiftCreateNestedOneWithoutSundayMasterSchedulesInput
   }
 
-  export type ScheduleUncheckedCreateWithoutSaturdayInput = {
+  export type MasterScheduleUncheckedCreateWithoutSaturdayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -31831,29 +43897,29 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateOrConnectWithoutSaturdayInput = {
-    where: ScheduleWhereUniqueInput
-    create: XOR<ScheduleCreateWithoutSaturdayInput, ScheduleUncheckedCreateWithoutSaturdayInput>
+  export type MasterScheduleCreateOrConnectWithoutSaturdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    create: XOR<MasterScheduleCreateWithoutSaturdayInput, MasterScheduleUncheckedCreateWithoutSaturdayInput>
   }
 
-  export type ScheduleCreateManySaturdayInputEnvelope = {
-    data: ScheduleCreateManySaturdayInput | ScheduleCreateManySaturdayInput[]
+  export type MasterScheduleCreateManySaturdayInputEnvelope = {
+    data: MasterScheduleCreateManySaturdayInput | MasterScheduleCreateManySaturdayInput[]
   }
 
-  export type ScheduleCreateWithoutSundayInput = {
+  export type MasterScheduleCreateWithoutSundayInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    employee: EmployeeCreateNestedOneWithoutScheduleInput
-    monday?: ShiftCreateNestedOneWithoutMondaySchedulesInput
-    tuesday?: ShiftCreateNestedOneWithoutTuesdaySchedulesInput
-    wednesday?: ShiftCreateNestedOneWithoutWednesdaySchedulesInput
-    thursday?: ShiftCreateNestedOneWithoutThursdaySchedulesInput
-    friday?: ShiftCreateNestedOneWithoutFridaySchedulesInput
-    saturday?: ShiftCreateNestedOneWithoutSaturdaySchedulesInput
+    employee: EmployeeCreateNestedOneWithoutMasterScheduleInput
+    monday?: ShiftCreateNestedOneWithoutMondayMasterSchedulesInput
+    tuesday?: ShiftCreateNestedOneWithoutTuesdayMasterSchedulesInput
+    wednesday?: ShiftCreateNestedOneWithoutWednesdayMasterSchedulesInput
+    thursday?: ShiftCreateNestedOneWithoutThursdayMasterSchedulesInput
+    friday?: ShiftCreateNestedOneWithoutFridayMasterSchedulesInput
+    saturday?: ShiftCreateNestedOneWithoutSaturdayMasterSchedulesInput
   }
 
-  export type ScheduleUncheckedCreateWithoutSundayInput = {
+  export type MasterScheduleUncheckedCreateWithoutSundayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -31866,145 +43932,145 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateOrConnectWithoutSundayInput = {
-    where: ScheduleWhereUniqueInput
-    create: XOR<ScheduleCreateWithoutSundayInput, ScheduleUncheckedCreateWithoutSundayInput>
+  export type MasterScheduleCreateOrConnectWithoutSundayInput = {
+    where: MasterScheduleWhereUniqueInput
+    create: XOR<MasterScheduleCreateWithoutSundayInput, MasterScheduleUncheckedCreateWithoutSundayInput>
   }
 
-  export type ScheduleCreateManySundayInputEnvelope = {
-    data: ScheduleCreateManySundayInput | ScheduleCreateManySundayInput[]
+  export type MasterScheduleCreateManySundayInputEnvelope = {
+    data: MasterScheduleCreateManySundayInput | MasterScheduleCreateManySundayInput[]
   }
 
-  export type ScheduleUpsertWithWhereUniqueWithoutMondayInput = {
-    where: ScheduleWhereUniqueInput
-    update: XOR<ScheduleUpdateWithoutMondayInput, ScheduleUncheckedUpdateWithoutMondayInput>
-    create: XOR<ScheduleCreateWithoutMondayInput, ScheduleUncheckedCreateWithoutMondayInput>
+  export type MasterScheduleUpsertWithWhereUniqueWithoutMondayInput = {
+    where: MasterScheduleWhereUniqueInput
+    update: XOR<MasterScheduleUpdateWithoutMondayInput, MasterScheduleUncheckedUpdateWithoutMondayInput>
+    create: XOR<MasterScheduleCreateWithoutMondayInput, MasterScheduleUncheckedCreateWithoutMondayInput>
   }
 
-  export type ScheduleUpdateWithWhereUniqueWithoutMondayInput = {
-    where: ScheduleWhereUniqueInput
-    data: XOR<ScheduleUpdateWithoutMondayInput, ScheduleUncheckedUpdateWithoutMondayInput>
+  export type MasterScheduleUpdateWithWhereUniqueWithoutMondayInput = {
+    where: MasterScheduleWhereUniqueInput
+    data: XOR<MasterScheduleUpdateWithoutMondayInput, MasterScheduleUncheckedUpdateWithoutMondayInput>
   }
 
-  export type ScheduleUpdateManyWithWhereWithoutMondayInput = {
-    where: ScheduleScalarWhereInput
-    data: XOR<ScheduleUpdateManyMutationInput, ScheduleUncheckedUpdateManyWithoutMondayInput>
+  export type MasterScheduleUpdateManyWithWhereWithoutMondayInput = {
+    where: MasterScheduleScalarWhereInput
+    data: XOR<MasterScheduleUpdateManyMutationInput, MasterScheduleUncheckedUpdateManyWithoutMondayInput>
   }
 
-  export type ScheduleScalarWhereInput = {
-    AND?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
-    OR?: ScheduleScalarWhereInput[]
-    NOT?: ScheduleScalarWhereInput | ScheduleScalarWhereInput[]
-    id?: StringFilter<"Schedule"> | string
-    employeeId?: StringFilter<"Schedule"> | string
-    mondayId?: StringNullableFilter<"Schedule"> | string | null
-    tuesdayId?: StringNullableFilter<"Schedule"> | string | null
-    wednesdayId?: StringNullableFilter<"Schedule"> | string | null
-    thursdayId?: StringNullableFilter<"Schedule"> | string | null
-    fridayId?: StringNullableFilter<"Schedule"> | string | null
-    saturdayId?: StringNullableFilter<"Schedule"> | string | null
-    sundayId?: StringNullableFilter<"Schedule"> | string | null
-    createdAt?: DateTimeFilter<"Schedule"> | Date | string
-    updatedAt?: DateTimeFilter<"Schedule"> | Date | string
+  export type MasterScheduleScalarWhereInput = {
+    AND?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
+    OR?: MasterScheduleScalarWhereInput[]
+    NOT?: MasterScheduleScalarWhereInput | MasterScheduleScalarWhereInput[]
+    id?: StringFilter<"MasterSchedule"> | string
+    employeeId?: StringFilter<"MasterSchedule"> | string
+    mondayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    tuesdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    wednesdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    thursdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    fridayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    saturdayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    sundayId?: StringNullableFilter<"MasterSchedule"> | string | null
+    createdAt?: DateTimeFilter<"MasterSchedule"> | Date | string
+    updatedAt?: DateTimeFilter<"MasterSchedule"> | Date | string
   }
 
-  export type ScheduleUpsertWithWhereUniqueWithoutTuesdayInput = {
-    where: ScheduleWhereUniqueInput
-    update: XOR<ScheduleUpdateWithoutTuesdayInput, ScheduleUncheckedUpdateWithoutTuesdayInput>
-    create: XOR<ScheduleCreateWithoutTuesdayInput, ScheduleUncheckedCreateWithoutTuesdayInput>
+  export type MasterScheduleUpsertWithWhereUniqueWithoutTuesdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    update: XOR<MasterScheduleUpdateWithoutTuesdayInput, MasterScheduleUncheckedUpdateWithoutTuesdayInput>
+    create: XOR<MasterScheduleCreateWithoutTuesdayInput, MasterScheduleUncheckedCreateWithoutTuesdayInput>
   }
 
-  export type ScheduleUpdateWithWhereUniqueWithoutTuesdayInput = {
-    where: ScheduleWhereUniqueInput
-    data: XOR<ScheduleUpdateWithoutTuesdayInput, ScheduleUncheckedUpdateWithoutTuesdayInput>
+  export type MasterScheduleUpdateWithWhereUniqueWithoutTuesdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    data: XOR<MasterScheduleUpdateWithoutTuesdayInput, MasterScheduleUncheckedUpdateWithoutTuesdayInput>
   }
 
-  export type ScheduleUpdateManyWithWhereWithoutTuesdayInput = {
-    where: ScheduleScalarWhereInput
-    data: XOR<ScheduleUpdateManyMutationInput, ScheduleUncheckedUpdateManyWithoutTuesdayInput>
+  export type MasterScheduleUpdateManyWithWhereWithoutTuesdayInput = {
+    where: MasterScheduleScalarWhereInput
+    data: XOR<MasterScheduleUpdateManyMutationInput, MasterScheduleUncheckedUpdateManyWithoutTuesdayInput>
   }
 
-  export type ScheduleUpsertWithWhereUniqueWithoutWednesdayInput = {
-    where: ScheduleWhereUniqueInput
-    update: XOR<ScheduleUpdateWithoutWednesdayInput, ScheduleUncheckedUpdateWithoutWednesdayInput>
-    create: XOR<ScheduleCreateWithoutWednesdayInput, ScheduleUncheckedCreateWithoutWednesdayInput>
+  export type MasterScheduleUpsertWithWhereUniqueWithoutWednesdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    update: XOR<MasterScheduleUpdateWithoutWednesdayInput, MasterScheduleUncheckedUpdateWithoutWednesdayInput>
+    create: XOR<MasterScheduleCreateWithoutWednesdayInput, MasterScheduleUncheckedCreateWithoutWednesdayInput>
   }
 
-  export type ScheduleUpdateWithWhereUniqueWithoutWednesdayInput = {
-    where: ScheduleWhereUniqueInput
-    data: XOR<ScheduleUpdateWithoutWednesdayInput, ScheduleUncheckedUpdateWithoutWednesdayInput>
+  export type MasterScheduleUpdateWithWhereUniqueWithoutWednesdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    data: XOR<MasterScheduleUpdateWithoutWednesdayInput, MasterScheduleUncheckedUpdateWithoutWednesdayInput>
   }
 
-  export type ScheduleUpdateManyWithWhereWithoutWednesdayInput = {
-    where: ScheduleScalarWhereInput
-    data: XOR<ScheduleUpdateManyMutationInput, ScheduleUncheckedUpdateManyWithoutWednesdayInput>
+  export type MasterScheduleUpdateManyWithWhereWithoutWednesdayInput = {
+    where: MasterScheduleScalarWhereInput
+    data: XOR<MasterScheduleUpdateManyMutationInput, MasterScheduleUncheckedUpdateManyWithoutWednesdayInput>
   }
 
-  export type ScheduleUpsertWithWhereUniqueWithoutThursdayInput = {
-    where: ScheduleWhereUniqueInput
-    update: XOR<ScheduleUpdateWithoutThursdayInput, ScheduleUncheckedUpdateWithoutThursdayInput>
-    create: XOR<ScheduleCreateWithoutThursdayInput, ScheduleUncheckedCreateWithoutThursdayInput>
+  export type MasterScheduleUpsertWithWhereUniqueWithoutThursdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    update: XOR<MasterScheduleUpdateWithoutThursdayInput, MasterScheduleUncheckedUpdateWithoutThursdayInput>
+    create: XOR<MasterScheduleCreateWithoutThursdayInput, MasterScheduleUncheckedCreateWithoutThursdayInput>
   }
 
-  export type ScheduleUpdateWithWhereUniqueWithoutThursdayInput = {
-    where: ScheduleWhereUniqueInput
-    data: XOR<ScheduleUpdateWithoutThursdayInput, ScheduleUncheckedUpdateWithoutThursdayInput>
+  export type MasterScheduleUpdateWithWhereUniqueWithoutThursdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    data: XOR<MasterScheduleUpdateWithoutThursdayInput, MasterScheduleUncheckedUpdateWithoutThursdayInput>
   }
 
-  export type ScheduleUpdateManyWithWhereWithoutThursdayInput = {
-    where: ScheduleScalarWhereInput
-    data: XOR<ScheduleUpdateManyMutationInput, ScheduleUncheckedUpdateManyWithoutThursdayInput>
+  export type MasterScheduleUpdateManyWithWhereWithoutThursdayInput = {
+    where: MasterScheduleScalarWhereInput
+    data: XOR<MasterScheduleUpdateManyMutationInput, MasterScheduleUncheckedUpdateManyWithoutThursdayInput>
   }
 
-  export type ScheduleUpsertWithWhereUniqueWithoutFridayInput = {
-    where: ScheduleWhereUniqueInput
-    update: XOR<ScheduleUpdateWithoutFridayInput, ScheduleUncheckedUpdateWithoutFridayInput>
-    create: XOR<ScheduleCreateWithoutFridayInput, ScheduleUncheckedCreateWithoutFridayInput>
+  export type MasterScheduleUpsertWithWhereUniqueWithoutFridayInput = {
+    where: MasterScheduleWhereUniqueInput
+    update: XOR<MasterScheduleUpdateWithoutFridayInput, MasterScheduleUncheckedUpdateWithoutFridayInput>
+    create: XOR<MasterScheduleCreateWithoutFridayInput, MasterScheduleUncheckedCreateWithoutFridayInput>
   }
 
-  export type ScheduleUpdateWithWhereUniqueWithoutFridayInput = {
-    where: ScheduleWhereUniqueInput
-    data: XOR<ScheduleUpdateWithoutFridayInput, ScheduleUncheckedUpdateWithoutFridayInput>
+  export type MasterScheduleUpdateWithWhereUniqueWithoutFridayInput = {
+    where: MasterScheduleWhereUniqueInput
+    data: XOR<MasterScheduleUpdateWithoutFridayInput, MasterScheduleUncheckedUpdateWithoutFridayInput>
   }
 
-  export type ScheduleUpdateManyWithWhereWithoutFridayInput = {
-    where: ScheduleScalarWhereInput
-    data: XOR<ScheduleUpdateManyMutationInput, ScheduleUncheckedUpdateManyWithoutFridayInput>
+  export type MasterScheduleUpdateManyWithWhereWithoutFridayInput = {
+    where: MasterScheduleScalarWhereInput
+    data: XOR<MasterScheduleUpdateManyMutationInput, MasterScheduleUncheckedUpdateManyWithoutFridayInput>
   }
 
-  export type ScheduleUpsertWithWhereUniqueWithoutSaturdayInput = {
-    where: ScheduleWhereUniqueInput
-    update: XOR<ScheduleUpdateWithoutSaturdayInput, ScheduleUncheckedUpdateWithoutSaturdayInput>
-    create: XOR<ScheduleCreateWithoutSaturdayInput, ScheduleUncheckedCreateWithoutSaturdayInput>
+  export type MasterScheduleUpsertWithWhereUniqueWithoutSaturdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    update: XOR<MasterScheduleUpdateWithoutSaturdayInput, MasterScheduleUncheckedUpdateWithoutSaturdayInput>
+    create: XOR<MasterScheduleCreateWithoutSaturdayInput, MasterScheduleUncheckedCreateWithoutSaturdayInput>
   }
 
-  export type ScheduleUpdateWithWhereUniqueWithoutSaturdayInput = {
-    where: ScheduleWhereUniqueInput
-    data: XOR<ScheduleUpdateWithoutSaturdayInput, ScheduleUncheckedUpdateWithoutSaturdayInput>
+  export type MasterScheduleUpdateWithWhereUniqueWithoutSaturdayInput = {
+    where: MasterScheduleWhereUniqueInput
+    data: XOR<MasterScheduleUpdateWithoutSaturdayInput, MasterScheduleUncheckedUpdateWithoutSaturdayInput>
   }
 
-  export type ScheduleUpdateManyWithWhereWithoutSaturdayInput = {
-    where: ScheduleScalarWhereInput
-    data: XOR<ScheduleUpdateManyMutationInput, ScheduleUncheckedUpdateManyWithoutSaturdayInput>
+  export type MasterScheduleUpdateManyWithWhereWithoutSaturdayInput = {
+    where: MasterScheduleScalarWhereInput
+    data: XOR<MasterScheduleUpdateManyMutationInput, MasterScheduleUncheckedUpdateManyWithoutSaturdayInput>
   }
 
-  export type ScheduleUpsertWithWhereUniqueWithoutSundayInput = {
-    where: ScheduleWhereUniqueInput
-    update: XOR<ScheduleUpdateWithoutSundayInput, ScheduleUncheckedUpdateWithoutSundayInput>
-    create: XOR<ScheduleCreateWithoutSundayInput, ScheduleUncheckedCreateWithoutSundayInput>
+  export type MasterScheduleUpsertWithWhereUniqueWithoutSundayInput = {
+    where: MasterScheduleWhereUniqueInput
+    update: XOR<MasterScheduleUpdateWithoutSundayInput, MasterScheduleUncheckedUpdateWithoutSundayInput>
+    create: XOR<MasterScheduleCreateWithoutSundayInput, MasterScheduleUncheckedCreateWithoutSundayInput>
   }
 
-  export type ScheduleUpdateWithWhereUniqueWithoutSundayInput = {
-    where: ScheduleWhereUniqueInput
-    data: XOR<ScheduleUpdateWithoutSundayInput, ScheduleUncheckedUpdateWithoutSundayInput>
+  export type MasterScheduleUpdateWithWhereUniqueWithoutSundayInput = {
+    where: MasterScheduleWhereUniqueInput
+    data: XOR<MasterScheduleUpdateWithoutSundayInput, MasterScheduleUncheckedUpdateWithoutSundayInput>
   }
 
-  export type ScheduleUpdateManyWithWhereWithoutSundayInput = {
-    where: ScheduleScalarWhereInput
-    data: XOR<ScheduleUpdateManyMutationInput, ScheduleUncheckedUpdateManyWithoutSundayInput>
+  export type MasterScheduleUpdateManyWithWhereWithoutSundayInput = {
+    where: MasterScheduleScalarWhereInput
+    data: XOR<MasterScheduleUpdateManyMutationInput, MasterScheduleUncheckedUpdateManyWithoutSundayInput>
   }
 
-  export type EmployeeCreateWithoutScheduleInput = {
+  export type EmployeeCreateWithoutMasterScheduleInput = {
     id?: string
     firstName: string
     lastName: string
@@ -32032,19 +44098,25 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     department?: DepartmentCreateNestedOneWithoutEmployeesInput
     position?: PositionCreateNestedOneWithoutEmployeesInput
     branch?: BranchCreateNestedOneWithoutEmployeesInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
   }
 
-  export type EmployeeUncheckedCreateWithoutScheduleInput = {
+  export type EmployeeUncheckedCreateWithoutMasterScheduleInput = {
     id?: string
     firstName: string
     lastName: string
@@ -32075,21 +44147,27 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
   }
 
-  export type EmployeeCreateOrConnectWithoutScheduleInput = {
+  export type EmployeeCreateOrConnectWithoutMasterScheduleInput = {
     where: EmployeeWhereUniqueInput
-    create: XOR<EmployeeCreateWithoutScheduleInput, EmployeeUncheckedCreateWithoutScheduleInput>
+    create: XOR<EmployeeCreateWithoutMasterScheduleInput, EmployeeUncheckedCreateWithoutMasterScheduleInput>
   }
 
-  export type ShiftCreateWithoutMondaySchedulesInput = {
+  export type ShiftCreateWithoutMondayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32100,15 +44178,15 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    tuesdaySchedules?: ScheduleCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleCreateNestedManyWithoutSundayInput
+    tuesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftUncheckedCreateWithoutMondaySchedulesInput = {
+  export type ShiftUncheckedCreateWithoutMondayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32119,20 +44197,20 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    tuesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleUncheckedCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSundayInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftCreateOrConnectWithoutMondaySchedulesInput = {
+  export type ShiftCreateOrConnectWithoutMondayMasterSchedulesInput = {
     where: ShiftWhereUniqueInput
-    create: XOR<ShiftCreateWithoutMondaySchedulesInput, ShiftUncheckedCreateWithoutMondaySchedulesInput>
+    create: XOR<ShiftCreateWithoutMondayMasterSchedulesInput, ShiftUncheckedCreateWithoutMondayMasterSchedulesInput>
   }
 
-  export type ShiftCreateWithoutTuesdaySchedulesInput = {
+  export type ShiftCreateWithoutTuesdayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32143,15 +44221,15 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleCreateNestedManyWithoutMondayInput
-    wednesdaySchedules?: ScheduleCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleCreateNestedManyWithoutMondayInput
+    wednesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftUncheckedCreateWithoutTuesdaySchedulesInput = {
+  export type ShiftUncheckedCreateWithoutTuesdayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32162,20 +44240,20 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleUncheckedCreateNestedManyWithoutMondayInput
-    wednesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleUncheckedCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutMondayInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftCreateOrConnectWithoutTuesdaySchedulesInput = {
+  export type ShiftCreateOrConnectWithoutTuesdayMasterSchedulesInput = {
     where: ShiftWhereUniqueInput
-    create: XOR<ShiftCreateWithoutTuesdaySchedulesInput, ShiftUncheckedCreateWithoutTuesdaySchedulesInput>
+    create: XOR<ShiftCreateWithoutTuesdayMasterSchedulesInput, ShiftUncheckedCreateWithoutTuesdayMasterSchedulesInput>
   }
 
-  export type ShiftCreateWithoutWednesdaySchedulesInput = {
+  export type ShiftCreateWithoutWednesdayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32186,15 +44264,15 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleCreateNestedManyWithoutTuesdayInput
-    thursdaySchedules?: ScheduleCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutTuesdayInput
+    thursdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftUncheckedCreateWithoutWednesdaySchedulesInput = {
+  export type ShiftUncheckedCreateWithoutWednesdayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32205,20 +44283,20 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleUncheckedCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutTuesdayInput
-    thursdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleUncheckedCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutTuesdayInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftCreateOrConnectWithoutWednesdaySchedulesInput = {
+  export type ShiftCreateOrConnectWithoutWednesdayMasterSchedulesInput = {
     where: ShiftWhereUniqueInput
-    create: XOR<ShiftCreateWithoutWednesdaySchedulesInput, ShiftUncheckedCreateWithoutWednesdaySchedulesInput>
+    create: XOR<ShiftCreateWithoutWednesdayMasterSchedulesInput, ShiftUncheckedCreateWithoutWednesdayMasterSchedulesInput>
   }
 
-  export type ShiftCreateWithoutThursdaySchedulesInput = {
+  export type ShiftCreateWithoutThursdayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32229,15 +44307,15 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleCreateNestedManyWithoutWednesdayInput
-    fridaySchedules?: ScheduleCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutWednesdayInput
+    fridayMasterSchedules?: MasterScheduleCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftUncheckedCreateWithoutThursdaySchedulesInput = {
+  export type ShiftUncheckedCreateWithoutThursdayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32248,20 +44326,20 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleUncheckedCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutWednesdayInput
-    fridaySchedules?: ScheduleUncheckedCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutWednesdayInput
+    fridayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftCreateOrConnectWithoutThursdaySchedulesInput = {
+  export type ShiftCreateOrConnectWithoutThursdayMasterSchedulesInput = {
     where: ShiftWhereUniqueInput
-    create: XOR<ShiftCreateWithoutThursdaySchedulesInput, ShiftUncheckedCreateWithoutThursdaySchedulesInput>
+    create: XOR<ShiftCreateWithoutThursdayMasterSchedulesInput, ShiftUncheckedCreateWithoutThursdayMasterSchedulesInput>
   }
 
-  export type ShiftCreateWithoutFridaySchedulesInput = {
+  export type ShiftCreateWithoutFridayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32272,15 +44350,15 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleCreateNestedManyWithoutThursdayInput
-    saturdaySchedules?: ScheduleCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutThursdayInput
+    saturdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftUncheckedCreateWithoutFridaySchedulesInput = {
+  export type ShiftUncheckedCreateWithoutFridayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32291,20 +44369,20 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleUncheckedCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutThursdayInput
-    saturdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSaturdayInput
-    sundaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutThursdayInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSaturdayInput
+    sundayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftCreateOrConnectWithoutFridaySchedulesInput = {
+  export type ShiftCreateOrConnectWithoutFridayMasterSchedulesInput = {
     where: ShiftWhereUniqueInput
-    create: XOR<ShiftCreateWithoutFridaySchedulesInput, ShiftUncheckedCreateWithoutFridaySchedulesInput>
+    create: XOR<ShiftCreateWithoutFridayMasterSchedulesInput, ShiftUncheckedCreateWithoutFridayMasterSchedulesInput>
   }
 
-  export type ShiftCreateWithoutSaturdaySchedulesInput = {
+  export type ShiftCreateWithoutSaturdayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32315,15 +44393,15 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleCreateNestedManyWithoutFridayInput
-    sundaySchedules?: ScheduleCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleCreateNestedManyWithoutFridayInput
+    sundayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftUncheckedCreateWithoutSaturdaySchedulesInput = {
+  export type ShiftUncheckedCreateWithoutSaturdayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32334,20 +44412,20 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleUncheckedCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleUncheckedCreateNestedManyWithoutFridayInput
-    sundaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSundayInput
+    mondayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutFridayInput
+    sundayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSundayInput
   }
 
-  export type ShiftCreateOrConnectWithoutSaturdaySchedulesInput = {
+  export type ShiftCreateOrConnectWithoutSaturdayMasterSchedulesInput = {
     where: ShiftWhereUniqueInput
-    create: XOR<ShiftCreateWithoutSaturdaySchedulesInput, ShiftUncheckedCreateWithoutSaturdaySchedulesInput>
+    create: XOR<ShiftCreateWithoutSaturdayMasterSchedulesInput, ShiftUncheckedCreateWithoutSaturdayMasterSchedulesInput>
   }
 
-  export type ShiftCreateWithoutSundaySchedulesInput = {
+  export type ShiftCreateWithoutSundayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32358,15 +44436,15 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleCreateNestedManyWithoutSaturdayInput
+    mondayMasterSchedules?: MasterScheduleCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleCreateNestedManyWithoutSaturdayInput
   }
 
-  export type ShiftUncheckedCreateWithoutSundaySchedulesInput = {
+  export type ShiftUncheckedCreateWithoutSundayMasterSchedulesInput = {
     id?: string
     name: string
     startTime: string
@@ -32377,31 +44455,31 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    mondaySchedules?: ScheduleUncheckedCreateNestedManyWithoutMondayInput
-    tuesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutTuesdayInput
-    wednesdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutWednesdayInput
-    thursdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutThursdayInput
-    fridaySchedules?: ScheduleUncheckedCreateNestedManyWithoutFridayInput
-    saturdaySchedules?: ScheduleUncheckedCreateNestedManyWithoutSaturdayInput
+    mondayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutMondayInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutTuesdayInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutWednesdayInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutThursdayInput
+    fridayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutFridayInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedCreateNestedManyWithoutSaturdayInput
   }
 
-  export type ShiftCreateOrConnectWithoutSundaySchedulesInput = {
+  export type ShiftCreateOrConnectWithoutSundayMasterSchedulesInput = {
     where: ShiftWhereUniqueInput
-    create: XOR<ShiftCreateWithoutSundaySchedulesInput, ShiftUncheckedCreateWithoutSundaySchedulesInput>
+    create: XOR<ShiftCreateWithoutSundayMasterSchedulesInput, ShiftUncheckedCreateWithoutSundayMasterSchedulesInput>
   }
 
-  export type EmployeeUpsertWithoutScheduleInput = {
-    update: XOR<EmployeeUpdateWithoutScheduleInput, EmployeeUncheckedUpdateWithoutScheduleInput>
-    create: XOR<EmployeeCreateWithoutScheduleInput, EmployeeUncheckedCreateWithoutScheduleInput>
+  export type EmployeeUpsertWithoutMasterScheduleInput = {
+    update: XOR<EmployeeUpdateWithoutMasterScheduleInput, EmployeeUncheckedUpdateWithoutMasterScheduleInput>
+    create: XOR<EmployeeCreateWithoutMasterScheduleInput, EmployeeUncheckedCreateWithoutMasterScheduleInput>
     where?: EmployeeWhereInput
   }
 
-  export type EmployeeUpdateToOneWithWhereWithoutScheduleInput = {
+  export type EmployeeUpdateToOneWithWhereWithoutMasterScheduleInput = {
     where?: EmployeeWhereInput
-    data: XOR<EmployeeUpdateWithoutScheduleInput, EmployeeUncheckedUpdateWithoutScheduleInput>
+    data: XOR<EmployeeUpdateWithoutMasterScheduleInput, EmployeeUncheckedUpdateWithoutMasterScheduleInput>
   }
 
-  export type EmployeeUpdateWithoutScheduleInput = {
+  export type EmployeeUpdateWithoutMasterScheduleInput = {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -32428,19 +44506,25 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     department?: DepartmentUpdateOneWithoutEmployeesNestedInput
     position?: PositionUpdateOneWithoutEmployeesNestedInput
     branch?: BranchUpdateOneWithoutEmployeesNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
   }
 
-  export type EmployeeUncheckedUpdateWithoutScheduleInput = {
+  export type EmployeeUncheckedUpdateWithoutMasterScheduleInput = {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -32470,27 +44554,33 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
   }
 
-  export type ShiftUpsertWithoutMondaySchedulesInput = {
-    update: XOR<ShiftUpdateWithoutMondaySchedulesInput, ShiftUncheckedUpdateWithoutMondaySchedulesInput>
-    create: XOR<ShiftCreateWithoutMondaySchedulesInput, ShiftUncheckedCreateWithoutMondaySchedulesInput>
+  export type ShiftUpsertWithoutMondayMasterSchedulesInput = {
+    update: XOR<ShiftUpdateWithoutMondayMasterSchedulesInput, ShiftUncheckedUpdateWithoutMondayMasterSchedulesInput>
+    create: XOR<ShiftCreateWithoutMondayMasterSchedulesInput, ShiftUncheckedCreateWithoutMondayMasterSchedulesInput>
     where?: ShiftWhereInput
   }
 
-  export type ShiftUpdateToOneWithWhereWithoutMondaySchedulesInput = {
+  export type ShiftUpdateToOneWithWhereWithoutMondayMasterSchedulesInput = {
     where?: ShiftWhereInput
-    data: XOR<ShiftUpdateWithoutMondaySchedulesInput, ShiftUncheckedUpdateWithoutMondaySchedulesInput>
+    data: XOR<ShiftUpdateWithoutMondayMasterSchedulesInput, ShiftUncheckedUpdateWithoutMondayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateWithoutMondaySchedulesInput = {
+  export type ShiftUpdateWithoutMondayMasterSchedulesInput = {
     name?: StringFieldUpdateOperationsInput | string
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
@@ -32500,15 +44590,15 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tuesdaySchedules?: ScheduleUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUpdateManyWithoutSundayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUpdateManyWithoutSundayNestedInput
   }
 
-  export type ShiftUncheckedUpdateWithoutMondaySchedulesInput = {
+  export type ShiftUncheckedUpdateWithoutMondayMasterSchedulesInput = {
     name?: StringFieldUpdateOperationsInput | string
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
@@ -32518,26 +44608,26 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tuesdaySchedules?: ScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUncheckedUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUncheckedUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUncheckedUpdateManyWithoutSundayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSundayNestedInput
   }
 
-  export type ShiftUpsertWithoutTuesdaySchedulesInput = {
-    update: XOR<ShiftUpdateWithoutTuesdaySchedulesInput, ShiftUncheckedUpdateWithoutTuesdaySchedulesInput>
-    create: XOR<ShiftCreateWithoutTuesdaySchedulesInput, ShiftUncheckedCreateWithoutTuesdaySchedulesInput>
+  export type ShiftUpsertWithoutTuesdayMasterSchedulesInput = {
+    update: XOR<ShiftUpdateWithoutTuesdayMasterSchedulesInput, ShiftUncheckedUpdateWithoutTuesdayMasterSchedulesInput>
+    create: XOR<ShiftCreateWithoutTuesdayMasterSchedulesInput, ShiftUncheckedCreateWithoutTuesdayMasterSchedulesInput>
     where?: ShiftWhereInput
   }
 
-  export type ShiftUpdateToOneWithWhereWithoutTuesdaySchedulesInput = {
+  export type ShiftUpdateToOneWithWhereWithoutTuesdayMasterSchedulesInput = {
     where?: ShiftWhereInput
-    data: XOR<ShiftUpdateWithoutTuesdaySchedulesInput, ShiftUncheckedUpdateWithoutTuesdaySchedulesInput>
+    data: XOR<ShiftUpdateWithoutTuesdayMasterSchedulesInput, ShiftUncheckedUpdateWithoutTuesdayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateWithoutTuesdaySchedulesInput = {
+  export type ShiftUpdateWithoutTuesdayMasterSchedulesInput = {
     name?: StringFieldUpdateOperationsInput | string
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
@@ -32547,15 +44637,15 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUpdateManyWithoutMondayNestedInput
-    wednesdaySchedules?: ScheduleUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUpdateManyWithoutSundayNestedInput
+    mondayMasterSchedules?: MasterScheduleUpdateManyWithoutMondayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUpdateManyWithoutSundayNestedInput
   }
 
-  export type ShiftUncheckedUpdateWithoutTuesdaySchedulesInput = {
+  export type ShiftUncheckedUpdateWithoutTuesdayMasterSchedulesInput = {
     name?: StringFieldUpdateOperationsInput | string
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
@@ -32565,73 +44655,26 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUncheckedUpdateManyWithoutMondayNestedInput
-    wednesdaySchedules?: ScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUncheckedUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUncheckedUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUncheckedUpdateManyWithoutSundayNestedInput
+    mondayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutMondayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSundayNestedInput
   }
 
-  export type ShiftUpsertWithoutWednesdaySchedulesInput = {
-    update: XOR<ShiftUpdateWithoutWednesdaySchedulesInput, ShiftUncheckedUpdateWithoutWednesdaySchedulesInput>
-    create: XOR<ShiftCreateWithoutWednesdaySchedulesInput, ShiftUncheckedCreateWithoutWednesdaySchedulesInput>
-    where?: ShiftWhereInput
-  }
-
-  export type ShiftUpdateToOneWithWhereWithoutWednesdaySchedulesInput = {
-    where?: ShiftWhereInput
-    data: XOR<ShiftUpdateWithoutWednesdaySchedulesInput, ShiftUncheckedUpdateWithoutWednesdaySchedulesInput>
-  }
-
-  export type ShiftUpdateWithoutWednesdaySchedulesInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    startTime?: StringFieldUpdateOperationsInput | string
-    endTime?: StringFieldUpdateOperationsInput | string
-    workDays?: ShiftUpdateworkDaysInput | string[]
-    isFlexi?: BoolFieldUpdateOperationsInput | boolean
-    flexiHours?: NullableFloatFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUpdateManyWithoutTuesdayNestedInput
-    thursdaySchedules?: ScheduleUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUpdateManyWithoutSundayNestedInput
-  }
-
-  export type ShiftUncheckedUpdateWithoutWednesdaySchedulesInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    startTime?: StringFieldUpdateOperationsInput | string
-    endTime?: StringFieldUpdateOperationsInput | string
-    workDays?: ShiftUpdateworkDaysInput | string[]
-    isFlexi?: BoolFieldUpdateOperationsInput | boolean
-    flexiHours?: NullableFloatFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUncheckedUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
-    thursdaySchedules?: ScheduleUncheckedUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUncheckedUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUncheckedUpdateManyWithoutSundayNestedInput
-  }
-
-  export type ShiftUpsertWithoutThursdaySchedulesInput = {
-    update: XOR<ShiftUpdateWithoutThursdaySchedulesInput, ShiftUncheckedUpdateWithoutThursdaySchedulesInput>
-    create: XOR<ShiftCreateWithoutThursdaySchedulesInput, ShiftUncheckedCreateWithoutThursdaySchedulesInput>
+  export type ShiftUpsertWithoutWednesdayMasterSchedulesInput = {
+    update: XOR<ShiftUpdateWithoutWednesdayMasterSchedulesInput, ShiftUncheckedUpdateWithoutWednesdayMasterSchedulesInput>
+    create: XOR<ShiftCreateWithoutWednesdayMasterSchedulesInput, ShiftUncheckedCreateWithoutWednesdayMasterSchedulesInput>
     where?: ShiftWhereInput
   }
 
-  export type ShiftUpdateToOneWithWhereWithoutThursdaySchedulesInput = {
+  export type ShiftUpdateToOneWithWhereWithoutWednesdayMasterSchedulesInput = {
     where?: ShiftWhereInput
-    data: XOR<ShiftUpdateWithoutThursdaySchedulesInput, ShiftUncheckedUpdateWithoutThursdaySchedulesInput>
+    data: XOR<ShiftUpdateWithoutWednesdayMasterSchedulesInput, ShiftUncheckedUpdateWithoutWednesdayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateWithoutThursdaySchedulesInput = {
+  export type ShiftUpdateWithoutWednesdayMasterSchedulesInput = {
     name?: StringFieldUpdateOperationsInput | string
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
@@ -32641,15 +44684,15 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUpdateManyWithoutWednesdayNestedInput
-    fridaySchedules?: ScheduleUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUpdateManyWithoutSundayNestedInput
+    mondayMasterSchedules?: MasterScheduleUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUpdateManyWithoutTuesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUpdateManyWithoutSundayNestedInput
   }
 
-  export type ShiftUncheckedUpdateWithoutThursdaySchedulesInput = {
+  export type ShiftUncheckedUpdateWithoutWednesdayMasterSchedulesInput = {
     name?: StringFieldUpdateOperationsInput | string
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
@@ -32659,73 +44702,26 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUncheckedUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
-    fridaySchedules?: ScheduleUncheckedUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUncheckedUpdateManyWithoutSundayNestedInput
+    mondayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSundayNestedInput
   }
 
-  export type ShiftUpsertWithoutFridaySchedulesInput = {
-    update: XOR<ShiftUpdateWithoutFridaySchedulesInput, ShiftUncheckedUpdateWithoutFridaySchedulesInput>
-    create: XOR<ShiftCreateWithoutFridaySchedulesInput, ShiftUncheckedCreateWithoutFridaySchedulesInput>
-    where?: ShiftWhereInput
-  }
-
-  export type ShiftUpdateToOneWithWhereWithoutFridaySchedulesInput = {
-    where?: ShiftWhereInput
-    data: XOR<ShiftUpdateWithoutFridaySchedulesInput, ShiftUncheckedUpdateWithoutFridaySchedulesInput>
-  }
-
-  export type ShiftUpdateWithoutFridaySchedulesInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    startTime?: StringFieldUpdateOperationsInput | string
-    endTime?: StringFieldUpdateOperationsInput | string
-    workDays?: ShiftUpdateworkDaysInput | string[]
-    isFlexi?: BoolFieldUpdateOperationsInput | boolean
-    flexiHours?: NullableFloatFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUpdateManyWithoutThursdayNestedInput
-    saturdaySchedules?: ScheduleUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUpdateManyWithoutSundayNestedInput
-  }
-
-  export type ShiftUncheckedUpdateWithoutFridaySchedulesInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    startTime?: StringFieldUpdateOperationsInput | string
-    endTime?: StringFieldUpdateOperationsInput | string
-    workDays?: ShiftUpdateworkDaysInput | string[]
-    isFlexi?: BoolFieldUpdateOperationsInput | boolean
-    flexiHours?: NullableFloatFieldUpdateOperationsInput | number | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUncheckedUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUncheckedUpdateManyWithoutThursdayNestedInput
-    saturdaySchedules?: ScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
-    sundaySchedules?: ScheduleUncheckedUpdateManyWithoutSundayNestedInput
-  }
-
-  export type ShiftUpsertWithoutSaturdaySchedulesInput = {
-    update: XOR<ShiftUpdateWithoutSaturdaySchedulesInput, ShiftUncheckedUpdateWithoutSaturdaySchedulesInput>
-    create: XOR<ShiftCreateWithoutSaturdaySchedulesInput, ShiftUncheckedCreateWithoutSaturdaySchedulesInput>
+  export type ShiftUpsertWithoutThursdayMasterSchedulesInput = {
+    update: XOR<ShiftUpdateWithoutThursdayMasterSchedulesInput, ShiftUncheckedUpdateWithoutThursdayMasterSchedulesInput>
+    create: XOR<ShiftCreateWithoutThursdayMasterSchedulesInput, ShiftUncheckedCreateWithoutThursdayMasterSchedulesInput>
     where?: ShiftWhereInput
   }
 
-  export type ShiftUpdateToOneWithWhereWithoutSaturdaySchedulesInput = {
+  export type ShiftUpdateToOneWithWhereWithoutThursdayMasterSchedulesInput = {
     where?: ShiftWhereInput
-    data: XOR<ShiftUpdateWithoutSaturdaySchedulesInput, ShiftUncheckedUpdateWithoutSaturdaySchedulesInput>
+    data: XOR<ShiftUpdateWithoutThursdayMasterSchedulesInput, ShiftUncheckedUpdateWithoutThursdayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateWithoutSaturdaySchedulesInput = {
+  export type ShiftUpdateWithoutThursdayMasterSchedulesInput = {
     name?: StringFieldUpdateOperationsInput | string
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
@@ -32735,15 +44731,15 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUpdateManyWithoutFridayNestedInput
-    sundaySchedules?: ScheduleUpdateManyWithoutSundayNestedInput
+    mondayMasterSchedules?: MasterScheduleUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUpdateManyWithoutWednesdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUpdateManyWithoutSundayNestedInput
   }
 
-  export type ShiftUncheckedUpdateWithoutSaturdaySchedulesInput = {
+  export type ShiftUncheckedUpdateWithoutThursdayMasterSchedulesInput = {
     name?: StringFieldUpdateOperationsInput | string
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
@@ -32753,26 +44749,26 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUncheckedUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUncheckedUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUncheckedUpdateManyWithoutFridayNestedInput
-    sundaySchedules?: ScheduleUncheckedUpdateManyWithoutSundayNestedInput
+    mondayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSundayNestedInput
   }
 
-  export type ShiftUpsertWithoutSundaySchedulesInput = {
-    update: XOR<ShiftUpdateWithoutSundaySchedulesInput, ShiftUncheckedUpdateWithoutSundaySchedulesInput>
-    create: XOR<ShiftCreateWithoutSundaySchedulesInput, ShiftUncheckedCreateWithoutSundaySchedulesInput>
+  export type ShiftUpsertWithoutFridayMasterSchedulesInput = {
+    update: XOR<ShiftUpdateWithoutFridayMasterSchedulesInput, ShiftUncheckedUpdateWithoutFridayMasterSchedulesInput>
+    create: XOR<ShiftCreateWithoutFridayMasterSchedulesInput, ShiftUncheckedCreateWithoutFridayMasterSchedulesInput>
     where?: ShiftWhereInput
   }
 
-  export type ShiftUpdateToOneWithWhereWithoutSundaySchedulesInput = {
+  export type ShiftUpdateToOneWithWhereWithoutFridayMasterSchedulesInput = {
     where?: ShiftWhereInput
-    data: XOR<ShiftUpdateWithoutSundaySchedulesInput, ShiftUncheckedUpdateWithoutSundaySchedulesInput>
+    data: XOR<ShiftUpdateWithoutFridayMasterSchedulesInput, ShiftUncheckedUpdateWithoutFridayMasterSchedulesInput>
   }
 
-  export type ShiftUpdateWithoutSundaySchedulesInput = {
+  export type ShiftUpdateWithoutFridayMasterSchedulesInput = {
     name?: StringFieldUpdateOperationsInput | string
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
@@ -32782,15 +44778,15 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUpdateManyWithoutSaturdayNestedInput
+    mondayMasterSchedules?: MasterScheduleUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUpdateManyWithoutThursdayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUpdateManyWithoutSundayNestedInput
   }
 
-  export type ShiftUncheckedUpdateWithoutSundaySchedulesInput = {
+  export type ShiftUncheckedUpdateWithoutFridayMasterSchedulesInput = {
     name?: StringFieldUpdateOperationsInput | string
     startTime?: StringFieldUpdateOperationsInput | string
     endTime?: StringFieldUpdateOperationsInput | string
@@ -32800,12 +44796,106 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    mondaySchedules?: ScheduleUncheckedUpdateManyWithoutMondayNestedInput
-    tuesdaySchedules?: ScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
-    wednesdaySchedules?: ScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
-    thursdaySchedules?: ScheduleUncheckedUpdateManyWithoutThursdayNestedInput
-    fridaySchedules?: ScheduleUncheckedUpdateManyWithoutFridayNestedInput
-    saturdaySchedules?: ScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
+    mondayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutThursdayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
+    sundayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSundayNestedInput
+  }
+
+  export type ShiftUpsertWithoutSaturdayMasterSchedulesInput = {
+    update: XOR<ShiftUpdateWithoutSaturdayMasterSchedulesInput, ShiftUncheckedUpdateWithoutSaturdayMasterSchedulesInput>
+    create: XOR<ShiftCreateWithoutSaturdayMasterSchedulesInput, ShiftUncheckedCreateWithoutSaturdayMasterSchedulesInput>
+    where?: ShiftWhereInput
+  }
+
+  export type ShiftUpdateToOneWithWhereWithoutSaturdayMasterSchedulesInput = {
+    where?: ShiftWhereInput
+    data: XOR<ShiftUpdateWithoutSaturdayMasterSchedulesInput, ShiftUncheckedUpdateWithoutSaturdayMasterSchedulesInput>
+  }
+
+  export type ShiftUpdateWithoutSaturdayMasterSchedulesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    workDays?: ShiftUpdateworkDaysInput | string[]
+    isFlexi?: BoolFieldUpdateOperationsInput | boolean
+    flexiHours?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mondayMasterSchedules?: MasterScheduleUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUpdateManyWithoutFridayNestedInput
+    sundayMasterSchedules?: MasterScheduleUpdateManyWithoutSundayNestedInput
+  }
+
+  export type ShiftUncheckedUpdateWithoutSaturdayMasterSchedulesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    workDays?: ShiftUpdateworkDaysInput | string[]
+    isFlexi?: BoolFieldUpdateOperationsInput | boolean
+    flexiHours?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mondayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutFridayNestedInput
+    sundayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSundayNestedInput
+  }
+
+  export type ShiftUpsertWithoutSundayMasterSchedulesInput = {
+    update: XOR<ShiftUpdateWithoutSundayMasterSchedulesInput, ShiftUncheckedUpdateWithoutSundayMasterSchedulesInput>
+    create: XOR<ShiftCreateWithoutSundayMasterSchedulesInput, ShiftUncheckedCreateWithoutSundayMasterSchedulesInput>
+    where?: ShiftWhereInput
+  }
+
+  export type ShiftUpdateToOneWithWhereWithoutSundayMasterSchedulesInput = {
+    where?: ShiftWhereInput
+    data: XOR<ShiftUpdateWithoutSundayMasterSchedulesInput, ShiftUncheckedUpdateWithoutSundayMasterSchedulesInput>
+  }
+
+  export type ShiftUpdateWithoutSundayMasterSchedulesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    workDays?: ShiftUpdateworkDaysInput | string[]
+    isFlexi?: BoolFieldUpdateOperationsInput | boolean
+    flexiHours?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mondayMasterSchedules?: MasterScheduleUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUpdateManyWithoutSaturdayNestedInput
+  }
+
+  export type ShiftUncheckedUpdateWithoutSundayMasterSchedulesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    workDays?: ShiftUpdateworkDaysInput | string[]
+    isFlexi?: BoolFieldUpdateOperationsInput | boolean
+    flexiHours?: NullableFloatFieldUpdateOperationsInput | number | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mondayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutMondayNestedInput
+    tuesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutTuesdayNestedInput
+    wednesdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutWednesdayNestedInput
+    thursdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutThursdayNestedInput
+    fridayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutFridayNestedInput
+    saturdayMasterSchedules?: MasterScheduleUncheckedUpdateManyWithoutSaturdayNestedInput
   }
 
   export type EmployeeCreateWithoutTimeRequestsInput = {
@@ -32836,16 +44926,22 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     department?: DepartmentCreateNestedOneWithoutEmployeesInput
     position?: PositionCreateNestedOneWithoutEmployeesInput
     branch?: BranchCreateNestedOneWithoutEmployeesInput
-    schedule?: ScheduleCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateWithoutTimeRequestsInput = {
@@ -32879,13 +44975,19 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    schedule?: ScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeCreateOrConnectWithoutTimeRequestsInput = {
@@ -32931,16 +45033,22 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     department?: DepartmentUpdateOneWithoutEmployeesNestedInput
     position?: PositionUpdateOneWithoutEmployeesNestedInput
     branch?: BranchUpdateOneWithoutEmployeesNestedInput
-    schedule?: ScheduleUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateWithoutTimeRequestsInput = {
@@ -32973,13 +45081,19 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schedule?: ScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
   }
 
   export type UserCreateWithoutActionLogsInput = {
@@ -33068,16 +45182,22 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     department?: DepartmentCreateNestedOneWithoutEmployeesInput
     position?: PositionCreateNestedOneWithoutEmployeesInput
     branch?: BranchCreateNestedOneWithoutEmployeesInput
-    schedule?: ScheduleCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateWithoutLeaveRequestsInput = {
@@ -33111,13 +45231,19 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    schedule?: ScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeCreateOrConnectWithoutLeaveRequestsInput = {
@@ -33163,16 +45289,22 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     department?: DepartmentUpdateOneWithoutEmployeesNestedInput
     position?: PositionUpdateOneWithoutEmployeesNestedInput
     branch?: BranchUpdateOneWithoutEmployeesNestedInput
-    schedule?: ScheduleUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateWithoutLeaveRequestsInput = {
@@ -33205,13 +45337,19 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schedule?: ScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeCreateWithoutAttendancesInput = {
@@ -33242,16 +45380,22 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     department?: DepartmentCreateNestedOneWithoutEmployeesInput
     position?: PositionCreateNestedOneWithoutEmployeesInput
     branch?: BranchCreateNestedOneWithoutEmployeesInput
-    schedule?: ScheduleCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateWithoutAttendancesInput = {
@@ -33285,13 +45429,19 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    schedule?: ScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeCreateOrConnectWithoutAttendancesInput = {
@@ -33337,16 +45487,22 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     department?: DepartmentUpdateOneWithoutEmployeesNestedInput
     position?: PositionUpdateOneWithoutEmployeesNestedInput
     branch?: BranchUpdateOneWithoutEmployeesNestedInput
-    schedule?: ScheduleUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateWithoutAttendancesInput = {
@@ -33379,13 +45535,19 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schedule?: ScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
   }
 
   export type PayrollRecordCreateWithoutPayrollPeriodInput = {
@@ -33570,16 +45732,22 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     department?: DepartmentCreateNestedOneWithoutEmployeesInput
     position?: PositionCreateNestedOneWithoutEmployeesInput
     branch?: BranchCreateNestedOneWithoutEmployeesInput
-    schedule?: ScheduleCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateWithoutPayrollRecordsInput = {
@@ -33613,13 +45781,19 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    schedule?: ScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
     benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
     timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
   }
 
   export type EmployeeCreateOrConnectWithoutPayrollRecordsInput = {
@@ -33694,16 +45868,22 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     department?: DepartmentUpdateOneWithoutEmployeesNestedInput
     position?: PositionUpdateOneWithoutEmployeesNestedInput
     branch?: BranchUpdateOneWithoutEmployeesNestedInput
-    schedule?: ScheduleUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateWithoutPayrollRecordsInput = {
@@ -33736,13 +45916,990 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schedule?: ScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
+  }
+
+  export type EmployeeCreateWithoutExpensesInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    address?: string | null
+    dateHired?: Date | string | null
+    status?: string
+    pictureUrl?: string | null
+    educationalDegree?: string | null
+    educationalInstitution?: string | null
+    yearGraduated?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    emergencyContactRelationship?: string | null
+    sssNumber?: string | null
+    sssStatus?: string
+    philHealthNumber?: string | null
+    philHealthStatus?: string
+    pagIbigNumber?: string | null
+    pagIbigStatus?: string
+    tinNumber?: string | null
+    salaryType?: string
+    baseSalary?: number
+    workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    department?: DepartmentCreateNestedOneWithoutEmployeesInput
+    position?: PositionCreateNestedOneWithoutEmployeesInput
+    branch?: BranchCreateNestedOneWithoutEmployeesInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
+    benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
+    timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
+    attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
+    payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
+  }
+
+  export type EmployeeUncheckedCreateWithoutExpensesInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    address?: string | null
+    departmentId?: string | null
+    positionId?: string | null
+    dateHired?: Date | string | null
+    status?: string
+    pictureUrl?: string | null
+    educationalDegree?: string | null
+    educationalInstitution?: string | null
+    yearGraduated?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    emergencyContactRelationship?: string | null
+    sssNumber?: string | null
+    sssStatus?: string
+    philHealthNumber?: string | null
+    philHealthStatus?: string
+    pagIbigNumber?: string | null
+    pagIbigStatus?: string
+    tinNumber?: string | null
+    salaryType?: string
+    baseSalary?: number
+    workFactor?: number
+    branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
+    benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
+    timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
+  }
+
+  export type EmployeeCreateOrConnectWithoutExpensesInput = {
+    where: EmployeeWhereUniqueInput
+    create: XOR<EmployeeCreateWithoutExpensesInput, EmployeeUncheckedCreateWithoutExpensesInput>
+  }
+
+  export type EmployeeUpsertWithoutExpensesInput = {
+    update: XOR<EmployeeUpdateWithoutExpensesInput, EmployeeUncheckedUpdateWithoutExpensesInput>
+    create: XOR<EmployeeCreateWithoutExpensesInput, EmployeeUncheckedCreateWithoutExpensesInput>
+    where?: EmployeeWhereInput
+  }
+
+  export type EmployeeUpdateToOneWithWhereWithoutExpensesInput = {
+    where?: EmployeeWhereInput
+    data: XOR<EmployeeUpdateWithoutExpensesInput, EmployeeUncheckedUpdateWithoutExpensesInput>
+  }
+
+  export type EmployeeUpdateWithoutExpensesInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    dateHired?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalDegree?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalInstitution?: NullableStringFieldUpdateOperationsInput | string | null
+    yearGraduated?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactRelationship?: NullableStringFieldUpdateOperationsInput | string | null
+    sssNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    sssStatus?: StringFieldUpdateOperationsInput | string
+    philHealthNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    philHealthStatus?: StringFieldUpdateOperationsInput | string
+    pagIbigNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    pagIbigStatus?: StringFieldUpdateOperationsInput | string
+    tinNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    salaryType?: StringFieldUpdateOperationsInput | string
+    baseSalary?: FloatFieldUpdateOperationsInput | number
+    workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    department?: DepartmentUpdateOneWithoutEmployeesNestedInput
+    position?: PositionUpdateOneWithoutEmployeesNestedInput
+    branch?: BranchUpdateOneWithoutEmployeesNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
+    benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
+    timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
+    attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
+  }
+
+  export type EmployeeUncheckedUpdateWithoutExpensesInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    positionId?: NullableStringFieldUpdateOperationsInput | string | null
+    dateHired?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalDegree?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalInstitution?: NullableStringFieldUpdateOperationsInput | string | null
+    yearGraduated?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactRelationship?: NullableStringFieldUpdateOperationsInput | string | null
+    sssNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    sssStatus?: StringFieldUpdateOperationsInput | string
+    philHealthNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    philHealthStatus?: StringFieldUpdateOperationsInput | string
+    pagIbigNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    pagIbigStatus?: StringFieldUpdateOperationsInput | string
+    tinNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    salaryType?: StringFieldUpdateOperationsInput | string
+    baseSalary?: FloatFieldUpdateOperationsInput | number
+    workFactor?: IntFieldUpdateOperationsInput | number
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
+    benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
+    timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
+  }
+
+  export type EmployeeCreateWithoutLoansInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    address?: string | null
+    dateHired?: Date | string | null
+    status?: string
+    pictureUrl?: string | null
+    educationalDegree?: string | null
+    educationalInstitution?: string | null
+    yearGraduated?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    emergencyContactRelationship?: string | null
+    sssNumber?: string | null
+    sssStatus?: string
+    philHealthNumber?: string | null
+    philHealthStatus?: string
+    pagIbigNumber?: string | null
+    pagIbigStatus?: string
+    tinNumber?: string | null
+    salaryType?: string
+    baseSalary?: number
+    workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    department?: DepartmentCreateNestedOneWithoutEmployeesInput
+    position?: PositionCreateNestedOneWithoutEmployeesInput
+    branch?: BranchCreateNestedOneWithoutEmployeesInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
+    benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
+    timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
+    attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
+    payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
+  }
+
+  export type EmployeeUncheckedCreateWithoutLoansInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    address?: string | null
+    departmentId?: string | null
+    positionId?: string | null
+    dateHired?: Date | string | null
+    status?: string
+    pictureUrl?: string | null
+    educationalDegree?: string | null
+    educationalInstitution?: string | null
+    yearGraduated?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    emergencyContactRelationship?: string | null
+    sssNumber?: string | null
+    sssStatus?: string
+    philHealthNumber?: string | null
+    philHealthStatus?: string
+    pagIbigNumber?: string | null
+    pagIbigStatus?: string
+    tinNumber?: string | null
+    salaryType?: string
+    baseSalary?: number
+    workFactor?: number
+    branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
+    benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
+    timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
+  }
+
+  export type EmployeeCreateOrConnectWithoutLoansInput = {
+    where: EmployeeWhereUniqueInput
+    create: XOR<EmployeeCreateWithoutLoansInput, EmployeeUncheckedCreateWithoutLoansInput>
+  }
+
+  export type EmployeeUpsertWithoutLoansInput = {
+    update: XOR<EmployeeUpdateWithoutLoansInput, EmployeeUncheckedUpdateWithoutLoansInput>
+    create: XOR<EmployeeCreateWithoutLoansInput, EmployeeUncheckedCreateWithoutLoansInput>
+    where?: EmployeeWhereInput
+  }
+
+  export type EmployeeUpdateToOneWithWhereWithoutLoansInput = {
+    where?: EmployeeWhereInput
+    data: XOR<EmployeeUpdateWithoutLoansInput, EmployeeUncheckedUpdateWithoutLoansInput>
+  }
+
+  export type EmployeeUpdateWithoutLoansInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    dateHired?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalDegree?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalInstitution?: NullableStringFieldUpdateOperationsInput | string | null
+    yearGraduated?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactRelationship?: NullableStringFieldUpdateOperationsInput | string | null
+    sssNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    sssStatus?: StringFieldUpdateOperationsInput | string
+    philHealthNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    philHealthStatus?: StringFieldUpdateOperationsInput | string
+    pagIbigNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    pagIbigStatus?: StringFieldUpdateOperationsInput | string
+    tinNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    salaryType?: StringFieldUpdateOperationsInput | string
+    baseSalary?: FloatFieldUpdateOperationsInput | number
+    workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    department?: DepartmentUpdateOneWithoutEmployeesNestedInput
+    position?: PositionUpdateOneWithoutEmployeesNestedInput
+    branch?: BranchUpdateOneWithoutEmployeesNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
+    benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
+    timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
+    attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
+  }
+
+  export type EmployeeUncheckedUpdateWithoutLoansInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    positionId?: NullableStringFieldUpdateOperationsInput | string | null
+    dateHired?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalDegree?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalInstitution?: NullableStringFieldUpdateOperationsInput | string | null
+    yearGraduated?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactRelationship?: NullableStringFieldUpdateOperationsInput | string | null
+    sssNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    sssStatus?: StringFieldUpdateOperationsInput | string
+    philHealthNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    philHealthStatus?: StringFieldUpdateOperationsInput | string
+    pagIbigNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    pagIbigStatus?: StringFieldUpdateOperationsInput | string
+    tinNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    salaryType?: StringFieldUpdateOperationsInput | string
+    baseSalary?: FloatFieldUpdateOperationsInput | number
+    workFactor?: IntFieldUpdateOperationsInput | number
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
+    benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
+    timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
+  }
+
+  export type EmployeeCreateWithoutAssetsInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    address?: string | null
+    dateHired?: Date | string | null
+    status?: string
+    pictureUrl?: string | null
+    educationalDegree?: string | null
+    educationalInstitution?: string | null
+    yearGraduated?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    emergencyContactRelationship?: string | null
+    sssNumber?: string | null
+    sssStatus?: string
+    philHealthNumber?: string | null
+    philHealthStatus?: string
+    pagIbigNumber?: string | null
+    pagIbigStatus?: string
+    tinNumber?: string | null
+    salaryType?: string
+    baseSalary?: number
+    workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    department?: DepartmentCreateNestedOneWithoutEmployeesInput
+    position?: PositionCreateNestedOneWithoutEmployeesInput
+    branch?: BranchCreateNestedOneWithoutEmployeesInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideCreateNestedManyWithoutEmployeeInput
+    benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
+    timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
+    attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
+    payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+  }
+
+  export type EmployeeUncheckedCreateWithoutAssetsInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    address?: string | null
+    departmentId?: string | null
+    positionId?: string | null
+    dateHired?: Date | string | null
+    status?: string
+    pictureUrl?: string | null
+    educationalDegree?: string | null
+    educationalInstitution?: string | null
+    yearGraduated?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    emergencyContactRelationship?: string | null
+    sssNumber?: string | null
+    sssStatus?: string
+    philHealthNumber?: string | null
+    philHealthStatus?: string
+    pagIbigNumber?: string | null
+    pagIbigStatus?: string
+    tinNumber?: string | null
+    salaryType?: string
+    baseSalary?: number
+    workFactor?: number
+    branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    scheduleOverrides?: ScheduleOverrideUncheckedCreateNestedManyWithoutEmployeeInput
+    benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
+    timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+  }
+
+  export type EmployeeCreateOrConnectWithoutAssetsInput = {
+    where: EmployeeWhereUniqueInput
+    create: XOR<EmployeeCreateWithoutAssetsInput, EmployeeUncheckedCreateWithoutAssetsInput>
+  }
+
+  export type EmployeeUpsertWithoutAssetsInput = {
+    update: XOR<EmployeeUpdateWithoutAssetsInput, EmployeeUncheckedUpdateWithoutAssetsInput>
+    create: XOR<EmployeeCreateWithoutAssetsInput, EmployeeUncheckedCreateWithoutAssetsInput>
+    where?: EmployeeWhereInput
+  }
+
+  export type EmployeeUpdateToOneWithWhereWithoutAssetsInput = {
+    where?: EmployeeWhereInput
+    data: XOR<EmployeeUpdateWithoutAssetsInput, EmployeeUncheckedUpdateWithoutAssetsInput>
+  }
+
+  export type EmployeeUpdateWithoutAssetsInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    dateHired?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalDegree?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalInstitution?: NullableStringFieldUpdateOperationsInput | string | null
+    yearGraduated?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactRelationship?: NullableStringFieldUpdateOperationsInput | string | null
+    sssNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    sssStatus?: StringFieldUpdateOperationsInput | string
+    philHealthNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    philHealthStatus?: StringFieldUpdateOperationsInput | string
+    pagIbigNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    pagIbigStatus?: StringFieldUpdateOperationsInput | string
+    tinNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    salaryType?: StringFieldUpdateOperationsInput | string
+    baseSalary?: FloatFieldUpdateOperationsInput | number
+    workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    department?: DepartmentUpdateOneWithoutEmployeesNestedInput
+    position?: PositionUpdateOneWithoutEmployeesNestedInput
+    branch?: BranchUpdateOneWithoutEmployeesNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
+    benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
+    timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
+    attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+  }
+
+  export type EmployeeUncheckedUpdateWithoutAssetsInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    positionId?: NullableStringFieldUpdateOperationsInput | string | null
+    dateHired?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalDegree?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalInstitution?: NullableStringFieldUpdateOperationsInput | string | null
+    yearGraduated?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactRelationship?: NullableStringFieldUpdateOperationsInput | string | null
+    sssNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    sssStatus?: StringFieldUpdateOperationsInput | string
+    philHealthNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    philHealthStatus?: StringFieldUpdateOperationsInput | string
+    pagIbigNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    pagIbigStatus?: StringFieldUpdateOperationsInput | string
+    tinNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    salaryType?: StringFieldUpdateOperationsInput | string
+    baseSalary?: FloatFieldUpdateOperationsInput | number
+    workFactor?: IntFieldUpdateOperationsInput | number
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
+    benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
+    timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+  }
+
+  export type BranchCreateWithoutBiometricDevicesInput = {
+    id?: string
+    name: string
+    location?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserCreateNestedManyWithoutBranchInput
+    employees?: EmployeeCreateNestedManyWithoutBranchInput
+  }
+
+  export type BranchUncheckedCreateWithoutBiometricDevicesInput = {
+    id?: string
+    name: string
+    location?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserUncheckedCreateNestedManyWithoutBranchInput
+    employees?: EmployeeUncheckedCreateNestedManyWithoutBranchInput
+  }
+
+  export type BranchCreateOrConnectWithoutBiometricDevicesInput = {
+    where: BranchWhereUniqueInput
+    create: XOR<BranchCreateWithoutBiometricDevicesInput, BranchUncheckedCreateWithoutBiometricDevicesInput>
+  }
+
+  export type RawBiometricLogCreateWithoutDeviceInput = {
+    id?: string
+    deviceUserId: string
+    timestamp: Date | string
+    state?: number | null
+    isProcessed?: boolean
+    processNote?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RawBiometricLogUncheckedCreateWithoutDeviceInput = {
+    id?: string
+    deviceUserId: string
+    timestamp: Date | string
+    state?: number | null
+    isProcessed?: boolean
+    processNote?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RawBiometricLogCreateOrConnectWithoutDeviceInput = {
+    where: RawBiometricLogWhereUniqueInput
+    create: XOR<RawBiometricLogCreateWithoutDeviceInput, RawBiometricLogUncheckedCreateWithoutDeviceInput>
+  }
+
+  export type RawBiometricLogCreateManyDeviceInputEnvelope = {
+    data: RawBiometricLogCreateManyDeviceInput | RawBiometricLogCreateManyDeviceInput[]
+  }
+
+  export type BranchUpsertWithoutBiometricDevicesInput = {
+    update: XOR<BranchUpdateWithoutBiometricDevicesInput, BranchUncheckedUpdateWithoutBiometricDevicesInput>
+    create: XOR<BranchCreateWithoutBiometricDevicesInput, BranchUncheckedCreateWithoutBiometricDevicesInput>
+    where?: BranchWhereInput
+  }
+
+  export type BranchUpdateToOneWithWhereWithoutBiometricDevicesInput = {
+    where?: BranchWhereInput
+    data: XOR<BranchUpdateWithoutBiometricDevicesInput, BranchUncheckedUpdateWithoutBiometricDevicesInput>
+  }
+
+  export type BranchUpdateWithoutBiometricDevicesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserUpdateManyWithoutBranchNestedInput
+    employees?: EmployeeUpdateManyWithoutBranchNestedInput
+  }
+
+  export type BranchUncheckedUpdateWithoutBiometricDevicesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserUncheckedUpdateManyWithoutBranchNestedInput
+    employees?: EmployeeUncheckedUpdateManyWithoutBranchNestedInput
+  }
+
+  export type RawBiometricLogUpsertWithWhereUniqueWithoutDeviceInput = {
+    where: RawBiometricLogWhereUniqueInput
+    update: XOR<RawBiometricLogUpdateWithoutDeviceInput, RawBiometricLogUncheckedUpdateWithoutDeviceInput>
+    create: XOR<RawBiometricLogCreateWithoutDeviceInput, RawBiometricLogUncheckedCreateWithoutDeviceInput>
+  }
+
+  export type RawBiometricLogUpdateWithWhereUniqueWithoutDeviceInput = {
+    where: RawBiometricLogWhereUniqueInput
+    data: XOR<RawBiometricLogUpdateWithoutDeviceInput, RawBiometricLogUncheckedUpdateWithoutDeviceInput>
+  }
+
+  export type RawBiometricLogUpdateManyWithWhereWithoutDeviceInput = {
+    where: RawBiometricLogScalarWhereInput
+    data: XOR<RawBiometricLogUpdateManyMutationInput, RawBiometricLogUncheckedUpdateManyWithoutDeviceInput>
+  }
+
+  export type RawBiometricLogScalarWhereInput = {
+    AND?: RawBiometricLogScalarWhereInput | RawBiometricLogScalarWhereInput[]
+    OR?: RawBiometricLogScalarWhereInput[]
+    NOT?: RawBiometricLogScalarWhereInput | RawBiometricLogScalarWhereInput[]
+    id?: StringFilter<"RawBiometricLog"> | string
+    deviceUserId?: StringFilter<"RawBiometricLog"> | string
+    timestamp?: DateTimeFilter<"RawBiometricLog"> | Date | string
+    state?: IntNullableFilter<"RawBiometricLog"> | number | null
+    deviceId?: StringFilter<"RawBiometricLog"> | string
+    isProcessed?: BoolFilter<"RawBiometricLog"> | boolean
+    processNote?: StringNullableFilter<"RawBiometricLog"> | string | null
+    createdAt?: DateTimeFilter<"RawBiometricLog"> | Date | string
+  }
+
+  export type BiometricDeviceCreateWithoutRawLogsInput = {
+    id?: string
+    name: string
+    ip: string
+    port?: number
+    status?: string
+    lastSync?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    branch: BranchCreateNestedOneWithoutBiometricDevicesInput
+  }
+
+  export type BiometricDeviceUncheckedCreateWithoutRawLogsInput = {
+    id?: string
+    name: string
+    branchId: string
+    ip: string
+    port?: number
+    status?: string
+    lastSync?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BiometricDeviceCreateOrConnectWithoutRawLogsInput = {
+    where: BiometricDeviceWhereUniqueInput
+    create: XOR<BiometricDeviceCreateWithoutRawLogsInput, BiometricDeviceUncheckedCreateWithoutRawLogsInput>
+  }
+
+  export type BiometricDeviceUpsertWithoutRawLogsInput = {
+    update: XOR<BiometricDeviceUpdateWithoutRawLogsInput, BiometricDeviceUncheckedUpdateWithoutRawLogsInput>
+    create: XOR<BiometricDeviceCreateWithoutRawLogsInput, BiometricDeviceUncheckedCreateWithoutRawLogsInput>
+    where?: BiometricDeviceWhereInput
+  }
+
+  export type BiometricDeviceUpdateToOneWithWhereWithoutRawLogsInput = {
+    where?: BiometricDeviceWhereInput
+    data: XOR<BiometricDeviceUpdateWithoutRawLogsInput, BiometricDeviceUncheckedUpdateWithoutRawLogsInput>
+  }
+
+  export type BiometricDeviceUpdateWithoutRawLogsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    ip?: StringFieldUpdateOperationsInput | string
+    port?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    lastSync?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    branch?: BranchUpdateOneRequiredWithoutBiometricDevicesNestedInput
+  }
+
+  export type BiometricDeviceUncheckedUpdateWithoutRawLogsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    branchId?: StringFieldUpdateOperationsInput | string
+    ip?: StringFieldUpdateOperationsInput | string
+    port?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    lastSync?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmployeeCreateWithoutScheduleOverridesInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    address?: string | null
+    dateHired?: Date | string | null
+    status?: string
+    pictureUrl?: string | null
+    educationalDegree?: string | null
+    educationalInstitution?: string | null
+    yearGraduated?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    emergencyContactRelationship?: string | null
+    sssNumber?: string | null
+    sssStatus?: string
+    philHealthNumber?: string | null
+    philHealthStatus?: string
+    pagIbigNumber?: string | null
+    pagIbigStatus?: string
+    tinNumber?: string | null
+    salaryType?: string
+    baseSalary?: number
+    workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    department?: DepartmentCreateNestedOneWithoutEmployeesInput
+    position?: PositionCreateNestedOneWithoutEmployeesInput
+    branch?: BranchCreateNestedOneWithoutEmployeesInput
+    masterSchedule?: MasterScheduleCreateNestedOneWithoutEmployeeInput
+    benefits?: EmployeeBenefitCreateNestedManyWithoutEmployeeInput
+    timeRequests?: TimeRequestCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
+    attendances?: AttendanceCreateNestedManyWithoutEmployeeInput
+    payrollRecords?: PayrollRecordCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetCreateNestedManyWithoutEmployeeInput
+  }
+
+  export type EmployeeUncheckedCreateWithoutScheduleOverridesInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    email: string
+    phone?: string | null
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    address?: string | null
+    departmentId?: string | null
+    positionId?: string | null
+    dateHired?: Date | string | null
+    status?: string
+    pictureUrl?: string | null
+    educationalDegree?: string | null
+    educationalInstitution?: string | null
+    yearGraduated?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    emergencyContactRelationship?: string | null
+    sssNumber?: string | null
+    sssStatus?: string
+    philHealthNumber?: string | null
+    philHealthStatus?: string
+    pagIbigNumber?: string | null
+    pagIbigStatus?: string
+    tinNumber?: string | null
+    salaryType?: string
+    baseSalary?: number
+    workFactor?: number
+    branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    masterSchedule?: MasterScheduleUncheckedCreateNestedOneWithoutEmployeeInput
+    benefits?: EmployeeBenefitUncheckedCreateNestedManyWithoutEmployeeInput
+    timeRequests?: TimeRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    payrollRecords?: PayrollRecordUncheckedCreateNestedManyWithoutEmployeeInput
+    expenses?: ExpenseRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    loans?: CompanyLoanUncheckedCreateNestedManyWithoutEmployeeInput
+    assets?: CompanyAssetUncheckedCreateNestedManyWithoutEmployeeInput
+  }
+
+  export type EmployeeCreateOrConnectWithoutScheduleOverridesInput = {
+    where: EmployeeWhereUniqueInput
+    create: XOR<EmployeeCreateWithoutScheduleOverridesInput, EmployeeUncheckedCreateWithoutScheduleOverridesInput>
+  }
+
+  export type EmployeeUpsertWithoutScheduleOverridesInput = {
+    update: XOR<EmployeeUpdateWithoutScheduleOverridesInput, EmployeeUncheckedUpdateWithoutScheduleOverridesInput>
+    create: XOR<EmployeeCreateWithoutScheduleOverridesInput, EmployeeUncheckedCreateWithoutScheduleOverridesInput>
+    where?: EmployeeWhereInput
+  }
+
+  export type EmployeeUpdateToOneWithWhereWithoutScheduleOverridesInput = {
+    where?: EmployeeWhereInput
+    data: XOR<EmployeeUpdateWithoutScheduleOverridesInput, EmployeeUncheckedUpdateWithoutScheduleOverridesInput>
+  }
+
+  export type EmployeeUpdateWithoutScheduleOverridesInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    dateHired?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalDegree?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalInstitution?: NullableStringFieldUpdateOperationsInput | string | null
+    yearGraduated?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactRelationship?: NullableStringFieldUpdateOperationsInput | string | null
+    sssNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    sssStatus?: StringFieldUpdateOperationsInput | string
+    philHealthNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    philHealthStatus?: StringFieldUpdateOperationsInput | string
+    pagIbigNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    pagIbigStatus?: StringFieldUpdateOperationsInput | string
+    tinNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    salaryType?: StringFieldUpdateOperationsInput | string
+    baseSalary?: FloatFieldUpdateOperationsInput | number
+    workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    department?: DepartmentUpdateOneWithoutEmployeesNestedInput
+    position?: PositionUpdateOneWithoutEmployeesNestedInput
+    branch?: BranchUpdateOneWithoutEmployeesNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
+    timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
+    attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
+  }
+
+  export type EmployeeUncheckedUpdateWithoutScheduleOverridesInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    positionId?: NullableStringFieldUpdateOperationsInput | string | null
+    dateHired?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalDegree?: NullableStringFieldUpdateOperationsInput | string | null
+    educationalInstitution?: NullableStringFieldUpdateOperationsInput | string | null
+    yearGraduated?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactRelationship?: NullableStringFieldUpdateOperationsInput | string | null
+    sssNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    sssStatus?: StringFieldUpdateOperationsInput | string
+    philHealthNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    philHealthStatus?: StringFieldUpdateOperationsInput | string
+    pagIbigNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    pagIbigStatus?: StringFieldUpdateOperationsInput | string
+    tinNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    salaryType?: StringFieldUpdateOperationsInput | string
+    baseSalary?: FloatFieldUpdateOperationsInput | number
+    workFactor?: IntFieldUpdateOperationsInput | number
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
+    timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
   }
 
   export type ActionLogCreateManyUserInput = {
@@ -33775,6 +46932,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     isManager?: boolean
+    gracePeriodMinutes?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -33804,6 +46962,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     childRoles?: RoleUpdateManyWithoutParentRoleNestedInput
@@ -33815,6 +46974,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     childRoles?: RoleUncheckedUpdateManyWithoutParentRoleNestedInput
@@ -33826,6 +46986,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     isManager?: BoolFieldUpdateOperationsInput | boolean
+    gracePeriodMinutes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -33929,6 +47090,19 @@ export namespace Prisma {
     salaryType?: string
     baseSalary?: number
     workFactor?: number
+    biometricId?: string | null
+    employeeNo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BiometricDeviceCreateManyBranchInput = {
+    id?: string
+    name: string
+    ip: string
+    port?: number
+    status?: string
+    lastSync?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -33989,16 +47163,22 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     department?: DepartmentUpdateOneWithoutEmployeesNestedInput
     position?: PositionUpdateOneWithoutEmployeesNestedInput
-    schedule?: ScheduleUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateWithoutBranchInput = {
@@ -34030,14 +47210,20 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schedule?: ScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateManyWithoutBranchInput = {
@@ -34069,8 +47255,53 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BiometricDeviceUpdateWithoutBranchInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    ip?: StringFieldUpdateOperationsInput | string
+    port?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    lastSync?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rawLogs?: RawBiometricLogUpdateManyWithoutDeviceNestedInput
+  }
+
+  export type BiometricDeviceUncheckedUpdateWithoutBranchInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    ip?: StringFieldUpdateOperationsInput | string
+    port?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    lastSync?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rawLogs?: RawBiometricLogUncheckedUpdateManyWithoutDeviceNestedInput
+  }
+
+  export type BiometricDeviceUncheckedUpdateManyWithoutBranchInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    ip?: StringFieldUpdateOperationsInput | string
+    port?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    lastSync?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleOverrideCreateManyEmployeeInput = {
+    id?: string
+    date: Date | string
+    startTime?: string | null
+    endTime?: string | null
+    isRestDay?: boolean
+    reason?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type EmployeeBenefitCreateManyEmployeeInput = {
@@ -34165,6 +47396,71 @@ export namespace Prisma {
     workFactor?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type ExpenseRequestCreateManyEmployeeInput = {
+    id?: string
+    amount: number
+    category: string
+    description: string
+    receiptUrls?: ExpenseRequestCreatereceiptUrlsInput | string[]
+    status?: string
+    date?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyLoanCreateManyEmployeeInput = {
+    id?: string
+    principalAmount: number
+    remainingBalance: number
+    monthlyDeduction: number
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CompanyAssetCreateManyEmployeeInput = {
+    id?: string
+    name: string
+    type: string
+    serialNumber?: string | null
+    purchaseDate?: Date | string | null
+    purchasePrice?: number | null
+    condition?: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ScheduleOverrideUpdateWithoutEmployeeInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    isRestDay?: BoolFieldUpdateOperationsInput | boolean
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleOverrideUncheckedUpdateWithoutEmployeeInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    isRestDay?: BoolFieldUpdateOperationsInput | boolean
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ScheduleOverrideUncheckedUpdateManyWithoutEmployeeInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    startTime?: NullableStringFieldUpdateOperationsInput | string | null
+    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    isRestDay?: BoolFieldUpdateOperationsInput | boolean
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EmployeeBenefitUpdateWithoutEmployeeInput = {
@@ -34434,6 +47730,102 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ExpenseRequestUpdateWithoutEmployeeInput = {
+    amount?: FloatFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    receiptUrls?: ExpenseRequestUpdatereceiptUrlsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExpenseRequestUncheckedUpdateWithoutEmployeeInput = {
+    amount?: FloatFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    receiptUrls?: ExpenseRequestUpdatereceiptUrlsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExpenseRequestUncheckedUpdateManyWithoutEmployeeInput = {
+    amount?: FloatFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    receiptUrls?: ExpenseRequestUpdatereceiptUrlsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyLoanUpdateWithoutEmployeeInput = {
+    principalAmount?: FloatFieldUpdateOperationsInput | number
+    remainingBalance?: FloatFieldUpdateOperationsInput | number
+    monthlyDeduction?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyLoanUncheckedUpdateWithoutEmployeeInput = {
+    principalAmount?: FloatFieldUpdateOperationsInput | number
+    remainingBalance?: FloatFieldUpdateOperationsInput | number
+    monthlyDeduction?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyLoanUncheckedUpdateManyWithoutEmployeeInput = {
+    principalAmount?: FloatFieldUpdateOperationsInput | number
+    remainingBalance?: FloatFieldUpdateOperationsInput | number
+    monthlyDeduction?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssetUpdateWithoutEmployeeInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    serialNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    purchaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    purchasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    condition?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssetUncheckedUpdateWithoutEmployeeInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    serialNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    purchaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    purchasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    condition?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CompanyAssetUncheckedUpdateManyWithoutEmployeeInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    serialNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    purchaseDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    purchasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    condition?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type EmployeeBenefitCreateManyBenefitPlanInput = {
     id?: string
     employeeId: string
@@ -34502,6 +47894,8 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -34559,16 +47953,22 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: PositionUpdateOneWithoutEmployeesNestedInput
     branch?: BranchUpdateOneWithoutEmployeesNestedInput
-    schedule?: ScheduleUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateWithoutDepartmentInput = {
@@ -34600,14 +48000,20 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schedule?: ScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateManyWithoutDepartmentInput = {
@@ -34639,6 +48045,8 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -34673,6 +48081,8 @@ export namespace Prisma {
     baseSalary?: number
     workFactor?: number
     branchId?: string | null
+    biometricId?: string | null
+    employeeNo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -34704,16 +48114,22 @@ export namespace Prisma {
     salaryType?: StringFieldUpdateOperationsInput | string
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     department?: DepartmentUpdateOneWithoutEmployeesNestedInput
     branch?: BranchUpdateOneWithoutEmployeesNestedInput
-    schedule?: ScheduleUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateWithoutPositionInput = {
@@ -34745,14 +48161,20 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schedule?: ScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    masterSchedule?: MasterScheduleUncheckedUpdateOneWithoutEmployeeNestedInput
+    scheduleOverrides?: ScheduleOverrideUncheckedUpdateManyWithoutEmployeeNestedInput
     benefits?: EmployeeBenefitUncheckedUpdateManyWithoutEmployeeNestedInput
     timeRequests?: TimeRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     payrollRecords?: PayrollRecordUncheckedUpdateManyWithoutEmployeeNestedInput
+    expenses?: ExpenseRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    loans?: CompanyLoanUncheckedUpdateManyWithoutEmployeeNestedInput
+    assets?: CompanyAssetUncheckedUpdateManyWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateManyWithoutPositionInput = {
@@ -34784,11 +48206,13 @@ export namespace Prisma {
     baseSalary?: FloatFieldUpdateOperationsInput | number
     workFactor?: IntFieldUpdateOperationsInput | number
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    biometricId?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeNo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleCreateManyMondayInput = {
+  export type MasterScheduleCreateManyMondayInput = {
     id?: string
     employeeId: string
     tuesdayId?: string | null
@@ -34801,7 +48225,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateManyTuesdayInput = {
+  export type MasterScheduleCreateManyTuesdayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -34814,7 +48238,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateManyWednesdayInput = {
+  export type MasterScheduleCreateManyWednesdayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -34827,7 +48251,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateManyThursdayInput = {
+  export type MasterScheduleCreateManyThursdayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -34840,7 +48264,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateManyFridayInput = {
+  export type MasterScheduleCreateManyFridayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -34853,7 +48277,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateManySaturdayInput = {
+  export type MasterScheduleCreateManySaturdayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -34866,7 +48290,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleCreateManySundayInput = {
+  export type MasterScheduleCreateManySundayInput = {
     id?: string
     employeeId: string
     mondayId?: string | null
@@ -34879,19 +48303,19 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ScheduleUpdateWithoutMondayInput = {
+  export type MasterScheduleUpdateWithoutMondayInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    employee?: EmployeeUpdateOneRequiredWithoutScheduleNestedInput
-    tuesday?: ShiftUpdateOneWithoutTuesdaySchedulesNestedInput
-    wednesday?: ShiftUpdateOneWithoutWednesdaySchedulesNestedInput
-    thursday?: ShiftUpdateOneWithoutThursdaySchedulesNestedInput
-    friday?: ShiftUpdateOneWithoutFridaySchedulesNestedInput
-    saturday?: ShiftUpdateOneWithoutSaturdaySchedulesNestedInput
-    sunday?: ShiftUpdateOneWithoutSundaySchedulesNestedInput
+    employee?: EmployeeUpdateOneRequiredWithoutMasterScheduleNestedInput
+    tuesday?: ShiftUpdateOneWithoutTuesdayMasterSchedulesNestedInput
+    wednesday?: ShiftUpdateOneWithoutWednesdayMasterSchedulesNestedInput
+    thursday?: ShiftUpdateOneWithoutThursdayMasterSchedulesNestedInput
+    friday?: ShiftUpdateOneWithoutFridayMasterSchedulesNestedInput
+    saturday?: ShiftUpdateOneWithoutSaturdayMasterSchedulesNestedInput
+    sunday?: ShiftUpdateOneWithoutSundayMasterSchedulesNestedInput
   }
 
-  export type ScheduleUncheckedUpdateWithoutMondayInput = {
+  export type MasterScheduleUncheckedUpdateWithoutMondayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
     wednesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34903,7 +48327,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutMondayInput = {
+  export type MasterScheduleUncheckedUpdateManyWithoutMondayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
     wednesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34915,19 +48339,19 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUpdateWithoutTuesdayInput = {
+  export type MasterScheduleUpdateWithoutTuesdayInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    employee?: EmployeeUpdateOneRequiredWithoutScheduleNestedInput
-    monday?: ShiftUpdateOneWithoutMondaySchedulesNestedInput
-    wednesday?: ShiftUpdateOneWithoutWednesdaySchedulesNestedInput
-    thursday?: ShiftUpdateOneWithoutThursdaySchedulesNestedInput
-    friday?: ShiftUpdateOneWithoutFridaySchedulesNestedInput
-    saturday?: ShiftUpdateOneWithoutSaturdaySchedulesNestedInput
-    sunday?: ShiftUpdateOneWithoutSundaySchedulesNestedInput
+    employee?: EmployeeUpdateOneRequiredWithoutMasterScheduleNestedInput
+    monday?: ShiftUpdateOneWithoutMondayMasterSchedulesNestedInput
+    wednesday?: ShiftUpdateOneWithoutWednesdayMasterSchedulesNestedInput
+    thursday?: ShiftUpdateOneWithoutThursdayMasterSchedulesNestedInput
+    friday?: ShiftUpdateOneWithoutFridayMasterSchedulesNestedInput
+    saturday?: ShiftUpdateOneWithoutSaturdayMasterSchedulesNestedInput
+    sunday?: ShiftUpdateOneWithoutSundayMasterSchedulesNestedInput
   }
 
-  export type ScheduleUncheckedUpdateWithoutTuesdayInput = {
+  export type MasterScheduleUncheckedUpdateWithoutTuesdayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     wednesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34939,7 +48363,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutTuesdayInput = {
+  export type MasterScheduleUncheckedUpdateManyWithoutTuesdayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     wednesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34951,19 +48375,19 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUpdateWithoutWednesdayInput = {
+  export type MasterScheduleUpdateWithoutWednesdayInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    employee?: EmployeeUpdateOneRequiredWithoutScheduleNestedInput
-    monday?: ShiftUpdateOneWithoutMondaySchedulesNestedInput
-    tuesday?: ShiftUpdateOneWithoutTuesdaySchedulesNestedInput
-    thursday?: ShiftUpdateOneWithoutThursdaySchedulesNestedInput
-    friday?: ShiftUpdateOneWithoutFridaySchedulesNestedInput
-    saturday?: ShiftUpdateOneWithoutSaturdaySchedulesNestedInput
-    sunday?: ShiftUpdateOneWithoutSundaySchedulesNestedInput
+    employee?: EmployeeUpdateOneRequiredWithoutMasterScheduleNestedInput
+    monday?: ShiftUpdateOneWithoutMondayMasterSchedulesNestedInput
+    tuesday?: ShiftUpdateOneWithoutTuesdayMasterSchedulesNestedInput
+    thursday?: ShiftUpdateOneWithoutThursdayMasterSchedulesNestedInput
+    friday?: ShiftUpdateOneWithoutFridayMasterSchedulesNestedInput
+    saturday?: ShiftUpdateOneWithoutSaturdayMasterSchedulesNestedInput
+    sunday?: ShiftUpdateOneWithoutSundayMasterSchedulesNestedInput
   }
 
-  export type ScheduleUncheckedUpdateWithoutWednesdayInput = {
+  export type MasterScheduleUncheckedUpdateWithoutWednesdayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34975,7 +48399,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutWednesdayInput = {
+  export type MasterScheduleUncheckedUpdateManyWithoutWednesdayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34987,19 +48411,19 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUpdateWithoutThursdayInput = {
+  export type MasterScheduleUpdateWithoutThursdayInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    employee?: EmployeeUpdateOneRequiredWithoutScheduleNestedInput
-    monday?: ShiftUpdateOneWithoutMondaySchedulesNestedInput
-    tuesday?: ShiftUpdateOneWithoutTuesdaySchedulesNestedInput
-    wednesday?: ShiftUpdateOneWithoutWednesdaySchedulesNestedInput
-    friday?: ShiftUpdateOneWithoutFridaySchedulesNestedInput
-    saturday?: ShiftUpdateOneWithoutSaturdaySchedulesNestedInput
-    sunday?: ShiftUpdateOneWithoutSundaySchedulesNestedInput
+    employee?: EmployeeUpdateOneRequiredWithoutMasterScheduleNestedInput
+    monday?: ShiftUpdateOneWithoutMondayMasterSchedulesNestedInput
+    tuesday?: ShiftUpdateOneWithoutTuesdayMasterSchedulesNestedInput
+    wednesday?: ShiftUpdateOneWithoutWednesdayMasterSchedulesNestedInput
+    friday?: ShiftUpdateOneWithoutFridayMasterSchedulesNestedInput
+    saturday?: ShiftUpdateOneWithoutSaturdayMasterSchedulesNestedInput
+    sunday?: ShiftUpdateOneWithoutSundayMasterSchedulesNestedInput
   }
 
-  export type ScheduleUncheckedUpdateWithoutThursdayInput = {
+  export type MasterScheduleUncheckedUpdateWithoutThursdayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35011,7 +48435,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutThursdayInput = {
+  export type MasterScheduleUncheckedUpdateManyWithoutThursdayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35023,19 +48447,19 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUpdateWithoutFridayInput = {
+  export type MasterScheduleUpdateWithoutFridayInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    employee?: EmployeeUpdateOneRequiredWithoutScheduleNestedInput
-    monday?: ShiftUpdateOneWithoutMondaySchedulesNestedInput
-    tuesday?: ShiftUpdateOneWithoutTuesdaySchedulesNestedInput
-    wednesday?: ShiftUpdateOneWithoutWednesdaySchedulesNestedInput
-    thursday?: ShiftUpdateOneWithoutThursdaySchedulesNestedInput
-    saturday?: ShiftUpdateOneWithoutSaturdaySchedulesNestedInput
-    sunday?: ShiftUpdateOneWithoutSundaySchedulesNestedInput
+    employee?: EmployeeUpdateOneRequiredWithoutMasterScheduleNestedInput
+    monday?: ShiftUpdateOneWithoutMondayMasterSchedulesNestedInput
+    tuesday?: ShiftUpdateOneWithoutTuesdayMasterSchedulesNestedInput
+    wednesday?: ShiftUpdateOneWithoutWednesdayMasterSchedulesNestedInput
+    thursday?: ShiftUpdateOneWithoutThursdayMasterSchedulesNestedInput
+    saturday?: ShiftUpdateOneWithoutSaturdayMasterSchedulesNestedInput
+    sunday?: ShiftUpdateOneWithoutSundayMasterSchedulesNestedInput
   }
 
-  export type ScheduleUncheckedUpdateWithoutFridayInput = {
+  export type MasterScheduleUncheckedUpdateWithoutFridayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35047,7 +48471,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutFridayInput = {
+  export type MasterScheduleUncheckedUpdateManyWithoutFridayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35059,19 +48483,19 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUpdateWithoutSaturdayInput = {
+  export type MasterScheduleUpdateWithoutSaturdayInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    employee?: EmployeeUpdateOneRequiredWithoutScheduleNestedInput
-    monday?: ShiftUpdateOneWithoutMondaySchedulesNestedInput
-    tuesday?: ShiftUpdateOneWithoutTuesdaySchedulesNestedInput
-    wednesday?: ShiftUpdateOneWithoutWednesdaySchedulesNestedInput
-    thursday?: ShiftUpdateOneWithoutThursdaySchedulesNestedInput
-    friday?: ShiftUpdateOneWithoutFridaySchedulesNestedInput
-    sunday?: ShiftUpdateOneWithoutSundaySchedulesNestedInput
+    employee?: EmployeeUpdateOneRequiredWithoutMasterScheduleNestedInput
+    monday?: ShiftUpdateOneWithoutMondayMasterSchedulesNestedInput
+    tuesday?: ShiftUpdateOneWithoutTuesdayMasterSchedulesNestedInput
+    wednesday?: ShiftUpdateOneWithoutWednesdayMasterSchedulesNestedInput
+    thursday?: ShiftUpdateOneWithoutThursdayMasterSchedulesNestedInput
+    friday?: ShiftUpdateOneWithoutFridayMasterSchedulesNestedInput
+    sunday?: ShiftUpdateOneWithoutSundayMasterSchedulesNestedInput
   }
 
-  export type ScheduleUncheckedUpdateWithoutSaturdayInput = {
+  export type MasterScheduleUncheckedUpdateWithoutSaturdayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35083,7 +48507,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutSaturdayInput = {
+  export type MasterScheduleUncheckedUpdateManyWithoutSaturdayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35095,19 +48519,19 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUpdateWithoutSundayInput = {
+  export type MasterScheduleUpdateWithoutSundayInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    employee?: EmployeeUpdateOneRequiredWithoutScheduleNestedInput
-    monday?: ShiftUpdateOneWithoutMondaySchedulesNestedInput
-    tuesday?: ShiftUpdateOneWithoutTuesdaySchedulesNestedInput
-    wednesday?: ShiftUpdateOneWithoutWednesdaySchedulesNestedInput
-    thursday?: ShiftUpdateOneWithoutThursdaySchedulesNestedInput
-    friday?: ShiftUpdateOneWithoutFridaySchedulesNestedInput
-    saturday?: ShiftUpdateOneWithoutSaturdaySchedulesNestedInput
+    employee?: EmployeeUpdateOneRequiredWithoutMasterScheduleNestedInput
+    monday?: ShiftUpdateOneWithoutMondayMasterSchedulesNestedInput
+    tuesday?: ShiftUpdateOneWithoutTuesdayMasterSchedulesNestedInput
+    wednesday?: ShiftUpdateOneWithoutWednesdayMasterSchedulesNestedInput
+    thursday?: ShiftUpdateOneWithoutThursdayMasterSchedulesNestedInput
+    friday?: ShiftUpdateOneWithoutFridayMasterSchedulesNestedInput
+    saturday?: ShiftUpdateOneWithoutSaturdayMasterSchedulesNestedInput
   }
 
-  export type ScheduleUncheckedUpdateWithoutSundayInput = {
+  export type MasterScheduleUncheckedUpdateWithoutSundayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35119,7 +48543,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ScheduleUncheckedUpdateManyWithoutSundayInput = {
+  export type MasterScheduleUncheckedUpdateManyWithoutSundayInput = {
     employeeId?: StringFieldUpdateOperationsInput | string
     mondayId?: NullableStringFieldUpdateOperationsInput | string | null
     tuesdayId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35334,6 +48758,43 @@ export namespace Prisma {
     workFactor?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RawBiometricLogCreateManyDeviceInput = {
+    id?: string
+    deviceUserId: string
+    timestamp: Date | string
+    state?: number | null
+    isProcessed?: boolean
+    processNote?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RawBiometricLogUpdateWithoutDeviceInput = {
+    deviceUserId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    state?: NullableIntFieldUpdateOperationsInput | number | null
+    isProcessed?: BoolFieldUpdateOperationsInput | boolean
+    processNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RawBiometricLogUncheckedUpdateWithoutDeviceInput = {
+    deviceUserId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    state?: NullableIntFieldUpdateOperationsInput | number | null
+    isProcessed?: BoolFieldUpdateOperationsInput | boolean
+    processNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RawBiometricLogUncheckedUpdateManyWithoutDeviceInput = {
+    deviceUserId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    state?: NullableIntFieldUpdateOperationsInput | number | null
+    isProcessed?: BoolFieldUpdateOperationsInput | boolean
+    processNote?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

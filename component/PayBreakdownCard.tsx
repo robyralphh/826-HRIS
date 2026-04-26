@@ -28,6 +28,8 @@ interface PayBreakdownCardProps {
   employeeName?: string;
   /** Default shift start in "HH:mm"; defaults to "08:00" */
   defaultShiftStart?: string;
+  /** Acceptable grace period in minutes */
+  gracePeriodMinutes?: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -52,6 +54,7 @@ export default function PayBreakdownCard({
   monthlyBasic,
   employeeName,
   defaultShiftStart = '08:00',
+  gracePeriodMinutes = 0,
 }: PayBreakdownCardProps) {
   const [workFactor, setWorkFactor]   = useState<WorkFactor>(313);
   const [shiftStart, setShiftStart]   = useState(defaultShiftStart);
@@ -71,8 +74,9 @@ export default function PayBreakdownCard({
       workFactor,
       shiftStart,
       timeIn: liveTimeIn,
+      gracePeriodMinutes,
     });
-  }, [liveTimeIn, monthlyBasic, workFactor, shiftStart]);
+  }, [liveTimeIn, monthlyBasic, workFactor, shiftStart, gracePeriodMinutes]);
 
   // ── Derived helpers ───────────────────────────────────────────────────────
   const annualGross = monthlyBasic * 12;

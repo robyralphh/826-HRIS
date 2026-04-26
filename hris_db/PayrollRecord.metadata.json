@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"payrollPeriodId":{"$numberInt":"1"},"employeeId":{"$numberInt":"1"}},"name":"PayrollRecord_payrollPeriodId_employeeId_key","unique":true}],"uuid":"e0a270622a694a2ea3e489701a07c479","collectionName":"PayrollRecord","type":"collection"}

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { PrismaClient } from '@/prisma/generated-client';
 import { addDays, differenceInMinutes } from 'date-fns';
 import { deriveRates, WorkFactor } from '@/lib/lateDeduction';
+import { getEffectiveShift } from '@/lib/schedule-utils';
 
 const prisma = new PrismaClient();
 
@@ -126,7 +127,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
         const employees = await prisma.employee.findMany({
             where: { status: 'active' },
             include: {
-                schedule: {
+                masterSchedule: {
                     include: {
                         monday: true, tuesday: true, wednesday: true,
                         thursday: true, friday: true, saturday: true, sunday: true
@@ -143,11 +144,19 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
         });
         // sssStatus, philHealthStatus, pagIbigStatus are scalar fields — included automatically
 
-        // Holiday map for the period (extend as needed)
-        const holidays: Record<string, { name: string; type: 'Regular' | 'Special' }> = {
-            '2026-03-24': { name: 'Sample Regular Holiday', type: 'Regular' },
-            '2026-03-25': { name: 'Sample Special Holiday', type: 'Special' },
-        };
+        // 4. Fetch dynamic holidays for the period
+        const dbHolidays = await prisma.holiday.findMany({
+            where: {
+                date: {
+                    gte: period.startDate,
+                    lte: period.endDate
+                }
+            }
+        });
+        const holidaysMap: Record<string, any> = {};
+        dbHolidays.forEach(h => {
+            holidaysMap[toPhDateStr(h.date)] = h;
+        });
 
         const records = [];
 
@@ -174,6 +183,26 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
                 }
             });
 
+            // ─── Rate derivation (DOLE annualized formula via deriveRates) ────────────
+            const empWorkFactor: WorkFactor =
+                (employee as any).workFactor === 261 ? 261
+                    : (employee as any).workFactor === 313 ? 313
+                        : rates.workFactor;
+
+            let canonicalMonthly: number;
+            if (employee.salaryType === 'Monthly') {
+                canonicalMonthly = employee.baseSalary;
+            } else if (employee.salaryType === 'Daily') {
+                canonicalMonthly = (employee.baseSalary * empWorkFactor) / 12;
+            } else {
+                canonicalMonthly = (employee.baseSalary * 8 * empWorkFactor) / 12;
+            }
+
+            const empRates = deriveRates(canonicalMonthly, empWorkFactor);
+            const monthlyRate = empRates.monthlyBasic;
+            const dailyRate = empRates.dailyRate;
+            const hourlyRate = empRates.hourlyRate;
+
             // Accumulators
             let totalRegularHours = 0;
             let totalNDHours = 0;
@@ -182,8 +211,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
             let totalUndertimeHours = 0;
             let totalAbsentDays = 0;
             let totalLeaveDays = 0;
-            let totalRegHolidayDays = 0;
-            let totalSpecHolidayDays = 0;
+            let totalHolidayPay = 0;
             let totalScheduledHours = 0;
             let totalScheduledDays = 0;
 
@@ -193,13 +221,14 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 
             while (current <= end) {
                 const dayStr = toPhDateStr(current);
-                const dayOfWeek = toPhWeekday(current);
-                const shift = employee.schedule ? (employee.schedule as any)[dayOfWeek] : null;
-                const holiday = holidays[dayStr];
+                const shift = await getEffectiveShift(prisma, employee.id, current);
+                const holiday = holidaysMap[dayStr];
 
                 if (holiday) {
-                    if (holiday.type === 'Regular') totalRegHolidayDays += 1;
-                    else totalSpecHolidayDays += 1;
+                    // Dynamic multiplier from DB, fallback to global defaults if missing
+                    const multiplier = holiday.multiplier || (holiday.type === 'Regular' ? rates.holidayRegularRate : rates.holidaySpecialRate);
+                    // Standard PH practice: Holiday pay is an extra premium on top of the daily rate
+                    totalHolidayPay += dailyRate * (multiplier - 1);
                 }
 
                 if (shift && shift.startTime && shift.endTime) {
@@ -299,30 +328,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
                 totalOTHours += Math.max(0, dur);
             }
 
-            // ─── Rate derivation (DOLE annualized formula via deriveRates) ────────────
-            // Each employee can have their own workFactor (313=Mon–Sat, 261=Mon–Fri)
-            // stored on the employee record. Fall back to the global override/default
-            // if the employee field is missing (e.g. legacy records).
-            const empWorkFactor: WorkFactor =
-                (employee as any).workFactor === 261 ? 261
-                    : (employee as any).workFactor === 313 ? 313
-                        : rates.workFactor;
-
-            let canonicalMonthly: number;
-            if (employee.salaryType === 'Monthly') {
-                canonicalMonthly = employee.baseSalary;
-            } else if (employee.salaryType === 'Daily') {
-                // reverse: monthly = (daily × factor) / 12
-                canonicalMonthly = (employee.baseSalary * empWorkFactor) / 12;
-            } else {
-                // Hourly: monthly = (hourly × 8 × factor) / 12
-                canonicalMonthly = (employee.baseSalary * 8 * empWorkFactor) / 12;
-            }
-
-            const empRates = deriveRates(canonicalMonthly, empWorkFactor);
-            const monthlyRate = empRates.monthlyBasic;
-            const dailyRate = empRates.dailyRate;
-            const hourlyRate = empRates.hourlyRate;
+            // ─── Base pay per cut-off ────────────────────────────────────────────────
 
             // ─── Base pay per cut-off ────────────────────────────────────────────────
             let basePay: number;
@@ -371,9 +377,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
             const cappedAbsenceDeduction   = absenceDeduction   * capRatio;
 
             // ─── Holiday pay ─────────────────────────────────────────────────────────
-            const regHolidayBonus = totalRegHolidayDays * dailyRate * (rates.holidayRegularRate - 1); // extra on top of regular pay
-            const specHolidayBonus = totalSpecHolidayDays * dailyRate * (rates.holidaySpecialRate - 1);
-            const holidayPay = regHolidayBonus + specHolidayBonus;
+            const holidayPay = totalHolidayPay;
 
             // ─── Special pays ────────────────────────────────────────────────────────
             const ndPay = totalNDHours * (hourlyRate * rates.nightDiffRate);

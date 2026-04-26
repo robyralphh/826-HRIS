@@ -7,7 +7,7 @@ export async function PUT(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const { name, description, isManager, parentRoleId, permissions } = await request.json();
+        const { name, description, isManager, parentRoleId, gracePeriodMinutes, permissions } = await request.json();
         const resolvedParams = await params;
         const id = resolvedParams.id;
 
@@ -18,7 +18,8 @@ export async function PUT(
                 name,
                 description,
                 isManager: !!isManager,
-                parentRoleId: parentRoleId || null
+                parentRoleId: parentRoleId || null,
+                gracePeriodMinutes: parseInt(gracePeriodMinutes as string, 10) || 0
             },
         });
 

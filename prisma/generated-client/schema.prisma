@@ -35,6 +35,8 @@ model Role {
   parentRole   Role?   @relation("RoleHierarchy", fields: [parentRoleId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   childRoles   Role[]  @relation("RoleHierarchy")
 
+  gracePeriodMinutes Int @default(0)
+
   users       User[]
   permissions RolePermission[]
   createdAt   DateTime         @default(now())
@@ -57,14 +59,15 @@ model RolePermission {
 }
 
 model Branch {
-  id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  name      String     @unique
-  location  String?
-  status    String     @default("active") // active, inactive
-  users     User[]
-  employees Employee[]
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
+  id               String            @id @default(auto()) @map("_id") @db.ObjectId
+  name             String            @unique
+  location         String?
+  status           String            @default("active") // active, inactive
+  users            User[]
+  employees        Employee[]
+  biometricDevices BiometricDevice[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
 }
 
 model Employee {
@@ -105,13 +108,16 @@ model Employee {
   pagIbigStatus    String  @default("Pending")
   tinNumber        String? // Tax Identification Number
 
-  salaryType String @default("Monthly") // "Monthly", "Hourly"
+  salaryType String @default("Monthly") // "Monthly", "Hourly", "Daily"
   baseSalary Float  @default(0)
+  /// DOLE annualization factor: 313 = Mon–Sat, 261 = Mon–Fri
+  workFactor Int    @default(313)
 
   branchId String? @db.ObjectId
   branch   Branch? @relation(fields: [branchId], references: [id])
 
-  schedule Schedule?
+  masterSchedule    MasterSchedule? // Renamed from schedule
+  scheduleOverrides ScheduleOverride[] // Renamed from shiftExceptions
 
   benefits EmployeeBenefit[]
 
@@ -119,6 +125,11 @@ model Employee {
   leaveRequests  LeaveRequest[] // Relations to Vacation and Sick Leaves
   attendances    Attendance[]
   payrollRecords PayrollRecord[]
+  expenses       ExpenseRequest[]
+  loans          CompanyLoan[]
+  assets         CompanyAsset[]
+  biometricId    String?
+  employeeNo     String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -198,16 +209,16 @@ model Shift {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  mondaySchedules    Schedule[] @relation("MondayShift")
-  tuesdaySchedules   Schedule[] @relation("TuesdayShift")
-  wednesdaySchedules Schedule[] @relation("WednesdayShift")
-  thursdaySchedules  Schedule[] @relation("ThursdayShift")
-  fridaySchedules    Schedule[] @relation("FridayShift")
-  saturdaySchedules  Schedule[] @relation("SaturdayShift")
-  sundaySchedules    Schedule[] @relation("SundayShift")
+  mondayMasterSchedules    MasterSchedule[] @relation("MondayShift")
+  tuesdayMasterSchedules   MasterSchedule[] @relation("TuesdayShift")
+  wednesdayMasterSchedules MasterSchedule[] @relation("WednesdayShift")
+  thursdayMasterSchedules  MasterSchedule[] @relation("ThursdayShift")
+  fridayMasterSchedules    MasterSchedule[] @relation("FridayShift")
+  saturdayMasterSchedules  MasterSchedule[] @relation("SaturdayShift")
+  sundayMasterSchedules    MasterSchedule[] @relation("SundayShift")
 }
 
-model Schedule {
+model MasterSchedule {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   employeeId String   @unique @db.ObjectId
   employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
@@ -353,6 +364,9 @@ model PayrollRecord {
   hdmf2Deduction   Float @default(0)
   subTotalGovtDues Float @default(0)
 
+  // System Flags
+  isPositiveCrediting Boolean @default(false)
+
   // Other Taxable Additions
   ndPay              Float @default(0)
   otPay              Float @default(0)
@@ -384,9 +398,130 @@ model PayrollRecord {
   ndEndTime          String @default("06:00")
   holidayRegularRate Float  @default(2.00)
   holidaySpecialRate Float  @default(1.30)
+  /// DOLE work-factor snapshot frozen at the time of this payroll run
+  workFactor         Int    @default(313)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@unique([payrollPeriodId, employeeId])
+}
+
+model ExpenseRequest {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  employeeId String   @db.ObjectId
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  amount      Float
+  category    String // e.g., "Travel", "Office Supplies", "Meals"
+  description String
+  receiptUrls String[]
+  status      String   @default("Pending") // Pending, Approved, Rejected, Paid
+  date        DateTime @default(now())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CompanyLoan {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  employeeId String   @db.ObjectId
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  principalAmount  Float
+  remainingBalance Float
+  monthlyDeduction Float
+  status           String @default("Active") // Active, Paid, Defaulted
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CompanyAsset {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  employeeId String?   @db.ObjectId
+  employee   Employee? @relation(fields: [employeeId], references: [id], onDelete: SetNull)
+
+  name          String
+  type          String // e.g., "Laptop", "Phone", "Vehicle"
+  serialNumber  String?   @unique
+  purchaseDate  DateTime?
+  purchasePrice Float?
+  condition     String    @default("Good") // Good, Fair, Poor, Broken
+  status        String    @default("Available") // Available, Assigned, Maintenance, Retired
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model LedgerEntry {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  date        DateTime @default(now())
+  type        String // "INCOME", "EXPENSE"
+  category    String // e.g., "Payroll", "Reimbursement", "Asset Purchase"
+  amount      Float
+  description String?
+  referenceId String? // Optional ID to link to a payroll record or expense ID
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BiometricDevice {
+  id        String            @id @default(auto()) @map("_id") @db.ObjectId
+  name      String // e.g., "Main Lobby G2"
+  branchId  String            @db.ObjectId
+  branch    Branch            @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  ip        String // IP address of the device
+  port      Int               @default(4370)
+  status    String            @default("Active") // Active, Offline, Maintenance
+  lastSync  DateTime?
+  rawLogs   RawBiometricLog[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+}
+
+model RawBiometricLog {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  deviceUserId String
+  timestamp    DateTime
+  state        Int? // 0 = In, 1 = Out
+
+  deviceId String          @db.ObjectId
+  device   BiometricDevice @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  isProcessed Boolean @default(false)
+  processNote String? // Any errors or warnings during processing
+
+  createdAt DateTime @default(now())
+
+  // Ensure idempotency for device syncs
+  @@unique([deviceId, deviceUserId, timestamp])
+}
+
+model Holiday {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  date       DateTime @unique
+  type       String // "Regular", "Special Non-working", "Special Working"
+  multiplier Float    @default(2.0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model ScheduleOverride {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  employeeId String   @db.ObjectId
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  date       DateTime // The specific date (YYYY-MM-DD midnight)
+
+  startTime String? // HH:mm
+  endTime   String? // HH:mm
+  isRestDay Boolean @default(false)
+  reason    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([employeeId, date])
 }

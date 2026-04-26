@@ -7,6 +7,7 @@ interface Role {
     name: string;
     description: string;
     isManager: boolean;
+    gracePeriodMinutes?: number;
     parentRoleId?: string | null;
     permissions: Permission[];
 }
@@ -41,7 +42,10 @@ const MODULE_CATEGORIES: Record<string, string[]> = {
         'Dashboard (Accounting)',
         'Finance',
         'Payroll',
-        'Compensation'
+        'Compensation',
+        'Expenses',
+        'Loans',
+        'Assets'
     ],
     'Employee Self-Service (ESS)': [
         'My ESS Portal'
@@ -60,6 +64,7 @@ const Roles = () => {
         name: '',
         description: '',
         isManager: false,
+        gracePeriodMinutes: '0',
         parentRoleId: ''
     });
     const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
@@ -135,11 +140,12 @@ const Roles = () => {
                 name: role.name, 
                 description: role.description || '', 
                 isManager: !!role.isManager,
+                gracePeriodMinutes: role.gracePeriodMinutes?.toString() || '0',
                 parentRoleId: role.parentRoleId || ''
             });
         } else {
             setIsEditing(false);
-            setFormData({ name: '', description: '', isManager: false, parentRoleId: '' });
+            setFormData({ name: '', description: '', isManager: false, gracePeriodMinutes: '0', parentRoleId: '' });
         }
         setIsModalOpen(true);
     };
@@ -330,6 +336,8 @@ const Roles = () => {
                                 <div className="flex items-center gap-2">
                                     <span className="w-2 h-2 rounded-full bg-green-500"></span>
                                     <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Active Role</span>
+                                    <span className="w-1 h-1 rounded-full bg-slate-300 ml-1"></span>
+                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter ml-1">Grace Period: {role.gracePeriodMinutes || 0}m</span>
                                     {role.isManager && (
                                         <>
                                             <span className="w-1 h-1 rounded-full bg-slate-300 ml-1"></span>
@@ -504,6 +512,17 @@ const Roles = () => {
                                     <span className="block text-sm font-bold text-indigo-900">Manager Position</span>
                                     <span className="block text-xs text-indigo-700/70 leading-tight">Elevates role to managerial authority in hierarchy chains</span>
                                 </div>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-1">Grace Period (Minutes)</label>
+                                <input
+                                    type="number"
+                                    min="0"
+                                    className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-gray-900 font-bold"
+                                    value={formData.gracePeriodMinutes}
+                                    onChange={(e) => setFormData({ ...formData, gracePeriodMinutes: e.target.value })}
+                                />
+                                <span className="block text-xs text-gray-500 mt-1 leading-tight">Minutes allowed before a late deduction is triggered for this role.</span>
                             </div>
                             <button
                                 type="submit"

@@ -19,7 +19,7 @@ export async function PUT(
             sssNumber, sssStatus, philHealthNumber, philHealthStatus,
             pagIbigNumber, pagIbigStatus, tinNumber,
             branchId, departmentId, positionId, pictureUrl,
-            salaryType, baseSalary, workFactor
+            salaryType, baseSalary, workFactor, biometricId, employeeNo
         } = requestData;
 
         // Build update object dynamically
@@ -65,6 +65,8 @@ export async function PUT(
         if (salaryType !== undefined) updateData.salaryType = salaryType || 'Monthly';
         if (baseSalary !== undefined) updateData.baseSalary = parseFloat(baseSalary) || 0;
         if (workFactor !== undefined) updateData.workFactor = workFactor === 261 ? 261 : 313;
+        if (biometricId !== undefined) updateData.biometricId = biometricId || null;
+        if (employeeNo !== undefined) updateData.employeeNo = employeeNo || null;
 
         const employee = await prisma.employee.update({
             where: { id },

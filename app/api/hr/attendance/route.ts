@@ -37,13 +37,16 @@ export async function GET(request: Request) {
                         id: true,
                         firstName: true,
                         lastName: true,
+                        email: true,
                         pictureUrl: true,
                         baseSalary: true,
                         salaryType: true,
                         workFactor: true,
+                        employeeNo: true,
+                        biometricId: true,
                         position: { select: { name: true } },
                         department: { select: { name: true } },
-                        schedule: {
+                        masterSchedule: {
                             include: {
                                 monday:    true,
                                 tuesday:   true,
@@ -59,7 +62,22 @@ export async function GET(request: Request) {
             }
         });
 
-        return NextResponse.json(attendanceLogs);
+        const emails: string[] = [...new Set(attendanceLogs.map((log: any) => log.employee.email as string))];
+        const users = await prisma.user.findMany({
+            where: { email: { in: emails } },
+            include: { role: true }
+        });
+        const userMap = users.reduce((acc: any, u) => { acc[u.email] = u; return acc; }, {});
+
+        const mappedLogs = attendanceLogs.map((log: any) => ({
+            ...log,
+            employee: {
+                ...log.employee,
+                gracePeriodMinutes: userMap[log.employee.email]?.role?.gracePeriodMinutes || 0
+            }
+        }));
+
+        return NextResponse.json(mappedLogs);
     } catch (error) {
         console.error('Error fetching HR attendance logs:', error);
         return NextResponse.json({ error: 'Failed to fetch attendance records' }, { status: 500 });

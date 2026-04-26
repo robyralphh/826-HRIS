@@ -41,6 +41,8 @@ interface EmployeeDTR {
         baseSalary: number | null;
         salaryType: string | null;
         workFactor: number | null;
+        gracePeriodMinutes?: number | null;
+        employeeNo?: string | null;
         department: { name: string } | null;
         position: { name: string } | null;
         schedule: EmployeeSchedule | null;
@@ -90,6 +92,7 @@ export default function HRDTR() {
     const [editTimeOutTime, setEditTimeOutTime] = useState('');
     const [editIncidentReportUrl, setEditIncidentReportUrl] = useState('');
     const [isSaving, setIsSaving] = useState(false);
+    const [isSyncing, setIsSyncing] = useState(false);
 
     // Simulate real-time tracking for ongoing shifts
     const [currentTime, setCurrentTime] = useState<Date>(new Date());
@@ -123,6 +126,56 @@ export default function HRDTR() {
         fetchLogs();
     }, []);
 
+    const handleSyncAll = async () => {
+        setIsSyncing(true);
+        try {
+            const adminId = JSON.parse(localStorage.getItem('user') || '{}').id;
+            const res = await fetch('/api/hr/biometrics/sync', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-admin-id': adminId
+                }
+            });
+            const data = await res.json();
+            if (res.ok) {
+                alert(`Organization-Wide Sync Complete:\n${data.results.map((r: any) => `- ${r.deviceName} (${r.branchName}): ${r.error ? `Error: ${r.error}` : `Synced ${r.logsSynced} logs`}`).join('\n')}`);
+                // Refresh logs
+                const refreshRes = await fetch('/api/hr/attendance', {
+                    headers: { 'x-admin-id': adminId }
+                });
+                if (refreshRes.ok) setLogs(await refreshRes.json());
+            } else {
+                alert(`Sync Error: ${data.error}`);
+            }
+        } catch (error) {
+            console.error('Error syncing multi-branch biometrics:', error);
+            alert('A network error occurred while syncing biometrics.');
+        } finally {
+            setIsSyncing(false);
+        }
+    };
+
+    const handlePurgeGhosts = async () => {
+        if (!confirm('This will delete all attendance records with invalid dates (Year 2033, 2031, 2000, etc.) resulting from hardware malfunctions. Are you sure?')) return;
+        
+        try {
+            const adminId = JSON.parse(localStorage.getItem('user') || '{}').id;
+            const res = await fetch('/api/hr/attendance/purge', {
+                method: 'DELETE',
+                headers: { 'x-admin-id': adminId }
+            });
+            const data = await res.json();
+            if (data.success) {
+                alert(data.message);
+                window.location.reload();
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Failed to purge records.');
+        }
+    };
+
     // ── Late deduction calculation per row ────────────────────────────────
     function calcRowDeduction(log: EmployeeDTR) {
         if (!log.timeIn || log.status.includes('Absent')) return null;
@@ -155,6 +208,7 @@ export default function HRDTR() {
             lunchStart,
             lunchEnd,
             timeIn: log.timeIn,
+            gracePeriodMinutes: log.employee.gracePeriodMinutes || 0,
         });
     }
 
@@ -482,6 +536,36 @@ export default function HRDTR() {
                             className="bg-transparent border-none text-slate-800 text-sm font-bold p-2 outline-none cursor-pointer"
                         />
                     </div>
+
+                    <div className="flex items-center gap-3">
+                        <button
+                            onClick={handlePurgeGhosts}
+                            className="flex items-center gap-2 px-5 py-3 bg-white text-rose-600 font-bold rounded-2xl border-2 border-rose-50 hover:bg-rose-50 transition-all shadow-sm active:scale-95"
+                            title="Delete records with invalid dates (2033, 2000, etc.)"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m4-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                            <span>Clear Ghosts</span>
+                        </button>
+                        
+                        <button
+                            onClick={handleSyncAll}
+                            disabled={isSyncing}
+                            className={`group relative flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-sm transition-all shadow-lg active:scale-95 ${
+                                isSyncing 
+                                    ? 'bg-slate-100 text-slate-400 cursor-not-allowed' 
+                                    : 'bg-emerald-600 text-white hover:bg-emerald-700 hover:shadow-emerald-200'
+                            }`}
+                        >
+                            <div className={`transition-all duration-700 ${isSyncing ? 'animate-spin' : 'group-hover:rotate-180'}`}>
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                            </div>
+                            {isSyncing ? 'Syncing...' : 'Sync Fleet Logs'}
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -558,7 +642,7 @@ export default function HRDTR() {
                                                     <div>
                                                         <div className="flex items-center gap-2">
                                                             <span className="text-sm font-bold text-slate-800">{log.employee.firstName} {log.employee.lastName}</span>
-                                                            <span className="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded-md font-mono border border-slate-200" title="Employee ID">#{log.employee.id.slice(-6).toUpperCase()}</span>
+                                                            <span className="text-[10px] bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-md font-black border border-indigo-100" title="Employee Number">#{log.employee.employeeNo || 'NO ID'}</span>
                                                         </div>
                                                         <div className="text-[11px] font-bold tracking-wide text-slate-400 uppercase mt-0.5">{log.employee.department?.name || 'Unassigned'}</div>
                                                     </div>

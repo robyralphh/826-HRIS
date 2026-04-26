@@ -7,6 +7,7 @@ export async function GET() {
         const branches = await prisma.branch.findMany({
             include: {
                 users: true,
+                biometricDevices: true,
             },
         });
         return NextResponse.json(branches);

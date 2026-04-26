@@ -12,6 +12,7 @@ export const PATH_TO_MODULE_MAPPING: Record<string, string> = {
     '/employees': 'Employee List',
     '/structure': 'Company Structure',
     '/benefits': 'Benefits',
+    '/holidays': 'Holidays',
     '/compensation': 'Compensation',
     '/payroll': 'Payroll',
     

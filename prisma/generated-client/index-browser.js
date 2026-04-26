@@ -131,6 +131,7 @@ exports.Prisma.RoleScalarFieldEnum = {
   description: 'description',
   isManager: 'isManager',
   parentRoleId: 'parentRoleId',
+  gracePeriodMinutes: 'gracePeriodMinutes',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -187,6 +188,8 @@ exports.Prisma.EmployeeScalarFieldEnum = {
   baseSalary: 'baseSalary',
   workFactor: 'workFactor',
   branchId: 'branchId',
+  biometricId: 'biometricId',
+  employeeNo: 'employeeNo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -241,7 +244,7 @@ exports.Prisma.ShiftScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ScheduleScalarFieldEnum = {
+exports.Prisma.MasterScheduleScalarFieldEnum = {
   id: 'id',
   employeeId: 'employeeId',
   mondayId: 'mondayId',
@@ -374,6 +377,101 @@ exports.Prisma.PayrollRecordScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ExpenseRequestScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  amount: 'amount',
+  category: 'category',
+  description: 'description',
+  receiptUrls: 'receiptUrls',
+  status: 'status',
+  date: 'date',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CompanyLoanScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  principalAmount: 'principalAmount',
+  remainingBalance: 'remainingBalance',
+  monthlyDeduction: 'monthlyDeduction',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CompanyAssetScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  name: 'name',
+  type: 'type',
+  serialNumber: 'serialNumber',
+  purchaseDate: 'purchaseDate',
+  purchasePrice: 'purchasePrice',
+  condition: 'condition',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LedgerEntryScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  type: 'type',
+  category: 'category',
+  amount: 'amount',
+  description: 'description',
+  referenceId: 'referenceId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BiometricDeviceScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  branchId: 'branchId',
+  ip: 'ip',
+  port: 'port',
+  status: 'status',
+  lastSync: 'lastSync',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RawBiometricLogScalarFieldEnum = {
+  id: 'id',
+  deviceUserId: 'deviceUserId',
+  timestamp: 'timestamp',
+  state: 'state',
+  deviceId: 'deviceId',
+  isProcessed: 'isProcessed',
+  processNote: 'processNote',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.HolidayScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  date: 'date',
+  type: 'type',
+  multiplier: 'multiplier',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ScheduleOverrideScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  date: 'date',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  isRestDay: 'isRestDay',
+  reason: 'reason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -396,14 +494,22 @@ exports.Prisma.ModelName = {
   Department: 'Department',
   Position: 'Position',
   Shift: 'Shift',
-  Schedule: 'Schedule',
+  MasterSchedule: 'MasterSchedule',
   TimeRequest: 'TimeRequest',
   ActionLog: 'ActionLog',
   LeaveRequest: 'LeaveRequest',
   Attendance: 'Attendance',
   PayrollSetting: 'PayrollSetting',
   PayrollPeriod: 'PayrollPeriod',
-  PayrollRecord: 'PayrollRecord'
+  PayrollRecord: 'PayrollRecord',
+  ExpenseRequest: 'ExpenseRequest',
+  CompanyLoan: 'CompanyLoan',
+  CompanyAsset: 'CompanyAsset',
+  LedgerEntry: 'LedgerEntry',
+  BiometricDevice: 'BiometricDevice',
+  RawBiometricLog: 'RawBiometricLog',
+  Holiday: 'Holiday',
+  ScheduleOverride: 'ScheduleOverride'
 };
 
 /**

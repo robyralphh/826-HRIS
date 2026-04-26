@@ -48,6 +48,8 @@ export interface LateDeductionArgs {
    * Accepts either an ISO 8601 string (from the DB) or a plain "HH:mm" string.
    */
   timeIn: string;
+  /** Acceptable grace period in minutes. */
+  gracePeriodMinutes?: number;
 }
 
 export interface LateDeductionResult {
@@ -87,10 +89,13 @@ function extractHHMM(value: string): string {
   // If it looks like an ISO timestamp, convert to local PH "HH:mm"
   if (value.includes('T') || value.includes('Z') || value.includes('+')) {
     const d = new Date(value);
-    // Format in PH timezone (UTC+8)
-    const phStr = d.toLocaleString('sv-SE', { timeZone: 'Asia/Manila' });
-    // sv-SE gives "YYYY-MM-DD HH:MM:SS"
-    return phStr.slice(11, 16); // "HH:MM"
+    // Use Intl.DateTimeFormat for robust, locale-independent formatting
+    return new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: 'Asia/Manila'
+    }).format(d);
   }
   // Already "HH:mm"
   return value.slice(0, 5);
@@ -112,6 +117,7 @@ export function calculateDeduction(args: LateDeductionArgs): LateDeductionResult
     lunchStart = '12:00',
     lunchEnd = '13:00',
     timeIn,
+    gracePeriodMinutes = 0,
   } = args;
 
   // ── Rate derivation (DOLE annualized formula, 4 decimal precision) ───────
@@ -178,6 +184,18 @@ export function calculateDeduction(args: LateDeductionArgs): LateDeductionResult
   }
 
   minutesLate = Math.max(0, minutesLate);
+
+  // Apply Grace Period check (Strict Option A)
+  if (minutesLate <= gracePeriodMinutes) {
+    return {
+      totalMinutesLate: 0,
+      deductionAmount: 0,
+      isLate: false,
+      breakdown: `${breakdownNote} ` +
+        `However, arrived within the ${gracePeriodMinutes}-min grace period. No deduction.`,
+    };
+  }
+
   const deductionAmount = parseFloat((minutesLate * perMinuteRate).toFixed(2));
 
   return {
